@@ -3,7 +3,7 @@
 # FILE:        tools/dashboard/Invoke-DashboardHook.ps1
 # PURPOSE:     Run the dashboard update hook
 # COPYRIGHT:   Copyright 2026 Ryan Wilson <ryan@taveraos.com>
-# PROGRAMMERS: Ryan Wilson
+# PROGRAMMERS: Ryan Wilson <ryan@taveraos.com>
 
 param(
     [switch]$Stage,

@@ -8,7 +8,7 @@
  * PROGRAMMERS: Casper S. Hornstrup (chorns@users.sourceforge.net)
  *              Alexandre Julliard
  *              Maarten Lankhorst
- *              Ryan Wilson
+ *              Ryan Wilson <ryan@taveraos.com>
  */
 
 #include <win32k.h>

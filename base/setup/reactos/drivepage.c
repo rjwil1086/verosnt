@@ -7,7 +7,7 @@
  *              Copyright 2008-2009 Dmitry Chapyshev <dmitry@reactos.org>
  *              Copyright 2018-2026 Hermès Bélusca-Maïto <hermes.belusca-maito@reactos.org>
  *              Copyright 2026 Ryan Wilson <ryan@taveraos.com>
- * PROGRAMMERS: Ryan Wilson
+ * PROGRAMMERS: Ryan Wilson <ryan@taveraos.com>
  */
 
 #include "reactos.h"

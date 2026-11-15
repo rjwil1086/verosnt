@@ -6,7 +6,7 @@
  * COPYRIGHT:   See COPYING in the top level directory
  *              Copyright 2026 Ryan Wilson <ryan@taveraos.com>
  * PROGRAMMERS: Pierre Schweitzer, Klachkov Valery
- *              Ryan Wilson
+ *              Ryan Wilson <ryan@taveraos.com>
  */
 
 #ifndef NTFSLIB_H

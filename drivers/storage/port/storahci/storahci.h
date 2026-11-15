@@ -5,7 +5,7 @@
  * PURPOSE:     To Implement AHCI Miniport driver targeting storport NT 5.2
  * COPYRIGHT:   Copyright 2026 Ryan Wilson <ryan@taveraos.com>
  * PROGRAMMERS: Aman Priyadarshi (aman.eureka@gmail.com)
- *              Ryan Wilson
+ *              Ryan Wilson <ryan@taveraos.com>
  */
 
 #include <ntddk.h>

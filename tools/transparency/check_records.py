@@ -3,7 +3,7 @@
 # FILE: tools/transparency/check_records.py
 # PURPOSE: Reject a scoped commit that changes Windows behavior and omits its source note
 # COPYRIGHT: Copyright 2026 Ryan Wilson <ryan@taveraos.com>
-# PROGRAMMERS: Ryan Wilson
+# PROGRAMMERS: Ryan Wilson <ryan@taveraos.com>
 
 """Check transparency notes for scoped commits in a revision range."""
 

@@ -3,7 +3,7 @@
 # FILE:        tools/qemu-harness/Test-Plugin.ps1
 # PURPOSE:     Smoke-test the QEMU ABI plugin
 # COPYRIGHT:   Copyright 2026 Ryan Wilson <ryan@taveraos.com>
-# PROGRAMMERS: Ryan Wilson
+# PROGRAMMERS: Ryan Wilson <ryan@taveraos.com>
 
 param(
     [string]$SourceRoot = (Resolve-Path (Join-Path $PSScriptRoot "..\..")).Path,

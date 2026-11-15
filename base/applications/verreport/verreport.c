@@ -4,7 +4,7 @@
  * FILE:        base/applications/verreport/verreport.c
  * PURPOSE:     Print the runtime NT version and the unmanifested GetVersion lie
  * COPYRIGHT:   Copyright 2026 Ryan Wilson <ryan@taveraos.com>
- * PROGRAMMERS: Ryan Wilson
+ * PROGRAMMERS: Ryan Wilson <ryan@taveraos.com>
  */
 
 #include <stdio.h>

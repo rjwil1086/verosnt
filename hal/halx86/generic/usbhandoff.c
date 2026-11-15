@@ -4,7 +4,7 @@
  * FILE:        hal/halx86/generic/usbhandoff.c
  * PURPOSE:     Release BIOS ownership of USB controllers
  * COPYRIGHT:   Copyright 2026 Ryan Wilson <ryan@taveraos.com>
- * PROGRAMMERS: Ryan Wilson
+ * PROGRAMMERS: Ryan Wilson <ryan@taveraos.com>
  */
 
 /*

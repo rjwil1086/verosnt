@@ -3,7 +3,7 @@
 # FILE:        tools/pipeline/Build-Bootcd.ps1
 # PURPOSE:     Build the amd64 bootcd
 # COPYRIGHT:   Copyright 2026 Ryan Wilson <ryan@taveraos.com>
-# PROGRAMMERS: Ryan Wilson
+# PROGRAMMERS: Ryan Wilson <ryan@taveraos.com>
 
 param(
     [string]$SourceRoot = (Resolve-Path (Join-Path $PSScriptRoot "..\..")).Path,

@@ -9,7 +9,7 @@
  *              Copyright 2003 Jon Griffiths
  *              Copyright 2005 Dmitry Timoshkov
  *              Copyright 2026 Ryan Wilson <ryan@taveraos.com>
- * PROGRAMMERS: Ryan Wilson
+ * PROGRAMMERS: Ryan Wilson <ryan@taveraos.com>
  */
 
 #ifdef __REACTOS__
