@@ -5,7 +5,7 @@
  * COPYRIGHT:   Copyright 2009-2019 Aleksey Bragin <aleksey@reactos.org>
  *              Copyright 2026 Ryan Wilson <ryan@taveraos.com>
  * PROGRAMMERS: Aleksey Bragin
- *              Ryan Wilson
+ *              Ryan Wilson <ryan@taveraos.com>
  */
 
 #include <freeldr.h>

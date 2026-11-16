@@ -6,7 +6,7 @@
  * COPYRIGHT:   Copyright 2004 Eric Kohl
  *              Copyright 2026 Ryan Wilson <ryan@taveraos.com>
  * PROGRAMMERS: Eric Kohl
- *              Ryan Wilson
+ *              Ryan Wilson <ryan@taveraos.com>
  */
 
 #include <freeldr.h>

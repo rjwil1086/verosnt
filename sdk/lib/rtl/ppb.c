@@ -6,7 +6,7 @@
  * COPYRIGHT:   See COPYING in the top level directory
  *              Copyright 2026 Ryan Wilson <ryan@taveraos.com>
  * PROGRAMMERS: Ariadne ( ariadne@xs4all.nl)
- *              Ryan Wilson
+ *              Ryan Wilson <ryan@taveraos.com>
  */
 
 /* INCLUDES ****************************************************************/

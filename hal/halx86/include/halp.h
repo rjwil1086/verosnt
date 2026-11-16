@@ -4,7 +4,7 @@
  * FILE:        hal/halx86/include/halp.h
  * PURPOSE:     Private declarations for the x86 HAL
  * COPYRIGHT:   Copyright 2026 Ryan Wilson <ryan@taveraos.com>
- * PROGRAMMERS: Ryan Wilson
+ * PROGRAMMERS: Ryan Wilson <ryan@taveraos.com>
  */
 
 #pragma once

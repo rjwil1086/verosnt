@@ -7,7 +7,7 @@ Copyright 2026 Ryan Wilson <ryan@taveraos.com>
 
 Programmers:
 
-    Ryan Wilson
+    Ryan Wilson <ryan@taveraos.com>
 
 Module Name:
 

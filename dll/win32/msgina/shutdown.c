@@ -7,7 +7,7 @@
  * PROGRAMMERS:     Lee Schroeder (spaceseel at gmail dot com)
  *                  Hermes Belusca-Maito (hermes.belusca@sfr.fr)
  *                  Arnav Bhatt (arnavbhatt288 at gmail dot com)
- *                  Ryan Wilson
+ *                  Ryan Wilson <ryan@taveraos.com>
  */
 
 #include "msgina.h"

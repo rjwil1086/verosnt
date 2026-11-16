@@ -6,7 +6,7 @@
  * COPYRIGHT:   Copyright (C) 1998-2003 Brian Palmer <brianp@sginet.com>
  *              Copyright 2026 Ryan Wilson <ryan@taveraos.com>
  * PROGRAMMERS: Brian Palmer
- *              Ryan Wilson
+ *              Ryan Wilson <ryan@taveraos.com>
  */
 
 /*

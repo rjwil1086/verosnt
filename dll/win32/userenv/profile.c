@@ -6,7 +6,7 @@
  * COPYRIGHT:   Copyright 2026 Ryan Wilson <ryan@taveraos.com>
  * PROGRAMMERS: Eric Kohl
  *              Hervé Poussineau
- *              Ryan Wilson
+ *              Ryan Wilson <ryan@taveraos.com>
  */
 
 #include "precomp.h"

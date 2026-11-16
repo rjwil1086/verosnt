@@ -4,7 +4,7 @@
  * FILE:        ntoskrnl/include/sysfuncs.h
  * PURPOSE:     NT system service names
  * COPYRIGHT:   Copyright 2026 Ryan Wilson <ryan@taveraos.com>
- * PROGRAMMERS: Ryan Wilson
+ * PROGRAMMERS: Ryan Wilson <ryan@taveraos.com>
  */
 
 #ifndef SYSFUNCS_NT6_ONLY

@@ -5,7 +5,7 @@
  * PURPOSE:     RPCRT4
  * COPYRIGHT:   Copyright 2000 Huw D M Davies for CodeWeavers
  *              Copyright 2026 Ryan Wilson <ryan@taveraos.com>
- * PROGRAMMERS: Ryan Wilson
+ * PROGRAMMERS: Ryan Wilson <ryan@taveraos.com>
  */
 /*
  * WINE RPC TODO's (and a few TODONT's)

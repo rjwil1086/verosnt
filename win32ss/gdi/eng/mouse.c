@@ -7,7 +7,7 @@
  *              Copyright 2026 Ryan Wilson <ryan@taveraos.com>
  * PROGRAMMERS: Casper S. Hornstrup (chorns@users.sourceforge.net)
  *              Timo Kreuzer (timo.kreuzer@reactos.org)
- *              Ryan Wilson
+ *              Ryan Wilson <ryan@taveraos.com>
  */
 
 /* INCLUDES ******************************************************************/

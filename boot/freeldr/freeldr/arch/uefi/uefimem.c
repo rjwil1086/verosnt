@@ -6,7 +6,7 @@
  * COPYRIGHT:   Copyright 2022 Justin Miller <justinmiller100@gmail.com>
  *              Copyright 2026 Ryan Wilson <ryan@taveraos.com>
  * PROGRAMMERS: Justin Miller
- *              Ryan Wilson
+ *              Ryan Wilson <ryan@taveraos.com>
  */
 
 /* INCLUDES ******************************************************************/

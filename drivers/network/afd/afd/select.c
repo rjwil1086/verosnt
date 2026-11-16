@@ -6,7 +6,7 @@
  * COPYRIGHT:   See COPYING in the top level directory
  *              Copyright 2026 Ryan Wilson <ryan@taveraos.com>
  * PROGRAMMERS: Art Yerkes (ayerkes@speakeasy.net)
- *              Ryan Wilson
+ *              Ryan Wilson <ryan@taveraos.com>
  *
  * UPDATE HISTORY:
  * 20040708 Created

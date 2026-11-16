@@ -7,7 +7,7 @@
  *              Copyright 2026 Ryan Wilson <ryan@taveraos.com>
  * PROGRAMMERS: Alex Ionescu (alex@relsoft.net)
  *              Gunnar Dalsnes
- *              Ryan Wilson
+ *              Ryan Wilson <ryan@taveraos.com>
  */
 
 /* INCLUDES *****************************************************************/

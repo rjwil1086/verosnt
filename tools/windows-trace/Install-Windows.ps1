@@ -3,7 +3,7 @@
 # FILE:        tools/windows-trace/Install-Windows.ps1
 # PURPOSE:     Install the Windows 10 22H2 trace guest
 # COPYRIGHT:   Copyright 2026 Ryan Wilson <ryan@taveraos.com>
-# PROGRAMMERS: Ryan Wilson
+# PROGRAMMERS: Ryan Wilson <ryan@taveraos.com>
 
 param(
     [string]$SourceRoot = (Resolve-Path (Join-Path $PSScriptRoot "..\..")).Path,

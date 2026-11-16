@@ -5,7 +5,7 @@
  * PURPOSE:     DPI functions for user32 and user32_vista.
  * COPYRIGHT:   Copyright 2024 Carl Bialorucki <cbialo2@outlook.com>
  *              Copyright 2026 Ryan Wilson <ryan@taveraos.com>
- * PROGRAMMERS: Ryan Wilson
+ * PROGRAMMERS: Ryan Wilson <ryan@taveraos.com>
  */
 
 #define WIN32_NO_STATUS

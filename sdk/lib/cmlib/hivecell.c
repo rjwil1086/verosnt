@@ -8,7 +8,7 @@
  *              Copyright 2026 Ryan Wilson <ryan@taveraos.com>
  * PROGRAMMERS: Filip Navara
  *              Eric Kohl
- *              Ryan Wilson
+ *              Ryan Wilson <ryan@taveraos.com>
  */
 
 #include "cmlib.h"

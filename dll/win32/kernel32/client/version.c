@@ -7,7 +7,7 @@
  *              Copyright 2026 Ryan Wilson <ryan@taveraos.com>
  * PROGRAMMERS: Ariadne (ariadne@xs4all.nl)
  *              Ged Murphy (gedmurphy@reactos.org)
- *              Ryan Wilson
+ *              Ryan Wilson <ryan@taveraos.com>
  */
 
 #include <k32.h>

@@ -9,7 +9,7 @@
  * PROGRAMMERS: Eric Kohl
  *              Valentin Verkhovsky
  *              Pierre Schweitzer
- *              Ryan Wilson
+ *              Ryan Wilson <ryan@taveraos.com>
  */
 
 /* INCLUDES *****************************************************************/

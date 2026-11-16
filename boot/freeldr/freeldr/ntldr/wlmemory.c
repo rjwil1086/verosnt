@@ -5,7 +5,7 @@
  * PURPOSE:     Memory related routines
  * COPYRIGHT:   Copyright 2026 Ryan Wilson <ryan@taveraos.com>
  * PROGRAMMERS: Aleksey Bragin
- *              Ryan Wilson
+ *              Ryan Wilson <ryan@taveraos.com>
  */
 
 /* INCLUDES ***************************************************************/

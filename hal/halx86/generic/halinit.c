@@ -5,7 +5,7 @@
  * PURPOSE:         HAL Entrypoint and Initialization
  * COPYRIGHT:       Copyright 2026 Ryan Wilson <ryan@taveraos.com>
  * PROGRAMMERS:     Alex Ionescu (alex.ionescu@reactos.org)
- *                  Ryan Wilson
+ *                  Ryan Wilson <ryan@taveraos.com>
  */
 
 /* INCLUDES ******************************************************************/
