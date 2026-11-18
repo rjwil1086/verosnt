@@ -16,7 +16,7 @@ A commit that changes boot, the kernel, the HAL, a driver, NTFS, or a Windows-fa
   - A file in this tree includes its path from the source root.
   - A guest log includes its path under `output/` and the marker that makes it count, such as `DIFF END OK`. That file is still in the checkout. Do not paste the log. When the log is gone, the entry starts with `Reported:` and does not contain the `output/` path.
   - Something said in the conversation starts with `Reported:` and states what was said.
-  - A probe-method number names the probe path from the checkout root and the read it cites. The entry says it is the probe method. It is not an `output/` path and it does not start with `Reported:`.
+  - A probe-method number names the versioned probe path from the checkout root (`tavera/probes/<module>/probe-vN/…`) and the read it cites. The entry says it is the probe method. It is not an `output/` path and it does not start with `Reported:`.
 - Add `harness` (`guest`, `name`, `traceOrReplayId`) only when a guest ran. Add `harness.logSha256` only when that log is still on disk and still contains the marker this note quotes. It is 64 lowercase hex characters, the SHA-256 of that file. Leave it out when the log is gone. Do not hash a disk image.
 - Add `measuredEffect` (`metric`, `before`, `after`) only when both numbers come from a committed log or dashboard snapshot. Leave the object out when nothing was measured.
 - Do not record `forbiddenInputsNotUsed`, `humanReview`, or the prompt.
