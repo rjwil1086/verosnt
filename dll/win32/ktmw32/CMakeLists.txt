@@ -8,4 +8,4 @@ list(APPEND SOURCE
 add_library(ktmw32 MODULE ${SOURCE} ktmw32.rc)
 set_module_type(ktmw32 win32dll)
 add_importlibs(ktmw32 kernel32 ntdll)
-add_cd_file(TARGET ktmw32 DESTINATION VerOS/system32 FOR all)
+add_cd_file(TARGET ktmw32 DESTINATION "Tavera/system32" FOR all)

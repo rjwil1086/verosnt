@@ -1,0 +1,5 @@
+SPDX-License-Identifier: GPL-2.0-or-later
+
+tavera.bmp is the Tavera OS desktop wallpaper, 3840x2160. The mark
+from tavera/logo/tavera-lockup.png is centered on black, and the
+desktop scales the picture to the display size.

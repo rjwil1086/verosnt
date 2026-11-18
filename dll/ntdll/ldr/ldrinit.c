@@ -1,5 +1,5 @@
 /*
- * PROJECT:     VerOS NT System Libraries
+ * PROJECT:     Tavera OS System Libraries
  * LICENSE:     GNU General Public License, version 2 or later (GPL-2.0-or-later)
  * FILE:        dll/ntdll/ldr/ldrinit.c
  * PURPOSE:     User-Mode Process/Thread Startup

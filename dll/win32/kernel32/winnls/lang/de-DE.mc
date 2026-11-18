@@ -341,7 +341,7 @@ Severity=Success
 Facility=System
 SymbolicName=ERROR_REM_NOT_LIST
 Language=German
-ERROR_REM_NOT_LIST - VerOS NT konnte den Netzwerkpfad nicht finden. Stellen Sie sicher, dass der Netzwerkpfad korrekt ist und der Zielcomputer nicht belegt oder aus ist. Wenn VerOS NT den Netzwerkpfad immer noch nicht finden kann, kontaktieren Sie den Netzwerkadministrator.
+ERROR_REM_NOT_LIST - Tavera OS konnte den Netzwerkpfad nicht finden. Stellen Sie sicher, dass der Netzwerkpfad korrekt ist und der Zielcomputer nicht belegt oder aus ist. Wenn Tavera OS den Netzwerkpfad immer noch nicht finden kann, kontaktieren Sie den Netzwerkadministrator.
 .
 
 MessageId=52
@@ -1877,7 +1877,7 @@ Severity=Success
 Facility=System
 SymbolicName=ERROR_NET_OPEN_FAILED
 Language=German
-ERROR_NET_OPEN_FAILED - Die NtCreateFile-API schlug fehl. Dieser Fehler sollte nie einem Programm zurückgegeben werden, es ist ein Platzhalter für den VerOS NT Lan Manager Redirector zur verwendung in dessen internen Fehlerbehandlungsroutinen.
+ERROR_NET_OPEN_FAILED - Die NtCreateFile-API schlug fehl. Dieser Fehler sollte nie einem Programm zurückgegeben werden, es ist ein Platzhalter für den Tavera OS Lan Manager Redirector zur verwendung in dessen internen Fehlerbehandlungsroutinen.
 .
 
 MessageId=571
@@ -2077,7 +2077,7 @@ Severity=Success
 Facility=System
 SymbolicName=ERROR_LOST_WRITEBEHIND_DATA
 Language=German
-ERROR_LOST_WRITEBEHIND_DATA - VerOS NT konnte nicht alle Daten für die Datei %hs speichern, die Daten gingen verloren. Dieser Fehler könnte von einer fehlerhaften Hardware oder einer getrennten Netzwerkverbindung kommen. Bitte versuchen Sie, die Datei woanders zu speichern.
+ERROR_LOST_WRITEBEHIND_DATA - Tavera OS konnte nicht alle Daten für die Datei %hs speichern, die Daten gingen verloren. Dieser Fehler könnte von einer fehlerhaften Hardware oder einer getrennten Netzwerkverbindung kommen. Bitte versuchen Sie, die Datei woanders zu speichern.
 .
 
 MessageId=597
@@ -2293,7 +2293,7 @@ Severity=Success
 Facility=System
 SymbolicName=ERROR_ILLEGAL_DLL_RELOCATION
 Language=German
-ERROR_ILLEGAL_DLL_RELOCATION - Die System-DLL %hs wurde im Speicher neu adressiert. Die Anwendung wird nicht korrekt funktionieren. Die Neuadressierung wurde durchgeführt, weil die DLL %hs einen Adressbereich belegte, der für VerOS NT-System-DLLs reserviert ist. Der Entwickler sollte wegen Auslieferung einer neuen DLL kontaktiert werden.
+ERROR_ILLEGAL_DLL_RELOCATION - Die System-DLL %hs wurde im Speicher neu adressiert. Die Anwendung wird nicht korrekt funktionieren. Die Neuadressierung wurde durchgeführt, weil die DLL %hs einen Adressbereich belegte, der für Tavera OS-System-DLLs reserviert ist. Der Entwickler sollte wegen Auslieferung einer neuen DLL kontaktiert werden.
 .
 
 MessageId=624
@@ -2389,7 +2389,7 @@ Severity=Success
 Facility=System
 SymbolicName=ERROR_COMMITMENT_MINIMUM
 Language=German
-ERROR_COMMITMENT_MINIMUM - Ihr System hat nur noch wenig virtuellen Speicher. VerOS NT vergrößert ihre Pagingdatei. Während dieses Vorgangs könnten Speicheranfragen von Anwendungen abgelehnt werden. Für weitere Informationen siehe Hilfe.
+ERROR_COMMITMENT_MINIMUM - Ihr System hat nur noch wenig virtuellen Speicher. Tavera OS vergrößert ihre Pagingdatei. Während dieses Vorgangs könnten Speicheranfragen von Anwendungen abgelehnt werden. Für weitere Informationen siehe Hilfe.
 .
 
 MessageId=636
@@ -2445,7 +2445,7 @@ Severity=Success
 Facility=System
 SymbolicName=ERROR_DS_VERSION_CHECK_FAILURE
 Language=German
-ERROR_DS_VERSION_CHECK_FAILURE - This version of VerOS NT is not compatible with the behavior version of directory forest, domain or domain controller.
+ERROR_DS_VERSION_CHECK_FAILURE - This version of Tavera OS is not compatible with the behavior version of directory forest, domain or domain controller.
 .
 
 MessageId=644
@@ -2661,7 +2661,7 @@ Severity=Success
 Facility=System
 SymbolicName=ERROR_GUID_SUBSTITUTION_MADE
 Language=German
-ERROR_GUID_SUBSTITUTION_MADE - During the translation of a global identifier (GUID) to a VerOS NT security ID (SID), no administratively-defined GUID prefix was found. A substitute prefix was used, which will not compromise system security. However, this may provide a more restrictive access than intended.
+ERROR_GUID_SUBSTITUTION_MADE - During the translation of a global identifier (GUID) to a Tavera OS security ID (SID), no administratively-defined GUID prefix was found. A substitute prefix was used, which will not compromise system security. However, this may provide a more restrictive access than intended.
 .
 
 MessageId=681
@@ -3013,7 +3013,7 @@ Severity=Success
 Facility=System
 SymbolicName=ERROR_FIRMWARE_UPDATED
 Language=German
-ERROR_FIRMWARE_UPDATED - VerOS NT hat festgestellt, dass die Systemfirmware (BIOS) aktualisiert wurde [voriges Firmwaredatum = %2, aktuelles Firmwaredatum = %3].
+ERROR_FIRMWARE_UPDATED - Tavera OS hat festgestellt, dass die Systemfirmware (BIOS) aktualisiert wurde [voriges Firmwaredatum = %2, aktuelles Firmwaredatum = %3].
 .
 
 MessageId=729
@@ -4125,7 +4125,7 @@ Severity=Success
 Facility=System
 SymbolicName=ERROR_OLD_WIN_VERSION
 Language=German
-ERROR_OLD_WIN_VERSION - The specified program requires a newer version of VerOS NT.
+ERROR_OLD_WIN_VERSION - The specified program requires a newer version of Tavera OS.
 .
 
 MessageId=1151
@@ -4621,7 +4621,7 @@ Severity=Success
 Facility=System
 SymbolicName=ERROR_NETWORK_UNREACHABLE
 Language=German
-ERROR_NETWORK_UNREACHABLE - The network location cannot be reached. For information about network troubleshooting, see VerOS NT Help.
+ERROR_NETWORK_UNREACHABLE - The network location cannot be reached. For information about network troubleshooting, see Tavera OS Help.
 .
 
 MessageId=1232
@@ -4629,7 +4629,7 @@ Severity=Success
 Facility=System
 SymbolicName=ERROR_HOST_UNREACHABLE
 Language=German
-ERROR_HOST_UNREACHABLE - The network location cannot be reached. For information about network troubleshooting, see VerOS NT Help.
+ERROR_HOST_UNREACHABLE - The network location cannot be reached. For information about network troubleshooting, see Tavera OS Help.
 .
 
 MessageId=1233
@@ -4637,7 +4637,7 @@ Severity=Success
 Facility=System
 SymbolicName=ERROR_PROTOCOL_UNREACHABLE
 Language=German
-ERROR_PROTOCOL_UNREACHABLE - The network location cannot be reached. For information about network troubleshooting, see VerOS NT Help.
+ERROR_PROTOCOL_UNREACHABLE - The network location cannot be reached. For information about network troubleshooting, see Tavera OS Help.
 .
 
 MessageId=1234
@@ -4821,7 +4821,7 @@ Severity=Success
 Facility=System
 SymbolicName=ERROR_HOST_DOWN
 Language=German
-ERROR_HOST_DOWN - The remote system is not available. For information about network troubleshooting, see VerOS NT Help.
+ERROR_HOST_DOWN - The remote system is not available. For information about network troubleshooting, see Tavera OS Help.
 .
 
 MessageId=1257
@@ -4853,7 +4853,7 @@ Severity=Success
 Facility=System
 SymbolicName=ERROR_ACCESS_DISABLED_BY_POLICY
 Language=German
-ERROR_ACCESS_DISABLED_BY_POLICY - VerOS NT cannot open this program because it has been prevented by a software restriction policy. For more information, open Event Viewer or contact your system administrator.
+ERROR_ACCESS_DISABLED_BY_POLICY - Tavera OS cannot open this program because it has been prevented by a software restriction policy. For more information, open Event Viewer or contact your system administrator.
 .
 
 MessageId=1261
@@ -4981,7 +4981,7 @@ Severity=Success
 Facility=System
 SymbolicName=ERROR_ACCESS_DISABLED_WEBBLADE
 Language=German
-ERROR_ACCESS_DISABLED_WEBBLADE - VerOS NT cannot open this program since it has been disabled.
+ERROR_ACCESS_DISABLED_WEBBLADE - Tavera OS cannot open this program since it has been disabled.
 .
 
 MessageId=1278
@@ -4989,7 +4989,7 @@ Severity=Success
 Facility=System
 SymbolicName=ERROR_ACCESS_DISABLED_WEBBLADE_TAMPER
 Language=German
-ERROR_ACCESS_DISABLED_WEBBLADE_TAMPER - VerOS NT cannot open this program because the license enforcement system has been tampered with or become corrupted.
+ERROR_ACCESS_DISABLED_WEBBLADE_TAMPER - Tavera OS cannot open this program because the license enforcement system has been tampered with or become corrupted.
 .
 
 MessageId=1279
@@ -6477,7 +6477,7 @@ Severity=Success
 Facility=System
 SymbolicName=ERROR_INSTALL_SERVICE_FAILURE
 Language=German
-ERROR_INSTALL_SERVICE_FAILURE - The VerOS NT Installer service could not be accessed. This can occur if you are running VerOS NT in safe mode, or if the VerOS NT Installer is not correctly installed. Contact your support personnel for assistance.
+ERROR_INSTALL_SERVICE_FAILURE - The Tavera OS Installer service could not be accessed. This can occur if you are running Tavera OS in safe mode, or if the Tavera OS Installer is not correctly installed. Contact your support personnel for assistance.
 .
 
 MessageId=1602
@@ -6573,7 +6573,7 @@ Severity=Success
 Facility=System
 SymbolicName=ERROR_INSTALL_PACKAGE_VERSION
 Language=German
-ERROR_INSTALL_PACKAGE_VERSION - This installation package cannot be installed by the VerOS NT Installer service. You must install a VerOS NT service pack that contains a newer version of the VerOS NT Installer service.
+ERROR_INSTALL_PACKAGE_VERSION - This installation package cannot be installed by the Tavera OS Installer service. You must install a Tavera OS service pack that contains a newer version of the Tavera OS Installer service.
 .
 
 MessageId=1614
@@ -6621,7 +6621,7 @@ Severity=Success
 Facility=System
 SymbolicName=ERROR_INSTALL_PACKAGE_OPEN_FAILED
 Language=German
-ERROR_INSTALL_PACKAGE_OPEN_FAILED - This installation package could not be opened. Verify that the package exists and that you can access it, or contact the application vendor to verify that this is a valid VerOS NT Installer package.
+ERROR_INSTALL_PACKAGE_OPEN_FAILED - This installation package could not be opened. Verify that the package exists and that you can access it, or contact the application vendor to verify that this is a valid Tavera OS Installer package.
 .
 
 MessageId=1620
@@ -6629,7 +6629,7 @@ Severity=Success
 Facility=System
 SymbolicName=ERROR_INSTALL_PACKAGE_INVALID
 Language=German
-ERROR_INSTALL_PACKAGE_INVALID - This installation package could not be opened. Contact the application vendor to verify that this is a valid VerOS NT Installer package.
+ERROR_INSTALL_PACKAGE_INVALID - This installation package could not be opened. Contact the application vendor to verify that this is a valid Tavera OS Installer package.
 .
 
 MessageId=1621
@@ -6637,7 +6637,7 @@ Severity=Success
 Facility=System
 SymbolicName=ERROR_INSTALL_UI_FAILURE
 Language=German
-ERROR_INSTALL_UI_FAILURE - There was an error starting the VerOS NT Installer service user interface. Contact your support personnel.
+ERROR_INSTALL_UI_FAILURE - There was an error starting the Tavera OS Installer service user interface. Contact your support personnel.
 .
 
 MessageId=1622
@@ -6717,7 +6717,7 @@ Severity=Success
 Facility=System
 SymbolicName=ERROR_CREATE_FAILED
 Language=German
-ERROR_CREATE_FAILED - The VerOS NT Installer service failed to start. Contact your support personnel.
+ERROR_CREATE_FAILED - The Tavera OS Installer service failed to start. Contact your support personnel.
 .
 
 MessageId=1632
@@ -6749,7 +6749,7 @@ Severity=Success
 Facility=System
 SymbolicName=ERROR_PATCH_PACKAGE_OPEN_FAILED
 Language=German
-ERROR_PATCH_PACKAGE_OPEN_FAILED - This patch package could not be opened. Verify that the patch package exists and that you can access it, or contact the application vendor to verify that this is a valid VerOS NT Installer patch package.
+ERROR_PATCH_PACKAGE_OPEN_FAILED - This patch package could not be opened. Verify that the patch package exists and that you can access it, or contact the application vendor to verify that this is a valid Tavera OS Installer patch package.
 .
 
 MessageId=1636
@@ -6757,7 +6757,7 @@ Severity=Success
 Facility=System
 SymbolicName=ERROR_PATCH_PACKAGE_INVALID
 Language=German
-ERROR_PATCH_PACKAGE_INVALID - This patch package could not be opened. Contact the application vendor to verify that this is a valid VerOS NT Installer patch package.
+ERROR_PATCH_PACKAGE_INVALID - This patch package could not be opened. Contact the application vendor to verify that this is a valid Tavera OS Installer patch package.
 .
 
 MessageId=1637
@@ -6765,7 +6765,7 @@ Severity=Success
 Facility=System
 SymbolicName=ERROR_PATCH_PACKAGE_UNSUPPORTED
 Language=German
-ERROR_PATCH_PACKAGE_UNSUPPORTED - This patch package cannot be processed by the VerOS NT Installer service. You must install a VerOS NT service pack that contains a newer version of the VerOS NT Installer service.
+ERROR_PATCH_PACKAGE_UNSUPPORTED - This patch package cannot be processed by the Tavera OS Installer service. You must install a Tavera OS service pack that contains a newer version of the Tavera OS Installer service.
 .
 
 MessageId=1638
@@ -6781,7 +6781,7 @@ Severity=Success
 Facility=System
 SymbolicName=ERROR_INVALID_COMMAND_LINE
 Language=German
-ERROR_INVALID_COMMAND_LINE - Invalid command line argument. Consult the VerOS NT Installer SDK for detailed command line help.
+ERROR_INVALID_COMMAND_LINE - Invalid command line argument. Consult the Tavera OS Installer SDK for detailed command line help.
 .
 
 MessageId=1640
@@ -6805,7 +6805,7 @@ Severity=Success
 Facility=System
 SymbolicName=ERROR_PATCH_TARGET_NOT_FOUND
 Language=German
-ERROR_PATCH_TARGET_NOT_FOUND - The upgrade patch cannot be installed by the VerOS NT Installer service because the program to be upgraded may be missing, or the upgrade patch may update a different version of the program. Verify that the program to be upgraded exists on your computer and that you have the correct upgrade patch.
+ERROR_PATCH_TARGET_NOT_FOUND - The upgrade patch cannot be installed by the Tavera OS Installer service because the program to be upgraded may be missing, or the upgrade patch may update a different version of the program. Verify that the program to be upgraded exists on your computer and that you have the correct upgrade patch.
 .
 
 MessageId=1643
@@ -6829,7 +6829,7 @@ Severity=Success
 Facility=System
 SymbolicName=ERROR_INSTALL_REMOTE_PROHIBITED
 Language=German
-ERROR_INSTALL_REMOTE_PROHIBITED - The VerOS NT Installer does not permit installation from a Remote Desktop Connection.
+ERROR_INSTALL_REMOTE_PROHIBITED - The Tavera OS Installer does not permit installation from a Remote Desktop Connection.
 .
 
 MessageId=1700
@@ -7789,7 +7789,7 @@ Severity=Success
 Facility=System
 SymbolicName=RPC_S_NOT_RPC_ERROR
 Language=German
-RPC_S_NOT_RPC_ERROR - The error specified is not a valid VerOS NT RPC error code.
+RPC_S_NOT_RPC_ERROR - The error specified is not a valid Tavera OS RPC error code.
 .
 
 MessageId=1824
@@ -10045,7 +10045,7 @@ Severity=Success
 Facility=System
 SymbolicName=ERROR_CLUSTER_WRONG_OS_VERSION
 Language=German
-ERROR_CLUSTER_WRONG_OS_VERSION - This computer cannot be made a member of a cluster because it does not have the correct version of VerOS NT installed.
+ERROR_CLUSTER_WRONG_OS_VERSION - This computer cannot be made a member of a cluster because it does not have the correct version of Tavera OS installed.
 .
 
 MessageId=5900
@@ -10085,7 +10085,7 @@ Severity=Success
 Facility=System
 SymbolicName=ERROR_CLUSTER_OLD_VERSION
 Language=German
-ERROR_CLUSTER_OLD_VERSION - One or more nodes in the cluster are running a version of VerOS NT that does not support this operation.
+ERROR_CLUSTER_OLD_VERSION - One or more nodes in the cluster are running a version of Tavera OS that does not support this operation.
 .
 
 MessageId=5905
@@ -14841,7 +14841,7 @@ Severity=Success
 Facility=System
 SymbolicName=WSAEPROCLIM
 Language=German
-WSAEPROCLIM - A VerOS NT Sockets implementation may have a limit on the number of applications that may use it simultaneously.
+WSAEPROCLIM - A Tavera OS Sockets implementation may have a limit on the number of applications that may use it simultaneously.
 .
 
 MessageId=10068
@@ -14889,7 +14889,7 @@ Severity=Success
 Facility=System
 SymbolicName=WSAVERNOTSUPPORTED
 Language=German
-WSAVERNOTSUPPORTED - The VerOS NT Sockets version requested is not supported.
+WSAVERNOTSUPPORTED - The Tavera OS Sockets version requested is not supported.
 .
 
 MessageId=10093

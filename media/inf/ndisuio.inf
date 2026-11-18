@@ -4,17 +4,17 @@
 
 [Version]
 Signature  = "$Windows NT$"
-;Signature  = "$VerOS NT$"
+;Signature  = "$Tavera$"
 LayoutFile = layout.inf
 Class      = NetTrans
 ClassGUID  = {4D36E975-E325-11CE-BFC1-08002BE10318}
-Provider   = %VerOS NT%
+Provider   = %Tavera OS%
 DriverVer  = 04/12/2006,1.00
 
 [Manufacturer]
-%VerOS NT% = VerOS NT
+%Tavera OS% = Tavera OS
 
-[VerOS NT]
+[Tavera OS]
 %NDISUIO_DisplayName% = Install, MS_NDISUIO
 
 ;--------------------------- NDISUIO DRIVER -----------------------------
@@ -57,4 +57,4 @@ NDISUIO_HelpText = "A driver that supports the NDIS Usermode I/O Protocol."
 
 [Strings.0409]
 NDISUIO_DisplayName = "NDIS Benutzermodus E/A Protokoll"
-NDISUIO_HelpText = "Ein Treiber, der das NDIS Benutzermodus E/A Protokoll unterstützt."
+NDISUIO_HelpText = "Ein Treiber, der das NDIS Benutzermodus E/A Protokoll unterst??tzt."

@@ -12,7 +12,7 @@
  * sdk/include/xdk/pofuncs.h;
  * https://learn.microsoft.com/en-us/windows-hardware/drivers/ddi/wdm/nf-wdm-poregisterpowersettingcallback
  * https://learn.microsoft.com/en-us/windows-hardware/drivers/ddi/wdm/nf-wdm-pounregisterpowersettingcallback
- * PE import list virtual-machines/veros-ntfs/e1q62x64-imports.txt
+ * PE import list virtual-machines/tavera-ntfs/e1q62x64-imports.txt
  */
 
 /* INCLUDES ******************************************************************/
@@ -1280,7 +1280,7 @@ Exit:
  * Declared in sdk/include/xdk/pofuncs.h. Learn return codes STATUS_SUCCESS /
  * STATUS_INSUFFICIENT_RESOURCES:
  * https://learn.microsoft.com/en-us/windows-hardware/drivers/ddi/wdm/nf-wdm-poregisterpowersettingcallback
- * PE import list virtual-machines/veros-ntfs/e1q62x64-imports.txt
+ * PE import list virtual-machines/tavera-ntfs/e1q62x64-imports.txt
  * Symbol: PoRegisterPowerSettingCallback (batched after
  * output/e1000e-20261118T034236Z.log Missing API 'IoGetAffinityInterrupt').
  * Registration is recorded; power-setting change notify is not delivered yet.
@@ -1314,7 +1314,7 @@ PoRegisterPowerSettingCallback(
  * Declared in sdk/include/xdk/pofuncs.h. Learn: STATUS_SUCCESS or
  * STATUS_INVALID_PARAMETER for a bad Handle:
  * https://learn.microsoft.com/en-us/windows-hardware/drivers/ddi/wdm/nf-wdm-pounregisterpowersettingcallback
- * PE import list virtual-machines/veros-ntfs/e1q62x64-imports.txt
+ * PE import list virtual-machines/tavera-ntfs/e1q62x64-imports.txt
  * Symbol: PoUnregisterPowerSettingCallback.
  */
 NTSTATUS

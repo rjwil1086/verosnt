@@ -54,7 +54,7 @@ WINE_DEFAULT_DEBUG_CHANNEL(dwmapi);
  *
  * Guest: output/ntdll-apps/serial-App-20261116T205323Z.log VERPORT
  * PsGetVersion 10.0.19045. With composition reported TRUE, Firefox
- * extends into a glass frame that VerOS does not composite, so the
+ * extends into a glass frame that Tavera OS does not composite, so the
  * title bar shows the desktop and the content client stays solid grey.
  */
 HRESULT WINAPI DwmIsCompositionEnabled(BOOL *enabled)
@@ -71,7 +71,7 @@ HRESULT WINAPI DwmIsCompositionEnabled(BOOL *enabled)
     *enabled = FALSE;
 #ifndef __REACTOS__
     /*
-     * Wine may advertise composition from the host OS version. VerOS has
+     * Wine may advertise composition from the host OS version. Tavera OS has
      * no DWM compositor (DwmExtendFrameIntoClientArea is a stub; transport
      * attributes already return DWM_E_COMPOSITIONDISABLED), so leave FALSE.
      */

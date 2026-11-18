@@ -1,5 +1,5 @@
 /*
- * PROJECT:     VerOS NT Kernel
+ * PROJECT:     Tavera OS Kernel
  * LICENSE:     GNU General Public License, version 2 or later (GPL-2.0-or-later)
  * FILE:        drivers/network/dd/rtl8139/src/lib.rs
  * PURPOSE:     RTL8139 NDIS 6.84 miniport for tcpip BINDALL
@@ -968,7 +968,7 @@ unsafe extern "system" fn oid_request(_ctx: *mut u8, request: *mut u8) -> u32 {
             unsafe { ptr::write_unaligned(buffer as *mut u32, NDIS_MEDIUM_802_3) };
         }
         OID_GEN_VENDOR_DESCRIPTION => {
-            const TEXT: &[u8] = b"VerOS RTL8139";
+            const TEXT: &[u8] = b"Tavera OS RTL8139";
             let copy = TEXT.len().min(buflen as usize);
             if copy == 0 {
                 return FAILURE;

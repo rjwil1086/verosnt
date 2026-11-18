@@ -4,11 +4,11 @@
 
 [Version]
 Signature  = "$Windows NT$"
-;Signature  = "$VerOS NT$"
+;Signature  = "$Tavera$"
 LayoutFile = layout.inf
 Class      = USB
 ClassGUID  = {36FC9E60-C465-11CF-8056-444553540000}
-Provider   = %VerOS NT%
+Provider   = %Tavera OS%
 DriverVer  = 10/02/2005,1.01.0.0
 
 [DestinationDirs]
@@ -51,35 +51,35 @@ GenericMfg = "(Generic USB devices)"
 GenericBulkOnlyTransport.DeviceDesc = "USB Storage device"
 
 [Strings.0404]
-GenericMfg = "（標準 USB 裝置）"
-GenericBulkOnlyTransport.DeviceDesc = "USB 儲存裝置"
+GenericMfg = "????????? USB ?????????"
+GenericBulkOnlyTransport.DeviceDesc = "USB ????????????"
 
 [Strings.0405]
-GenericMfg = "(Generická USB zařízení)"
-GenericBulkOnlyTransport.DeviceDesc = "USB úložné zařízení"
+GenericMfg = "(Generick?? USB za????zen??)"
+GenericBulkOnlyTransport.DeviceDesc = "USB ??lo??n?? za????zen??"
 
 [Strings.0407]
-GenericMfg = "(Generische USB-Geräte)"
-GenericBulkOnlyTransport.DeviceDesc = "USB Datenträger-Geräte"
+GenericMfg = "(Generische USB-Ger??te)"
+GenericBulkOnlyTransport.DeviceDesc = "USB Datentr??ger-Ger??te"
 
 [Strings.0a]
-GenericMfg = "(Dispositivo USB estándar)"
+GenericMfg = "(Dispositivo USB est??ndar)"
 GenericBulkOnlyTransport.DeviceDesc = "Dispositivo de almacenamiento USB"
 
 [Strings.040C]
-GenericMfg = "(Périphériques USB génériques)"
-GenericBulkOnlyTransport.DeviceDesc = "Périphérique de stockage USB"
+GenericMfg = "(P??riph??riques USB g??n??riques)"
+GenericBulkOnlyTransport.DeviceDesc = "P??riph??rique de stockage USB"
 
 [Strings.0411]
-GenericMfg = "(標準 USB デバイス)"
-GenericBulkOnlyTransport.DeviceDesc = "USB ストレージ デバイス"
+GenericMfg = "(?????? USB ????????????)"
+GenericBulkOnlyTransport.DeviceDesc = "USB ??????????????? ????????????"
 
 [Strings.0415]
-GenericMfg = "(Standardowe urządzenia USB)"
-GenericBulkOnlyTransport.DeviceDesc = "Urządzenie pamięci masowej USB"
+GenericMfg = "(Standardowe urz??dzenia USB)"
+GenericBulkOnlyTransport.DeviceDesc = "Urz??dzenie pami??ci masowej USB"
 
 [Strings.0416]
-GenericMfg = "(Dispositivo USB padrão)"
+GenericMfg = "(Dispositivo USB padr??o)"
 GenericBulkOnlyTransport.DeviceDesc = "Dispositivo de armazenamento USB"
 
 [Strings.0418]
@@ -87,29 +87,29 @@ GenericMfg = "(dispozitive generice USB)"
 GenericBulkOnlyTransport.DeviceDesc = "Dispozitiv USB de stocare"
 
 [Strings.0419]
-GenericMfg = "(Стандартные устройства USB)"
-GenericBulkOnlyTransport.DeviceDesc = "Запоминающее устройство USB"
+GenericMfg = "(?????????????????????? ???????????????????? USB)"
+GenericBulkOnlyTransport.DeviceDesc = "???????????????????????? ???????????????????? USB"
 
 [Strings.041B]
-GenericMfg = "(Generické USB zariadenia)"
-GenericBulkOnlyTransport.DeviceDesc = "USB úložné zariadenie"
+GenericMfg = "(Generick?? USB zariadenia)"
+GenericBulkOnlyTransport.DeviceDesc = "USB ??lo??n?? zariadenie"
 
 [Strings.041f]
-GenericMfg = "(Genel USB Aygıtları)"
-GenericBulkOnlyTransport.DeviceDesc = "USB Depolama Aygıtı"
+GenericMfg = "(Genel USB Ayg??tlar??)"
+GenericBulkOnlyTransport.DeviceDesc = "USB Depolama Ayg??t??"
 
 [Strings.0422]
-GenericMfg = "(Стандартні пристрої USB)"
-GenericBulkOnlyTransport.DeviceDesc = "USB-накопичувач"
+GenericMfg = "(???????????????????? ???????????????? USB)"
+GenericBulkOnlyTransport.DeviceDesc = "USB-??????????????????????"
 
 [Strings.0427]
-GenericMfg = "(Standartiniai USB įrenginiai)"
-GenericBulkOnlyTransport.DeviceDesc = "USB atminties įrenginys"
+GenericMfg = "(Standartiniai USB ??renginiai)"
+GenericBulkOnlyTransport.DeviceDesc = "USB atminties ??renginys"
 
 [Strings.0804]
-GenericMfg = "（通用 USB 设备）"
-GenericBulkOnlyTransport.DeviceDesc = "USB 存储设备"
+GenericMfg = "????????? USB ?????????"
+GenericBulkOnlyTransport.DeviceDesc = "USB ????????????"
 
 [Strings.0c04]
-GenericMfg = "（標準 USB 裝置）"
-GenericBulkOnlyTransport.DeviceDesc = "USB 儲存裝置"
+GenericMfg = "????????? USB ?????????"
+GenericBulkOnlyTransport.DeviceDesc = "USB ????????????"

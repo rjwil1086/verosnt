@@ -5,14 +5,14 @@ static MUI_ENTRY idIDSetupInitPageEntries[] =
     {
         4,
         3,
-        " Penyetelan VerOS NT " KERNEL_VERSION_STR " ",
+        " Penyetelan Tavera OS " KERNEL_VERSION_STR " ",
         TEXT_STYLE_UNDERLINE,
         TEXT_ID_STATIC
     },
     {
         0,
         20,
-        "Harap tunggu saat Penyetelan VerOS NT menginisialisasi",
+        "Harap tunggu saat Penyetelan Tavera OS menginisialisasi",
         TEXT_STYLE_NORMAL | TEXT_ALIGN_CENTER,
         TEXT_ID_STATIC
     },
@@ -43,7 +43,7 @@ static MUI_ENTRY idIDLanguagePageEntries[] =
     {
         4,
         3,
-        " Penyetelan VerOS NT " KERNEL_VERSION_STR " ",
+        " Penyetelan Tavera OS " KERNEL_VERSION_STR " ",
         TEXT_STYLE_UNDERLINE,
         TEXT_ID_STATIC
     },
@@ -95,21 +95,21 @@ static MUI_ENTRY idIDWelcomePageEntries[] =
     {
         4,
         3,
-        " Penyetelan VerOS NT " KERNEL_VERSION_STR " ",
+        " Penyetelan Tavera OS " KERNEL_VERSION_STR " ",
         TEXT_STYLE_UNDERLINE,
         TEXT_ID_STATIC
     },
     {
         6,
         8,
-        "Selamat datang di Penyetelan VerOS NT",
+        "Selamat datang di Penyetelan Tavera OS",
         TEXT_STYLE_HIGHLIGHT,
         TEXT_ID_STATIC
     },
     {
         6,
         11,
-        "Bagian dari penyetelan ini menyalin Sistem Operasi VerOS NT ke",
+        "Bagian dari penyetelan ini menyalin Sistem Operasi Tavera OS ke",
         TEXT_STYLE_NORMAL,
         TEXT_ID_STATIC
     },
@@ -123,7 +123,7 @@ static MUI_ENTRY idIDWelcomePageEntries[] =
     {
         8,
         15,
-        "\x07  Tekan ENTER untuk memasang atau meningkatkan VerOS NT.",
+        "\x07  Tekan ENTER untuk memasang atau meningkatkan Tavera OS.",
         TEXT_STYLE_NORMAL,
         TEXT_ID_STATIC
     },
@@ -131,28 +131,28 @@ static MUI_ENTRY idIDWelcomePageEntries[] =
         8,
         17,
      // "\x07  Tekan R untuk memperbaiki instalasi ReactOS menggunakan Konsol Pemulihan.",
-        "\x07  Tekan R untuk memperbaiki instalasi VerOS NT.",
+        "\x07  Tekan R untuk memperbaiki instalasi Tavera OS.",
         TEXT_STYLE_NORMAL,
         TEXT_ID_STATIC
     },
     {
         8,
         19,
-        "\x07  Tekan L untuk menampilkan Syarat dan Ketentuan Lisensi VerOS NT.",
+        "\x07  Tekan L untuk menampilkan Syarat dan Ketentuan Lisensi Tavera OS.",
         TEXT_STYLE_NORMAL,
         TEXT_ID_STATIC
     },
     {
         8,
         21,
-        "\x07  Tekan F3 untuk keluar tanpa memasang VerOS NT.",
+        "\x07  Tekan F3 untuk keluar tanpa memasang Tavera OS.",
         TEXT_STYLE_NORMAL,
         TEXT_ID_STATIC
     },
     {
         6,
         23,
-        "Untuk informasi lebih lanjut terkait VerOS NT, mohon kunjungi:",
+        "Untuk informasi lebih lanjut terkait Tavera OS, mohon kunjungi:",
         TEXT_STYLE_NORMAL,
         TEXT_ID_STATIC
     },
@@ -183,28 +183,28 @@ static MUI_ENTRY idIDIntroPageEntries[] =
     {
         4,
         3,
-        " Penyetelan VerOS NT " KERNEL_VERSION_STR " ",
+        " Penyetelan Tavera OS " KERNEL_VERSION_STR " ",
         TEXT_STYLE_UNDERLINE,
         TEXT_ID_STATIC
     },
     {
         6,
         8,
-        "Status Versi VerOS NT",
+        "Status Versi Tavera OS",
         TEXT_STYLE_HIGHLIGHT,
         TEXT_ID_STATIC
     },
     {
         6,
         11,
-        "VerOS NT saat ini dalam tahap Alpha, artinya belum lengkap fitur dan",
+        "Tavera OS saat ini dalam tahap Alpha, artinya belum lengkap fitur dan",
         TEXT_STYLE_NORMAL,
         TEXT_ID_STATIC
     },
     {
         6,
         12,
-        "dalam pengembangan berat. VerOS NT direkomendasikan hanya untuk",
+        "dalam pengembangan berat. Tavera OS direkomendasikan hanya untuk",
         TEXT_STYLE_NORMAL,
         TEXT_ID_STATIC
     },
@@ -225,21 +225,21 @@ static MUI_ENTRY idIDIntroPageEntries[] =
     {
         6,
         16,
-        "berkenan untuk menjalankan VerOS NT pada perangkat keras murni.",
+        "berkenan untuk menjalankan Tavera OS pada perangkat keras murni.",
         TEXT_STYLE_NORMAL,
         TEXT_ID_STATIC
     },
     {
         8,
         19,
-        "\x07  Tekan ENTER untuk melanjutkan Penyetelan VerOS NT.",
+        "\x07  Tekan ENTER untuk melanjutkan Penyetelan Tavera OS.",
         TEXT_STYLE_NORMAL,
         TEXT_ID_STATIC
     },
     {
         8,
         21,
-        "\x07  Tekan F3 untuk keluar tanpa memasang VerOS NT.",
+        "\x07  Tekan F3 untuk keluar tanpa memasang Tavera OS.",
         TEXT_STYLE_NORMAL,
         TEXT_ID_STATIC
     },
@@ -263,7 +263,7 @@ static MUI_ENTRY idIDLicensePageEntries[] =
     {
         4,
         3,
-        " Penyetelan VerOS NT " KERNEL_VERSION_STR " ",
+        " Penyetelan Tavera OS " KERNEL_VERSION_STR " ",
         TEXT_STYLE_UNDERLINE,
         TEXT_ID_STATIC
     },
@@ -277,7 +277,7 @@ static MUI_ENTRY idIDLicensePageEntries[] =
     {
         8,
         8,
-        "Sistem VerOS NT dilisensikan berdasarkan ketentuan",
+        "Sistem Tavera OS dilisensikan berdasarkan ketentuan",
         TEXT_STYLE_NORMAL,
         TEXT_ID_STATIC
     },
@@ -298,7 +298,7 @@ static MUI_ENTRY idIDLicensePageEntries[] =
     {
         8,
         11,
-        "Semua perangkat lunak yang menjadi bagian dari sistem VerOS NT,",
+        "Semua perangkat lunak yang menjadi bagian dari sistem Tavera OS,",
         TEXT_STYLE_NORMAL,
         TEXT_ID_STATIC
     },
@@ -333,7 +333,7 @@ static MUI_ENTRY idIDLicensePageEntries[] =
     {
         8,
         17,
-        "Lisensi VerOS NT hanya mencakup distribusi ke pihak ketiga.",
+        "Lisensi Tavera OS hanya mencakup distribusi ke pihak ketiga.",
         TEXT_STYLE_NORMAL,
         TEXT_ID_STATIC
     },
@@ -347,7 +347,7 @@ static MUI_ENTRY idIDLicensePageEntries[] =
     {
         8,
         19,
-        "GNU General Public License dengan VerOS NT silahkan kunjungi",
+        "GNU General Public License dengan Tavera OS silahkan kunjungi",
         TEXT_STYLE_NORMAL,
         TEXT_ID_STATIC
     },
@@ -406,7 +406,7 @@ static MUI_ENTRY idIDDevicePageEntries[] =
     {
         4,
         3,
-        " Penyetelan VerOS NT " KERNEL_VERSION_STR " ",
+        " Penyetelan Tavera OS " KERNEL_VERSION_STR " ",
         TEXT_STYLE_UNDERLINE,
         TEXT_ID_STATIC
     },
@@ -513,14 +513,14 @@ static MUI_ENTRY idIDRepairPageEntries[] =
     {
         4,
         3,
-        " Penyetelan VerOS NT " KERNEL_VERSION_STR " ",
+        " Penyetelan Tavera OS " KERNEL_VERSION_STR " ",
         TEXT_STYLE_UNDERLINE,
         TEXT_ID_STATIC
     },
     {
         6,
         8,
-        "Penyetelan VerOS NT masih dalam tahap pengembangan awal di mana masih",
+        "Penyetelan Tavera OS masih dalam tahap pengembangan awal di mana masih",
         TEXT_STYLE_NORMAL,
         TEXT_ID_STATIC
     },
@@ -586,21 +586,21 @@ static MUI_ENTRY idIDUpgradePageEntries[] =
     {
         4,
         3,
-        " Penyetelan VerOS NT " KERNEL_VERSION_STR " ",
+        " Penyetelan Tavera OS " KERNEL_VERSION_STR " ",
         TEXT_STYLE_UNDERLINE,
         TEXT_ID_STATIC
     },
     {
         6,
         8,
-        "Penyetelan VerOS NT dapat meningkatkan salah satu dari instalasi",
+        "Penyetelan Tavera OS dapat meningkatkan salah satu dari instalasi",
         TEXT_STYLE_NORMAL,
         TEXT_ID_STATIC
     },
     {
         6,
         9,
-        "VerOS NT yang tersedia di bawah ini, atau, jika instalasi VerOS NT",
+        "Tavera OS yang tersedia di bawah ini, atau, jika instalasi Tavera OS",
         TEXT_STYLE_NORMAL,
         TEXT_ID_STATIC
     },
@@ -642,7 +642,7 @@ static MUI_ENTRY idIDUpgradePageEntries[] =
     {
         8,
         21,
-        "\x07  Tekan F3 untuk keluar tanpa memasang VerOS NT.",
+        "\x07  Tekan F3 untuk keluar tanpa memasang Tavera OS.",
         TEXT_STYLE_NORMAL,
         TEXT_ID_STATIC
     },
@@ -666,7 +666,7 @@ static MUI_ENTRY idIDComputerPageEntries[] =
     {
         4,
         3,
-        " Penyetelan VerOS NT " KERNEL_VERSION_STR " ",
+        " Penyetelan Tavera OS " KERNEL_VERSION_STR " ",
         TEXT_STYLE_UNDERLINE,
         TEXT_ID_STATIC
     },
@@ -725,7 +725,7 @@ static MUI_ENTRY idIDFlushPageEntries[] =
     {
         4,
         3,
-        " Penyetelan VerOS NT " KERNEL_VERSION_STR " ",
+        " Penyetelan Tavera OS " KERNEL_VERSION_STR " ",
         TEXT_STYLE_UNDERLINE,
         TEXT_ID_STATIC
     },
@@ -770,14 +770,14 @@ static MUI_ENTRY idIDQuitPageEntries[] =
     {
         4,
         3,
-        " Penyetelan VerOS NT " KERNEL_VERSION_STR " ",
+        " Penyetelan Tavera OS " KERNEL_VERSION_STR " ",
         TEXT_STYLE_UNDERLINE,
         TEXT_ID_STATIC
     },
     {
         10,
         6,
-        "VerOS NT tidak terpasang sepenuhnya.",
+        "Tavera OS tidak terpasang sepenuhnya.",
         TEXT_STYLE_NORMAL,
         TEXT_ID_STATIC
     },
@@ -822,7 +822,7 @@ static MUI_ENTRY idIDDisplayPageEntries[] =
     {
         4,
         3,
-        " Penyetelan VerOS NT " KERNEL_VERSION_STR " ",
+        " Penyetelan Tavera OS " KERNEL_VERSION_STR " ",
         TEXT_STYLE_UNDERLINE,
         TEXT_ID_STATIC
     },
@@ -881,14 +881,14 @@ static MUI_ENTRY idIDSuccessPageEntries[] =
     {
         4,
         3,
-        " Penyetelan VerOS NT " KERNEL_VERSION_STR " ",
+        " Penyetelan Tavera OS " KERNEL_VERSION_STR " ",
         TEXT_STYLE_UNDERLINE,
         TEXT_ID_STATIC
     },
     {
         10,
         6,
-        "Komponen dasar VerOS NT berhasil dipasang.",
+        "Komponen dasar Tavera OS berhasil dipasang.",
         TEXT_STYLE_NORMAL,
         TEXT_ID_STATIC
     },
@@ -933,7 +933,7 @@ static MUI_ENTRY idIDSelectPartitionEntries[] =
     {
         4,
         3,
-        " Penyetelan VerOS NT " KERNEL_VERSION_STR " ",
+        " Penyetelan Tavera OS " KERNEL_VERSION_STR " ",
         TEXT_STYLE_UNDERLINE,
         TEXT_ID_STATIC
     },
@@ -961,7 +961,7 @@ static MUI_ENTRY idIDSelectPartitionEntries[] =
     {
         8,
         13,
-        "\x07  Tekan ENTER untuk memasang VerOS NT pada partisi terpilih.",
+        "\x07  Tekan ENTER untuk memasang Tavera OS pada partisi terpilih.",
         TEXT_STYLE_NORMAL,
         TEXT_ID_STATIC
     },
@@ -1006,7 +1006,7 @@ static MUI_ENTRY idIDChangeSystemPartition[] =
     {
         4,
         3,
-        " Penyetelan VerOS NT " KERNEL_VERSION_STR " ",
+        " Penyetelan Tavera OS " KERNEL_VERSION_STR " ",
         TEXT_STYLE_UNDERLINE,
         TEXT_ID_STATIC
     },
@@ -1027,14 +1027,14 @@ static MUI_ENTRY idIDChangeSystemPartition[] =
     {
         6,
         16,
-        "menggunakan format yang tidak didukung oleh VerOS NT.",
+        "menggunakan format yang tidak didukung oleh Tavera OS.",
         TEXT_STYLE_NORMAL,
         TEXT_ID_STATIC
     },
     {
         6,
         18,
-        "Agar instalasi VerOS NT berhasil, program Penyetelan harus",
+        "Agar instalasi Tavera OS berhasil, program Penyetelan harus",
         TEXT_STYLE_NORMAL,
         TEXT_ID_STATIC
     },
@@ -1104,7 +1104,7 @@ static MUI_ENTRY idIDChangeSystemPartition[] =
     {
         6,
         35,
-        "asli setelah menyelesaikan instalasi VerOS NT.",
+        "asli setelah menyelesaikan instalasi Tavera OS.",
         TEXT_STYLE_NORMAL,
         TEXT_ID_STATIC
     },
@@ -1128,7 +1128,7 @@ static MUI_ENTRY idIDConfirmDeleteSystemPartitionEntries[] =
     {
         4,
         3,
-        " Penyetelan VerOS NT " KERNEL_VERSION_STR " ",
+        " Penyetelan Tavera OS " KERNEL_VERSION_STR " ",
         TEXT_STYLE_UNDERLINE,
         TEXT_ID_STATIC
     },
@@ -1156,7 +1156,7 @@ static MUI_ENTRY idIDConfirmDeleteSystemPartitionEntries[] =
     {
         6,
         12,
-        "VerOS NT) atau program lain yang disediakan oleh pabrik perangkat keras.",
+        "Tavera OS) atau program lain yang disediakan oleh pabrik perangkat keras.",
         TEXT_STYLE_NORMAL,
         TEXT_ID_STATIC
     },
@@ -1184,7 +1184,7 @@ static MUI_ENTRY idIDConfirmDeleteSystemPartitionEntries[] =
     {
         6,
         17,
-        "komputer dari harddisk hingga Anda menyelesaikan Penyetelan VerOS NT.",
+        "komputer dari harddisk hingga Anda menyelesaikan Penyetelan Tavera OS.",
         TEXT_STYLE_NORMAL,
         TEXT_ID_STATIC
     },
@@ -1236,7 +1236,7 @@ static MUI_ENTRY idIDFormatPartitionEntries[] =
     {
         4,
         3,
-        " Penyetelan VerOS NT " KERNEL_VERSION_STR " ",
+        " Penyetelan Tavera OS " KERNEL_VERSION_STR " ",
         TEXT_STYLE_UNDERLINE,
         TEXT_ID_STATIC
     },
@@ -1274,7 +1274,7 @@ static MUI_ENTRY idIDCheckFSEntries[] =
     {
         4,
         3,
-        " Penyetelan VerOS NT " KERNEL_VERSION_STR " ",
+        " Penyetelan Tavera OS " KERNEL_VERSION_STR " ",
         TEXT_STYLE_UNDERLINE,
         TEXT_ID_STATIC
     },
@@ -1305,14 +1305,14 @@ static MUI_ENTRY idIDInstallDirectoryEntries[] =
     {
         4,
         3,
-        " Penyetelan VerOS NT " KERNEL_VERSION_STR " ",
+        " Penyetelan Tavera OS " KERNEL_VERSION_STR " ",
         TEXT_STYLE_UNDERLINE,
         TEXT_ID_STATIC
     },
     {
         6,
         8,
-        "Penyetelan memasang berkas VerOS NT pada partisi terpilih. Pilih",
+        "Penyetelan memasang berkas Tavera OS pada partisi terpilih. Pilih",
         TEXT_STYLE_NORMAL,
         TEXT_ID_STATIC
     },
@@ -1340,7 +1340,7 @@ static MUI_ENTRY idIDInstallDirectoryEntries[] =
     {
         6,
         16,
-        "anda inginkan untuk memasang VerOS NT.",
+        "anda inginkan untuk memasang Tavera OS.",
         TEXT_STYLE_NORMAL,
         TEXT_ID_STATIC
     },
@@ -1364,21 +1364,21 @@ static MUI_ENTRY idIDFileCopyEntries[] =
     {
         4,
         3,
-        " Penyetelan VerOS NT " KERNEL_VERSION_STR " ",
+        " Penyetelan Tavera OS " KERNEL_VERSION_STR " ",
         TEXT_STYLE_UNDERLINE,
         TEXT_ID_STATIC
     },
     {
         0,
         12,
-        "Harap tunggu sementara Penyetelan VerOS NT menyalin Berkas ke",
+        "Harap tunggu sementara Penyetelan Tavera OS menyalin Berkas ke",
         TEXT_STYLE_NORMAL | TEXT_ALIGN_CENTER,
         TEXT_ID_STATIC
     },
     {
         0,
         13,
-        "folder instalasi VerOS NT Anda.",
+        "folder instalasi Tavera OS Anda.",
         TEXT_STYLE_NORMAL | TEXT_ALIGN_CENTER,
         TEXT_ID_STATIC
     },
@@ -1409,7 +1409,7 @@ static MUI_ENTRY idIDBootLoaderSelectPageEntries[] =
     {
         4,
         3,
-        "Penyetelan VerOS NT " KERNEL_VERSION_STR " ",
+        "Penyetelan Tavera OS " KERNEL_VERSION_STR " ",
         TEXT_STYLE_UNDERLINE,
         TEXT_ID_STATIC
     },
@@ -1468,7 +1468,7 @@ static MUI_ENTRY idIDBootLoaderInstallPageEntries[] =
     {
         4,
         3,
-        " Penyetelan VerOS NT " KERNEL_VERSION_STR " ",
+        " Penyetelan Tavera OS " KERNEL_VERSION_STR " ",
         TEXT_STYLE_UNDERLINE,
         TEXT_ID_STATIC
     },
@@ -1499,7 +1499,7 @@ static MUI_ENTRY idIDBootLoaderRemovableDiskPageEntries[] =
     {
         4,
         3,
-        " Penyetelan VerOS NT " KERNEL_VERSION_STR " ",
+        " Penyetelan Tavera OS " KERNEL_VERSION_STR " ",
         TEXT_STYLE_UNDERLINE,
         TEXT_ID_STATIC
     },
@@ -1545,7 +1545,7 @@ static MUI_ENTRY idIDKeyboardSettingsEntries[] =
     {
         4,
         3,
-        " Penyetelan VerOS NT " KERNEL_VERSION_STR " ",
+        " Penyetelan Tavera OS " KERNEL_VERSION_STR " ",
         TEXT_STYLE_UNDERLINE,
         TEXT_ID_STATIC
     },
@@ -1604,7 +1604,7 @@ static MUI_ENTRY idIDLayoutSettingsEntries[] =
     {
         4,
         3,
-        " Penyetelan VerOS NT " KERNEL_VERSION_STR " ",
+        " Penyetelan Tavera OS " KERNEL_VERSION_STR " ",
         TEXT_STYLE_UNDERLINE,
         TEXT_ID_STATIC
     },
@@ -1664,14 +1664,14 @@ static MUI_ENTRY idIDPrepareCopyEntries[] =
     {
         4,
         3,
-        " Penyetelan VerOS NT " KERNEL_VERSION_STR " ",
+        " Penyetelan Tavera OS " KERNEL_VERSION_STR " ",
         TEXT_STYLE_UNDERLINE,
         TEXT_ID_STATIC
     },
     {
         6,
         8,
-        "Penyetelan menpersiapkan komputer Anda untuk menyalin berkas VerOS NT.",
+        "Penyetelan menpersiapkan komputer Anda untuk menyalin berkas Tavera OS.",
         TEXT_STYLE_NORMAL,
         TEXT_ID_STATIC
     },
@@ -1696,7 +1696,7 @@ static MUI_ENTRY idIDSelectFSEntries[] =
     {
         4,
         3,
-        " Penyetelan VerOS NT " KERNEL_VERSION_STR " ",
+        " Penyetelan Tavera OS " KERNEL_VERSION_STR " ",
         TEXT_STYLE_UNDERLINE,
         TEXT_ID_STATIC
     },
@@ -1744,7 +1744,7 @@ static MUI_ENTRY idIDDeletePartitionEntries[] =
     {
         4,
         3,
-        " Penyetelan VerOS NT " KERNEL_VERSION_STR " ",
+        " Penyetelan Tavera OS " KERNEL_VERSION_STR " ",
         TEXT_STYLE_UNDERLINE,
         TEXT_ID_STATIC
     },
@@ -1796,7 +1796,7 @@ static MUI_ENTRY idIDRegistryEntries[] =
     {
         4,
         3,
-        " Penyetelan VerOS NT " KERNEL_VERSION_STR " ",
+        " Penyetelan Tavera OS " KERNEL_VERSION_STR " ",
         TEXT_STYLE_UNDERLINE,
         TEXT_ID_STATIC
     },
@@ -1831,9 +1831,9 @@ MUI_ERROR idIDErrorEntries[] =
     },
     {
         // ERROR_NOT_INSTALLED
-        "VerOS NT tidak terpasang sepenuhnya pada komputer\n"
+        "Tavera OS tidak terpasang sepenuhnya pada komputer\n"
         "anda. Jika anda keluar sekarang, anda akan memulai\n"
-        "lagi Penyetelan untuk memasang VerOS NT.\n"
+        "lagi Penyetelan untuk memasang Tavera OS.\n"
         "\n"
         "  \x07  Tekan ENTER untuk melanjutkan Penyetelan.\n"
         "  \x07  Tekan F3 untuk keluar dari Penyetelan.",
@@ -1841,7 +1841,7 @@ MUI_ERROR idIDErrorEntries[] =
     },
     {
         // ERROR_NO_BUILD_PATH
-        "Gagal membangun jalur instalasi untuk direktori instalasi VerOS NT!\n"
+        "Gagal membangun jalur instalasi untuk direktori instalasi Tavera OS!\n"
         "ENTER = Mulai ulang komputer"
     },
     {
@@ -1851,7 +1851,7 @@ MUI_ERROR idIDErrorEntries[] =
     },
     {
         // ERROR_SOURCE_DIR
-        "Anda tidak dapat memasang VerOS NT yang di dalamnya berisi direktori sumber instalasi!\n"
+        "Anda tidak dapat memasang Tavera OS yang di dalamnya berisi direktori sumber instalasi!\n"
         "ENTER = Mulai ulang komputer"
     },
     {
@@ -2043,7 +2043,7 @@ MUI_ERROR idIDErrorEntries[] =
     },
     {
         // ERROR_INSUFFICIENT_PARTITION_SIZE,
-        "Partisi yang dipilih tidak cukup besar untuk memasang VerOS NT.\n"
+        "Partisi yang dipilih tidak cukup besar untuk memasang Tavera OS.\n"
         "Partisi instalasi harus memiliki ukuran setidaknya %lu MB.\n"
         "\n"
         "  * Tekan tombol apapun untuk lanjut.",
@@ -2228,13 +2228,13 @@ MUI_STRING idIDStrings[] =
     {STRING_PARTFORMAT,
     "Partisi ini selanjutnya akan diformat."},
     {STRING_NONFORMATTEDPART,
-    "Pilihlah untuk memasang VerOS NT pada partisi baru atau yang belum diformat."},
+    "Pilihlah untuk memasang Tavera OS pada partisi baru atau yang belum diformat."},
     {STRING_NONFORMATTEDSYSTEMPART,
     "Partisi sistem ini belum diformat."},
     {STRING_NONFORMATTEDOTHERPART,
     "Partisi baru ini belum diformat."},
     {STRING_INSTALLONPART,
-    "Penyetelan memasang VerOS NT pada Partisi"},
+    "Penyetelan memasang Tavera OS pada Partisi"},
     {STRING_CONTINUE,
     "ENTER = Lanjut"},
     {STRING_QUITCONTINUE,

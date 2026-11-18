@@ -336,6 +336,6 @@ END
 
 STRINGTABLE
 BEGIN
-    IDS_PARSE_ADDR_ERR_TITLE "VerOS NT Explorer"
-    IDS_PARSE_ADDR_ERR_TEXT "VerOS NT Explorer не намира '%1'. Проверете правописа и опитайте отново."
+    IDS_PARSE_ADDR_ERR_TITLE "Tavera OS Explorer"
+    IDS_PARSE_ADDR_ERR_TEXT "Tavera OS Explorer не намира '%1'. Проверете правописа и опитайте отново."
 END

@@ -1,5 +1,5 @@
 [Unattend]
-Signature = "$VerOS$"
+Signature = "$Tavera$"
 
 ; The upgrade boot entry reads this file. The fresh installer keeps unattend.inf.
 UnattendSetupEnabled = yes
@@ -7,7 +7,7 @@ UnattendSetupEnabled = yes
 ; The installation list supplies the disk, partition, and directory.
 DestinationDiskNumber = 0
 DestinationPartitionNumber = 1
-InstallationDirectory=VerOS
+InstallationDirectory=Tavera
 
 ; BootLoaderLocation=2 installs the MBR and the volume boot code.
 BootLoaderLocation=2

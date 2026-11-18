@@ -100,161 +100,161 @@ endfunction()
 # boot/bootdata/packages/reactos.dff.in
 #
 macro(dir_to_num dir var)
-    if(${dir} STREQUAL VerOS)
+    if(${dir} STREQUAL "Tavera")
         set(${var} 1)
-    elseif(${dir} STREQUAL VerOS/system32)
+    elseif(${dir} STREQUAL "Tavera/system32")
         set(${var} 2)
-    elseif(${dir} STREQUAL VerOS/system32/drivers)
+    elseif(${dir} STREQUAL "Tavera/system32/drivers")
         set(${var} 3)
-    elseif(${dir} STREQUAL VerOS/Fonts)
+    elseif(${dir} STREQUAL "Tavera/Fonts")
         set(${var} 4)
-    elseif(${dir} STREQUAL VerOS/system32/drivers/etc)
+    elseif(${dir} STREQUAL "Tavera/system32/drivers/etc")
         set(${var} 5)
-    elseif(${dir} STREQUAL VerOS/inf)
+    elseif(${dir} STREQUAL "Tavera/inf")
         set(${var} 6)
-    elseif(${dir} STREQUAL VerOS/bin)
+    elseif(${dir} STREQUAL "Tavera/bin")
         set(${var} 7)
-    elseif(${dir} STREQUAL VerOS/bin/testdata)
+    elseif(${dir} STREQUAL "Tavera/bin/testdata")
         set(${var} 8)
-    elseif(${dir} STREQUAL VerOS/media)
+    elseif(${dir} STREQUAL "Tavera/media")
         set(${var} 9)
-    elseif(${dir} STREQUAL VerOS/Microsoft.NET)
+    elseif(${dir} STREQUAL "Tavera/Microsoft.NET")
         set(${var} 10)
-    elseif(${dir} STREQUAL VerOS/Microsoft.NET/Framework)
+    elseif(${dir} STREQUAL "Tavera/Microsoft.NET/Framework")
         set(${var} 11)
-    elseif(${dir} STREQUAL VerOS/Microsoft.NET/Framework/v1.0.3705)
+    elseif(${dir} STREQUAL "Tavera/Microsoft.NET/Framework/v1.0.3705")
         set(${var} 12)
-    elseif(${dir} STREQUAL VerOS/Microsoft.NET/Framework/v1.1.4322)
+    elseif(${dir} STREQUAL "Tavera/Microsoft.NET/Framework/v1.1.4322")
         set(${var} 13)
-    elseif(${dir} STREQUAL VerOS/Microsoft.NET/Framework/v2.0.50727)
+    elseif(${dir} STREQUAL "Tavera/Microsoft.NET/Framework/v2.0.50727")
         set(${var} 14)
-    elseif(${dir} STREQUAL VerOS/Resources)
+    elseif(${dir} STREQUAL "Tavera/Resources")
         set(${var} 15)
-    elseif(${dir} STREQUAL VerOS/Resources/Themes)
+    elseif(${dir} STREQUAL "Tavera/Resources/Themes")
         set(${var} 16)
-    elseif(${dir} STREQUAL VerOS/system32/wbem)
+    elseif(${dir} STREQUAL "Tavera/system32/wbem")
         set(${var} 17)
-    elseif(${dir} STREQUAL VerOS/Resources/Themes/Lautus)
+    elseif(${dir} STREQUAL "Tavera/Resources/Themes/Lautus")
         set(${var} 18)
-    elseif(${dir} STREQUAL VerOS/Help)
+    elseif(${dir} STREQUAL "Tavera/Help")
         set(${var} 19)
-    elseif(${dir} STREQUAL VerOS/Config)
+    elseif(${dir} STREQUAL "Tavera/Config")
         set(${var} 20)
-    elseif(${dir} STREQUAL VerOS/Cursors)
+    elseif(${dir} STREQUAL "Tavera/Cursors")
         set(${var} 21)
-    elseif(${dir} STREQUAL VerOS/system32/ShellExt)
+    elseif(${dir} STREQUAL "Tavera/system32/ShellExt")
         set(${var} 22)
-    elseif(${dir} STREQUAL VerOS/Temp)
+    elseif(${dir} STREQUAL "Tavera/Temp")
         set(${var} 23)
-    elseif(${dir} STREQUAL VerOS/system32/spool)
+    elseif(${dir} STREQUAL "Tavera/system32/spool")
         set(${var} 24)
-    elseif(${dir} STREQUAL VerOS/system32/spool/drivers)
+    elseif(${dir} STREQUAL "Tavera/system32/spool/drivers")
         set(${var} 25)
-    elseif(${dir} STREQUAL VerOS/system32/spool/drivers/color)
+    elseif(${dir} STREQUAL "Tavera/system32/spool/drivers/color")
         set(${var} 26)
-    elseif(${dir} STREQUAL VerOS/system32/spool/drivers/w32x86)
+    elseif(${dir} STREQUAL "Tavera/system32/spool/drivers/w32x86")
         set(${var} 27)
-    elseif(${dir} STREQUAL VerOS/system32/spool/drivers/w32x86/3)
+    elseif(${dir} STREQUAL "Tavera/system32/spool/drivers/w32x86/3")
         set(${var} 28)
-    elseif(${dir} STREQUAL VerOS/system32/spool/prtprocs)
+    elseif(${dir} STREQUAL "Tavera/system32/spool/prtprocs")
         set(${var} 29)
-    elseif(${dir} STREQUAL VerOS/system32/spool/prtprocs/w32x86)
+    elseif(${dir} STREQUAL "Tavera/system32/spool/prtprocs/w32x86")
         set(${var} 30)
-    elseif(${dir} STREQUAL VerOS/system32/spool/PRINTERS)
+    elseif(${dir} STREQUAL "Tavera/system32/spool/PRINTERS")
         set(${var} 31)
-    elseif(${dir} STREQUAL VerOS/system32/wbem/Repository)
+    elseif(${dir} STREQUAL "Tavera/system32/wbem/Repository")
         set(${var} 32)
-    elseif(${dir} STREQUAL VerOS/system32/wbem/Repository/FS)
+    elseif(${dir} STREQUAL "Tavera/system32/wbem/Repository/FS")
         set(${var} 33)
-    elseif(${dir} STREQUAL VerOS/system32/wbem/mof/good)
+    elseif(${dir} STREQUAL "Tavera/system32/wbem/mof/good")
         set(${var} 34)
-    elseif(${dir} STREQUAL VerOS/system32/wbem/mof/bad)
+    elseif(${dir} STREQUAL "Tavera/system32/wbem/mof/bad")
         set(${var} 35)
-    elseif(${dir} STREQUAL VerOS/system32/wbem/AdStatus)
+    elseif(${dir} STREQUAL "Tavera/system32/wbem/AdStatus")
         set(${var} 36)
-    elseif(${dir} STREQUAL VerOS/system32/wbem/xml)
+    elseif(${dir} STREQUAL "Tavera/system32/wbem/xml")
         set(${var} 37)
-    elseif(${dir} STREQUAL VerOS/system32/wbem/Logs)
+    elseif(${dir} STREQUAL "Tavera/system32/wbem/Logs")
         set(${var} 38)
-    elseif(${dir} STREQUAL VerOS/system32/wbem/AutoRecover)
+    elseif(${dir} STREQUAL "Tavera/system32/wbem/AutoRecover")
         set(${var} 39)
-    elseif(${dir} STREQUAL VerOS/system32/wbem/snmp)
+    elseif(${dir} STREQUAL "Tavera/system32/wbem/snmp")
         set(${var} 40)
-    elseif(${dir} STREQUAL VerOS/system32/wbem/Performance)
+    elseif(${dir} STREQUAL "Tavera/system32/wbem/Performance")
         set(${var} 41)
-    elseif(${dir} STREQUAL VerOS/twain_32)
+    elseif(${dir} STREQUAL "Tavera/twain_32")
         set(${var} 42)
-    elseif(${dir} STREQUAL VerOS/repair)
+    elseif(${dir} STREQUAL "Tavera/repair")
         set(${var} 43)
-    elseif(${dir} STREQUAL VerOS/Web)
+    elseif(${dir} STREQUAL "Tavera/Web")
         set(${var} 44)
-    elseif(${dir} STREQUAL VerOS/Web/Wallpaper)
+    elseif(${dir} STREQUAL "Tavera/Web/Wallpaper")
         set(${var} 45)
-    elseif(${dir} STREQUAL VerOS/Prefetch)
+    elseif(${dir} STREQUAL "Tavera/Prefetch")
         set(${var} 46)
-    elseif(${dir} STREQUAL VerOS/security)
+    elseif(${dir} STREQUAL "Tavera/security")
         set(${var} 47)
-    elseif(${dir} STREQUAL VerOS/security/Database)
+    elseif(${dir} STREQUAL "Tavera/security/Database")
         set(${var} 48)
-    elseif(${dir} STREQUAL VerOS/security/logs)
+    elseif(${dir} STREQUAL "Tavera/security/logs")
         set(${var} 49)
-    elseif(${dir} STREQUAL VerOS/security/templates)
+    elseif(${dir} STREQUAL "Tavera/security/templates")
         set(${var} 50)
-    elseif(${dir} STREQUAL VerOS/system32/CatRoot)
+    elseif(${dir} STREQUAL "Tavera/system32/CatRoot")
         set(${var} 51)
-    elseif(${dir} STREQUAL VerOS/system32/CatRoot2)
+    elseif(${dir} STREQUAL "Tavera/system32/CatRoot2")
         set(${var} 52)
-    elseif(${dir} STREQUAL VerOS/AppPatch)
+    elseif(${dir} STREQUAL "Tavera/AppPatch")
         set(${var} 53)
-    elseif(${dir} STREQUAL VerOS/winsxs)
+    elseif(${dir} STREQUAL "Tavera/winsxs")
         set(${var} 54)
-    elseif(${dir} STREQUAL VerOS/winsxs/manifests)
+    elseif(${dir} STREQUAL "Tavera/winsxs/manifests")
         set(${var} 55)
-    elseif(${dir} STREQUAL VerOS/winsxs/x86_microsoft.windows.common-controls_6595b64144ccf1df_5.82.2600.2982_none_deadbeef)
+    elseif(${dir} STREQUAL "Tavera/winsxs/x86_microsoft.windows.common-controls_6595b64144ccf1df_5.82.2600.2982_none_deadbeef")
         set(${var} 56)
-    elseif(${dir} STREQUAL VerOS/winsxs/x86_microsoft.windows.common-controls_6595b64144ccf1df_6.0.2600.2982_none_deadbeef)
+    elseif(${dir} STREQUAL "Tavera/winsxs/x86_microsoft.windows.common-controls_6595b64144ccf1df_6.0.2600.2982_none_deadbeef")
         set(${var} 57)
-    elseif(${dir} STREQUAL VerOS/winsxs/x86_microsoft.windows.gdiplus_6595b64144ccf1df_1.1.7601.23038_none_deadbeef)
+    elseif(${dir} STREQUAL "Tavera/winsxs/x86_microsoft.windows.gdiplus_6595b64144ccf1df_1.1.7601.23038_none_deadbeef")
         set(${var} 58)
-    elseif(${dir} STREQUAL VerOS/bin/suppl)
+    elseif(${dir} STREQUAL "Tavera/bin/suppl")
         set(${var} 60)
-    elseif(${dir} STREQUAL VerOS/winsxs/x86_microsoft.windows.gdiplus_6595b64144ccf1df_1.0.14393.0_none_deadbeef)
+    elseif(${dir} STREQUAL "Tavera/winsxs/x86_microsoft.windows.gdiplus_6595b64144ccf1df_1.0.14393.0_none_deadbeef")
         set(${var} 61)
-    elseif(${dir} STREQUAL VerOS/Resources/Themes/Modern)
+    elseif(${dir} STREQUAL "Tavera/Resources/Themes/Modern")
         set(${var} 62)
-    elseif(${dir} STREQUAL VerOS/3rdParty)
+    elseif(${dir} STREQUAL "Tavera/3rdParty")
         set(${var} 63)
-    elseif(${dir} STREQUAL VerOS/Resources/Themes/Lunar)
+    elseif(${dir} STREQUAL "Tavera/Resources/Themes/Lunar")
         set(${var} 64)
-    elseif(${dir} STREQUAL VerOS/Resources/Themes/Mizu)
+    elseif(${dir} STREQUAL "Tavera/Resources/Themes/Mizu")
         set(${var} 65)
-    elseif(${dir} STREQUAL VerOS/system32/spool/prtprocs/x64)
+    elseif(${dir} STREQUAL "Tavera/system32/spool/prtprocs/x64")
         set(${var} 66)
-    elseif(${dir} STREQUAL VerOS/winsxs/amd64_microsoft.windows.common-controls_6595b64144ccf1df_5.82.2600.2982_none_deadbeef)
+    elseif(${dir} STREQUAL "Tavera/winsxs/amd64_microsoft.windows.common-controls_6595b64144ccf1df_5.82.2600.2982_none_deadbeef")
         set(${var} 67)
-    elseif(${dir} STREQUAL VerOS/winsxs/amd64_microsoft.windows.common-controls_6595b64144ccf1df_6.0.2600.2982_none_deadbeef)
+    elseif(${dir} STREQUAL "Tavera/winsxs/amd64_microsoft.windows.common-controls_6595b64144ccf1df_6.0.2600.2982_none_deadbeef")
         set(${var} 68)
-    elseif(${dir} STREQUAL VerOS/winsxs/amd64_microsoft.windows.gdiplus_6595b64144ccf1df_1.1.7601.23038_none_deadbeef)
+    elseif(${dir} STREQUAL "Tavera/winsxs/amd64_microsoft.windows.gdiplus_6595b64144ccf1df_1.1.7601.23038_none_deadbeef")
         set(${var} 69)
-    elseif(${dir} STREQUAL VerOS/winsxs/amd64_microsoft.windows.gdiplus_6595b64144ccf1df_1.0.14393.0_none_deadbeef)
+    elseif(${dir} STREQUAL "Tavera/winsxs/amd64_microsoft.windows.gdiplus_6595b64144ccf1df_1.0.14393.0_none_deadbeef")
         set(${var} 71)
 
-    elseif(${dir} STREQUAL VerOS/winsxs/arm_microsoft.windows.common-controls_6595b64144ccf1df_5.82.2600.2982_none_deadbeef)
+    elseif(${dir} STREQUAL "Tavera/winsxs/arm_microsoft.windows.common-controls_6595b64144ccf1df_5.82.2600.2982_none_deadbeef")
         set(${var} 72)
-    elseif(${dir} STREQUAL VerOS/winsxs/arm_microsoft.windows.common-controls_6595b64144ccf1df_6.0.2600.2982_none_deadbeef)
+    elseif(${dir} STREQUAL "Tavera/winsxs/arm_microsoft.windows.common-controls_6595b64144ccf1df_6.0.2600.2982_none_deadbeef")
         set(${var} 73)
-    elseif(${dir} STREQUAL VerOS/winsxs/arm_microsoft.windows.gdiplus_6595b64144ccf1df_1.1.7601.23038_none_deadbeef)
+    elseif(${dir} STREQUAL "Tavera/winsxs/arm_microsoft.windows.gdiplus_6595b64144ccf1df_1.1.7601.23038_none_deadbeef")
         set(${var} 74)
-    elseif(${dir} STREQUAL VerOS/winsxs/arm_microsoft.windows.gdiplus_6595b64144ccf1df_1.0.14393.0_none_deadbeef)
+    elseif(${dir} STREQUAL "Tavera/winsxs/arm_microsoft.windows.gdiplus_6595b64144ccf1df_1.0.14393.0_none_deadbeef")
         set(${var} 76)
 
-    elseif(${dir} STREQUAL VerOS/winsxs/arm64_microsoft.windows.common-controls_6595b64144ccf1df_5.82.2600.2982_none_deadbeef)
+    elseif(${dir} STREQUAL "Tavera/winsxs/arm64_microsoft.windows.common-controls_6595b64144ccf1df_5.82.2600.2982_none_deadbeef")
         set(${var} 77)
-    elseif(${dir} STREQUAL VerOS/winsxs/arm64_microsoft.windows.common-controls_6595b64144ccf1df_6.0.2600.2982_none_deadbeef)
+    elseif(${dir} STREQUAL "Tavera/winsxs/arm64_microsoft.windows.common-controls_6595b64144ccf1df_6.0.2600.2982_none_deadbeef")
         set(${var} 78)
-    elseif(${dir} STREQUAL VerOS/winsxs/arm64_microsoft.windows.gdiplus_6595b64144ccf1df_1.1.7601.23038_none_deadbeef)
+    elseif(${dir} STREQUAL "Tavera/winsxs/arm64_microsoft.windows.gdiplus_6595b64144ccf1df_1.1.7601.23038_none_deadbeef")
         set(${var} 79)
-    elseif(${dir} STREQUAL VerOS/winsxs/arm64_microsoft.windows.gdiplus_6595b64144ccf1df_1.0.14393.0_none_deadbeef)
+    elseif(${dir} STREQUAL "Tavera/winsxs/arm64_microsoft.windows.gdiplus_6595b64144ccf1df_1.0.14393.0_none_deadbeef")
         set(${var} 81)
 
     else()
@@ -296,13 +296,13 @@ function(add_cd_file)
     # do we add it to bootcd?
     list(FIND _CD_FOR bootcd __cd)
     if(NOT __cd EQUAL -1)
-        # whether or not we should put it in reactos.cab or directly on cd
+        # whether or not we should put it in taveraos.cab or directly on cd
         if(_CD_NO_CAB)
             # Setup files stay out of the live system directory. A leading
-            # "VerOS/" becomes the architecture directory (amd64/ or i386/),
+            # "Tavera/" becomes the architecture directory (amd64/ or i386/),
             # which is where the text-mode installer expects its own smss.exe.
             # WARNING: CMake REGEXes are always case-sensitive!
-            string(REGEX REPLACE "^VerOS([\\\\/]+|$)" "${ARCH}\\1" _CD_ARCH_DESTINATION "${_CD_DESTINATION}")
+            string(REGEX REPLACE "^Tavera([\\\\/]+|$)" "${ARCH}\\1" _CD_ARCH_DESTINATION "${_CD_DESTINATION}")
             foreach(item ${_CD_FILE})
                 if(_CD_NAME_ON_CD)
                     # rename it in the cd tree
@@ -319,7 +319,7 @@ function(add_cd_file)
         else()
             dir_to_num(${_CD_DESTINATION} _num)
             foreach(item ${_CD_FILE})
-                # add it in reactos.cab
+                # add it in taveraos.cab
                 file(APPEND ${REACTOS_BINARY_DIR}/boot/bootdata/packages/reactos.dff.cmake "\"${item}\" ${_num}\n")
 
                 # manage dependency - file level
@@ -354,13 +354,13 @@ function(add_cd_file)
     # do we add it to regtest?
     list(FIND _CD_FOR regtest __cd)
     if(NOT __cd EQUAL -1)
-        # whether or not we should put it in reactos.cab or directly on cd
+        # whether or not we should put it in taveraos.cab or directly on cd
         if(_CD_NO_CAB)
             # Setup files stay out of the live system directory. A leading
-            # "VerOS/" becomes the architecture directory (amd64/ or i386/),
+            # "Tavera/" becomes the architecture directory (amd64/ or i386/),
             # which is where the text-mode installer expects its own smss.exe.
             # WARNING: CMake REGEXes are always case-sensitive!
-            string(REGEX REPLACE "^VerOS([\\\\/]+|$)" "${ARCH}\\1" _CD_ARCH_DESTINATION "${_CD_DESTINATION}")
+            string(REGEX REPLACE "^Tavera([\\\\/]+|$)" "${ARCH}\\1" _CD_ARCH_DESTINATION "${_CD_DESTINATION}")
             foreach(item ${_CD_FILE})
                 if(_CD_NAME_ON_CD)
                     # rename it in the cd tree
@@ -375,7 +375,7 @@ function(add_cd_file)
                 add_dependencies(bootcdregtest ${_CD_TARGET} registry_inf)
             endif()
         else()
-            #add it in reactos.cab
+            #add it in taveraos.cab
             #dir_to_num(${_CD_DESTINATION} _num)
             #file(APPEND ${REACTOS_BINARY_DIR}/boot/bootdata/packages/reactos.dff.dyn "${_CD_FILE} ${_num}\n")
             #if(_CD_TARGET)
@@ -387,7 +387,7 @@ function(add_cd_file)
 endfunction()
 
 function(create_iso_lists)
-    # Generate reactos.cab before anything else
+    # Generate taveraos.cab before anything else
     get_property(_filelist GLOBAL PROPERTY REACTOS_CAB_DEPENDS)
 
     # Begin with reactos.inf. We want this command to be always executed, so we pretend it generates another file although it will never do.
@@ -396,20 +396,20 @@ function(create_iso_lists)
         COMMAND ${CMAKE_COMMAND} -E copy_if_different ${REACTOS_BINARY_DIR}/boot/bootdata/packages/reactos.inf ${CMAKE_CURRENT_BINARY_DIR}/reactos.inf
         DEPENDS ${REACTOS_BINARY_DIR}/boot/bootdata/packages/reactos.inf reactos_cab_inf)
 
-    # Now build reactos.cab itself
+    # Now build taveraos.cab itself
     add_custom_command(
-        OUTPUT ${CMAKE_CURRENT_BINARY_DIR}/reactos.cab
+        OUTPUT ${CMAKE_CURRENT_BINARY_DIR}/taveraos.cab
         COMMAND native-cabman -C ${REACTOS_BINARY_DIR}/boot/bootdata/packages/reactos.dff -RC ${CMAKE_CURRENT_BINARY_DIR}/reactos.inf -N -P ${REACTOS_SOURCE_DIR}
         DEPENDS ${CMAKE_CURRENT_BINARY_DIR}/reactos.inf native-cabman ${_filelist})
 
-    add_custom_target(reactos_cab DEPENDS ${CMAKE_CURRENT_BINARY_DIR}/reactos.cab)
+    add_custom_target(reactos_cab DEPENDS ${CMAKE_CURRENT_BINARY_DIR}/taveraos.cab)
     add_dependencies(reactos_cab reactos_cab_inf)
 
-    # Add reactos.cab into the BootCD
+    # Add taveraos.cab into the BootCD
     add_cd_file(
         TARGET reactos_cab
-        FILE ${CMAKE_CURRENT_BINARY_DIR}/reactos.cab
-        DESTINATION VerOS
+        FILE ${CMAKE_CURRENT_BINARY_DIR}/taveraos.cab
+        DESTINATION "Tavera"
         NO_CAB FOR bootcd regtest)
 
 if(FALSE) ## Disabled until we want a RAMDISK ISO
@@ -820,7 +820,7 @@ function(create_registry_hives)
     add_custom_target(registry_inf DEPENDS ${_registry_inf})
     add_cd_file(TARGET registry_inf
                 FILE ${_registry_inf}
-                DESTINATION VerOS
+                DESTINATION "Tavera"
                 NO_CAB FOR bootcd regtest)
 
     # BootCD setup system hive
@@ -835,7 +835,7 @@ function(create_registry_hives)
     add_cd_file(
         FILE ${CMAKE_BINARY_DIR}/boot/bootdata/SETUPREG.HIV
         TARGET bootcd_hives
-        DESTINATION VerOS
+        DESTINATION "Tavera"
         NO_CAB FOR bootcd regtest)
 
     # LiveCD hives
@@ -877,7 +877,7 @@ function(create_registry_hives)
              ${CMAKE_BINARY_DIR}/boot/bootdata/sam
              ${CMAKE_BINARY_DIR}/boot/bootdata/security
         TARGET livecd_hives
-        DESTINATION VerOS/system32/config
+        DESTINATION "Tavera/system32/config"
         FOR livecd)
 
     # BCD hive (for EFI-compatible platforms)
@@ -909,7 +909,7 @@ function(add_driver_inf _module)
     endforeach()
 
     add_custom_target(${_module}_inf_files DEPENDS ${_converted_inf_files})
-    add_cd_file(FILE ${_converted_inf_files} TARGET ${_module}_inf_files DESTINATION VerOS/inf FOR all)
+    add_cd_file(FILE ${_converted_inf_files} TARGET ${_module}_inf_files DESTINATION "Tavera/inf" FOR all)
 endfunction()
 
 if(KDBG)

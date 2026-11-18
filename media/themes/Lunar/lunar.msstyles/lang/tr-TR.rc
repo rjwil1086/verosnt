@@ -9,12 +9,12 @@ LANGUAGE LANG_TURKISH, SUBLANG_NEUTRAL
 
 STRINGTABLE
 {
-1000, "VerOS NT"
+1000, "Tavera OS"
 }
 
 STRINGTABLE
 {
-2000, "Lunar VerOS NT"
+2000, "Lunar Tavera OS"
 }
 
 STRINGTABLE
@@ -35,11 +35,11 @@ STRINGTABLE
 {
 5000, "Lunar"
 5001, "Görsel Biçim"
-5002, "VerOS NT Vakfı"
+5002, "Tavera OS Vakfı"
 5003, "Cernodile & Illen, Lautus tabanlı"
 5004, "GNU/GPL 2.0 altında yayımlanmaktadır, 2019"
 5005, "https://reactos.org/"
 5006, "1.1"
-5007, "VerOS NT İçin Görsel Biçim"
+5007, "Tavera OS İçin Görsel Biçim"
 }
 

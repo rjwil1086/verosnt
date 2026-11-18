@@ -1,4 +1,4 @@
-# PROJECT:     VerOS NT
+# PROJECT:     Tavera OS
 # LICENSE:     GNU General Public License, version 2 or later (GPL-2.0-or-later)
 # FILE:        tools/dashboard/Update-Dashboard.ps1
 # PURPOSE:     Update the dashboard from the latest probes

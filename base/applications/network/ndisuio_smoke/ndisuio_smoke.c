@@ -1,5 +1,5 @@
 /*
- * PROJECT:     VerOS NT
+ * PROJECT:     Tavera OS
  * LICENSE:     GNU General Public License, version 2 or later (GPL-2.0-or-later)
  * FILE:        base/applications/network/ndisuio_smoke/ndisuio_smoke.c
  * PURPOSE:     Open NDISUIO and print a serial accept marker

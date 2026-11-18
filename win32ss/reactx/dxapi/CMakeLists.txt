@@ -9,4 +9,4 @@ add_library(dxapi MODULE
 
 set_module_type(dxapi kernelmodedriver)
 add_importlibs(dxapi ntoskrnl hal videoprt)
-add_cd_file(TARGET dxapi DESTINATION VerOS/system32/drivers FOR all)
+add_cd_file(TARGET dxapi DESTINATION "Tavera/system32/drivers" FOR all)

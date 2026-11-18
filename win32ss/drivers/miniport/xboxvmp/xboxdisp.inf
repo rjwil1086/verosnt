@@ -4,11 +4,11 @@
 
 [Version]
 Signature  = "$Windows NT$"
-;Signature  = "$VerOS NT$"
+;Signature  = "$Tavera$"
 LayoutFile = layout.inf
 Class      = Display
 ClassGUID  = {4D36E968-E325-11CE-BFC1-08002BE10318}
-Provider   = %VerOS NT%
+Provider   = %Tavera OS%
 DriverVer  = 11/11/2005,1.00
 
 [DestinationDirs]
@@ -56,22 +56,22 @@ nVidiaMfg = "nVidia"
 PCI\VEN_10DE&DEV_02A0.DeviceDesc = "NV2A Xbox Graphics Processing Unit"
 
 [Strings.0a]
-PCI\VEN_10DE&DEV_02A0.DeviceDesc = "Unidad de procesamiento de gráficos de Xbox NV2A"
+PCI\VEN_10DE&DEV_02A0.DeviceDesc = "Unidad de procesamiento de gr??ficos de Xbox NV2A"
 
 [Strings.0415]
 PCI\VEN_10DE&DEV_02A0.DeviceDesc = "Procesor graficzny Xbox NV2A"
 
 [Strings.0418]
-PCI\VEN_10DE&DEV_02A0.DeviceDesc = "Unitate de procesare grafică Xbox NV2A"
+PCI\VEN_10DE&DEV_02A0.DeviceDesc = "Unitate de procesare grafic?? Xbox NV2A"
 
 [Strings.0419]
-PCI\VEN_10DE&DEV_02A0.DeviceDesc = "Графический процессор NV2A Xbox"
+PCI\VEN_10DE&DEV_02A0.DeviceDesc = "?????????????????????? ?????????????????? NV2A Xbox"
 
 [Strings.041f]
-PCI\VEN_10DE&DEV_02A0.DeviceDesc = "NV2A Xbox Çizge İşleme Birimi"
+PCI\VEN_10DE&DEV_02A0.DeviceDesc = "NV2A Xbox ??izge ????leme Birimi"
 
 [Strings.0422]
-PCI\VEN_10DE&DEV_02A0.DeviceDesc = "Графічний процесор NV2A Xbox"
+PCI\VEN_10DE&DEV_02A0.DeviceDesc = "?????????????????? ???????????????? NV2A Xbox"
 
 [Strings.0804]
-PCI\VEN_10DE&DEV_02A0.DeviceDesc = "NV2A Xbox 图形处理器"
+PCI\VEN_10DE&DEV_02A0.DeviceDesc = "NV2A Xbox ???????????????"

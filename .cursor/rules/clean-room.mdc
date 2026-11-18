@@ -38,7 +38,7 @@ A Windows Kits / Windows SDK **host tool** (for example a signer) may run only a
 
 Prefer PowerShell `Set-AuthenticodeSignature` (`Protect-KernelAbiDriver` in the parent checkout's `differential-tests/kernel-abi/WindowsGuest.ps1`) so probe signing does not depend on a Kits install. Do not install the WDK to implement behavior here.
 
-Public Learn pages with a full URL remain allowed. Do not call them "the WDK", "SDK headers", or "Windows headers" — those words mean the forbidden private trees. The checkout rule [`.cursor/rules/clean-room-host-tools.mdc`](../../.cursor/rules/clean-room-host-tools.mdc) states the same boundary for work outside `source/`.
+Public Learn pages with a full URL remain allowed, except a URL listed under [clean-room-third-party-sources.mdc](clean-room-third-party-sources.mdc). Do not call them "the WDK", "SDK headers", or "Windows headers" — those words mean the forbidden private trees. The checkout rule [`.cursor/rules/clean-room-host-tools.mdc`](../../.cursor/rules/clean-room-host-tools.mdc) states the same boundary for work outside `source/`.
 
 ```text
 Right: sign our probe with Set-AuthenticodeSignature; cite a Learn URL for a DDI

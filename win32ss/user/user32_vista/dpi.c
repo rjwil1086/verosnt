@@ -1,5 +1,5 @@
 /*
- * PROJECT:     VerOS NT Subsystem
+ * PROJECT:     Tavera OS Subsystem
  * LICENSE:     GNU Lesser General Public License, version 2.1 or later (LGPL-2.1-or-later)
  * FILE:        win32ss/user/user32_vista/dpi.c
  * PURPOSE:     DPI functions for user32 and user32_vista.

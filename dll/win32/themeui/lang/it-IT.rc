@@ -16,8 +16,8 @@ BEGIN
     IDS_PUMPKIN "Giallo cromo scuro"
     IDS_RAIN "Grigio antracite"
     IDS_RWB "Red, White, and Blue"
-    IDS_CLASSIC "VerOS NT classico"
-    IDS_STANDARD "VerOS NT Standard"
+    IDS_CLASSIC "Tavera OS classico"
+    IDS_STANDARD "Tavera OS Standard"
     IDS_ROSE "Rosa"
     IDS_SAND "Sabbia" //Desert
     IDS_SLATE "Lavagna"
