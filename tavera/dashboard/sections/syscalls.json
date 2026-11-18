@@ -1,5 +1,5 @@
 {
-  "capturedAt": "2026-11-15T00:09:59Z",
+  "capturedAt": "2026-11-18T13:18:51Z",
   "section": "syscalls",
   "spdx": "GPL-2.0-or-later",
   "schemaVersion": 1,
@@ -830,8 +830,12 @@
     "bootResult": "Windows probe DIFF END OK; VerOS NT probe DIFF END OK",
     "crashCount": 0
   },
-  "notes": "overall and syscallOverall are exact status matches from the amd64 probe: 88 of 101 names. 7 names failed on both sides with different codes, 2 disagreed on success, and 4 were missing on the amd64 side. A different error is a mismatch. 0 names were not reached. lastBuild, applications, drivers, subsystems, traceCorpus, task, and graphics were not measured by this probe. northStar.lastWeek and northStar.lastMonth come only from an older snapshot in this file. The formula weights are the website contract and were not applied. driverAbi is 50 from the driver ABI category (1 export returned or bugchecked; log output/abi-boot/abi.jsonl). Untested rows stay out of that percent.",
+  "notes": "overall and syscallOverall are exact status matches from the amd64 probe: 88 of 101 names. 7 names failed on both sides with different codes, 2 disagreed on success, and 4 were missing on the amd64 side. A different error is a mismatch. 0 names were not reached. kernelAbi, lastBuild, applications, drivers, subsystems, traceCorpus, task, driverAbi, and graphics were not measured by this probe. northStar.lastWeek and northStar.lastMonth come only from an older snapshot in this file. The formula weights are the website contract and were not applied.",
   "unmeasured": [
+    {
+      "section": "kernelAbi",
+      "reason": "The Windows 10 22H2 kernel and the VerOS NT kernel have not both finished the kernel probe."
+    },
     {
       "section": "lastBuild",
       "reason": "The guest banner is a date and commit, not a monotonic build number."
@@ -861,8 +865,24 @@
       "reason": "The amd64 probe does not load drivers."
     },
     {
+      "section": "regression.previousOverall",
+      "reason": "No earlier snapshot is in the repo."
+    },
+    {
       "section": "regression.currentBuild",
       "reason": "The guest banner is a date and commit, not a monotonic build number."
+    },
+    {
+      "section": "regression.change",
+      "reason": "No earlier snapshot is in the repo."
+    },
+    {
+      "section": "regression.improvements",
+      "reason": "No earlier snapshot is in the repo."
+    },
+    {
+      "section": "regression.regressions",
+      "reason": "No earlier snapshot is in the repo."
     },
     {
       "section": "subsystems",
@@ -879,6 +899,10 @@
     {
       "section": "task",
       "reason": "Each mismatch is one probe call. No estimated gain was measured."
+    },
+    {
+      "section": "driverAbi",
+      "reason": "The amd64 probe does not exercise IRP, PnP, power, DMA, or KMDF."
     },
     {
       "section": "graphics",

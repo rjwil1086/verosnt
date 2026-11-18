@@ -1,13 +1,13 @@
 {
-  "capturedAt": "2026-11-15T00:09:59Z",
+  "capturedAt": "2026-11-18T13:18:51Z",
   "section": "regression",
   "regression": {
-    "previousLabel": "Previous snapshot",
-    "previousOverall": 87.1,
+    "previousLabel": "No earlier snapshot",
+    "previousOverall": null,
     "currentBuild": null,
     "currentOverall": 87.1,
-    "change": 0,
-    "improvements": [],
-    "regressions": []
+    "change": null,
+    "improvements": null,
+    "regressions": null
   }
 }
