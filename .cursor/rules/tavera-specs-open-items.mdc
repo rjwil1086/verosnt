@@ -1,0 +1,38 @@
+---
+description: Spec and implementer agents hand off only through open-items.md
+alwaysApply: true
+---
+
+# Specs open-items handoff
+
+Spec work and implementation work for a component talk **only** through:
+
+```text
+tavera/specs/<component>/open-items.md
+```
+
+That file is the shared queue. Do not rely on chat history alone for blocking questions. `<component>` is the module folder (for example `ntfs`). Specs for the module live beside it under `tavera/specs/<component>/`.
+
+## Implementer
+
+- Work only from the module’s specs, cited probe results under `output/`, and existing Tavera code in this tree.
+- Do not run Windows probes or edit probe sources in an implementation session ([clean-room-probe-separation.mdc](clean-room-probe-separation.mdc)).
+- When a spec is missing or unclear, **do not** research Windows behavior yourself (no Learn hunt, no recall, no new probe of your own for that gap).
+- Append an item to `open-items.md` with: stable `ID`, date opened, the question, and why it blocks work.
+- Continue other unblocked work, or stop if nothing else can proceed.
+
+## Spec agent
+
+- Before starting, read `open-items.md` for unresolved items.
+- Answer each item from approved sources ([clean-room.mdc](clean-room.mdc)) or a new versioned probe ([tavera-probes.mdc](tavera-probes.mdc)).
+- Cite the source or probe, update the relevant spec file(s), and mark the item **resolved** with the resolution date and a link/path to the spec (or probe) change.
+
+## Never delete items
+
+Do not remove entries from `open-items.md`. Resolved items stay as a permanent record. Unresolved items stay open until the spec agent resolves them.
+
+```text
+Right: ID NTFS-014 opened by implementer; spec agent resolves with Learn URL + spec edit
+Wrong: implementer fills a layout from memory because open-items is empty
+Wrong: deleting a resolved open-item to tidy the file
+```
