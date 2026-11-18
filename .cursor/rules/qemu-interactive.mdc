@@ -5,7 +5,7 @@ alwaysApply: true
 
 # Interactive QEMU
 
-When a Windows or VerOS NT test needs a QEMU window, launch the guest, then give numbered steps. The user clicks and types. Do not move the pointer, click, or type into the guest.
+When a Windows or Tavera OS test needs a QEMU window, launch the guest, then give numbered steps. The user clicks and types. Do not move the pointer, click, or type into the guest.
 
 Boot both guests with the accelerator, memory, and CPU count in [windows-capture.mdc](windows-capture.mdc). Keep `-snapshot` on the Windows disk. A multicore boot failure is fixed in this tree.
 

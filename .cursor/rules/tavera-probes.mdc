@@ -1,0 +1,54 @@
+---
+description: Versioned probe sources under tavera/probes and how specs cite them
+alwaysApply: true
+---
+
+# Tavera probes
+
+Probe sources live under `tavera/probes/`. Captures stay under gitignored `output/`. Folder layout and handoff with specs also use [tavera-specs-open-items.mdc](tavera-specs-open-items.mdc).
+
+## Layout
+
+```text
+tavera/probes/<module>/probe-v<N>/
+```
+
+- `<module>` matches `tavera/specs/<module>/`.
+- Each distinct probe is `probe-v1`, `probe-v2`, …. Do not overwrite a version in place; add a new `probe-vN` instead.
+- Guest code, host dump tools, and invoke scripts for that version stay inside that folder only.
+
+```text
+Right: tavera/probes/ntfs/probe-v1/guest/…
+Wrong: tavera/probes/ntfs/guest/…   (no version)
+Wrong: editing probe-v1 after specs cite its captures as evidence
+```
+
+## Output
+
+Run output goes under `output/<module>/<probe-id>/` (for example `output/ntfs/probe-v1/`). Do not commit `output/`.
+
+## Specs cite the probe
+
+Every capture-backed statement in `tavera/specs/<module>/` names the probe path and the capture (and marker when present).
+
+```text
+Right: output/ntfs/probe-v1/captures/manifest.txt from tavera/probes/ntfs/probe-v1
+Wrong: "the probe" with no version path
+```
+
+## Deleting unused probes
+
+A probe folder may be deleted only when it was **not** used as evidence for any kept result, and the module’s specs record that deletion:
+
+- which `probe-vN` was removed
+- that it was unused (no retained capture-backed claim cites it)
+- why (did not produce the result the spec needed, crashed the guest, wrong surface, superseded before citation, etc.)
+
+Keep that note in the module specs (for example in `open-items.md` or a short “Retired probes” section). Do not delete a probe that any current spec statement still cites.
+
+```text
+Right: remove probe-v2 after specs note it crashed before any cited capture
+Wrong: delete probe-v1 while ntfs-log-replay.md still cites it
+```
+
+Raw-format vs implementation sessions: [clean-room-probe-separation.mdc](clean-room-probe-separation.mdc).
