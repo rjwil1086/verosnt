@@ -20,10 +20,10 @@ Forbidden:
 
 Store captures under `output/<tool>/` and cite them in the transparency note, as with any guest log.
 
-Serial debugging of VerOS itself, with in-tree symbols, is unrestricted.
+Serial debugging of Tavera OS itself, with in-tree symbols, is unrestricted.
 
 ```text
-Right: probe on the Shuttle running Windows 10 writes results to COM1; diff against VerOS on the same box
+Right: probe on the Shuttle running Windows 10 writes results to COM1; diff against Tavera OS on the same box
 Right: EMS/SAC console output saved during a Windows boot
 Wrong: bcdedit /debug on, then attach KD over COM1 to watch Windows boot
 ```

@@ -11,10 +11,10 @@ Do not attach WinDbg, KD, x64dbg, GDB, or another debugger to the Windows 10 gue
 
 The only way in to the Windows 10 guest is our own probe and the captures in [windows-capture.mdc](windows-capture.mdc): names this tree already has, called through `GetProcAddress` or the syscall interface, with status and return values logged.
 
-Debugging the VerOS NT boot with GDB through QEMU is allowed. Load only symbols this tree built.
+Debugging the Tavera OS boot with GDB through QEMU is allowed. Load only symbols this tree built.
 
 ```text
-Right: gdb on the VerOS NT boot with symbols from build-amd64/
+Right: gdb on the Tavera OS boot with symbols from build-amd64/
 Right: DIFF NtQueryInformationProcess 0xC0000004 from the probe log
 Wrong: dt nt!_EPROCESS in WinDbg against the Windows guest
 Wrong: symchk or symstore pulling ntoskrnl.pdb
