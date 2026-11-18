@@ -47,4 +47,4 @@ If Windows refuses to mount or marks the volume dirty / chkdsk-dirty, fix the fo
 
 - Sector dumps or `$LogFile` record decode in this acceptance spec.
 - Requiring WHPX; capture boots stay on TCG per project rules when a Windows disk is involved.
-- Using the installed `virtual-machines/veros-ntfs/disk.qcow2` as the format target for this check (Milestone 45 text keeps that disk out of the fresh-volume path).
+- Using the installed `virtual-machines/tavera-ntfs/disk.qcow2` as the format target for this check (Milestone 45 text keeps that disk out of the fresh-volume path).

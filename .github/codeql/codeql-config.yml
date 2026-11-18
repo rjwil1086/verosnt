@@ -1,5 +1,5 @@
 # SPDX-License-Identifier: GPL-2.0-or-later
-name: "VerOS NT CodeQL"
+name: "Tavera OS CodeQL"
 
 # Upstream tests, sample apps, and vendored libraries. Alerts there are not
 # this fork's work, and the format query misreads the MSVC I64 print prefix.

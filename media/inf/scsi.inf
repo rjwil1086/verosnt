@@ -4,11 +4,11 @@
 ;
 [Version]
 Signature  = "$Windows NT$"
-;Signature  = "$VerOS NT$"
+;Signature  = "$Tavera$"
 LayoutFile = layout.inf
 Class      = SCSIAdapter
 ClassGUID  = {4D36E97B-E325-11CE-BFC1-08002BE10318}
-Provider   = %VerOS NT%
+Provider   = %Tavera OS%
 DriverVer  = 11/02/2007,1.1
 
 [ClassInstall32.NT]
@@ -82,19 +82,19 @@ GEN_SCSIADAPTER.DeviceDesc = "SCSI/RAID Host Controller"
 PCI\VEN_104B&CC_0100.DeviceDesc = "BusLogic SCSI Controller"
 
 [Strings.0404]
-SCSIClassName = "SCSI / RAID 控制器"
+SCSIClassName = "SCSI / RAID ?????????"
 
-GenericMfg = "(標準 SCSI / RAID 控制器)"
-GEN_SCSIADAPTER.DeviceDesc = "SCSI/RAID 主機控制器"
+GenericMfg = "(?????? SCSI / RAID ?????????)"
+GEN_SCSIADAPTER.DeviceDesc = "SCSI/RAID ???????????????"
 
-PCI\VEN_104B&CC_0100.DeviceDesc = "BusLogic SCSI 控制器"
+PCI\VEN_104B&CC_0100.DeviceDesc = "BusLogic SCSI ?????????"
 
 [Strings.0405]
-SCSIClassName = "SCSI a RAID řadiče"
+SCSIClassName = "SCSI a RAID ??adi??e"
 
-GenericMfg = "(Standardní SCSI a RAID řadiče)"
+GenericMfg = "(Standardn?? SCSI a RAID ??adi??e)"
 
-PCI\VEN_104B&CC_0100.DeviceDesc = "BusLogic SCSI řadič"
+PCI\VEN_104B&CC_0100.DeviceDesc = "BusLogic SCSI ??adi??"
 
 [Strings.0407]
 SCSIClassName = "SCSI und RAID Controller"
@@ -104,22 +104,22 @@ GenericMfg = "(Standard SCSI und RAID Controller)"
 [Strings.0a]
 SCSIClassName = "Controladores SCSI y RAID"
 
-GenericMfg = "(Controladores estándar SCSI y RAID)"
-GEN_SCSIADAPTER.DeviceDesc = "Controlador Huésped de SCSI/RAID"
+GenericMfg = "(Controladores est??ndar SCSI y RAID)"
+GEN_SCSIADAPTER.DeviceDesc = "Controlador Hu??sped de SCSI/RAID"
 
 PCI\VEN_104B&CC_0100.DeviceDesc = "Controlador SCSI BusLogic"
 
 [Strings.040C]
-SCSIClassName = "Contrôleurs SCSI et RAID"
+SCSIClassName = "Contr??leurs SCSI et RAID"
 
-GenericMfg = "(Contrôleur standard SCSI et RAID)"
+GenericMfg = "(Contr??leur standard SCSI et RAID)"
 
 [Strings.0411]
-SCSIClassName = "SCSIおよびRAID コントローラ"
+SCSIClassName = "SCSI?????????RAID ??????????????????"
 
-GenericMfg = "(スタンダード SCSI および RAID コントローラ)"
+GenericMfg = "(?????????????????? SCSI ????????? RAID ??????????????????)"
 
-PCI\VEN_104B&CC_0100.DeviceDesc = "BusLogic SCSI コントローラ"
+PCI\VEN_104B&CC_0100.DeviceDesc = "BusLogic SCSI ??????????????????"
 
 [Strings.0415]
 SCSIClassName = "Kontrolery SCSI i RAID"
@@ -131,31 +131,31 @@ PCI\VEN_104B&CC_0100.DeviceDesc = "Kontroler SCSI BusLogic"
 [Strings.0416]
 SCSIClassName = "Controladores SCSI e RAID"
 
-GenericMfg = "(Controladores SCSI e RAID padrão)"
+GenericMfg = "(Controladores SCSI e RAID padr??o)"
 
 PCI\VEN_104B&CC_0100.DeviceDesc = "Controlador SCSI BusLogic"
 
 [Strings.0418]
-SCSIClassName = "Dispozitive de control SCSI și RAID"
+SCSIClassName = "Dispozitive de control SCSI ??i RAID"
 
-GenericMfg = "(dispozitiv standard de control SCSI și RAID)"
+GenericMfg = "(dispozitiv standard de control SCSI ??i RAID)"
 
 PCI\VEN_104B&CC_0100.DeviceDesc = "Dispozitiv de control SCSI BusLogic"
 
 [Strings.0419]
-SCSIClassName = "SCSI и RAID контроллеры"
+SCSIClassName = "SCSI ?? RAID ??????????????????????"
 
-GenericMfg = "(Стандартные SCSI и RAID контроллеры)"
-GEN_SCSIADAPTER.DeviceDesc = "SCSI/RAID хост-контроллер"
+GenericMfg = "(?????????????????????? SCSI ?? RAID ??????????????????????)"
+GEN_SCSIADAPTER.DeviceDesc = "SCSI/RAID ????????-????????????????????"
 
-PCI\VEN_104B&CC_0100.DeviceDesc = "Контроллер BusLogic SCSI"
+PCI\VEN_104B&CC_0100.DeviceDesc = "???????????????????? BusLogic SCSI"
 
 [Strings.041B]
-SCSIClassName = "SCSI a RAID radiče"
+SCSIClassName = "SCSI a RAID radi??e"
 
-GenericMfg = "(Štandardné SCSI a RAID radiče)"
+GenericMfg = "(??tandardn?? SCSI a RAID radi??e)"
 
-PCI\VEN_104B&CC_0100.DeviceDesc = "BusLogic SCSI radič"
+PCI\VEN_104B&CC_0100.DeviceDesc = "BusLogic SCSI radi??"
 
 [Strings.041f]
 SCSIClassName = "SCSI ve RAID Denetleyicileri"
@@ -166,11 +166,11 @@ GEN_SCSIADAPTER.DeviceDesc = "SCSI/RAID Ana Denetleyicisi"
 PCI\VEN_104B&CC_0100.DeviceDesc = "BusLogic SCSI Denetleyicisi"
 
 [Strings.0422]
-SCSIClassName = "SCSI і RAID контроллери"
+SCSIClassName = "SCSI ?? RAID ??????????????????????"
 
-GenericMfg = "(Стандартні SCSI і RAID контроллери)"
+GenericMfg = "(???????????????????? SCSI ?? RAID ??????????????????????)"
 
-PCI\VEN_104B&CC_0100.DeviceDesc = "Контроллер BusLogic SCSI"
+PCI\VEN_104B&CC_0100.DeviceDesc = "???????????????????? BusLogic SCSI"
 
 [Strings.0427]
 SCSIClassName = "SCSI ir RAID valdikliai"
@@ -180,22 +180,22 @@ GenericMfg = "(Standartiniai SCSI ir RAID valdikliai)"
 PCI\VEN_104B&CC_0100.DeviceDesc = "BusLogic SCSI valdiklis"
 
 [Strings.0804]
-SCSIClassName = "SCSI 和 RAID 控制器"
+SCSIClassName = "SCSI ??? RAID ?????????"
 
-GenericMfg = "(标准 SCSI / RAID 控制器)"
-PCI\VEN_104B&CC_0100.DeviceDesc = "BusLogic SCSI 控制器"
+GenericMfg = "(?????? SCSI / RAID ?????????)"
+PCI\VEN_104B&CC_0100.DeviceDesc = "BusLogic SCSI ?????????"
 
 [Strings.0816]
 SCSIClassName = "Controladores SCSI e RAID"
 
-GenericMfg = "(Controladores SCSI e RAID padrão)"
+GenericMfg = "(Controladores SCSI e RAID padr??o)"
 
 PCI\VEN_104B&CC_0100.DeviceDesc = "Controlador SCSI BusLogic"
 
 [Strings.0C04]
-SCSIClassName = "SCSI / RAID 控制器"
+SCSIClassName = "SCSI / RAID ?????????"
 
-GenericMfg = "(標準 SCSI / RAID 控制器)"
-GEN_SCSIADAPTER.DeviceDesc = "SCSI/RAID 主機控制器"
+GenericMfg = "(?????? SCSI / RAID ?????????)"
+GEN_SCSIADAPTER.DeviceDesc = "SCSI/RAID ???????????????"
 
-PCI\VEN_104B&CC_0100.DeviceDesc = "BusLogic SCSI 控制器"
+PCI\VEN_104B&CC_0100.DeviceDesc = "BusLogic SCSI ?????????"

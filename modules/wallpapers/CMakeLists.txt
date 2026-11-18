@@ -7,9 +7,9 @@ file(GLOB WALLPAPER_FILES
 )
 
 list(REMOVE_ITEM WALLPAPER_FILES "${CMAKE_CURRENT_SOURCE_DIR}/CMakeLists.txt")
-list(REMOVE_ITEM WALLPAPER_FILES "${CMAKE_CURRENT_SOURCE_DIR}/veros-nt.bmp")
-list(REMOVE_ITEM WALLPAPER_FILES "${CMAKE_CURRENT_SOURCE_DIR}/veros-nt.txt")
+list(REMOVE_ITEM WALLPAPER_FILES "${CMAKE_CURRENT_SOURCE_DIR}/tavera.bmp")
+list(REMOVE_ITEM WALLPAPER_FILES "${CMAKE_CURRENT_SOURCE_DIR}/tavera.txt")
 
 foreach(f ${WALLPAPER_FILES})
-    add_cd_file(FILE "${f}" DESTINATION VerOS/Web/Wallpaper FOR all)
+    add_cd_file(FILE "${f}" DESTINATION "Tavera/Web/Wallpaper" FOR all)
 endforeach()

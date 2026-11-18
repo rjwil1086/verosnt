@@ -38,7 +38,7 @@ __crt_MessageBoxA (
     /* Display a message box */
     iResult = pMessageBoxA(NULL,
                            pszText,
-                           "VerOS NT C Runtime Library",
+                           "Tavera OS C Runtime Library",
                            uType);
 
     FreeLibrary(hmodUser32);

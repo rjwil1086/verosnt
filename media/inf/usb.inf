@@ -2,11 +2,11 @@
 
 [Version]
 Signature  = "$Windows NT$"
-;Signature  = "$VerOS NT$"
+;Signature  = "$Tavera$"
 LayoutFile = layout.inf
 Class      = USB
 ClassGUID  = {36FC9E60-C465-11CF-8056-444553540000}
-Provider   = %VerOS NT%
+Provider   = %Tavera OS%
 DriverVer  = 10/02/2005,1.00.0.0
 
 [DestinationDirs]
@@ -67,43 +67,43 @@ USB\COMPOSITE.DeviceDesc = "USB Composite Device"
 USB\CLASS_09.DeviceDesc = "Generic USB Hub"
 
 [Strings.0404]
-GenericMfg = "(標準 USB 集線器)"
-USB\COMPOSITE.DeviceDesc = "USB 複合裝置"
-USB\CLASS_09.DeviceDesc = "標準 USB 集線器"
+GenericMfg = "(?????? USB ?????????)"
+USB\COMPOSITE.DeviceDesc = "USB ????????????"
+USB\CLASS_09.DeviceDesc = "?????? USB ?????????"
 
 [Strings.0405]
-GenericMfg = "(Obecné USB rozbočovače)"
-USB\COMPOSITE.DeviceDesc = "Složené zařízení USB"
-USB\CLASS_09.DeviceDesc = "Obecný USB rozbočovač"
+GenericMfg = "(Obecn?? USB rozbo??ova??e)"
+USB\COMPOSITE.DeviceDesc = "Slo??en?? za????zen?? USB"
+USB\CLASS_09.DeviceDesc = "Obecn?? USB rozbo??ova??"
 
 [Strings.0407]
 GenericMfg = "(Generischer USB-Hub)"
 USB\CLASS_09.DeviceDesc = "Generischer USB-Hub"
 
 [Strings.0C0A]
-GenericMfg = "(Concentrador raíz USB estándar)"
-USB\CLASS_09.DeviceDesc = "Concentrador raíz USB estándar"
+GenericMfg = "(Concentrador ra??z USB est??ndar)"
+USB\CLASS_09.DeviceDesc = "Concentrador ra??z USB est??ndar"
 
 [Strings.0a]
-GenericMfg = "(Concentrador raíz USB estándar)"
-USB\CLASS_09.DeviceDesc = "Concentrador raíz USB estándar"
+GenericMfg = "(Concentrador ra??z USB est??ndar)"
+USB\CLASS_09.DeviceDesc = "Concentrador ra??z USB est??ndar"
 
 [Strings.040C]
-GenericMfg = "(Concentrateur USB générique)"
-USB\CLASS_09.DeviceDesc = "Concentrateur USB générique"
+GenericMfg = "(Concentrateur USB g??n??rique)"
+USB\CLASS_09.DeviceDesc = "Concentrateur USB g??n??rique"
 
 [Strings.0411]
-GenericMfg = "(標準 USBハブ)"
-USB\CLASS_09.DeviceDesc = "標準 USBハブ"
+GenericMfg = "(?????? USB??????)"
+USB\CLASS_09.DeviceDesc = "?????? USB??????"
 
 [Strings.0415]
 GenericMfg = "(Standardowy koncentrator USB)"
-USB\COMPOSITE.DeviceDesc = "Urządzenie kompozytowe USB"
+USB\COMPOSITE.DeviceDesc = "Urz??dzenie kompozytowe USB"
 USB\CLASS_09.DeviceDesc = "Standardowy koncentrator USB"
 
 [Strings.0416]
-GenericMfg = "(Hub USB padrão)"
-USB\CLASS_09.DeviceDesc = "Hub USB padrão"
+GenericMfg = "(Hub USB padr??o)"
+USB\CLASS_09.DeviceDesc = "Hub USB padr??o"
 
 [Strings.0418]
 GenericMfg = "(cuplatori generici USB)"
@@ -111,38 +111,38 @@ USB\COMPOSITE.DeviceDesc = "Dispozitiv USB compus"
 USB\CLASS_09.DeviceDesc = "Cuplator USB generic"
 
 [Strings.0419]
-GenericMfg = "(Стандартный USB хаб)"
-USB\COMPOSITE.DeviceDesc = "USB составное устройство"
-USB\CLASS_09.DeviceDesc = "Стандартный USB хаб"
+GenericMfg = "(?????????????????????? USB ??????)"
+USB\COMPOSITE.DeviceDesc = "USB ?????????????????? ????????????????????"
+USB\CLASS_09.DeviceDesc = "?????????????????????? USB ??????"
 
 [Strings.041B]
-GenericMfg = "(Generický rozbočovač USB)"
-USB\CLASS_09.DeviceDesc = "Generický rozbočovač USB"
+GenericMfg = "(Generick?? rozbo??ova?? USB)"
+USB\CLASS_09.DeviceDesc = "Generick?? rozbo??ova?? USB"
 
 [Strings.041f]
-GenericMfg = "(Genel USB Göbekleri)"
-USB\COMPOSITE.DeviceDesc = "USB Bileşik Aygıt"
-USB\CLASS_09.DeviceDesc = "Genel USB Göbeği"
+GenericMfg = "(Genel USB G??bekleri)"
+USB\COMPOSITE.DeviceDesc = "USB Bile??ik Ayg??t"
+USB\CLASS_09.DeviceDesc = "Genel USB G??be??i"
 
 [Strings.0422]
-GenericMfg = "(Стандартні USB-хаби)"
-USB\COMPOSITE.DeviceDesc = "Композитний пристрій USB"
-USB\CLASS_09.DeviceDesc = "Стандартний USB-хаб"
+GenericMfg = "(???????????????????? USB-????????)"
+USB\COMPOSITE.DeviceDesc = "?????????????????????? ???????????????? USB"
+USB\CLASS_09.DeviceDesc = "?????????????????????? USB-??????"
 
 [Strings.0427]
-GenericMfg = "(Standartinis USB šakotuvas)"
-USB\CLASS_09.DeviceDesc = "Standartinis USB šakotuvas"
+GenericMfg = "(Standartinis USB ??akotuvas)"
+USB\CLASS_09.DeviceDesc = "Standartinis USB ??akotuvas"
 
 [Strings.0804]
-GenericMfg = "(通用 USB 集线器)"
-USB\COMPOSITE.DeviceDesc = "USB 聚合设备"
-USB\CLASS_09.DeviceDesc = "通用 USB 集线器"
+GenericMfg = "(?????? USB ?????????)"
+USB\COMPOSITE.DeviceDesc = "USB ????????????"
+USB\CLASS_09.DeviceDesc = "?????? USB ?????????"
 
 [Strings.0816]
-GenericMfg = "(Hub USB padrão)"
-USB\CLASS_09.DeviceDesc = "Hub USB padrão"
+GenericMfg = "(Hub USB padr??o)"
+USB\CLASS_09.DeviceDesc = "Hub USB padr??o"
 
 [Strings.0C04]
-GenericMfg = "(標準 USB 集線器)"
-USB\COMPOSITE.DeviceDesc = "USB 複合裝置"
-USB\CLASS_09.DeviceDesc = "標準 USB 集線器"
+GenericMfg = "(?????? USB ?????????)"
+USB\COMPOSITE.DeviceDesc = "USB ????????????"
+USB\CLASS_09.DeviceDesc = "?????? USB ?????????"

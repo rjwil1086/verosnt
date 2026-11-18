@@ -1,5 +1,5 @@
 /*
- * PROJECT:     VerOS NT Kernel
+ * PROJECT:     Tavera OS Kernel
  * LICENSE:     GNU General Public License, version 2 or later (GPL-2.0-or-later)
  * FILE:        ntoskrnl/mm/ARM3/procsup.c
  * PURPOSE:     ARM Memory Manager Process Related Management

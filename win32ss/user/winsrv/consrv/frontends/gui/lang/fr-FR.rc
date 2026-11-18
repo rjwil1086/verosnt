@@ -20,7 +20,7 @@ BEGIN
     IDS_SCROLLUP "Défiler en haut"
     IDS_SCROLLDOWN "Défiler en bas"
 */
-    IDS_TERMINAL_TITLE "Console VerOS NT"
+    IDS_TERMINAL_TITLE "Console Tavera OS"
 END
 
 STRINGTABLE

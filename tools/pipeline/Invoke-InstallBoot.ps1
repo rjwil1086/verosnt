@@ -1,4 +1,4 @@
-# PROJECT:     VerOS NT
+# PROJECT:     Tavera OS
 # LICENSE:     GNU General Public License, version 2 or later (GPL-2.0-or-later)
 # FILE:        tools/pipeline/Invoke-InstallBoot.ps1
 # PURPOSE:     Boot a live, installed, or application image
@@ -77,7 +77,7 @@ $serialFwd = ($serial -replace '\\', '/')
 $bios = Join-Path (Split-Path $Qemu -Parent) "share"
 $diskArg = "-drive `"file=$Disk,format=qcow2,if=ide,index=0,media=disk`""
 
-$argLine = "-accel tcg -L `"$bios`" -m 8192 -smp 4 -no-reboot -display gtk -name `"VerOS NT`" -serial `"file:$serialFwd`" $diskArg"
+$argLine = "-accel tcg -L `"$bios`" -m 8192 -smp 4 -no-reboot -display gtk -name `"Tavera OS`" -serial `"file:$serialFwd`" $diskArg"
 switch ($Mode) {
     "Live" {
         $argLine += " -cdrom `"$Iso`" -boot d"

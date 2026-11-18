@@ -1,12 +1,12 @@
 /*
- * PROJECT:     VerOS NT Kernel
+ * PROJECT:     Tavera OS Kernel
  * LICENSE:     GNU General Public License, version 2 or later (GPL-2.0-or-later)
  * FILE:        drivers/network/tcpip/include/lwip/lwipopts.h
  * PURPOSE:     Product lwIP options for the TCP/IP driver
  * COPYRIGHT:   Copyright 2026 Ryan Wilson <ryan@taveraos.com>
  * PROGRAMMERS: Ryan Wilson <ryan@taveraos.com>
  *
- * IPv6 enablement cites RFC 4291 / RFC 4861 for the companion VerOS IP
+ * IPv6 enablement cites RFC 4291 / RFC 4861 for the companion Tavera OS IP
  * path (https://www.rfc-editor.org/rfc/rfc4291,
  * https://www.rfc-editor.org/rfc/rfc4861). Zones stay off in lwIP
  * (RFC 4007, https://www.rfc-editor.org/rfc/rfc4007).
@@ -49,7 +49,7 @@
 
 /*
  * Dual-stack: keep IPv4; enable IPv6 core for TCP over lwIP.
- * Link-local and NDP for ICMP/raw stay in the VerOS IP path (RFC 4291 /
+ * Link-local and NDP for ICMP/raw stay in the Tavera OS IP path (RFC 4291 /
  * RFC 4861). Disable lwIP autoconfig/RS/MLD/DHCPv6 so addresses and
  * neighbor resolution are not duplicated.
  */
@@ -61,7 +61,7 @@
 #define LWIP_IPV6_DUP_DETECT_ATTEMPTS   0
 #define LWIP_IPV6_DHCP6                 0
 #define LWIP_ND6_QUEUEING               0
-/* Zones stay with the VerOS address (RFC 4007,
+/* Zones stay with the Tavera OS address (RFC 4007,
  * https://www.rfc-editor.org/rfc/rfc4007). Link-local TCP binds the
  * 16-byte address the netif already holds. */
 #define LWIP_IPV6_SCOPES                0

@@ -4,5 +4,5 @@ STRINGTABLE
 BEGIN
     IDS_DESCRIPTION "Cylinders Fractal"
     IDS_TITLE       "Über"
-    IDS_TEXT        "Cylinders Fractal von unC0Rr.\nSpeziell für VerOS NT."
+    IDS_TEXT        "Cylinders Fractal von unC0Rr.\nSpeziell für Tavera OS."
 END

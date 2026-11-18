@@ -170,10 +170,10 @@ END
 
 STRINGTABLE
 BEGIN
-    IDS_APPTITLE "VerOS NT アプリ マネージャ"
+    IDS_APPTITLE "Tavera OS アプリ マネージャ"
     IDS_APP_AUTHORS "Copyright 2009 Dmitry Chapyshev"
-    IDS_WELCOME_TITLE "VerOS NT アプリ マネージャへようこそ!"
-    IDS_WELCOME_TEXT "左側からカテゴリを選択し、インストールまたはアンインストールするアプリを選んでください。\nVerOS NT ウェブ サイト: "
+    IDS_WELCOME_TITLE "Tavera OS アプリ マネージャへようこそ!"
+    IDS_WELCOME_TEXT "左側からカテゴリを選択し、インストールまたはアンインストールするアプリを選んでください。\nTavera OS ウェブ サイト: "
     IDS_WELCOME_URL "https://reactos.org"
 
     IDS_APPWIZ_TITLE "プログラムの追加と削除"

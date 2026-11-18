@@ -662,7 +662,7 @@ CDeviceManager::OnCommand(_In_ WPARAM wParam,
             CAtlStringW szAppAuthors;
 
             if (!szAppName.LoadStringW(g_hThisInstance, IDS_APPNAME))
-                szAppName = L"VerOS NT Device Manager";
+                szAppName = L"Tavera OS Device Manager";
             if (!szAppAuthors.LoadStringW(g_hThisInstance, IDS_APP_AUTHORS))
                 szAppAuthors = L"";
             ShellAboutW(m_hMainWnd, szAppName, szAppAuthors,

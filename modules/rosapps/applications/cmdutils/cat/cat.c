@@ -28,7 +28,7 @@ void help(void)
 {
     fprintf(stdout,
             "\n"
-            "VerOS NT File Concatenation Tool\n"
+            "Tavera OS File Concatenation Tool\n"
             "\n"
             "Usage: cat [options] [file [...]]\n"
             "options - Currently ignored\n");

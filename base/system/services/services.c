@@ -127,7 +127,7 @@ CheckForLiveCD(VOID)
 
     if (dwSetupInProgress == 1)
     {
-        DPRINT1("VerOS NT Setup currently in progress!\n");
+        DPRINT1("Tavera OS Setup currently in progress!\n");
         ScmSetupInProgress = TRUE;
     }
 

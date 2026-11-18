@@ -367,7 +367,7 @@ GetAdaptersAddresses(
             break;
         case AF_INET6:
             /* One day maybe... */
-            FIXME("IPv6 is not supported in VerOS NT!\n");
+            FIXME("IPv6 is not supported in Tavera OS!\n");
             /* We got nothing to say in this case */
             return ERROR_NO_DATA;
             break;

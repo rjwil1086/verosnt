@@ -1,10 +1,10 @@
 [Version]
 Signature = "$WINDOWS NT$"
-;Signature  = "$VerOS NT$"
+;Signature  = "$Tavera$"
 LayoutFile = layout.inf
 Class     = Image
 ClassGuid = {6bdd1fc6-810f-11d0-bec7-08002be2092f}
-Provider  = %VerOS NT%
+Provider  = %Tavera OS%
 DriverVer=02/28/2010,1.00
 
 [DestinationDirs]
@@ -31,7 +31,7 @@ ReactOS = "ReactOS Project"
 ImageClassName = "Image"
 
 [Strings.0404]
-ImageClassName = "圖像"
+ImageClassName = "??????"
 
 [Strings.0a]
 ImageClassName = "Imagen"
@@ -43,7 +43,7 @@ ImageClassName = "Obraz"
 ImageClassName = "Imagine"
 
 [Strings.0419]
-ImageClassName = "Образ"
+ImageClassName = "??????????"
 
 [Strings.041f]
 ImageClassName = "Resim"
@@ -52,4 +52,4 @@ ImageClassName = "Resim"
 ImageClassName = "Imagem"
 
 [Strings.0c04]
-ImageClassName = "圖像"
+ImageClassName = "??????"

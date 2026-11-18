@@ -1,5 +1,5 @@
 /*
- * PROJECT:     VerOS NT Kernel
+ * PROJECT:     Tavera OS Kernel
  * LICENSE:     GNU General Public License, version 2 or later (GPL-2.0-or-later)
  * FILE:        boot/freeldr/freeldr/ntldr/arch/amd64/winldr.c
  * PURPOSE:     Memory related routines

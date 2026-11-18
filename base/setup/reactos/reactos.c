@@ -1216,7 +1216,7 @@ SummaryDlgProc(
                     else
                     {
                         StringCchCopyW(CurrentItemText, ARRAYSIZE(CurrentItemText),
-                                       L"New VerOS NT installation");
+                                       L"New Tavera OS installation");
                     }
                     SetDlgItemTextW(hwndDlg, IDC_INSTALLTYPE, CurrentItemText);
 
