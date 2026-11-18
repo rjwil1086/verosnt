@@ -20,6 +20,6 @@ Raw-format probing reads the guest's disk image or files only. It never reads Wi
 
 ```text
 Right: probe session diffs sectors after CreateFileW, writes tavera/specs/ntfs-mft-record.md; new session implements from it
-Right: one session calls NtQueryVolumeInformationFile on Windows and VerOS and matches the status
+Right: one session calls NtQueryVolumeInformationFile on Windows and Tavera OS and matches the status
 Wrong: one session reads hex dumps of the guest disk and writes the driver struct in the same chat
 ```
