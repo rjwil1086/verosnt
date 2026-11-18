@@ -3,6 +3,7 @@ output-*
 /build/
 /build-amd64/
 /output/
+__pycache__/
 tools/qemu-harness/abi.dll
 modules/optional
 modules/bootcd_extras
