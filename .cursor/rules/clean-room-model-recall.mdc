@@ -9,7 +9,7 @@ What you remember about Windows internals is not a source. Training data can inc
 
 Every Windows behavior, name, status, size, offset, or layout in a patch needs a source named under [clean-room.mdc](clean-room.mdc): a public document's title and URL, an in-tree path, or a guest log and its marker. Find that source before writing the code. Do not write the code first and look for a citation afterward.
 
-When you think you know an answer but cannot cite one, say so and stop. Propose a probe or a Learn search instead. Do not fill a struct, an enum, a flag set, or a function body from memory, and do not guess the order of fields.
+When you think you know an answer but cannot cite one, say so and stop. If you are implementing from specs, add an item to `tavera/specs/<component>/open-items.md` per [tavera-specs-open-items.mdc](tavera-specs-open-items.mdc) instead of researching Windows yourself. If you are the spec agent, use an approved Learn page or a new versioned probe, then update the spec. Do not fill a struct, an enum, a flag set, or a function body from memory, and do not guess the order of fields.
 
 Do not describe Windows internals in chat, a comment, or a commit body unless the source is named in the same turn.
 
