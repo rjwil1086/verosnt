@@ -1,5 +1,5 @@
 /*
- * PROJECT:     VerOS NT Kernel
+ * PROJECT:     Tavera OS Kernel
  * LICENSE:     GNU General Public License, version 2 or later (GPL-2.0-or-later)
  * FILE:        boot/freeldr/freeldr/custom.c
  * PURPOSE:     FreeLoader
@@ -76,10 +76,10 @@ static const PCSTR ARCPathPrompt =
     "multi(0)disk(0)fdisk(0)";
 
 static const PCSTR ReactOSSystemPathPrompt =
-    "Enter the path to your VerOS NT system directory.\n"
+    "Enter the path to your Tavera OS system directory.\n"
     "\n"
     "Examples:\n"
-    "\\VerOS\n"
+    "\\Tavera OS\n"
     "\\ROS";
 static const PCSTR ReactOSOptionsPrompt =
     "Enter the load options you want passed to the kernel.\n"
@@ -90,7 +90,7 @@ static const PCSTR ReactOSOptionsPrompt =
     "/BASEVIDEO /MAXMEM=64\n"
     "/KERNEL=NTKRNLMP.EXE /HAL=HALMPS.DLL";
 static const PCSTR ReactOSSetupOptionsPrompt =
-    "Enter additional load options you want passed to VerOS NT Setup.\n"
+    "Enter additional load options you want passed to Tavera OS Setup.\n"
     "These options will supplement those obtained from the TXTSETUP.SIF\n"
     "file, unless you also specify the /SIFOPTIONSOVERRIDE option switch.\n"
     "\n"
@@ -111,8 +111,8 @@ VOID OptionMenuCustomBoot(VOID)
         "Boot Sector (Disk/Partition/File)",
         "Linux",
 #endif
-        "VerOS NT",
-        "VerOS NT Setup"
+        "Tavera OS",
+        "Tavera OS Setup"
     };
     static ULONG MenuActionsMap[RTL_NUMBER_OF(CustomBootMenuList)] = {
 #if defined(_M_IX86) || defined(_M_AMD64)
@@ -532,7 +532,7 @@ EditCustomBootReactOS(
     /* Generate a unique section name */
     TimeInfo = ArcGetTime();
     RtlStringCbPrintfA(SectionName, sizeof(SectionName),
-                       "CustomVerOS%u%u%u%u%u%u",
+                       "CustomTavera%u%u%u%u%u%u",
                        TimeInfo->Year, TimeInfo->Day, TimeInfo->Month,
                        TimeInfo->Hour, TimeInfo->Minute, TimeInfo->Second);
 
@@ -541,7 +541,7 @@ EditCustomBootReactOS(
         return;
 
     /* Add the BootType */
-    if (!IniAddSettingValueToSection(SectionId, "BootType", IsSetup ? "VerOSSetup" : "Windows2003"))
+    if (!IniAddSettingValueToSection(SectionId, "BootType", IsSetup ? "Tavera" : "Windows2003"))
         return;
 
     /* Construct the ReactOS ARC system path */

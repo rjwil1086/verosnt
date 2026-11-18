@@ -1,6 +1,8 @@
 SPDX-License-Identifier: GPL-2.0-or-later
 
-VerOS NT Logo.svg is the vector artwork for the VerOS NT mark. The
-wordmark is VerOS NT and the tagline is True NT. Open Core. VerOS NT
-Logo.jpg is a render of that file. The same drawing is the desktop
-wallpaper and the live CD logo.
+tavera-mark.png is the T mark. tavera-wordmark.png is that mark with
+the Tavera word. tavera-wordmark-tm.png adds the trademark.
+tavera-lockup.png adds the tagline A Clean Slate. The trademark sits
+on Tavera. The letterforms are Exo 2, drawn into the pictures. The
+font file is not in this tree. The lockup is the desktop wallpaper
+and the live CD logo.

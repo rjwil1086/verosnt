@@ -10,7 +10,7 @@
  * EtwRegister / EtwUnregister / EtwWrite: sdk/include/xdk/wmifuncs.h;
  * https://learn.microsoft.com/en-us/windows-hardware/drivers/ddi/wdm/nf-wdm-etwwrite
  * output/e1000e-20261118T033107Z.log: Missing API 'EtwUnregister'
- * PE import list virtual-machines/veros-ntfs/e1q62x64-imports.txt: EtwWrite
+ * PE import list virtual-machines/tavera-ntfs/e1q62x64-imports.txt: EtwWrite
  */
 
 /* INCLUDES *****************************************************************/
@@ -489,7 +489,7 @@ EtwUnregister(IN REGHANDLE RegHandle)
  * Declared in sdk/include/xdk/wmifuncs.h. Learn: STATUS_SUCCESS when the
  * provider is not enabled for any session (events not logged):
  * https://learn.microsoft.com/en-us/windows-hardware/drivers/ddi/wdm/nf-wdm-etwwrite
- * PE import list virtual-machines/veros-ntfs/e1q62x64-imports.txt Symbol: EtwWrite
+ * PE import list virtual-machines/tavera-ntfs/e1q62x64-imports.txt Symbol: EtwWrite
  * (batched with IoGetAffinityInterrupt after output/e1000e-20261118T034236Z.log).
  */
 NTSTATUS

@@ -7,7 +7,7 @@ alwaysApply: true
 
 SPDX-License-Identifier: GPL-2.0-or-later
 
-A spec lives at `tavera/specs/<component>.md`. It is written for an implementer who will not open the sources. Describe observable behavior. Leave out internal algorithms, private data structures, and control flow.
+Spec files for one component live in the folder `tavera/specs/<component>/`. `<component>` is the module name, such as `ntfs` or `amd64-physical-memory`. A component may have more than one spec file in that folder. `open-items.md` in the same folder is the handoff queue in [tavera-specs-open-items.mdc](tavera-specs-open-items.mdc). Each spec file is written for an implementer who will not open the sources. Describe observable behavior. Leave out internal algorithms, private data structures, and control flow.
 
 The session that writes a spec does not implement that component. Raw-format specs also follow [clean-room-probe-separation.mdc](clean-room-probe-separation.mdc).
 
@@ -15,7 +15,7 @@ Sources are only those [clean-room.mdc](clean-room.mdc) and [clean-room-third-pa
 
 Write every interface in your own words. Do not paste wording or sample code from a source.
 
-Keep the file comment block the specs in `tavera/specs/` already use (`PROJECT`, `LICENSE`, `FILE`, `PURPOSE`, `COPYRIGHT`, `PROGRAMMERS`). Then these sections, in this order. A new spec has all ten. An edit that changes behavior fills any missing section that edit depends on.
+Keep the file comment block the specs in `tavera/specs/` already use (`PROJECT`, `LICENSE`, `FILE`, `PURPOSE`, `COPYRIGHT`, `PROGRAMMERS`). `FILE` is the path from the source root, including the component folder. Then these sections, in this order. A new spec has all ten. An edit that changes behavior fills any missing section that edit depends on.
 
 1. **Header and provenance.** Component name, version, author, date, and a statement that only allowed sources were used.
 2. **Sources.** Each public document, in-tree header, or test, with the link and the date it was read. Microsoft Learn pages and public specifications belong here. Each Windows observation names the build, such as Windows 10 22H2 build 19045. Every later claim points at one of these entries.

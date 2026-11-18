@@ -74,7 +74,7 @@ END
 
 STRINGTABLE
 {
-STID_WINE_HELP, 	"העזרה של VerOS NT"
+STID_WINE_HELP, 	"העזרה של Tavera OS"
 STID_WHERROR, 		"שגיאה"
 STID_WARNING,  		"אזהרה"
 STID_INFO,  		"מידע"

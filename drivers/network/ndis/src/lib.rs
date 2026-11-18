@@ -1,5 +1,5 @@
 /*
- * PROJECT:     VerOS NT Kernel
+ * PROJECT:     Tavera OS Kernel
  * LICENSE:     GNU General Public License, version 2 or later (GPL-2.0-or-later)
  * FILE:        drivers/network/ndis/src/lib.rs
  * PURPOSE:     NDIS 6.84 version and routine lookup
@@ -158,7 +158,7 @@
  * DevicePropertyAddress are in that same header.
  * output/e1000e-20261118T035022Z.log: Missing API 'NdisReleaseReadWriteLock'
  * while loading e1q62x64.sys (status c0000262). PE import list
- * virtual-machines/veros-ntfs/e1q62x64-imports.txt also names
+ * virtual-machines/tavera-ntfs/e1q62x64-imports.txt also names
  * NdisInitializeReadWriteLock, NdisAcquireReadWriteLock,
  * NdisMSetBusData, NdisMSetPeriodicTimer, NdisMResetComplete, and
  * NdisMQueryAdapterInstanceName. Classic RW lock types are in

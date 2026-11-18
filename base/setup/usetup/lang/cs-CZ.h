@@ -14,14 +14,14 @@ static MUI_ENTRY csCZSetupInitPageEntries[] =
     {
         4,
         3,
-        " Instalace VerOS NT " KERNEL_VERSION_STR " ",
+        " Instalace Tavera OS " KERNEL_VERSION_STR " ",
         TEXT_STYLE_UNDERLINE,
         TEXT_ID_STATIC
     },
     {
         0,
         20,
-        "Please wait while the VerOS NT Setup initializes itself",
+        "Please wait while the Tavera OS Setup initializes itself",
         TEXT_STYLE_NORMAL | TEXT_ALIGN_CENTER,
         TEXT_ID_STATIC
     },
@@ -52,7 +52,7 @@ static MUI_ENTRY csCZLanguagePageEntries[] =
     {
         4,
         3,
-        " Instalace VerOS NT " KERNEL_VERSION_STR " ",
+        " Instalace Tavera OS " KERNEL_VERSION_STR " ",
         TEXT_STYLE_UNDERLINE,
         TEXT_ID_STATIC
     },
@@ -104,21 +104,21 @@ static MUI_ENTRY csCZWelcomePageEntries[] =
     {
         4,
         3,
-        " Instalace VerOS NT " KERNEL_VERSION_STR " ",
+        " Instalace Tavera OS " KERNEL_VERSION_STR " ",
         TEXT_STYLE_UNDERLINE,
         TEXT_ID_STATIC
     },
     {
         6,
         8,
-        "V\241tejte v instalaci VerOS NT",
+        "V\241tejte v instalaci Tavera OS",
         TEXT_STYLE_HIGHLIGHT,
         TEXT_ID_STATIC
     },
     {
         6,
         11,
-        "Tato \237\240st instalace nakop\241ruje opera\237n\241 syst\202m VerOS NT do va\347eho",
+        "Tato \237\240st instalace nakop\241ruje opera\237n\241 syst\202m Tavera OS do va\347eho",
         TEXT_STYLE_NORMAL,
         TEXT_ID_STATIC
     },
@@ -132,35 +132,35 @@ static MUI_ENTRY csCZWelcomePageEntries[] =
     {
         8,
         15,
-        "\x07  Press ENTER to install or upgrade VerOS NT.",
+        "\x07  Press ENTER to install or upgrade Tavera OS.",
         TEXT_STYLE_NORMAL,
         TEXT_ID_STATIC
     },
     {
         8,
         17,
-        "\x07  Stisknut\241m R zah\240j\241te opravu VerOS NT.",
+        "\x07  Stisknut\241m R zah\240j\241te opravu Tavera OS.",
         TEXT_STYLE_NORMAL,
         TEXT_ID_STATIC
     },
     {
         8,
         19,
-        "\x07  Stiskut\241m L zobraz\241te Licen\237n\241 podm\241nky VerOS NT.",
+        "\x07  Stiskut\241m L zobraz\241te Licen\237n\241 podm\241nky Tavera OS.",
         TEXT_STYLE_NORMAL,
         TEXT_ID_STATIC
     },
     {
         8,
         21,
-        "\x07  Stisknut\241m F3 ukon\237\241te instalaci VerOS NT.",
+        "\x07  Stisknut\241m F3 ukon\237\241te instalaci Tavera OS.",
         TEXT_STYLE_NORMAL,
         TEXT_ID_STATIC
     },
     {
         6,
         23,
-        "V\241ce informac\241 o VerOS NT naleznete na adrese:",
+        "V\241ce informac\241 o Tavera OS naleznete na adrese:",
         TEXT_STYLE_NORMAL,
         TEXT_ID_STATIC
     },
@@ -191,21 +191,21 @@ static MUI_ENTRY csCZIntroPageEntries[] =
     {
         4,
         3,
-        " Instalace VerOS NT " KERNEL_VERSION_STR " ",
+        " Instalace Tavera OS " KERNEL_VERSION_STR " ",
         TEXT_STYLE_UNDERLINE,
         TEXT_ID_STATIC
     },
     {
         6,
         8,
-        "VerOS NT Version Status",
+        "Tavera OS Version Status",
         TEXT_STYLE_HIGHLIGHT,
         TEXT_ID_STATIC
     },
     {
         6,
         11,
-        "VerOS NT is in Alpha stage, meaning it is not feature-complete",
+        "Tavera OS is in Alpha stage, meaning it is not feature-complete",
         TEXT_STYLE_NORMAL,
         TEXT_ID_STATIC
     },
@@ -233,21 +233,21 @@ static MUI_ENTRY csCZIntroPageEntries[] =
     {
         6,
         16,
-        "to run VerOS NT on real hardware.",
+        "to run Tavera OS on real hardware.",
         TEXT_STYLE_NORMAL,
         TEXT_ID_STATIC
     },
     {
         8,
         19,
-        "\x07  Press ENTER to continue VerOS NT Setup.",
+        "\x07  Press ENTER to continue Tavera OS Setup.",
         TEXT_STYLE_NORMAL,
         TEXT_ID_STATIC
     },
     {
         8,
         21,
-        "\x07  Press F3 to quit without installing VerOS NT.",
+        "\x07  Press F3 to quit without installing Tavera OS.",
         TEXT_STYLE_NORMAL,
         TEXT_ID_STATIC
     },
@@ -271,7 +271,7 @@ static MUI_ENTRY csCZLicensePageEntries[] =
     {
         4,
         3,
-        " Instalace VerOS NT " KERNEL_VERSION_STR " ",
+        " Instalace Tavera OS " KERNEL_VERSION_STR " ",
         TEXT_STYLE_UNDERLINE,
         TEXT_ID_STATIC
     },
@@ -285,7 +285,7 @@ static MUI_ENTRY csCZLicensePageEntries[] =
     {
         8,
         8,
-        "The VerOS NT System is licensed under the terms of the",
+        "The Tavera OS System is licensed under the terms of the",
         TEXT_STYLE_NORMAL,
         TEXT_ID_STATIC
     },
@@ -306,7 +306,7 @@ static MUI_ENTRY csCZLicensePageEntries[] =
     {
         8,
         11,
-        "All software that is part of the VerOS NT system is",
+        "All software that is part of the Tavera OS system is",
         TEXT_STYLE_NORMAL,
         TEXT_ID_STATIC
     },
@@ -341,7 +341,7 @@ static MUI_ENTRY csCZLicensePageEntries[] =
     {
         8,
         17,
-        "VerOS NT only covers distribution to third parties.",
+        "Tavera OS only covers distribution to third parties.",
         TEXT_STYLE_NORMAL,
         TEXT_ID_STATIC
     },
@@ -355,7 +355,7 @@ static MUI_ENTRY csCZLicensePageEntries[] =
     {
         8,
         19,
-        "GNU General Public License with VerOS NT please visit",
+        "GNU General Public License with Tavera OS please visit",
         TEXT_STYLE_NORMAL,
         TEXT_ID_STATIC
     },
@@ -414,7 +414,7 @@ static MUI_ENTRY csCZDevicePageEntries[] =
     {
         4,
         3,
-        " Instalace VerOS NT " KERNEL_VERSION_STR " ",
+        " Instalace Tavera OS " KERNEL_VERSION_STR " ",
         TEXT_STYLE_UNDERLINE,
         TEXT_ID_STATIC
     },
@@ -521,14 +521,14 @@ static MUI_ENTRY csCZRepairPageEntries[] =
     {
         4,
         3,
-        " Instalace VerOS NT " KERNEL_VERSION_STR " ",
+        " Instalace Tavera OS " KERNEL_VERSION_STR " ",
         TEXT_STYLE_UNDERLINE,
         TEXT_ID_STATIC
     },
     {
         6,
         8,
-        "Instalace VerOS NT je v ran\202 v\354vojov\202 f\240zi. Zat\241m nejsou",
+        "Instalace Tavera OS je v ran\202 v\354vojov\202 f\240zi. Zat\241m nejsou",
         TEXT_STYLE_NORMAL,
         TEXT_ID_STATIC
     },
@@ -594,21 +594,21 @@ static MUI_ENTRY csCZUpgradePageEntries[] =
     {
         4,
         3,
-        " Instalace VerOS NT " KERNEL_VERSION_STR " ",
+        " Instalace Tavera OS " KERNEL_VERSION_STR " ",
         TEXT_STYLE_UNDERLINE,
         TEXT_ID_STATIC
     },
     {
         6,
         8,
-        "The VerOS NT Setup can upgrade one of the available VerOS NT installations",
+        "The Tavera OS Setup can upgrade one of the available Tavera OS installations",
         TEXT_STYLE_NORMAL,
         TEXT_ID_STATIC
     },
     {
         6,
         9,
-        "listed below, or, if a VerOS NT installation is damaged, the Setup program",
+        "listed below, or, if a Tavera OS installation is damaged, the Setup program",
         TEXT_STYLE_NORMAL,
         TEXT_ID_STATIC
     },
@@ -650,7 +650,7 @@ static MUI_ENTRY csCZUpgradePageEntries[] =
     {
         8,
         21,
-        "\x07  Press F3 to quit without installing VerOS NT.",
+        "\x07  Press F3 to quit without installing Tavera OS.",
         TEXT_STYLE_NORMAL,
         TEXT_ID_STATIC
     },
@@ -674,7 +674,7 @@ static MUI_ENTRY csCZComputerPageEntries[] =
     {
         4,
         3,
-        " Instalace VerOS NT " KERNEL_VERSION_STR " ",
+        " Instalace Tavera OS " KERNEL_VERSION_STR " ",
         TEXT_STYLE_UNDERLINE,
         TEXT_ID_STATIC
     },
@@ -733,7 +733,7 @@ static MUI_ENTRY csCZFlushPageEntries[] =
     {
         4,
         3,
-        " Instalace VerOS NT " KERNEL_VERSION_STR " ",
+        " Instalace Tavera OS " KERNEL_VERSION_STR " ",
         TEXT_STYLE_UNDERLINE,
         TEXT_ID_STATIC
     },
@@ -778,14 +778,14 @@ static MUI_ENTRY csCZQuitPageEntries[] =
     {
         4,
         3,
-        " Instalace VerOS NT " KERNEL_VERSION_STR " ",
+        " Instalace Tavera OS " KERNEL_VERSION_STR " ",
         TEXT_STYLE_UNDERLINE,
         TEXT_ID_STATIC
     },
     {
         10,
         6,
-        "VerOS NT nen\241 kompletn\330 nainstalov\240n.",
+        "Tavera OS nen\241 kompletn\330 nainstalov\240n.",
         TEXT_STYLE_NORMAL,
         TEXT_ID_STATIC
     },
@@ -830,7 +830,7 @@ static MUI_ENTRY csCZDisplayPageEntries[] =
     {
         4,
         3,
-        " Instalace VerOS NT " KERNEL_VERSION_STR " ",
+        " Instalace Tavera OS " KERNEL_VERSION_STR " ",
         TEXT_STYLE_UNDERLINE,
         TEXT_ID_STATIC
     },
@@ -889,14 +889,14 @@ static MUI_ENTRY csCZSuccessPageEntries[] =
     {
         4,
         3,
-        " Instalace VerOS NT " KERNEL_VERSION_STR " ",
+        " Instalace Tavera OS " KERNEL_VERSION_STR " ",
         TEXT_STYLE_UNDERLINE,
         TEXT_ID_STATIC
     },
     {
         10,
         6,
-        "Z\240kladn\241 sou\237\240sti VerOS NT byly \243sp\330\347n\330 nainstalov\240ny.",
+        "Z\240kladn\241 sou\237\240sti Tavera OS byly \243sp\330\347n\330 nainstalov\240ny.",
         TEXT_STYLE_NORMAL,
         TEXT_ID_STATIC
     },
@@ -941,7 +941,7 @@ static MUI_ENTRY csCZSelectPartitionEntries[] =
     {
         4,
         3,
-        " Instalace VerOS NT " KERNEL_VERSION_STR " ",
+        " Instalace Tavera OS " KERNEL_VERSION_STR " ",
         TEXT_STYLE_UNDERLINE,
         TEXT_ID_STATIC
     },
@@ -969,7 +969,7 @@ static MUI_ENTRY csCZSelectPartitionEntries[] =
     {
         8,
         13,
-        "\x07  Stisknut\241m kl\240vesy ENTER nainstalujete VerOS NT na zvolen\354 odd\241l.",
+        "\x07  Stisknut\241m kl\240vesy ENTER nainstalujete Tavera OS na zvolen\354 odd\241l.",
         TEXT_STYLE_NORMAL,
         TEXT_ID_STATIC
     },
@@ -1014,7 +1014,7 @@ static MUI_ENTRY csCZChangeSystemPartition[] =
     {
         4,
         3,
-        " VerOS NT " KERNEL_VERSION_STR " Setup ",
+        " Tavera OS " KERNEL_VERSION_STR " Setup ",
         TEXT_STYLE_UNDERLINE,
         TEXT_ID_STATIC
     },
@@ -1035,14 +1035,14 @@ static MUI_ENTRY csCZChangeSystemPartition[] =
     {
         6,
         16,
-        "uses a format not supported by VerOS NT.",
+        "uses a format not supported by Tavera OS.",
         TEXT_STYLE_NORMAL,
         TEXT_ID_STATIC
     },
     {
         6,
         18,
-        "In order to successfully install VerOS NT, the Setup program must change",
+        "In order to successfully install Tavera OS, the Setup program must change",
         TEXT_STYLE_NORMAL,
         TEXT_ID_STATIC
     },
@@ -1112,7 +1112,7 @@ static MUI_ENTRY csCZChangeSystemPartition[] =
     {
         6,
         35,
-        "to the original one after finishing the installation of VerOS NT.",
+        "to the original one after finishing the installation of Tavera OS.",
         TEXT_STYLE_NORMAL,
         TEXT_ID_STATIC
     },
@@ -1136,7 +1136,7 @@ static MUI_ENTRY csCZConfirmDeleteSystemPartitionEntries[] =
     {
         4,
         3,
-        " Instalace VerOS NT " KERNEL_VERSION_STR " ",
+        " Instalace Tavera OS " KERNEL_VERSION_STR " ",
         TEXT_STYLE_UNDERLINE,
         TEXT_ID_STATIC
     },
@@ -1157,7 +1157,7 @@ static MUI_ENTRY csCZConfirmDeleteSystemPartitionEntries[] =
     {
         6,
         11,
-        "programs, programs to start an operating system (like VerOS NT) or other",
+        "programs, programs to start an operating system (like Tavera OS) or other",
         TEXT_STYLE_NORMAL,
         TEXT_ID_STATIC
     },
@@ -1192,7 +1192,7 @@ static MUI_ENTRY csCZConfirmDeleteSystemPartitionEntries[] =
     {
         6,
         17,
-        "computer from the harddisk until you finished the VerOS NT Setup.",
+        "computer from the harddisk until you finished the Tavera OS Setup.",
         TEXT_STYLE_NORMAL,
         TEXT_ID_STATIC
     },
@@ -1244,7 +1244,7 @@ static MUI_ENTRY csCZFormatPartitionEntries[] =
     {
         4,
         3,
-        " Instalace VerOS NT " KERNEL_VERSION_STR " ",
+        " Instalace Tavera OS " KERNEL_VERSION_STR " ",
         TEXT_STYLE_UNDERLINE,
         TEXT_ID_STATIC
     },
@@ -1282,7 +1282,7 @@ static MUI_ENTRY csCZCheckFSEntries[] =
     {
         4,
         3,
-        " Instalace VerOS NT " KERNEL_VERSION_STR " ",
+        " Instalace Tavera OS " KERNEL_VERSION_STR " ",
         TEXT_STYLE_UNDERLINE,
         TEXT_ID_STATIC
     },
@@ -1313,21 +1313,21 @@ static MUI_ENTRY csCZInstallDirectoryEntries[] =
     {
         4,
         3,
-        " Instalace VerOS NT " KERNEL_VERSION_STR " ",
+        " Instalace Tavera OS " KERNEL_VERSION_STR " ",
         TEXT_STYLE_UNDERLINE,
         TEXT_ID_STATIC
     },
     {
         6,
         8,
-        "Instalace nyn\241 na zvolen\354 odd\241l nakop\241ruje soubory VerOS NT.",
+        "Instalace nyn\241 na zvolen\354 odd\241l nakop\241ruje soubory Tavera OS.",
         TEXT_STYLE_NORMAL,
         TEXT_ID_STATIC
     },
     {
         6,
         9,
-        "Zvolte adres\240\375, kam bude VerOS NT nainstalov\240n:",
+        "Zvolte adres\240\375, kam bude Tavera OS nainstalov\240n:",
         TEXT_STYLE_NORMAL,
         TEXT_ID_STATIC
     },
@@ -1341,7 +1341,7 @@ static MUI_ENTRY csCZInstallDirectoryEntries[] =
     {
         6,
         15,
-        "vyma\247te text cesty a pot\202 zapi\347te cestu, do kter\202 chcete VerOS NT",
+        "vyma\247te text cesty a pot\202 zapi\347te cestu, do kter\202 chcete Tavera OS",
         TEXT_STYLE_NORMAL,
         TEXT_ID_STATIC
     },
@@ -1372,7 +1372,7 @@ static MUI_ENTRY csCZFileCopyEntries[] =
     {
         4,
         3,
-        " Instalace VerOS NT " KERNEL_VERSION_STR " ",
+        " Instalace Tavera OS " KERNEL_VERSION_STR " ",
         TEXT_STYLE_UNDERLINE,
         TEXT_ID_STATIC
     },
@@ -1417,7 +1417,7 @@ static MUI_ENTRY csCZBootLoaderSelectPageEntries[] =
     {
         4,
         3,
-        " Instalace VerOS NT " KERNEL_VERSION_STR " ",
+        " Instalace Tavera OS " KERNEL_VERSION_STR " ",
         TEXT_STYLE_UNDERLINE,
         TEXT_ID_STATIC
     },
@@ -1476,7 +1476,7 @@ static MUI_ENTRY csCZBootLoaderInstallPageEntries[] =
     {
         4,
         3,
-        " VerOS NT " KERNEL_VERSION_STR " Setup ",
+        " Tavera OS " KERNEL_VERSION_STR " Setup ",
         TEXT_STYLE_UNDERLINE,
         TEXT_ID_STATIC
     },
@@ -1507,7 +1507,7 @@ static MUI_ENTRY csCZBootLoaderRemovableDiskPageEntries[] =
     {
         4,
         3,
-        " Instalace VerOS NT " KERNEL_VERSION_STR " ",
+        " Instalace Tavera OS " KERNEL_VERSION_STR " ",
         TEXT_STYLE_UNDERLINE,
         TEXT_ID_STATIC
     },
@@ -1553,7 +1553,7 @@ static MUI_ENTRY csCZKeyboardSettingsEntries[] =
     {
         4,
         3,
-        " Instalace VerOS NT " KERNEL_VERSION_STR " ",
+        " Instalace Tavera OS " KERNEL_VERSION_STR " ",
         TEXT_STYLE_UNDERLINE,
         TEXT_ID_STATIC
     },
@@ -1612,7 +1612,7 @@ static MUI_ENTRY csCZLayoutSettingsEntries[] =
     {
         4,
         3,
-        " Instalace VerOS NT " KERNEL_VERSION_STR " ",
+        " Instalace Tavera OS " KERNEL_VERSION_STR " ",
         TEXT_STYLE_UNDERLINE,
         TEXT_ID_STATIC
     },
@@ -1672,14 +1672,14 @@ static MUI_ENTRY csCZPrepareCopyEntries[] =
     {
         4,
         3,
-        " Instalace VerOS NT " KERNEL_VERSION_STR " ",
+        " Instalace Tavera OS " KERNEL_VERSION_STR " ",
         TEXT_STYLE_UNDERLINE,
         TEXT_ID_STATIC
     },
     {
         6,
         8,
-        "Instalace p\375iprav\241 po\237\241ta\237 na kop\241rov\240n\241 soubor\205 VerOS NT.",
+        "Instalace p\375iprav\241 po\237\241ta\237 na kop\241rov\240n\241 soubor\205 Tavera OS.",
         TEXT_STYLE_NORMAL,
         TEXT_ID_STATIC
     },
@@ -1704,7 +1704,7 @@ static MUI_ENTRY csCZSelectFSEntries[] =
     {
         4,
         3,
-        " Instalace VerOS NT " KERNEL_VERSION_STR " ",
+        " Instalace Tavera OS " KERNEL_VERSION_STR " ",
         TEXT_STYLE_UNDERLINE,
         TEXT_ID_STATIC
     },
@@ -1752,7 +1752,7 @@ static MUI_ENTRY csCZDeletePartitionEntries[] =
     {
         4,
         3,
-        " Instalace VerOS NT " KERNEL_VERSION_STR " ",
+        " Instalace Tavera OS " KERNEL_VERSION_STR " ",
         TEXT_STYLE_UNDERLINE,
         TEXT_ID_STATIC
     },
@@ -1804,7 +1804,7 @@ static MUI_ENTRY csCZRegistryEntries[] =
     {
         4,
         3,
-        " Instalace VerOS NT " KERNEL_VERSION_STR " ",
+        " Instalace Tavera OS " KERNEL_VERSION_STR " ",
         TEXT_STYLE_UNDERLINE,
         TEXT_ID_STATIC
     },
@@ -1839,9 +1839,9 @@ MUI_ERROR csCZErrorEntries[] =
     },
     {
         // ERROR_NOT_INSTALLED
-        "VerOS NT nen\241 ve va\347em po\237\241ta\237i kompletn\330 nainstalov\240n.\n"
+        "Tavera OS nen\241 ve va\347em po\237\241ta\237i kompletn\330 nainstalov\240n.\n"
         "Pokud nyn\241 instalaci ukon\237\241te, budete ji muset pro\n"
-        "nainstalov\240n\241 VerOS NT spustit znovu.\n"
+        "nainstalov\240n\241 Tavera OS spustit znovu.\n"
         "\n"
         "  \x07  Stisknut\241m kl\240vesy ENTER budete pokra\237ovat v instalaci.\n"
         "  \x07  Stisknut\241m F3 ukon\237\241te instalaci.",
@@ -1849,7 +1849,7 @@ MUI_ERROR csCZErrorEntries[] =
     },
     {
         // ERROR_NO_BUILD_PATH
-        "Failed to build the installation paths for the VerOS NT installation directory!\n"
+        "Failed to build the installation paths for the Tavera OS installation directory!\n"
         "ENTER = Reboot computer"
     },
     {
@@ -1859,7 +1859,7 @@ MUI_ERROR csCZErrorEntries[] =
     },
     {
         // ERROR_SOURCE_DIR
-        "You cannot install VerOS NT within the installation source directory!\n"
+        "You cannot install Tavera OS within the installation source directory!\n"
         "ENTER = Reboot computer"
     },
     {
@@ -2051,7 +2051,7 @@ MUI_ERROR csCZErrorEntries[] =
     },
     {
         // ERROR_INSUFFICIENT_PARTITION_SIZE,
-        "Zvolen\354 odd\241l nen\241 pro instalaci VerOS NT dostate\237n\330 velk\354.\n"
+        "Zvolen\354 odd\241l nen\241 pro instalaci Tavera OS dostate\237n\330 velk\354.\n"
         "Instala\237n\241 odd\241l mus\241 m\241t velikost alespo\345 %lu MB.\n"
         "\n"
         "  * Pokra\237ujte stisknut\241m libovoln\202 kl\240vesy.",
@@ -2236,13 +2236,13 @@ MUI_STRING csCZStrings[] =
     {STRING_PARTFORMAT,
     "Tento odd\241l bude zform\240tov\240n."},
     {STRING_NONFORMATTEDPART,
-    "Zvolili jste instalaci VerOS NT na nov\354 nebo nezform\240tovan\354 odd\241l."},
+    "Zvolili jste instalaci Tavera OS na nov\354 nebo nezform\240tovan\354 odd\241l."},
     {STRING_NONFORMATTEDSYSTEMPART,
     "The system partition is not formatted yet."},
     {STRING_NONFORMATTEDOTHERPART,
     "The new partition is not formatted yet."},
     {STRING_INSTALLONPART,
-    "Instalace nakop\241ruje VerOS NT na odd\241l"},
+    "Instalace nakop\241ruje Tavera OS na odd\241l"},
     {STRING_CONTINUE,
     "ENTER = Pokra\237ovat"},
     {STRING_QUITCONTINUE,

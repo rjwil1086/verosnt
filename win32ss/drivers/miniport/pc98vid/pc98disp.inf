@@ -4,11 +4,11 @@
 ;
 [Version]
 Signature  = "$Windows NT$"
-;Signature  = "$VerOS NT$"
+;Signature  = "$Tavera$"
 LayoutFile = layout.inf
 Class      = Display
 ClassGUID  = {4D36E968-E325-11CE-BFC1-08002BE10318}
-Provider   = %VerOS NT%
+Provider   = %Tavera OS%
 DriverVer  = 08/11/2020,5.2
 
 [DestinationDirs]
@@ -59,4 +59,4 @@ PCI\VEN_1033&DEV_0009.DeviceDesc = "NEC PCI to Core-Graph Bridge"
 pc98vid.DeviceDesc = "Graphic controller for PC-9821"
 
 [Strings.0419]
-pc98vid.DeviceDesc = "Графический контроллер для PC-9821"
+pc98vid.DeviceDesc = "?????????????????????? ???????????????????? ?????? PC-9821"

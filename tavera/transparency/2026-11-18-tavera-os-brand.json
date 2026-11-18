@@ -1,0 +1,9 @@
+{
+  "spdx": "GPL-2.0-or-later",
+  "question": "How should the product name, install folder, and boot id read after the rebrand?",
+  "allowedInputs": [
+    "Reported: Ryan asked to rebrand visible VerOS and ReactOS product names to Tavera OS, leaving copyrights, licenses, email addresses, legal notices, and comments that mention ReactOS.",
+    "Reported: Ryan supplied the Tavera mark, wordmark, and lockup artwork, and said the wordmark letterforms are Exo 2.",
+    "Reported: Ryan asked that the on-disk folder and the boot id be Tavera."
+  ]
+}

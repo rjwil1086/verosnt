@@ -968,7 +968,7 @@
 @ stdcall PoQueueShutdownWorkItem(ptr)
 @ stdcall PoRegisterDeviceForIdleDetection(ptr long long long)
 @ stdcall PoRegisterDeviceNotify(ptr long long long ptr ptr)
-; PE import list virtual-machines/veros-ntfs/e1q62x64-imports.txt
+; PE import list virtual-machines/tavera-ntfs/e1q62x64-imports.txt
 ; Symbol: PoRegisterPowerSettingCallback / PoUnregisterPowerSettingCallback
 ; (batched after output/e1000e-20261118T034236Z.log). Declared in
 ; sdk/include/xdk/pofuncs.h;
@@ -1453,7 +1453,7 @@
 ; output/e1000e-20261118T033107Z.log: Missing API 'EtwUnregister'
 ; while loading e1q62x64.sys (status c0000262). Declarations in
 ; sdk/include/xdk/wmifuncs.h; REGHANDLE in sdk/include/psdk/evntprov.h.
-; PE import list virtual-machines/veros-ntfs/e1q62x64-imports.txt Symbol: EtwWrite
+; PE import list virtual-machines/tavera-ntfs/e1q62x64-imports.txt Symbol: EtwWrite
 ; https://learn.microsoft.com/en-us/windows-hardware/drivers/ddi/wdm/nf-wdm-etwwrite
 @ stdcall EtwRegister(ptr ptr ptr ptr)
 @ stdcall EtwUnregister(int64)
@@ -1655,7 +1655,7 @@
 @ cdecl memchr()
 @ cdecl -arch=x86_64 memcmp()
 @ cdecl memcpy()
-; PE import list virtual-machines/veros-ntfs/e1q62x64-imports.txt Symbol: memcpy_s
+; PE import list virtual-machines/tavera-ntfs/e1q62x64-imports.txt Symbol: memcpy_s
 ; https://learn.microsoft.com/en-us/cpp/c-runtime-library/reference/memcpy-s-wmemcpy-s
 @ cdecl memcpy_s(ptr long ptr long)
 @ cdecl memmove()

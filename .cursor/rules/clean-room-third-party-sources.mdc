@@ -15,6 +15,7 @@ These are not sources. Do not open them for this tree:
 - ReactOS-adjacent wikis or posts that quote leaked source or the Windows Research Kernel
 - Blog posts, write-ups, or videos that walk through Microsoft code in a disassembler or debugger
 - Undocumented-API sites whose prototypes or layouts come from symbols or disassembly
+- https://learn.microsoft.com/en-us/windows-hardware/drivers/debuggercmds/-ipi
 
 When a page does not say where its information came from, treat it as not a source. Use a Learn URL, a public specification, code already in this tree, or a guest log instead.
 

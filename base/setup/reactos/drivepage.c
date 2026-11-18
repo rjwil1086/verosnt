@@ -1,5 +1,5 @@
 /*
- * PROJECT:     VerOS NT
+ * PROJECT:     Tavera OS
  * LICENSE:     GNU General Public License, version 2 or later (GPL-2.0-or-later)
  * FILE:        base/setup/reactos/drivepage.c
  * PURPOSE:     Disk partitions/Volumes page
@@ -1669,7 +1669,7 @@ SelectInstallPartition(
         nRet = DisplayMessage(hwndDlg,
                               MB_ICONWARNING | MB_OKCANCEL,
                               L"Warning",
-                              L"The disk you have selected for installing VerOS NT\n"
+                              L"The disk you have selected for installing Tavera OS\n"
                               L"is not visible by the firmware of your computer,\n"
                               L"and so may not be bootable.\n"
                               L"\nClick on OK to continue anyway."

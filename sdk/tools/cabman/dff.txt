@@ -1,4 +1,4 @@
-Directive File Format for VerOS NT Cabinet Manager
+Directive File Format for Tavera OS Cabinet Manager
 -------------------------------------------------
 
 Directives begin with a period ("."), and are followed by a command

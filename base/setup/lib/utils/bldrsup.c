@@ -395,7 +395,7 @@ CreateCommonFreeLdrSections(
     IniSection = IniAddSection(BootStore->IniCache, L"Display");
 
     /* TitleText and MinimalUI */
-    IniAddKey(IniSection, L"TitleText", L"VerOS NT Boot Manager");
+    IniAddKey(IniSection, L"TitleText", L"Tavera OS Boot Manager");
     IniAddKey(IniSection, L"MinimalUI", L"Yes");
 
     /*
@@ -1491,7 +1491,7 @@ FreeLdrEnumerateBootEntries(
             goto DoEnum;
         }
 
-        // TODO: What to do with "Windows" ; "WindowsNT40" ; "VerOSSetup" ?
+        // TODO: What to do with "Windows" ; "WindowsNT40" ; "Tavera" ?
         if ((_wcsicmp(KeyData, L"Windows2003")     == 0) ||
             (_wcsicmp(KeyData, L"\"Windows2003\"") == 0))
         {

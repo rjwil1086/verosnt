@@ -57,7 +57,7 @@ VOID Run()
 /* Program entry point */
 int main(int argc, char* argv[])
 {
-    printf("VerOS NT HTTP Daemon\n");
+    printf("Tavera OS HTTP Daemon\n");
     printf("Type Control-C to stop.\n");
 
     Run();

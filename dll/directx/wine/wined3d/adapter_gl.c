@@ -5006,10 +5006,10 @@ static float wined3d_adapter_find_fill_offset(struct wined3d_caps_gl_ctx *ctx)
 static DWORD WINAPI wined3d_no_3d_warning_proc(void *param)
 {
     MessageBoxW(NULL,
-            L"VerOS NT DirectX Needs at least OpenGL 2.0 or better\n\n"
+            L"Tavera OS DirectX Needs at least OpenGL 2.0 or better\n\n"
             L"Install a display driver that provides an OpenGL ICD to enable 3D "
             L"acceleration. Or install Mesa3D from RAPPS",
-            L"VerOS NT - no 3D acceleration",
+            L"Tavera OS - no 3D acceleration",
             MB_OK | MB_ICONWARNING | MB_SETFOREGROUND | MB_TOPMOST);
     return 0;
 }

@@ -171,10 +171,10 @@ END
 
 STRINGTABLE
 BEGIN
-    IDS_APPTITLE "VerOS NT Applications Manager"
+    IDS_APPTITLE "Tavera OS Applications Manager"
     IDS_APP_AUTHORS "Copyright 2009 Dmitry Chapyshev"
-    IDS_WELCOME_TITLE "Welcome to VerOS NT Applications Manager!"
-    IDS_WELCOME_TEXT "Choose a category on the left, then choose an application to install or uninstall.\nVerOS NT Web Site: "
+    IDS_WELCOME_TITLE "Welcome to Tavera OS Applications Manager!"
+    IDS_WELCOME_TEXT "Choose a category on the left, then choose an application to install or uninstall.\nTavera OS Web Site: "
     IDS_WELCOME_URL "https://reactos.org"
 
     IDS_APPWIZ_TITLE "Add/Remove Programs"

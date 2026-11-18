@@ -130,10 +130,10 @@
 #define PACKAGE_BUGREPORT "ros-dev@reactos.org"
 
 /* Define to the full name of this package. */
-#define PACKAGE_NAME "VerOS NT"
+#define PACKAGE_NAME "Tavera OS"
 
 /* Define to the one symbol short name of this package. */
-#define PACKAGE_TARNAME "VerOS NT"
+#define PACKAGE_TARNAME "Tavera OS"
 
 /* Define to the version of this package. */
 #define PACKAGE_VERSION "<undefined version>"

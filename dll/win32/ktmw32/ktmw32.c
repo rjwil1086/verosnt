@@ -1,5 +1,5 @@
 /*
- * PROJECT:     VerOS NT System Libraries
+ * PROJECT:     Tavera OS System Libraries
  * LICENSE:     GNU Lesser General Public License, version 2.1 or later (LGPL-2.1-or-later)
  * FILE:        dll/win32/ktmw32/ktmw32.c
  * PURPOSE:     Kernel Transaction Manager user stubs for Firefox xul.dll

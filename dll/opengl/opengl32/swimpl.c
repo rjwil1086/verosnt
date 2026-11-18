@@ -575,7 +575,7 @@ end:
 
 static const char* renderer_string(void)
 {
-    return "VerOS NT SW Implementation";
+    return "Tavera OS SW Implementation";
 }
 
 static inline void PUT_PIXEL_8(BYTE* Buffer, BYTE Value)

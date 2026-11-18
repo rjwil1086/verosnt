@@ -85,5 +85,5 @@ list(APPEND FONT_FILES
     wingding.ttf)
 
 foreach(item ${FONT_FILES})
-    add_cd_file(FILE "${CMAKE_CURRENT_SOURCE_DIR}/${item}" DESTINATION VerOS/Fonts FOR all)
+    add_cd_file(FILE "${CMAKE_CURRENT_SOURCE_DIR}/${item}" DESTINATION "Tavera/Fonts" FOR all)
 endforeach(item)
