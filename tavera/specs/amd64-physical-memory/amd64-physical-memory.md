@@ -25,7 +25,7 @@ Work that changes behavior under this spec follows `.cursor/rules/clean-room.mdc
 
 ## 2. Sources
 
-Every claim below names one of these entries. The date the Learn page was read was not recorded.
+Every claim below names one of these entries (Learn URL or in-tree path). The date the Learn page was read was not recorded.
 
 1. [Memory Limits for Windows and Windows Server Releases](https://learn.microsoft.com/en-us/windows/win32/memory/memory-limits-for-windows-releases). Date read: not recorded. Windows 10 x64 Enterprise and Pro for Workstations are 6 TB. The 64-bit nonpaged-pool row is RAM or 128 GB, whichever is smaller.
 2. `sdk/include/ndk/amd64/mmtypes.h` in this tree. `PageFrameNumber:36` and a commented `MM_MAX_PAGE` of 36 PFN bits. `HARDWARE_PTE`, `MMPTE_HARDWARE`, `MMPTE_TRANSITION`, and `MMPTE_HARDWARE_LARGEPAGE`.
@@ -36,12 +36,13 @@ Every claim below names one of these entries. The date the Learn page was read w
 7. `ntoskrnl/include/internal/amd64/mm.h` in this tree. `MI_MAX_NONPAGED_POOL_SIZE` is 128 GB.
 8. `ntoskrnl/ex/init.c` in this tree. The serial banner.
 9. A later boot log under `output/` is evidence only for what that log prints. No such log is cited yet.
+10. GitHub milestone [Milestone 31: amd64 physical memory](https://github.com/taveraos/taveraos/milestone/30) (API number 30). Project goal, task list, and success criteria.
 
 No WDK or SDK headers, symbols, disassembly, or third-party struct dumps are sources. Geoff Chappell, Vergilius, syscall tables built from Microsoft binaries, and undocumented-API sites are not sources.
 
 ## 3. Purpose and scope
 
-GitHub milestone 30 is [Milestone 31: amd64 physical memory](https://github.com/taveraos/taveraos/milestone/30). The project name is Tavera OS. This spec does not rename existing C file headers.
+GitHub milestone API number 30 is source 10 ([Milestone 31: amd64 physical memory](https://github.com/taveraos/taveraos/milestone/30)). The project name is Tavera OS. This spec does not rename existing C file headers.
 
 The component accepts amd64 physical memory through 6 TB, keeps the loader's own map at 1 GiB, widens the page-frame fields this `0x502` build compiles to the 36-bit width already in source 2, and sizes nonpaged pool without a 32-bit multiply wrap. The pool still ends before `MM_HAL_VA_START`.
 

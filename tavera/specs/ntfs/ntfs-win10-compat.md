@@ -11,7 +11,7 @@ PROGRAMMERS: Ryan Wilson <ryan@taveraos.com>
 
 North star: enough clean-room specs that a later session can implement and verify an NTFS driver whose volumes and APIs behave as Windows 10 22H2 expects, including Windows mounting a Tevera OS–formatted volume cleanly.
 
-Allowed inputs only: public Learn / openspecs pages, paths already in this tree, and guest logs under `output/` that still contain their markers. Missing on-disk layouts become **probe gates**, not guessed constants. Raw-format probes and implementation stay in separate sessions ([`.cursor/rules/clean-room-probe-separation.mdc`](../../../.cursor/rules/clean-room-probe-separation.mdc)).
+Allowed inputs only: public Learn / openspecs pages, paths already in this tree, and guest logs under `output/` that still contain their markers. Spec citations keep those URLs and paths. Missing on-disk layouts become **probe gates**, not guessed constants. Raw-format probes and implementation stay in separate sessions ([`.cursor/rules/clean-room-probe-separation.mdc`](../../../.cursor/rules/clean-room-probe-separation.mdc)).
 
 Suite catalog rows live in `unittests/ntfs/features.ps1` (buildenv). Names below match that catalog so later tests plug into the same inventory. This index does not edit that file.
 
