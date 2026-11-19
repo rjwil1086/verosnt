@@ -7,9 +7,9 @@ alwaysApply: true
 
 SPDX-License-Identifier: GPL-2.0-or-later
 
-A spec lives at `tavera/specs/<component>.md`. It is written for an implementer who will not open the sources. Describe observable behavior. Leave out internal algorithms, private data structures, and control flow.
+Specs for a component live under `tavera/specs/<component>/` (markdown files beside `open-items.md`, `sources/`, and optional `debugging-*.md`). They are written for an implementer who will not open the original sources. Describe observable behavior. Leave out internal algorithms, private data structures, and control flow.
 
-The session that writes a spec does not implement that component. Raw-format specs also follow [clean-room-probe-separation.mdc](clean-room-probe-separation.mdc).
+The session that writes a spec does not implement that component. Probe vs implement also follows [clean-room-probe-separation.mdc](clean-room-probe-separation.mdc) and [workflow-rails.mdc](workflow-rails.mdc).
 
 Sources are only those [clean-room.mdc](clean-room.mdc) and [clean-room-third-party-sources.mdc](clean-room-third-party-sources.mdc) allow: a public document with its title and URL, a public specification, code already in this tree, or a guest log with its marker. A book counts only when that rule allows it. WDK headers, SDK headers, disassembly, symbol dumps, and leaked source stop the spec.
 
@@ -18,7 +18,7 @@ Write every interface in your own words. Do not paste wording or sample code fro
 Keep the file comment block the specs in `tavera/specs/` already use (`PROJECT`, `LICENSE`, `FILE`, `PURPOSE`, `COPYRIGHT`, `PROGRAMMERS`). Then these sections, in this order. A new spec has all ten. An edit that changes behavior fills any missing section that edit depends on.
 
 1. **Header and provenance.** Component name, version, author, date, and a statement that only allowed sources were used.
-2. **Sources.** Each public document, in-tree header, or test, with the link and the date it was read. Microsoft Learn pages and public specifications belong here (title + `https://` URL). In-tree code stays as its path from the source root. Guest, probe, and debugging evidence is copied into `tavera/specs/<component>/sources/` and cited **there** (not as a bare `output/` path), per [tavera-specs-sources.mdc](tavera-specs-sources.mdc). Each Windows observation names the build, such as Windows 10 22H2 build 19045. Every later claim points at one of these entries. Do not name the private capture-log tree in this file.
+2. **Sources.** Each public document, in-tree header, or test, with the link and the date it was read. Microsoft Learn pages and public specifications belong here (title + `https://` URL). In-tree code stays as its path from the source root and is phrased as code already in this tree—not as a Windows observation. When a claim comes from post-implementation in-tree code ([tavera-specs-open-items.mdc](tavera-specs-open-items.mdc)), the Sources entry is that path from the source root; do not rewrite it as “what Windows does.” Guest, probe, and debugging evidence is copied into `tavera/specs/<component>/sources/` and cited **there** (not as a bare `output/` path), per [tavera-specs-sources.mdc](tavera-specs-sources.mdc). Each Windows observation names the build, such as Windows 10 22H2 build 19045. Every later claim points at one of these entries. Do not name the private capture-log tree in this file.
 3. **Purpose and scope.** What the component does, what is in scope, and what is left out on purpose.
 4. **Interfaces.** Each function, structure, constant, and export: name, parameters, types, calling convention, return values, and error codes.
 5. **Behavior.** What each call does: order of operations, side effects, threading and IRQL, memory ownership, and edge cases.
