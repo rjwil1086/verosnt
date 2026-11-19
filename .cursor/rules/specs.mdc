@@ -17,6 +17,8 @@ Write every interface in your own words. Do not paste wording or sample code fro
 
 Keep the file comment block the specs in `tavera/specs/` already use (`PROJECT`, `LICENSE`, `FILE`, `PURPOSE`, `COPYRIGHT`, `PROGRAMMERS`). Then these sections, in this order. A new spec has all ten. An edit that changes behavior fills any missing section that edit depends on.
 
+Later edits are append-only and mark every added block `**(Rev.N)**` per [spec-revisions.mdc](spec-revisions.mdc). Do not overwrite existing text.
+
 1. **Header and provenance.** Component name, version, author, date, and a statement that only allowed sources were used.
 2. **Sources.** Each public document, in-tree header, or test, with the link and the date it was read. Microsoft Learn pages and public specifications belong here. Each Windows observation names the build, such as Windows 10 22H2 build 19045. Every later claim points at one of these entries.
 3. **Purpose and scope.** What the component does, what is in scope, and what is left out on purpose.

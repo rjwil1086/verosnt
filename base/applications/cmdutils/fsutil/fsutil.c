@@ -1,9 +1,11 @@
 /*
  * COPYRIGHT:       See COPYING in the top level directory
+ * Copyright 2026 Ryan Wilson <ryan@taveraos.com>
  * PROJECT:         ReactOS FS utility tool
- * FILE:            base/applications/cmdutils/fsutil.c
+ * FILE:            base/applications/cmdutils/fsutil/fsutil.c
  * PURPOSE:         FSutil main
  * PROGRAMMERS:     Pierre Schweitzer <pierre@reactos.org>
+ * Ryan Wilson <ryan@taveraos.com>
  */
 
 #include "fsutil.h"
@@ -12,6 +14,7 @@
 HandlerProc DirtyMain;
 HandlerProc FsInfoMain;
 HandlerProc HardLinkMain;
+HandlerProc QuotaMain;
 HandlerProc VolumeMain;
 static HandlerItem HandlersList[] =
 {
@@ -19,6 +22,7 @@ static HandlerItem HandlersList[] =
     { DirtyMain, _T("dirty"), _T("Manipulates the dirty bit") },
     { FsInfoMain, _T("fsinfo"), _T("Gathers informations about file systems") },
     { HardLinkMain, _T("hardlink"), _T("Handles hard links") },
+    { QuotaMain, _T("quota"), _T("Manages disk quotas") },
     { VolumeMain, _T("volume"), _T("Manages volumes") },
 };
 

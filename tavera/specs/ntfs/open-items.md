@@ -61,12 +61,14 @@ Handoff file for implementer ↔ spec agent. Do not delete entries. See `.cursor
 - Notes (implementer, 2026-11-18): Structural framing shipped in `NtfsSetEncryption` / `AddLoggedUtilityStream`: non-resident `$EFS` **672**, fixed 16-byte header, offset 16+ zero (FEK not invented), `$DATA` length unchanged, plaintext read/write passthrough. Catalog rows verified under **NTFS-EFS-004**.
 
 ### NTFS-EFS-004
-- Status: open
+- Status: resolved
 - Opened: 2026-11-18
 - Question: Implement `NtfsSetEncryption` / encrypt+readback so suite `Encryption` and `EfsBody` match Windows 10 22H2 using [`ntfs-encrypted-file-body.md`](ntfs-encrypted-file-body.md) Rev.3–4.
 - Blocks: Catalog `Encryption` and `EfsBody` green on Tavera.
 - Notes: Windows baseline must include `EfsBody` green. Structural `$EFS` 672 + header cited by probe-v6; per-file bytes from offset 16 still capture-only — do not invent FEK framing. Verify with `-Phase compliance`.
 - Notes (implementer, 2026-11-18): `FSCTL_SET_ENCRYPTION` → non-resident `$EFS` + `NTFS_FILE_TYPE_ENCRYPTED` on SI/FCB; `NtfsReadEncrypted`/`NtfsWriteEncrypted` plaintext `$DATA` passthrough. Compliance: `Encryption` **green**, `EfsBody` **green** (`out/share-compliance/result.log`, 47 of 48). Still red: `LogReplay` / `fsutil dirty set` (**NTFS-LOG-001**). Spec agent may mark this item resolved.
+- Resolved: 2026-11-18
+- Resolution: Catalog path closed. Implementer structural `$EFS` + passthrough; suite `Encryption` / `EfsBody` green (`out/share-compliance/result.log`, later 49/49). Opening a Windows-wrapped `$EFS` remains GitHub #1 — not this item. Spec: [`ntfs-encrypted-file-body.md`](ntfs-encrypted-file-body.md).
 
 ### NTFS-LOG-001
 - Status: open
@@ -80,12 +82,23 @@ Handoff file for implementer ↔ spec agent. Do not delete entries. See `.cursor
 - Notes (suite, 2026-11-18): Catalog `LogOps` added ([`features.ps1`](../../test-suites/ntfs/features.ps1) / agent create+write+rename+dirty remount+readback under new name). Black-box only. Spec: [`ntfs-log-replay.md`](ntfs-log-replay.md) Rev.4. Windows baseline **49 green / 0 red** (`out/share-windows/result.log`, `NTFS-AGENT-DONE`; includes `LogOps`).
 
 ### NTFS-LOG-002
-- Status: open
+- Status: resolved
 - Opened: 2026-11-18
 - Question: After applying the probe-v7 structural `$LogFile` recipe in [`ntfs-log-replay.md`](ntfs-log-replay.md) Rev.3, which remaining uncited bytes / status gaps close by comparing the same create/write/rename/delete/dirty-remount ops’ `$LogFile` dumps and guest-visible statuses on Windows 10 22H2 vs Tavera?
 - Blocks: Completing a minimal `NtfsReplayLog` / `NtfsLogFileRecord` beyond the recipe without inventing field names (**NTFS-LOG-001** still owns named layout).
 - Notes: Probe session documented the differential follow-on; do not invent Microsoft field names. Suite `LogReplay` / `LogOps` stay black-box until LOG-001 closes.
 - Notes (implementer, 2026-11-18): Black-box catalog path: `FSCTL_MARK_VOLUME_DIRTY` / `FSCTL_IS_VOLUME_DIRTY` on `$VOLUME_INFORMATION`; after dirty mount, no-op `NtfsReplayLog` then `NtfsClearVolumeDirty`. Did **not** invent `$LogFile` field names or record bodies (**NTFS-LOG-001** still open). Compliance: `LogReplay` **green**, `LogOps` **green** (`out/share-compliance/result.log`, 49 of 49). Spec agent may mark the black-box half resolved; Win↔Tavera `$LogFile` dump diffs for named layout remain under **NTFS-LOG-001**.
+- Resolved: 2026-11-18
+- Resolution: Black-box catalog half closed (`LogReplay` / `LogOps` green; dirty FSCTL + no-op replay / clear). Named `$LogFile` field layout and Win↔Tavera dump diffs stay under **NTFS-LOG-001**. Spec: [`ntfs-log-replay.md`](ntfs-log-replay.md); restart-mount recipe under **NTFS-LOG-003** / [`ntfs-log-restart-mount.md`](ntfs-log-restart-mount.md).
+
+### NTFS-LOG-003
+- Status: resolved
+- Opened: 2026-11-18
+- Resolved: 2026-11-18
+- Question: What probe-local restart-page tags/slots does the implementer use for GitHub #2 (dirty mount: empty slots → clear dirty/RW; non-empty → RO; never apply records)?
+- Blocks: Implementer refusal of #2 without a cited recipe (field names still none under **NTFS-LOG-001**).
+- Resolution: [`ntfs-log-restart-mount.md`](ntfs-log-restart-mount.md) from [`tavera/probes/ntfs/probe-v11`](../../probes/ntfs/probe-v11) / `output/ntfs/probe-v11/restart-report.txt` (`NTFS-LOG-RESTART-REPORT` … `END`) on probe-v7 dumps. `RSTR`/`RCRD` tags; page size `u32@+0x10=0x1000`; slots `u64@+0x60` and `u64@+0x68` always 0 in captured stages including dirty remount T. Do **not** apply `RCRD` bodies.
+- Notes (implementer, 2026-11-18): `NtfsReplayLog` recognizes probe-local `RSTR` + `PAGE_SIZE_U32_AT_10`; empty `SLOT_U64_AT_60/68` → clear dirty/RW; non-empty → stay RO (`STATUS_MEDIA_WRITE_PROTECTED` to skip clear). Still **never** applies `RCRD`. Microsoft names remain under **NTFS-LOG-001**.
 
 ### NTFS-QUOTA-003
 - Status: resolved
@@ -101,12 +114,14 @@ Handoff file for implementer ↔ spec agent. Do not delete entries. See `.cursor
 - Notes (spec, 2026-11-18): Suite harness + Windows 47/47 done. Implementer −2 work moved to **NTFS-QUOTA-004** / [`ntfs-quota-on-disk.md`](ntfs-quota-on-disk.md) Rev.8.
 
 ### NTFS-QUOTA-004
-- Status: open
+- Status: resolved
 - Opened: 2026-11-18
 - Question: Implement `QuotaLimit == -2` per [`ntfs-quota-on-disk.md`](ntfs-quota-on-disk.md) Rev.4 + Rev.8 so Tavera matches Windows 10 22H2 for suite `QuotaDelete`.
 - Blocks: Catalog `QuotaDelete` green on Tavera (`tavera/test-suites/ntfs/`).
 - Notes: Windows baseline **47 green / 0 red** (`out/share-windows/result.log`, `NTFS-AGENT-DONE`). Clear-to−1 cited by probe-v4; stub today in `NtfsSetQuota` returns `STATUS_NOT_IMPLEMENTED`. No new probe required for the clear-to−1 path. Do not invent full leaf-removal bytes beyond cited behavior. Verify with `-Phase compliance` after the implementer change.
 - Notes (implementer, 2026-11-18): Wired `NtSetQuotaInformationFile` / `NtQueryQuotaInformationFile` through `IRP_MJ_SET_QUOTA` / `IRP_MJ_QUERY_QUOTA` (`ntoskrnl/io/iomgr/iofunc.c`; NTFS register + dispatch). `NtfsSetQuota`: SID upsert for seed; `QuotaLimit == -2` clears thr/lim to −1 (optional key 0x102→0x103). `NtfsQueryQuota` emits `FILE_QUOTA_INFORMATION` from resident `$Q`. Compliance: `QuotaDelete` **green** (`out/share-compliance/result.log`, 45 of 47). Still red: `Encryption` / `EncryptFile finalpath` (**NTFS-EFS-002**), `LogReplay` / `fsutil dirty set` (**NTFS-LOG-001**). Spec agent may mark this item resolved.
+- Resolved: 2026-11-18
+- Resolution: Implementer clear-to−1 / key bump per probe-v4; suite `QuotaDelete` green (`out/share-compliance/result.log`). Spec: [`ntfs-quota-on-disk.md`](ntfs-quota-on-disk.md) Rev.4 + Rev.8.
 
 ### NTFS-VER-001
 - Status: resolved
@@ -133,34 +148,54 @@ Handoff file for implementer ↔ spec agent. Do not delete entries. See `.cursor
 - Blocks: GitHub symptom #22; clean host mount of `virtual-machines/veros-ntfs/disk.qcow2`.
 - Notes: Observation `output/ntfs/issue-22-host-mount/host-mount-obs.txt` (`ISSUE-22-HOST-MOUNT-OBS` … `END`): `MOUNT_DISKIMAGE_OK`; `DIR_FAIL`; `chkdsk` without `/f` → corrupt attribute records and `Errors found. CHKDSK cannot continue in read-only mode.` Spec: [`ntfs-windows-clean-mount.md`](ntfs-windows-clean-mount.md) Rev.1. Do **not** invent `$Secure`/`$SDS`/attribute layouts; if an unnamed on-disk fact is required, open a raw-format probe session.
 - Notes (probe-v8, 2026-11-18): [`tavera/probes/ntfs/probe-v8/`](../../probes/ntfs/probe-v8/) + `output/ntfs/probe-v8/mount-frs-report.txt` (`NTFS-MOUNT-FRS-REPORT` … `END`). FRS **0x17** `$UsnJrnl:$J`: **FAIL alloc_vs_runs** (`alloc_clusters=97`, `run_sum=98`, `AllocatedSize=397312`, cluster 4096). FRS **0x7C7** / **0x7D3** (`data.safe.bin`): bounds + alloc/run **pass** — no second invented defect. Implementer recipe: [`ntfs-host-mount-corruption.md`](ntfs-host-mount-corruption.md). After `$J` fix, retest host mount/chkdsk; if 0x7C7/0x7D3 still named, further probe.
+- Notes (implementer, 2026-11-18): `AddRun` in-place growth and `NtfsExtendAllocation` keep `AllocatedSize` aligned with run-sum × cluster before `UpdateFileRecord` ([`ntfs-host-mount-corruption.md`](ntfs-host-mount-corruption.md)). Did **not** invent 0x7C7/0x7D3 defects. Host Mount-DiskImage / chkdsk retest still required before closing this item / GitHub #22.
+- Notes (host retest, 2026-11-18): Patched a **copy** of the kept disk so `$J` `AllocatedSize` = `run_sum × cluster` (**401408**; probe-v8 no longer `FAIL alloc_vs_runs`). Host obs `output/ntfs/issue-22-host-mount/host-mount-obs-retest-final.txt` (`ISSUE-22-HOST-MOUNT-OBS` … `END`): `MOUNT_DISKIMAGE_OK`; **`DIR_FAIL`** (letter and volume GUID); `chkdsk` without `/f` still fails — message changed to **allocated size incorrect** on `$J` FRS 0x17, and still **corrupt** on **0x7C7** / **0x7D3**. Writer fix alone does not rewrite the kept image; AllocatedSize=run_sum is **not** sufficient for host clean. Keep open; next raw probe must explain chkdsk’s `$J` allocated check and 0x7C7/0x7D3 (do not invent).
+- Notes (probe-v12, 2026-11-18): [`tavera/probes/ntfs/probe-v12/`](../../probes/ntfs/probe-v12/) + `output/ntfs/probe-v12/mount-deep-report.txt` (`NTFS-MOUNT-DEEP-REPORT` … `END`). `$J`: **FAIL** `J_sparse_flag_without_holes` (`NTFS_ATTR_SPARSE`, `hole_clusters=0`), **FAIL** ATTR sparse vs SI `NTFS_FILE_TYPE_SPARSE` clear, **FAIL** alloc 97 vs non-hole 98. **0x7C7** / **0x7D3**: **FAIL** orphan (parent **0x6EA** `$I30` indexes only **0x7E5** for `data.safe.bin`); **0x7C7** also **FAIL** `$Bitmap` free claimed LCNs + LCN overlap with **0x7E5**. Recipe Rev.2: [`ntfs-host-mount-corruption.md`](ntfs-host-mount-corruption.md). Keep open until host retest after writers satisfy those FAILs.
+- Notes (implementer, 2026-11-18): Format `$J` without `ATTR_IS_SPARSE` (`ntfslib/files.c`). `NtfsApplySparseAllocatedRules`: `AllocatedSize` = non-hole MCB sum × cluster; clear ATTR sparse when `hole_clusters=0` **and** no VCN gaps; clear SI `0x200`. `NtfsSetSparse` writes SI bit with ATTR. Orphan **0x7C7**/**0x7D3** replace path **not** done. Host Mount-DiskImage / chkdsk retest still required.
+- Notes (implementer, 2026-11-18): Suite hang after `UsnJrnl` was Mm retry on write into unnamed MCB gaps without `NTFS_ATTR_SPARSE` (MFT 38): `NtfsMaterializeSparseRange` now always runs before map; fills unnamed gaps; named hole-without-sparse (format `$Bad`) stays `STATUS_ACCESS_DENIED`. False `STATUS_NOT_IMPLEMENTED` from breaking the MCB walk early was removed. Harness: agent emits `NTFS-AGENT-DONE` on serial + `DONE.ok`; `Invoke-NtfsSuite` treats serial DONE / S5 / `DONE.ok` as finished when vvfat misses `result.log` DONE. Orphans still open; host retest still required.
+- Notes (implementer, 2026-11-18): Orphan replace **rule 7**: `NtfsDeleteFileRecord` treats index `STATUS_OBJECT_NAME_NOT_FOUND` as already-unlinked and still frees `$Bitmap` + `FreeMftEntry`; clears `FRH_IN_USE` on the in-memory record before `FreeClusters` so a later `UpdateFileRecord` cannot resurrect an in-use orphan; skips empty non-resident streams (`HighestVCN == -1`). Create/directory paths roll back with `NtfsDeleteFileRecord` if `$I30` add fails after `AddNewMftEntry`. Writer gap closed per Rev.2 / probe-v12; host Mount-DiskImage / `chkdsk` retest still required before closing this item / #22.
+- Notes (suite, 2026-11-18): After orphan-replace + `$J` sparse/alloc writers: `-Phase compliance` **49 green / 0 red** (`tavera/test-suites/ntfs/out/share-compliance/result.log`, `NTFS-AGENT-DONE`; snapshot `out/ntfs31.txt` **49 of 49 / 100%**; serial `out/serial-compliance-194540.log` also `NTFS-AGENT-DONE`). Catalog path clean. Item stays **open** for host Mount-DiskImage / `chkdsk` retest on the kept disk (#22) — suite green does not close that.
 
 ### NTFS-COMP-001
-- Status: open
+- Status: resolved
 - Opened: 2026-11-18
 - Question: How should `NtfsUnitClusters` in `drivers/filesystems/ntfs/ntfs3x.c` reject a disk `CompressionUnit` that would overflow the shift or `UnitClusters * BytesPerCluster` before `NtfsReadCompressed` / write paths use it?
 - Blocks: Memory safety on crafted non-resident compressed attributes (GitHub symptom #4).
 - Notes: In-tree write path sets `CompressionUnit` to **4** or **0** (`ntfs3x.c`). `NtfsUnitClusters` today does `1u << CompressionUnit` when non-zero with no range check. Acceptance: overflow/zero-divisor safety only — not a Microsoft compression-unit table. Spec: [`ntfs-compression.md`](ntfs-compression.md) Rev.1.
+- Notes (implementer, 2026-11-18): `NtfsUnitClusters` accepts only **0** or **4**; other values fail compressed read/write with `STATUS_FILE_CORRUPT_ERROR` before shift/multiply. Spec agent may mark resolved.
+- Resolved: 2026-11-18
+- Resolution: Implementer accepts only CompressionUnit **0** or **4**; other values → `STATUS_FILE_CORRUPT_ERROR` before shift/multiply. Spec: [`ntfs-compression.md`](ntfs-compression.md) Rev.1.
 
 ### NTFS-IDX-001
-- Status: open
+- Status: resolved
 - Opened: 2026-11-18
 - Question: How should `NtfsInsertRootEntry` in `drivers/filesystems/ntfs/ntfs3x.c` clamp index-root header sizes and the entry chain to the resident attribute / file-record bounds already typed in this tree before `RtlMoveMemory`?
 - Blocks: Memory safety on crafted `$INDEX_ROOT` (GitHub symptom #5).
 - Notes: Cite in-tree `INDEX_ROOT_ATTRIBUTE` / resident fields only; do not invent new Windows field names. Spec note under [`ntfs-reparse.md`](ntfs-reparse.md) / [`ntfs-object-id.md`](ntfs-object-id.md) / quota index paths as Rev.1 hardening.
+- Notes (implementer, 2026-11-18): Resident value + header `AllocatedSize`/`TotalSizeOfEntries`/`FirstEntryOffset` + entry insert clamped to in-tree bounds before `RtlMoveMemory`. Spec agent may mark resolved.
+- Resolved: 2026-11-18
+- Resolution: Implementer clamps resident index-root header sizes and entry insert to in-tree bounds before `RtlMoveMemory`. Hardening cites under reparse/object-id/quota index Rev.1 notes.
 
 ### NTFS-ATTR-001
-- Status: open
+- Status: resolved
 - Opened: 2026-11-18
 - Question: How should `NtfsGetReparsePoint`, `NtfsQueryObjectId`, and `NtfsGetReparseTag` in `drivers/filesystems/ntfs/ntfs3x.c` require a resident attribute and a value range inside the attribute record before copying `Resident.ValueOffset` / `Resident.ValueLength`?
 - Blocks: Memory safety on crafted attributes (GitHub symptom #6).
 - Notes: Spec: [`ntfs-reparse.md`](ntfs-reparse.md) Rev.1; [`ntfs-object-id.md`](ntfs-object-id.md) Rev.1. No new Windows field names.
+- Notes (implementer, 2026-11-18): `NtfsResidentValueInRecord` (same clamp as `NtfsFileRecordIsConsistent`) before reparse/object-id copies. Spec agent may mark resolved.
+- Resolved: 2026-11-18
+- Resolution: Implementer `NtfsResidentValueInRecord` clamp before reparse/object-id copies. Spec: [`ntfs-reparse.md`](ntfs-reparse.md) Rev.1; [`ntfs-object-id.md`](ntfs-object-id.md) Rev.1.
 
 ### NTFS-QUOTA-005
-- Status: open
+- Status: resolved
 - Opened: 2026-11-18
 - Question: How should the local `FSCTL_SET_QUOTA` path in `drivers/filesystems/ntfs/fsctl.c` require an enabled volume-management privilege before updating `$Quota`, and use an unused CTL function number in this driver’s CTL space?
 - Blocks: Weak access on set-quota (GitHub symptom #8).
 - Notes: Local macro today: `CTL_CODE(FILE_DEVICE_FILE_SYSTEM, 32, METHOD_BUFFERED, FILE_WRITE_DATA)` in `fsctl.c`. Learn (read 2026-11-18): [Managing Privileges in a File System](https://learn.microsoft.com/en-us/windows-hardware/drivers/ifs/privileges) documents **SeManageVolumePrivilege** for volume-level FSCTL policy via `SeSinglePrivilegeCheck` / `SePrivilegeCheck`. Learn: [FILE_QUOTA_INFORMATION](https://learn.microsoft.com/en-us/windows-hardware/drivers/ddi/ntifs/ns-ntifs-_file_quota_information) states FILE_WRITE_DATA on the volume is required to set quota via `IRP_MJ_SET_QUOTA`. Do **not** invent a Microsoft FSCTL function number; pick an unused function number in this driver’s CTL space. Spec: [`ntfs-quota-on-disk.md`](ntfs-quota-on-disk.md) Rev.9.
+- Notes (implementer, 2026-11-18): Local CTL function **0x900** + `SeSinglePrivilegeCheck(SE_MANAGE_VOLUME_PRIVILEGE)` before `NtfsSetQuota`; `fsutil/quota.c` matched. Spec agent may mark resolved.
+- Notes (implementer, 2026-11-18): Suite `QuotaAccounting` red on `fsutil modify` after the FSCTL privilege gate. `fsutil quota modify` now uses `NtSetQuotaInformationFile` + `SeIncreaseQuotaPrivilege` (same path as suite `QuotaDelete` / [`ntfs-quota-on-disk.md`](ntfs-quota-on-disk.md) Rev.4). Local FSCTL **0x900** keeps the SeManageVolume check for direct callers. Compliance re-run: `QuotaAccounting` **green** (49/49 marks; shutdown/DONE handoff tracked under **NTFS-MOUNT-001**).
+- Resolved: 2026-11-18
+- Resolution: Local CTL **0x900** + `SeManageVolumePrivilege` for direct FSCTL; catalog `fsutil quota modify` via `NtSetQuotaInformationFile` + `SeIncreaseQuotaPrivilege`. Suite `QuotaAccounting` green. Spec: [`ntfs-quota-on-disk.md`](ntfs-quota-on-disk.md) Rev.9.
 
 ### NTFS-LOCK-001
 - Status: resolved
@@ -171,18 +206,24 @@ Handoff file for implementer ↔ spec agent. Do not delete entries. See `.cursor
 - Resolution: In-tree `NtfsLockControl` → `FsRtlProcessFileLock` ([`lockctrl.c`](../../drivers/filesystems/ntfs/lockctrl.c)); FCB `FileLock`; read/write/fastio/cleanup wired. Spec: [`ntfs-locks-pagefile-txf-chkdsk.md`](ntfs-locks-pagefile-txf-chkdsk.md). Learn: [FsRtlProcessFileLock](https://learn.microsoft.com/en-us/windows-hardware/drivers/ddi/ntifs/nf-ntifs-_fsrtl_advanced_fcb_header-fsrtlprocessfilelock).
 
 ### NTFS-PAGE-001
-- Status: open
+- Status: resolved
 - Opened: 2026-11-18
+- Resolved: 2026-11-18
 - Question: What create + I/O behavior is required when `SL_OPEN_PAGING_FILE` is set so a paging file works on Tavera NTFS?
 - Blocks: Remaining page-file slice of GitHub #3.
 - Notes: Learn documents the flag ([IRP_MJ_CREATE](https://learn.microsoft.com/en-us/previous-versions/windows/drivers/ifs/irp-mj-create)). In-tree `create.c` has the flag read **commented out**; `rw.c` remarks say page files are not implemented. Do **not** invent a full paging-file path until a guest log names it and a recipe is cited. Spec: [`ntfs-locks-pagefile-txf-chkdsk.md`](ntfs-locks-pagefile-txf-chkdsk.md).
+- Resolution: Probe [`tavera/probes/ntfs/probe-v9`](../../probes/ntfs/probe-v9) / `output/ntfs/probe-v9/guest-serial.log` (`NTFS-PAGE-PROBE-DONE ok`): `NtCreatePagingFile` → `0x00000000`; ordinary `CreateFileW` → `e=32`. Implementer recipe: [`ntfs-pagefile.md`](ntfs-pagefile.md).
+- Notes (implementer, 2026-11-18): Wired `SL_OPEN_PAGING_FILE` → `FCB_IS_PAGE_FILE` / `FSRTL_FLAG2_IS_PAGING_FILE`; ordinary open of a paging file returns `STATUS_SHARING_VIOLATION` ([`ntfs-pagefile.md`](ntfs-pagefile.md)).
 
 ### NTFS-TXF-001
-- Status: open
+- Status: resolved
 - Opened: 2026-11-18
+- Resolved: 2026-11-18
 - Question: What TxF / transactional NTFS surface must Tavera implement when a guest log names it?
 - Blocks: Transactions slice of GitHub #3.
 - Notes: No in-tree TxF path; `rw.c` remarks say transactions are not implemented. **Deferred** — no allowed-source recipe in this session. Spec: [`ntfs-locks-pagefile-txf-chkdsk.md`](ntfs-locks-pagefile-txf-chkdsk.md).
+- Resolution: Probe [`tavera/probes/ntfs/probe-v10`](../../probes/ntfs/probe-v10) / `output/ntfs/probe-v10/guest-serial.log` (`NTFS-TXF-PROBE-DONE ok`): commit visible; rollback / uncommitted create → plain open `e=2`. Implementer recipe: [`ntfs-txf.md`](ntfs-txf.md). Do **not** invent `$RmMetadata` layouts from the API log.
+- Notes (implementer, 2026-11-18): Process-local staging in `ktmw32` + `CreateFileTransactedW` ([`ntfs-txf.md`](ntfs-txf.md)): commit `MoveFile` to final name; rollback deletes staging; uncommitted final path absent. **No** `$RmMetadata` / `$Txf*` field invention.
 
 ### NTFS-CHKDSK-001
 - Status: resolved

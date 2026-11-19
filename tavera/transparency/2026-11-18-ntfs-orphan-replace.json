@@ -1,0 +1,20 @@
+{
+  "spdx": "GPL-2.0-or-later",
+  "question": "How should writers retire a prior in-use FRS on directory replace so $I30 cannot index a survivor while another FRS stays in-use for the same parent/$FILE_NAME, and so claimed data LCNs are freed in $Bitmap without overlapping the survivor?",
+  "allowedInputs": [
+    "tavera/specs/ntfs/ntfs-host-mount-corruption.md Rev.2 rule 7 — no orphan in-use FRS; claimed LCNs in-use; no LCN overlap with survivor",
+    "Reported: probe-v12 mount-deep-report NTFS-MOUNT-DEEP-REPORT … END",
+    "tavera/specs/ntfs/open-items.md NTFS-MOUNT-001",
+    "drivers/filesystems/ntfs/mft.c NtfsDeleteFileRecord / FreeMftEntry / FreeClusters",
+    "drivers/filesystems/ntfs/finfo.c NtfsClearRenameTarget",
+    "drivers/filesystems/ntfs/create.c AddNewMftEntry paths",
+    "Reported: spec writer — orphan replace rule 7 is the remaining writer gap; recipe in Rev.2 / probe-v12",
+    "Reported: NTFS compliance suite after orphan replace — 49 green / 0 red; NTFS-AGENT-DONE"
+  ],
+  "harness": {
+    "guest": "Tavera live CD amd64 QEMU compliance",
+    "name": "Invoke-NtfsSuite -Phase compliance",
+    "traceOrReplayId": "share-compliance/result.log",
+    "logSha256": "9867f650a3bc682b7e4ba4f4ea60772a3d68203693711508e9e193060908adeb"
+  }
+}

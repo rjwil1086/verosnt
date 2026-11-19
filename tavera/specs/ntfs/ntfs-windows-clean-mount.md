@@ -48,3 +48,28 @@ If Windows refuses to mount or marks the volume dirty / chkdsk-dirty, fix the fo
 - Sector dumps or `$LogFile` record decode in this acceptance spec.
 - Requiring WHPX; capture boots stay on TCG per project rules when a Windows disk is involved.
 - Using the installed `virtual-machines/veros-ntfs/disk.qcow2` as the format target for this check (Milestone 45 text keeps that disk out of the fresh-volume path).
+
+### Kept-disk host mount observation **(Rev.1)**
+
+**(Rev.1)** Separate from the fresh-format acceptance above: host retest of the **kept** disk `virtual-machines/veros-ntfs/disk.qcow2` (converted to non-sparse fixed VHDX). Observation log `output/ntfs/issue-22-host-mount/host-mount-obs.txt` (`ISSUE-22-HOST-MOUNT-OBS` … `ISSUE-22-HOST-MOUNT-OBS-END`, 2026-11-18):
+
+- `Mount-DiskImage` succeeded; IFS partition ~16 GiB.
+- Root `Get-ChildItem` failed (`DIR_FAIL`).
+- `chkdsk` without `/f` ([Learn](https://learn.microsoft.com/en-us/windows-server/administration/windows-commands/chkdsk)): corrupt attribute-record messages; `Errors found. CHKDSK cannot continue in read-only mode.`
+
+**(Rev.1)** Open item **NTFS-MOUNT-001**. Do not invent attribute layouts from this text; a raw-format probe is required before naming failing on-disk fields.
+
+### Probe-v8 cite **(Rev.2)**
+
+**(Rev.2)** Raw-format probe [`tavera/probes/ntfs/probe-v8/`](../../probes/ntfs/probe-v8/) cites `$UsnJrnl:$J` **AllocatedSize** vs mapping-pair cluster sum mismatch. Implementer spec: [`ntfs-host-mount-corruption.md`](ntfs-host-mount-corruption.md). **NTFS-MOUNT-001** remains open until host retest is clean (and any remaining 0x7C7/0x7D3 chkdsk names are probed).
+
+**(Rev.3)** Host retest after setting `$J` `AllocatedSize` = run-sum × cluster on a kept-disk **copy** still `DIR_FAIL` + `chkdsk` errors ([`ntfs-host-mount-corruption.md`](ntfs-host-mount-corruption.md) Rev.1). **NTFS-MOUNT-001** / #22 stay open.
+
+**(Rev.4)** Deep probe [`tavera/probes/ntfs/probe-v12/`](../../probes/ntfs/probe-v12/) (`output/ntfs/probe-v12/mount-deep-report.txt`, `NTFS-MOUNT-DEEP-REPORT` … `END`): `$J` has `NTFS_ATTR_SPARSE` with zero hole runs and SI sparse bit clear; **0x7C7** / **0x7D3** are in-use orphans vs parent **0x6EA** `$I30` (survivor **0x7E5**), with **0x7C7** also failing `$Bitmap` / LCN overlap. Spec Rev.2: [`ntfs-host-mount-corruption.md`](ntfs-host-mount-corruption.md). **NTFS-MOUNT-001** / #22 stay open pending implementer + host retest.
+
+## Revision log
+
+- **Rev.1** (2026-11-18): kept-disk Mount-DiskImage / chkdsk observation; **NTFS-MOUNT-001**.
+- **Rev.2** (2026-11-18): probe-v8 → host-mount-corruption spec; `$J` alloc/run FAIL.
+- **Rev.3** (2026-11-18): AllocatedSize=run_sum host retest insufficient.
+- **Rev.4** (2026-11-18): probe-v12 sparse/`$J` + orphan 0x7C7/0x7D3; #22 stays open.

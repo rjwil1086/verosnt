@@ -6,11 +6,20 @@
  * COPYRIGHT:   Copyright (C) 2002,2003 ReactOS Team
  *              See COPYING in the top level directory
  *              Copyright 2026 Ryan Wilson <ryan@verosnt.com>
+ *              Copyright 2026 Ryan Wilson <ryan@taveraos.com>
  * PROGRAMMERS: Eric Kohl
  *              Valentin Verkhovsky
  *              Hervé Poussineau (hpoussin@reactos.org)
  *              Pierre Schweitzer (pierre@reactos.org)
  *              Ryan Wilson <ryan@verosnt.com>
+ *              Ryan Wilson <ryan@taveraos.com>
+ *
+ * Sources: AllocatedSize sync on in-place run growth (NTFS-MOUNT-001):
+ *   tavera/specs/ntfs/ntfs-host-mount-corruption.md; probe-v8
+ *   output/ntfs/probe-v8/mount-frs-report.txt (NTFS-MOUNT-FRS-REPORT).
+ *   AllocatedSize = non-hole runs; no ATTR sparse without holes; SI bit:
+ *   ntfs-host-mount-corruption.md Rev.2; probe-v12
+ *   output/ntfs/probe-v12/mount-deep-report.txt (NTFS-MOUNT-DEEP-REPORT).
  */
 
 /* INCLUDES *****************************************************************/
@@ -24,6 +33,81 @@
 /* Set to 1 to dump each data run list as it is encoded. Uses DbgPrint, so it
  * prints whatever NDEBUG is set to. */
 #define NTFS_DUMP_DATA_RUNS 0
+
+/**
+ * @name NtfsApplySparseAllocatedRules
+ * @implemented
+ *
+ * Sets AllocatedSize from the sum of non-hole LargeMCB runs × cluster size.
+ * Clears NTFS_ATTR_SPARSE when no hole runs remain, and clears
+ * NTFS_FILE_TYPE_SPARSE on STANDARD_INFORMATION when that happens
+ * (ntfs-host-mount-corruption.md Rev.2 / probe-v12).
+ */
+VOID
+NtfsApplySparseAllocatedRules(PDEVICE_EXTENSION Vcb,
+                              PNTFS_ATTR_CONTEXT AttrContext,
+                              PNTFS_ATTR_RECORD DestinationAttribute OPTIONAL,
+                              PFILE_RECORD_HEADER FileRecord OPTIONAL)
+{
+    ULONGLONG NonHoleClusters = 0;
+    ULONGLONG AllocBytes;
+    ULONGLONG CoveredTo;
+    ULONG Index = 0;
+    LONGLONG Vbn;
+    LONGLONG Lbn;
+    LONGLONG Count;
+    BOOLEAN HasHole = FALSE;
+    BOOLEAN HasGap = FALSE;
+
+    if (AttrContext == NULL || AttrContext->pRecord == NULL ||
+        !AttrContext->pRecord->IsNonResident)
+    {
+        return;
+    }
+
+    CoveredTo = AttrContext->pRecord->NonResident.LowestVCN;
+    while (FsRtlGetNextLargeMcbEntry(&AttrContext->DataRunsMCB, Index, &Vbn, &Lbn, &Count))
+    {
+        if ((ULONGLONG)Vbn > CoveredTo)
+            HasGap = TRUE;
+        if (Lbn == -1)
+            HasHole = TRUE;
+        else
+            NonHoleClusters += (ULONGLONG)Count;
+        if ((ULONGLONG)Vbn + (ULONGLONG)Count > CoveredTo)
+            CoveredTo = (ULONGLONG)Vbn + (ULONGLONG)Count;
+        Index++;
+    }
+    if (AttrContext->pRecord->NonResident.HighestVCN != (ULONGLONG)-1 &&
+        CoveredTo < AttrContext->pRecord->NonResident.HighestVCN + 1)
+    {
+        HasGap = TRUE;
+    }
+
+    AllocBytes = NonHoleClusters * Vcb->NtfsInfo.BytesPerCluster;
+    AttrContext->pRecord->NonResident.AllocatedSize = AllocBytes;
+    if (DestinationAttribute != NULL)
+        DestinationAttribute->NonResident.AllocatedSize = AllocBytes;
+
+    /* Only clear ATTR sparse when there are neither hole runs nor VCN gaps
+     * (probe-v12 J_sparse_flag_without_holes). Gaps still need materialize. */
+    if ((AttrContext->pRecord->Flags & NTFS_ATTR_SPARSE) != 0 && !HasHole && !HasGap)
+    {
+        PSTANDARD_INFORMATION Info;
+        ULONG InfoLength = 0;
+
+        AttrContext->pRecord->Flags &= ~NTFS_ATTR_SPARSE;
+        if (DestinationAttribute != NULL)
+            DestinationAttribute->Flags &= ~NTFS_ATTR_SPARSE;
+
+        if (FileRecord != NULL)
+        {
+            Info = NtfsFindStandardInformation(Vcb, FileRecord, &InfoLength);
+            if (Info != NULL)
+                Info->FileAttribute &= ~NTFS_FILE_TYPE_SPARSE;
+        }
+    }
+}
 
 /* FUNCTIONS ****************************************************************/
 
@@ -701,6 +785,56 @@ AddIndexAllocation(PNTFS_VCB Vcb,
 }
 
 /**
+ * Add an empty non-resident $LOGGED_UTILITY_STREAM (EFS $EFS shell).
+ * Same empty-run layout as AddIndexAllocation; type/name differ.
+ * tavera/specs/ntfs/ntfs-encrypted-file-body.md Rev.3 (probe-v6); AttrDef NonResident.
+ */
+NTSTATUS
+AddLoggedUtilityStream(PNTFS_VCB Vcb,
+                       PFILE_RECORD_HEADER FileRecord,
+                       PNTFS_ATTR_RECORD AttributeAddress,
+                       PCWSTR Name,
+                       USHORT NameLength)
+{
+    ULONG RecordLength;
+    ULONG FileRecordEnd;
+    ULONG NameOffset;
+    ULONG DataRunOffset;
+    ULONG BytesAvailable;
+
+    if (AttributeAddress->Type != AttributeEnd)
+        return STATUS_NOT_IMPLEMENTED;
+
+    NameOffset = FIELD_OFFSET(NTFS_ATTR_RECORD, NonResident.CompressedSize);
+    DataRunOffset = (sizeof(WCHAR) * NameLength) + NameOffset;
+    DataRunOffset = ALIGN_UP_BY(DataRunOffset, DATA_RUN_ALIGNMENT);
+    RecordLength = ALIGN_UP_BY(DataRunOffset + 1, ATTR_RECORD_ALIGNMENT);
+    FileRecordEnd = AttributeAddress->Length;
+
+    BytesAvailable = Vcb->NtfsInfo.BytesPerFileRecord - FileRecord->BytesInUse;
+    if (BytesAvailable < RecordLength)
+        return STATUS_DISK_FULL;
+
+    RtlZeroMemory(AttributeAddress, RecordLength);
+    AttributeAddress->Type = AttributeLoggedUtilityStream;
+    AttributeAddress->Length = RecordLength;
+    AttributeAddress->IsNonResident = TRUE;
+    AttributeAddress->NameLength = (UCHAR)NameLength;
+    AttributeAddress->NameOffset = (USHORT)NameOffset;
+    AttributeAddress->Instance = FileRecord->NextAttributeNumber++;
+    AttributeAddress->NonResident.MappingPairsOffset = (USHORT)DataRunOffset;
+    AttributeAddress->NonResident.HighestVCN = (LONGLONG)-1;
+
+    RtlCopyMemory((PCHAR)((ULONG_PTR)AttributeAddress + NameOffset),
+                  Name,
+                  NameLength * sizeof(WCHAR));
+
+    AttributeAddress = (PNTFS_ATTR_RECORD)((ULONG_PTR)AttributeAddress + AttributeAddress->Length);
+    SetFileRecordEnd(FileRecord, AttributeAddress, FileRecordEnd);
+    return STATUS_SUCCESS;
+}
+
+/**
 * @name AddIndexRoot
 * @implemented
 *
@@ -1129,6 +1263,9 @@ AddRun(PNTFS_VCB Vcb,
                 DestinationAttribute->NonResident.HighestVCN = HighestVcn;
                 AttrContext->pRecord->NonResident.HighestVCN = HighestVcn;
                 FsRtlAddLargeMcbEntry(&AttrContext->DataRunsMCB, NextVBN, NextAssignedCluster, RunLength);
+                /* NTFS-MOUNT-001 Rev.2: AllocatedSize = non-hole sum × cluster
+                 * (probe-v8 FAIL alloc_vs_runs; probe-v12 non-hole rule). */
+                NtfsApplySparseAllocatedRules(Vcb, AttrContext, DestinationAttribute, FileRecord);
                 return UpdateFileRecord(Vcb, FileRecord->MFTRecordNumber, FileRecord);
             }
         }
@@ -1263,6 +1400,8 @@ AddRun(PNTFS_VCB Vcb,
     RtlCopyMemory((PVOID)((ULONG_PTR)AttrContext->pRecord + AttrContext->pRecord->NonResident.MappingPairsOffset),
                   RunBuffer,
                   RunBufferSize);
+
+    NtfsApplySparseAllocatedRules(Vcb, AttrContext, DestinationAttribute, FileRecord);
 
     // Update the file record
     Status = UpdateFileRecord(Vcb, AttrContext->FileMFTIndex, FileRecord);

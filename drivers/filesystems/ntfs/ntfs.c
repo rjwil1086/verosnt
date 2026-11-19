@@ -1,6 +1,7 @@
 /*
  *  ReactOS kernel
  *  Copyright (C) 2002 ReactOS Team
+ *  Copyright 2026 Ryan Wilson <ryan@taveraos.com>
  *
  *  This program is free software; you can redistribute it and/or modify
  *  it under the terms of the GNU General Public License as published by
@@ -22,6 +23,7 @@
  * PURPOSE:          NTFS filesystem driver
  * PROGRAMMER:       Eric Kohl
  *                   Pierre Schweitzer
+ *                   Ryan Wilson <ryan@taveraos.com>
  */
 
 /* INCLUDES *****************************************************************/
@@ -178,6 +180,8 @@ NtfsInitializeFunctionPointers(PDRIVER_OBJECT DriverObject)
     DriverObject->MajorFunction[IRP_MJ_SET_INFORMATION]          = NtfsFsdDispatch;
     DriverObject->MajorFunction[IRP_MJ_QUERY_VOLUME_INFORMATION] = NtfsFsdDispatch;
     DriverObject->MajorFunction[IRP_MJ_SET_VOLUME_INFORMATION]   = NtfsFsdDispatch;
+    DriverObject->MajorFunction[IRP_MJ_QUERY_QUOTA]              = NtfsFsdDispatch;
+    DriverObject->MajorFunction[IRP_MJ_SET_QUOTA]                = NtfsFsdDispatch;
     DriverObject->MajorFunction[IRP_MJ_DIRECTORY_CONTROL]        = NtfsFsdDispatch;
     DriverObject->MajorFunction[IRP_MJ_FILE_SYSTEM_CONTROL]      = NtfsFsdDispatch;
     DriverObject->MajorFunction[IRP_MJ_DEVICE_CONTROL]           = NtfsFsdDispatch;

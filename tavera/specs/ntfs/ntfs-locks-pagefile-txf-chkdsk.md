@@ -48,6 +48,8 @@ Split #3 into four tracked outcomes so the implementer can close the lock slice 
 | Transactions (TxF) | **Deferred** — no allowed-source recipe; wait for a guest log |
 | `NtfsChkdsk` | **Deferred** — no in-tree chkdsk entry point; host `chkdsk` is a separate tool ([Learn](https://learn.microsoft.com/en-us/windows-server/administration/windows-commands/chkdsk)) |
 | `NtfsChkdsk` **(Rev.1)** | **Closed / out of scope** — issue body name was mislabeled; no in-driver repair export; see Rev.1 product surface below |
+| Page files **(Rev.2)** | **Spec ready for implementer** — [`ntfs-pagefile.md`](ntfs-pagefile.md); probe-v9 `NTFS-PAGE-PROBE-DONE ok` |
+| Transactions (TxF) **(Rev.2)** | **Spec ready for implementer** — [`ntfs-txf.md`](ntfs-txf.md); probe-v10 `NTFS-TXF-PROBE-DONE ok` |
 
 ## Interfaces
 
@@ -137,12 +139,16 @@ No acceptance recipe in this revision. Implementer must **not** invent paging-fi
 
 **(Rev.1)** In-driver `NtfsChkdsk` — **resolved / out of scope** (**NTFS-CHKDSK-001**). Host `chkdsk` cleanliness remains **NTFS-MOUNT-001**.
 
+**(Rev.2)** Page files — **resolved for implementer handoff** (**NTFS-PAGE-001** → [`ntfs-pagefile.md`](ntfs-pagefile.md)). TxF — **resolved for implementer handoff** (**NTFS-TXF-001** → [`ntfs-txf.md`](ntfs-txf.md)).
+
 ## Review log
 
 - 2026-11-18: Spec agent — locks from in-tree + Learn FsRtl/create; page/TxF/chkdsk deferred without invention (implementer partial #3 notes).
 - 2026-11-18 **(Rev.1)**: Spec agent — chkdsk slice de-scoped from Learn dirty/`chkdsk`/`autochk` + in-tree FSCTLs; **NTFS-CHKDSK-001** resolved; page/TxF still open.
+- 2026-11-18 **(Rev.2)**: Spec agent — probe-v9/v10 captures; page + TxF specs written; open-items resolved for implementer.
 
 ## Revision log
 
 - **Rev.0** (2026-11-18): Initial partial #3 spec; locks acceptance; three deferred open-items.
 - **Rev.1** (2026-11-18): Close mislabeled `NtfsChkdsk` slice; document Learn check path; no implementer API.
+- **Rev.2** (2026-11-18): Point page/TxF slices at `ntfs-pagefile.md` / `ntfs-txf.md` after probe-v9/v10.

@@ -42,9 +42,11 @@ Raw-format probe sources live under [`tavera/probes/ntfs/`](../../probes/ntfs/) 
 | Quotas (`$Q` value) | [`ntfs-quota-on-disk.md`](ntfs-quota-on-disk.md) | **Capture + diff** (probe-v2: LE int64 @316 threshold, @324 limit in `$Q` root) | Quota, QuotaAccounting, **QuotaDelete** (Rev.6) |
 | Encryption (on-disk body) | [`ntfs-encrypted-file-body.md`](ntfs-encrypted-file-body.md) | **Capture + diff** (probe-v6: 672-byte `$EFS`; fixed 16-byte header; Microsoft field names none) | Encryption, **EfsBody** |
 | Log replay (`$LogFile` records) | [`ntfs-log-replay.md`](ntfs-log-replay.md) | **Capture + diff** (probe-v7 single-op recipe; record field names still **none**) | LogFile (presence); **LogReplay** / **LogOps** black-box dirty remount (Rev.10) |
+| Log restart dirty-mount (#2) **(Rev.14)** | [`ntfs-log-restart-mount.md`](ntfs-log-restart-mount.md) | **Implementer recipe** (probe-v11 on probe-v7 dumps; empty slots → clear dirty; never apply) | (no catalog row; mount policy) |
 | Tevera → Windows clean mount | [`ntfs-windows-clean-mount.md`](ntfs-windows-clean-mount.md) | **Acceptance** (test harness is a milestone follow-on) | WindowsCleanMount (to be added to catalog when the test is written) |
 | Locks / page file / TxF / chkdsk **(Rev.11)** | [`ntfs-locks-pagefile-txf-chkdsk.md`](ntfs-locks-pagefile-txf-chkdsk.md) | Locks **in-tree**; page/TxF/`NtfsChkdsk` **deferred** (GitHub #3 partial) | (no dedicated catalog row; lock via FsRtl) |
 | Locks / page file / TxF / chkdsk **(Rev.12)** | [`ntfs-locks-pagefile-txf-chkdsk.md`](ntfs-locks-pagefile-txf-chkdsk.md) Rev.1 | Locks **in-tree**; **chkdsk de-scoped** (**NTFS-CHKDSK-001**); page/TxF still deferred (#3) | (no dedicated catalog row; lock via FsRtl; dirty via LogReplay) |
+| Page file / TxF **(Rev.13)** | [`ntfs-pagefile.md`](ntfs-pagefile.md), [`ntfs-txf.md`](ntfs-txf.md) | **Implementer recipes** from probe-v9/v10 (`NTFS-PAGE-PROBE-DONE ok` / `NTFS-TXF-PROBE-DONE ok`) | (optional future catalog rows) |
 
 ## Milestone acceptance (not this plan’s code)
 
@@ -140,3 +142,5 @@ Each probe session stores captures under `output/ntfs/<probe-id>/`, cites **that
 - **Rev.10** (2026-11-18): probe-v7 log-iso recipe; field names none; suite `LogOps`; LOG-002 open.
 - **Rev.11** (2026-11-18): #3 partial — locks in-tree; page/TxF/chkdsk deferred (`ntfs-locks-pagefile-txf-chkdsk.md`).
 - **Rev.12** (2026-11-18): #3 chkdsk slice closed / mislabeled (`ntfs-locks-pagefile-txf-chkdsk.md` Rev.1; **NTFS-CHKDSK-001**); page/TxF remain.
+- **Rev.13** (2026-11-18): probe-v9 pagefile + probe-v10 TxF; **NTFS-PAGE-001** / **NTFS-TXF-001** resolved for implementer.
+- **Rev.14** (2026-11-18): probe-v11 restart-page dirty-mount for GitHub #2; **NTFS-LOG-003** resolved (`ntfs-log-restart-mount.md`).
