@@ -1,5 +1,5 @@
 /*
- * PROJECT:     VerOS NT Kernel
+ * PROJECT:     Tavera OS Kernel
  * LICENSE:     GNU General Public License, version 2 or later (GPL-2.0-or-later)
  * FILE:        ntoskrnl/config/cmsysini.c
  * PURPOSE:     Configuration Manager - System Initialization Code
@@ -769,7 +769,7 @@ CmpCreateControlSet(IN PLOADER_PARAMETER_BLOCK LoaderBlock)
     LoaderExtension = LoaderBlock->Extension;
     if (LoaderExtension)
     {
-        DPRINT("VerOS NT doesn't support NTLDR Profiles yet!\n");
+        DPRINT("Tavera OS doesn't support NTLDR Profiles yet!\n");
     }
 
     /* Create the current hardware profile key */

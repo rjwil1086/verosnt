@@ -1,5 +1,5 @@
 /*
- * PROJECT:     VerOS NT Subsystem
+ * PROJECT:     Tavera OS Subsystem
  * LICENSE:     GNU General Public License, version 2 or later (GPL-2.0-or-later)
  * FILE:        win32ss/drivers/displays/framebuf/screen.c
  * PURPOSE:     ReactOS Generic Framebuffer display driver

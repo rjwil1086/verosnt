@@ -1,4 +1,4 @@
-# PROJECT:     VerOS NT
+# PROJECT:     Tavera OS
 # LICENSE:     GNU General Public License, version 2 or later (GPL-2.0-or-later)
 # FILE:        .cursor/hooks/update-dashboard.ps1
 # PURPOSE:     Refresh the dashboard after a source change

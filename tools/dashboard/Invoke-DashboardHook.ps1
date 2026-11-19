@@ -1,4 +1,4 @@
-# PROJECT:     VerOS NT
+# PROJECT:     Tavera OS
 # LICENSE:     GNU General Public License, version 2 or later (GPL-2.0-or-later)
 # FILE:        tools/dashboard/Invoke-DashboardHook.ps1
 # PURPOSE:     Run the dashboard update hook

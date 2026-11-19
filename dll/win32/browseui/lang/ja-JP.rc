@@ -90,7 +90,7 @@ BEGIN
     END
     POPUP "ヘルプ(&H)", FCIDM_MENU_HELP
     BEGIN
-        MENUITEM "VerOS NTについて(&A)", IDM_HELP_ABOUT
+        MENUITEM "Tavera OSについて(&A)", IDM_HELP_ABOUT
     END
 END
 
@@ -354,6 +354,6 @@ END
 
 STRINGTABLE
 BEGIN
-    IDS_PARSE_ADDR_ERR_TITLE "VerOS NT エクスプローラ"
-    IDS_PARSE_ADDR_ERR_TEXT "VerOS NT エクスプローラは '%1' を見つけられませんでした。スペルを確認してやり直して下さい。"
+    IDS_PARSE_ADDR_ERR_TITLE "Tavera OS エクスプローラ"
+    IDS_PARSE_ADDR_ERR_TEXT "Tavera OS エクスプローラは '%1' を見つけられませんでした。スペルを確認してやり直して下さい。"
 END

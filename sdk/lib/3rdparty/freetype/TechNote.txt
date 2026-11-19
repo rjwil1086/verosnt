@@ -1,26 +1,26 @@
-# Technical notes on VerOS NT FreeType
+# Technical notes on Tavera OS FreeType
 
 ## Overview
 
-VerOS NT FreeType is a slightly hacked version of FreeType. See also the original FreeType:
+Tavera OS FreeType is a slightly hacked version of FreeType. See also the original FreeType:
 
 - https://freetype.org/
 - https://sourceforge.net/projects/freetype/files/freetype2/
 
-## VerOS NT FreeType 2.10.4
+## Tavera OS FreeType 2.10.4
 
 - Now woff/woff2 formats are supported (not handled yet).
 - Reduced memory leaks.
 - rm -fr sdk/lib/3rdparty/freetype/src/gxvalid
 - rm -fr sdk/lib/3rdparty/freetype/src/otvalid
 
-## VerOS NT FreeType 2.10.0
+## Tavera OS FreeType 2.10.0
 
-- FreeType in VerOS NT is a static library. ftfd.dll (win32ss/drivers/font/ftfd) actually uses FreeType.
+- FreeType in Tavera OS is a static library. ftfd.dll (win32ss/drivers/font/ftfd) actually uses FreeType.
 - As usual for 3rd party libraries, the parts that differ are wrapped by #ifdef __REACTOS__ ... #endif.
 - Stack size is limited, so we have to use malloc/free instead of large stack variables.
 - malloc/realloc/free in ftfd.dll are wrappers implemented in win32ss/drivers/font/ftfd/rosglue.c.
 - FT_Bitmap_Convert_ReactOS_Hack function is an extension of FT_Bitmap_Convert function.
-  This hack function is (currently) needed for VerOS NT text output.
+  This hack function is (currently) needed for Tavera OS text output.
 - Now we can use FT_ENCODING_NONE for FT_Select_Charmap on FON/FNT files.
-- Jamfile's and Makefile's in source are useless for VerOS NT (search and delete).
+- Jamfile's and Makefile's in source are useless for Tavera OS (search and delete).

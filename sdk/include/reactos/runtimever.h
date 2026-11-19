@@ -1,5 +1,5 @@
 /*
- * PROJECT:     VerOS NT
+ * PROJECT:     Tavera OS
  * LICENSE:     GNU General Public License, version 2 or later (GPL-2.0-or-later)
  * FILE:        sdk/include/reactos/runtimever.h
  * PURPOSE:     Runtime NT version reported to an application

@@ -1,4 +1,4 @@
-# PROJECT:     VerOS NT
+# PROJECT:     Tavera OS
 # LICENSE:     GNU General Public License, version 2 or later (GPL-2.0-or-later)
 # FILE:        tools/windows-trace/Install-Windows.ps1
 # PURPOSE:     Install the Windows 10 22H2 trace guest

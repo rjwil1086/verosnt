@@ -1302,7 +1302,7 @@ FrLdrCheckCpuCompatibility(VOID)
         FrLdrBugCheckWithMessage(MISSING_HARDWARE_REQUIREMENTS,
                                  __FILE__,
                                  __LINE__,
-                                 "VerOS NT requires the CPUID instruction to return "
+                                 "Tavera OS requires the CPUID instruction to return "
                                  "more than one supported ID.\n\n");
     }
 
@@ -1323,7 +1323,7 @@ FrLdrCheckCpuCompatibility(VOID)
                                      __FILE__,
                                      __LINE__,
                                      "Processor is too old (family %u < 5)\n"
-                                     "VerOS NT requires a Pentium-level processor or newer.",
+                                     "Tavera OS requires a Pentium-level processor or newer.",
                                      ProcessorFamily);
         }
     }

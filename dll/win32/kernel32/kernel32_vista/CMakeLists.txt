@@ -7,6 +7,7 @@ include_directories(${REACTOS_SOURCE_DIR}/sdk/include/reactos/subsys ..)
 spec2def(kernel32_vista.dll kernel32_vista.spec ADD_IMPORTLIB)
 
 list(APPEND SOURCE
+    CreateFileTransacted.c
     EnumSystemLocalesEx.c
     firmware.c
     GetLocaleInfoEx.c
@@ -44,4 +45,4 @@ set_module_type(kernel32_vista win32dll ENTRYPOINT DllMain 12)
 target_link_libraries(kernel32_vista kernel32_vista_static kernel32_shared)
 add_importlibs(kernel32_vista kernel32 ntdll_vista ntdll)
 add_dependencies(kernel32_vista psdk)
-add_cd_file(TARGET kernel32_vista DESTINATION VerOS/system32 FOR all)
+add_cd_file(TARGET kernel32_vista DESTINATION "Tavera/system32" FOR all)

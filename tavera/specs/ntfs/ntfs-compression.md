@@ -34,3 +34,13 @@ In-tree:
 ## Non-goals
 
 - Matching Microsoft’s internal compression scheduling if a different structure still passes ReadFile/WriteFile and Windows mount/chkdsk on the volume.
+
+### CompressionUnit shift safety **(Rev.1)**
+
+**(Rev.1)** In-tree `NtfsUnitClusters` (`drivers/filesystems/ntfs/ntfs3x.c`) maps `CompressionUnit == 0` to 16 clusters, else `1u << CompressionUnit`, then multiplies by `BytesPerCluster` for read/write compressed paths. The same file’s write path stores `CompressionUnit` **4** (compressed) or **0** (clear).
+
+**(Rev.1)** Acceptance (**NTFS-COMP-001**): before the shift or multiply, reject a disk `CompressionUnit` that would overflow a 32-bit cluster count or yield a zero unit size usable as a divisor. This is memory safety in this driver — not a Microsoft compression-unit enumeration.
+
+## Revision log
+
+- **Rev.1** (2026-11-18): `NtfsUnitClusters` overflow/zero-divisor safety; **NTFS-COMP-001**.

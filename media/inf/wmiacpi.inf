@@ -4,11 +4,11 @@
 
 [Version]
 Signature  = "$Windows NT$"
-;Signature  = "$VerOS NT$"
+;Signature  = "$Tavera$"
 LayoutFile = layout.inf
 Class      = System
 ClassGUID  = {4D36E97D-E325-11CE-BFC1-08002BE10318}
-Provider   = %VerOS NT%
+Provider   = %Tavera OS%
 DriverVer  = 03/26/2015,1.00.0.0
 
 [DestinationDirs]
@@ -40,18 +40,18 @@ GenericMfg = "(Generic system devices)"
 *PNP0C14.DeviceDesc = "WMI for ACPI"
 
 [Strings.0404]
-GenericMfg = "(標準系統裝置)"
-*PNP0C14.DeviceDesc = "ACPI 的 WMI"
+GenericMfg = "(??????????????????)"
+*PNP0C14.DeviceDesc = "ACPI ??? WMI"
 
 [Strings.0405]
-GenericMfg = "(Generická systémová zařízení)"
+GenericMfg = "(Generick?? syst??mov?? za????zen??)"
 
 [Strings.0407]
-GenericMfg = "(Generische Systemgeräte)"
-*PNP0C14.DeviceDesc = "WMI für ACPI"
+GenericMfg = "(Generische Systemger??te)"
+*PNP0C14.DeviceDesc = "WMI f??r ACPI"
 
 [Strings.0415]
-GenericMfg = "(Standardowe urządzenia systemowe)"
+GenericMfg = "(Standardowe urz??dzenia systemowe)"
 *PNP0C14.DeviceDesc = "WMI dla ACPI"
 
 [Strings.0418]
@@ -59,21 +59,21 @@ GenericMfg = "(dispozitive generice de sistem)"
 *PNP0C14.DeviceDesc = "WMI pentru ACPI"
 
 [Strings.0419]
-GenericMfg = "(Универсальные системные устройства)"
-*PNP0C14.DeviceDesc = "WMI для ACPI"
+GenericMfg = "(?????????????????????????? ?????????????????? ????????????????????)"
+*PNP0C14.DeviceDesc = "WMI ?????? ACPI"
 
 [Strings.041f]
-GenericMfg = "(Genel Sistem Aygıtları)"
-*PNP0C14.DeviceDesc = "ACPI için WMI"
+GenericMfg = "(Genel Sistem Ayg??tlar??)"
+*PNP0C14.DeviceDesc = "ACPI i??in WMI"
 
 [Strings.0804]
-GenericMfg = "(通用系统设备)"
-*PNP0C14.DeviceDesc = "ACPI 的 WMI"
+GenericMfg = "(??????????????????)"
+*PNP0C14.DeviceDesc = "ACPI ??? WMI"
 
 [Strings.0a]
-GenericMfg = "(Dispositivos genéricos del sistema)"
+GenericMfg = "(Dispositivos gen??ricos del sistema)"
 *PNP0C14.DeviceDesc = "WMI para ACPI"
 
 [Strings.0C04]
-GenericMfg = "(標準系統裝置)"
-*PNP0C14.DeviceDesc = "ACPI 的 WMI"
+GenericMfg = "(??????????????????)"
+*PNP0C14.DeviceDesc = "ACPI ??? WMI"

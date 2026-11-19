@@ -1440,7 +1440,7 @@ ShellShutdownDialog(
                             StringCbCopyW(text, sizeof(text), choices.Choices[index].Label);
                             StringCbCatW(text, sizeof(text), L"\n");
                             StringCbCatW(text, sizeof(text), choices.Choices[index].Detail);
-                            if (MessageBoxW(hWndParent, text, L"VerOS", MB_YESNO) != IDYES)
+                            if (MessageBoxW(hWndParent, text, L"Tavera OS", MB_YESNO) != IDYES)
                                 continue;
                             ZeroMemory(&committed, sizeof(committed));
                             committed.ChoiceId = choices.Choices[index].Id;

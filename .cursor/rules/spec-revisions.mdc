@@ -1,0 +1,28 @@
+---
+description: Spec revisions append; never overwrite; mark every added block Rev.N
+globs: tavera/specs/**/*.md
+alwaysApply: true
+---
+
+# Spec revisions
+
+SPDX-License-Identifier: GPL-2.0-or-later
+
+Edits to `tavera/specs/**` are **append-only**. Do not delete, rewrite, or silently replace existing prose, tables, citations, or open-question text. Correct a factual error by adding a new revision that states the correction; leave the prior wording in place.
+
+## Revision marks
+
+- The first change after the original draft is **Rev.1**. Each later edit session that adds material bumps to **Rev.2**, **Rev.3**, ….
+- Put `**(Rev.N)**` immediately next to **every** added heading, paragraph, list, table row block, or other discrete section of new text (not once at the top of the file only).
+- When a whole new subsection is added, mark the subsection heading: `### Differential (probe-v2) **(Rev.1)**`.
+- When extending an existing section, mark each new paragraph or table: `**(Rev.2)** Little-endian int64 at offset 316 …`.
+- Record the revision in the spec’s **Review log** (or a short **Revision log** under it) with N, date, and what was added. Do not remove earlier log lines.
+
+```text
+Right: keep the old “STATUS_NOT_IMPLEMENTED” sentence; add **(Rev.1)** “NtfsSetQuota now writes LE int64 at 316/324 when root length ≥ 332.”
+Right: ### Observed behavior … then ### Differential (probe-v2) **(Rev.1)** with new rows
+Wrong: deleting or rewriting the old sentence in place with no Rev mark
+Wrong: one Rev.1 at the file header and unmarked body inserts
+```
+
+Open-items in `open-items.md` still follow [tavera-specs-open-items.mdc](tavera-specs-open-items.mdc) (never delete entries). New open-item entries do not need Rev.N; topic specs under `tavera/specs/<component>/` do.

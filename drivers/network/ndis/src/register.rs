@@ -1,5 +1,5 @@
 /*
- * PROJECT:     VerOS NT Kernel
+ * PROJECT:     Tavera OS Kernel
  * LICENSE:     GNU General Public License, version 2 or later (GPL-2.0-or-later)
  * FILE:        drivers/network/ndis/src/register.rs
  * PURPOSE:     Miniport registration and completion calls
@@ -184,7 +184,7 @@ const ATTR_ADD_SIZE: u16 = 0x14;
  * NetKVM during MiniportInitializeEx, then NDIS INIT c000000d. This
  * file returned INVALID_PARAMETER for every attributes type other than
  * the measured 0x9E and 0xA4 headers. That status matched. The type,
- * revision, and size are the bytes NetKVM passed on that VerOS boot,
+ * revision, and size are the bytes NetKVM passed on that Tavera OS boot,
  * not a Windows accept. Capture 2026-11-16T064151Z dumped the 0xE0 body.
  * An earlier Windows try of type 0x9F revision 0 size 4 did not return.
  * A later Windows try of type 0x9F revision 2 size 0xE0 after an
@@ -1194,7 +1194,7 @@ pub unsafe extern "system" fn NdisMSetMiniportAttributes(
      * output/netkvm-20261116T055159Z.log printed NDIS HDR a4 01 0014
      * from MiniportAddDevice. Capture 2026-11-16T055625Z returned 0 for
      * that header. output/netkvm-20261116T063334Z.log printed
-     * NDIS HDR 9f 02 00e0 then NDIS INIT c000000d. Accepting that VerOS
+     * NDIS HDR 9f 02 00e0 then NDIS INIT c000000d. Accepting that Tavera OS
      * triple let InitializeEx continue. A Windows call with that 0x9F
      * buffer after an accepted 0x9E size 0x1C did not return; do not
      * call it again. Capture 2026-11-16T082709Z reached DIFF END OK:

@@ -74,7 +74,7 @@
 @ stdcall NdisAllocateCloneNetBufferList()
 @ stdcall NdisMGetBusData()
 ; output/e1000e-20261118T035022Z.log Missing API 'NdisReleaseReadWriteLock';
-; PE import list virtual-machines/veros-ntfs/e1q62x64-imports.txt
+; PE import list virtual-machines/tavera-ntfs/e1q62x64-imports.txt
 @ stdcall NdisMSetBusData()
 @ stdcall NdisInitializeReadWriteLock()
 @ stdcall NdisAcquireReadWriteLock()

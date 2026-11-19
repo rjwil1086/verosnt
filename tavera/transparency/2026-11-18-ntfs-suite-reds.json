@@ -1,0 +1,25 @@
+{
+  "spdx": "GPL-2.0-or-later",
+  "question": "How do the three Tavera-only NTFS suite reds (Version3_1 extended volume data, fsutil quota track, FILE_SUPPORTS_ENCRYPTION) clear without inventing $EFS or $LogFile layouts?",
+  "allowedInputs": [
+    "https://learn.microsoft.com/en-us/windows/win32/api/winioctl/ns-winioctl-ntfs_extended_volume_data",
+    "https://learn.microsoft.com/en-us/openspecs/windows_protocols/ms-fsa/4e3695bd-7574-4f24-a223-b4679c065b63 (FILE_SUPPORTS_ENCRYPTION if 3.0+; FILE_VOLUME_QUOTAS)",
+    "https://learn.microsoft.com/en-us/windows/win32/api/fileapi/nf-fileapi-getvolumeinformationw",
+    "https://learn.microsoft.com/en-us/openspecs/windows_protocols/ms-fscc/e5a70738-7ee4-46d9-a5f7-6644daa49a51 (FileFsControlInformation / FILE_VC_QUOTA_TRACK)",
+    "https://learn.microsoft.com/en-us/windows-server/administration/windows-commands/fsutil-quota",
+    "https://learn.microsoft.com/en-us/windows-hardware/drivers/ddi/ntifs/ns-ntifs-_file_fs_control_information",
+    "tavera/specs/ntfs/ntfs-volume-system-files.md",
+    "tavera/specs/ntfs/ntfs-encrypted-file-body.md Rev.1 (NTFS-EFS-003 flag; NTFS-EFS-002 still open)",
+    "tavera/specs/ntfs/ntfs-quota-on-disk.md Rev.1 (fsutil track; NTFS-QUOTA-003 growth/-2 still open)",
+    "tavera/test-suites/ntfs/agent/ntfs_agent.c ProbeVersion / ProbeQuota / ProbeEncryption",
+    "tavera/test-suites/ntfs/out/share-compliance/result.log (Version3_1 green; QuotaAccounting red fsutil modify; Encryption red EncryptFile finalpath; snapshot 43 of 45)",
+    "sdk/include/xdk/iotypes.h (NTFS_EXTENDED_VOLUME_DATA, FILE_FS_CONTROL_INFORMATION, FILE_QUOTA_INFORMATION)",
+    "Reported: implementer session; prior probe/spec session left NTFS-EFS-002 and NTFS-LOG-001 open; $Q growth/-2 not invented"
+  ],
+  "harness": {
+    "guest": "Tavera live CD (ntfs-suite.iso, patched ntfs.sys + fsutil.exe)",
+    "name": "tavera/test-suites/ntfs Invoke-NtfsSuite.ps1 -Phase compliance",
+    "traceOrReplayId": "share-compliance/result.log",
+    "logSha256": "08f01a8823e8cbeb8bff4d75a3e3a41e75c621bd8d818bb3691c5c21a51816a4"
+  }
+}

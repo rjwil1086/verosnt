@@ -105,7 +105,7 @@ KiAttachProcess(IN PKTHREAD Thread,
     }
     else
     {
-        DPRINT1("Errr. VerOS NT doesn't support paging out processes yet...\n");
+        DPRINT1("Errr. Tavera OS doesn't support paging out processes yet...\n");
         ASSERT(FALSE);
     }
 }

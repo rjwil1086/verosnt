@@ -1,6 +1,7 @@
 /*
  *  ReactOS kernel
  *  Copyright (C) 2008 ReactOS Team
+ *  Copyright 2026 Ryan Wilson <ryan@taveraos.com>
  *
  *  This program is free software; you can redistribute it and/or modify
  *  it under the terms of the GNU General Public License as published by
@@ -21,6 +22,7 @@
  * FILE:             drivers/filesystem/ntfs/dispatch.c
  * PURPOSE:          NTFS filesystem driver
  * PROGRAMMER:       Pierre Schweitzer
+ *                   Ryan Wilson <ryan@taveraos.com>
  * UPDATE HISTORY:
  */
 
@@ -76,6 +78,22 @@ NtfsDispatch(PNTFS_IRP_CONTEXT IrpContext)
 
         case IRP_MJ_SET_VOLUME_INFORMATION:
             Status = NtfsSetVolumeInformation(IrpContext);
+            break;
+
+        case IRP_MJ_QUERY_QUOTA:
+            Status = NtfsQueryQuotaInformation(IrpContext);
+            break;
+
+        case IRP_MJ_SET_QUOTA:
+            if (!NtfsGlobalData->EnableWriteSupport)
+            {
+                DPRINT1("NTFS write-support is EXPERIMENTAL and is disabled by default!\n");
+                Status = STATUS_ACCESS_DENIED;
+            }
+            else
+            {
+                Status = NtfsSetQuotaInformation(IrpContext);
+            }
             break;
 
         case IRP_MJ_QUERY_INFORMATION:

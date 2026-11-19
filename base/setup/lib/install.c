@@ -277,7 +277,7 @@ BuildFullDirectoryPath(
 
 /*
  * This code enumerates the list of files in reactos.dff / reactos.inf
- * that need to be extracted from reactos.cab and be installed in their
+ * that need to be extracted from taveraos.cab and be installed in their
  * respective directories.
  */
 /*

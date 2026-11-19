@@ -354,10 +354,10 @@ ROSDATA VSC_LPWSTR extended_key_names[] = {
   { 0x51, L"Bild-Nach-Unten" },
   { 0x52, L"Einfg" },
   { 0x53, L"Entf" },
-  { 0x54, L"<VerOS NT>" },
+  { 0x54, L"<Tavera OS>" },
   { 0x55, L"Hilfe" },
-  { 0x56, L"Linke <VerOS NT>" },
-  { 0x5b, L"Rechte <VerOS NT>" },
+  { 0x56, L"Linke <Tavera OS>" },
+  { 0x5b, L"Rechte <Tavera OS>" },
   { 0, NULL },
 };
 

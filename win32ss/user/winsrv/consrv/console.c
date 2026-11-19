@@ -710,7 +710,7 @@ ConSrvInitConsole(OUT PHANDLE NewConsoleHandle,
         }
         else
         {
-            ConsoleCreateUnicodeString(&Console->Title, L"VerOS NT Console");
+            ConsoleCreateUnicodeString(&Console->Title, L"Tavera OS Console");
         }
     }
     else

@@ -37,3 +37,11 @@ In-tree:
 ## Non-goals
 
 - Copying Microsoft’s cache manager, run map, or I/O scheduling when a different structure in this driver is faster and still matches ReadFile, WriteFile, and on-disk NTFS 3.1 results Windows accepts (Milestone 45 compatibility wording).
+
+## Suite Remount row **(Rev.1)**
+
+**(Rev.1)** Catalog `Remount` in [`tavera/test-suites/ntfs/agent/ntfs_agent.c`](../../test-suites/ntfs/agent/ntfs_agent.c): write bytes, leave the volume as cwd, close the volume handle, optionally `FSCTL_LOCK_VOLUME` ([Learn](https://learn.microsoft.com/en-us/windows/win32/api/winioctl/ni-winioctl-fsctl_lock_volume); fails if any file on the volume is open), then `FSCTL_DISMOUNT_VOLUME` (allowed without a lock per [Learn](https://learn.microsoft.com/en-us/windows/win32/api/winioctl/ni-winioctl-fsctl_dismount_volume)), reopen, and read the same bytes. Windows 10 22H2 suite baseline 2026-11-18: green after that harness change (`out/windows-baseline-result.log`).
+
+## Revision log
+
+- **Rev.1** (2026-11-18): Documented suite Remount method; Windows green.

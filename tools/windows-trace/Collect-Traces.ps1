@@ -1,4 +1,4 @@
-# PROJECT:     VerOS NT
+# PROJECT:     Tavera OS
 # LICENSE:     GNU General Public License, version 2 or later (GPL-2.0-or-later)
 # FILE:        tools/windows-trace/Collect-Traces.ps1
 # PURPOSE:     Record numeric syscall lines from the Windows guest

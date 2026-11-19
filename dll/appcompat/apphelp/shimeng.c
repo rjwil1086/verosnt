@@ -1521,7 +1521,7 @@ BOOL WINAPI SE_DynamicShim(LPCWSTR ProcessImage, HSDB hsdb, PVOID pQueryResult, 
 {
     if (g_bShimEngInitialized)
     {
-        SHIMENG_MSG("VerOS NT HACK(CORE-13283): ShimEng already initialized!\n");
+        SHIMENG_MSG("Tavera OS HACK(CORE-13283): ShimEng already initialized!\n");
         return TRUE;
     }
 

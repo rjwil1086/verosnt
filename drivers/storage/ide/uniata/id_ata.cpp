@@ -10751,7 +10751,7 @@ DriverEntry(
     if(!SavedDriverObject) {
         SavedDriverObject = (PDRIVER_OBJECT)DriverObject;
 #ifdef USE_REACTOS_DDK
-        KdPrint(("UniATA Init: OS should be VerOS NT\n"));
+        KdPrint(("UniATA Init: OS should be Tavera OS\n"));
         MajorVersion=0x04;
         MinorVersion=0x01;
         BuildNumber=1;
