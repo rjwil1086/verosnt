@@ -1,0 +1,54 @@
+---
+description: Timestamped debugging.md in the component specs folder when an implementation debug loop starts
+alwaysApply: true
+---
+
+# Implementation debugging log
+
+When an **implementation** session enters a debugging loop (repeated hypothesis → change → rebuild/boot or test → result), create a timestamped log in that component’s specs folder **before** the second iteration. Do not rely on chat alone.
+
+```text
+tavera/specs/<component>/debugging-YYYY-MM-DD.md
+```
+
+`<component>` matches the module folder already used for specs and `open-items.md` (for example `amd64-logical-processors`). Date is the day the loop started (UTC or local calendar date; keep one convention for the file).
+
+If a second distinct loop starts on the same day for the same component, add a suffix: `debugging-YYYY-MM-DD-2.md`, then `-3`, and so on. Do not overwrite an earlier loop’s file.
+
+## What counts as a debugging loop
+
+- More than one rebuild/boot or targeted test while chasing the same fault
+- A series of temporary diagnostics (breadcrumbs, affinity pins, park loops) aimed at one failure
+
+A single failed boot with an immediate correct fix is not enough to require the file. Opening the file on the first failed check is fine when a loop is clearly starting.
+
+## File contents
+
+Use the same HTML comment header block other files under `tavera/specs/<component>/` use. Then record, in order:
+
+1. Harness (guest, QEMU flags, build command, image)
+2. Each cycle: hypothesis → change (paths) → evidence (log under `sources/debugging-YYYY-MM-DD/` or marker) → result
+3. What remains open and the next check
+
+Update the same file in the same turn as each new cycle. Do not paste large log bodies.
+
+In the same turn, copy every cited `output/` file that still exists into
+**both** `tavera/specs/<component>/sources/debugging-YYYY-MM-DD/` and the
+private capture-log mirror, then cite the **public** `sources/…` path in this
+debugging file, per [tavera-specs-sources.mdc](tavera-specs-sources.mdc).
+Do **not** name `capture-log` in the public debugging file. When a cited
+path is already gone from `output/` and from `sources/`, tell Ryan and note
+“proof missing” only in the private archive `README.md`.
+
+```text
+Right: tavera/specs/amd64-logical-processors/debugging-2026-11-18.md started when AP join failed; each boot logged
+Right: cite tavera/specs/…/sources/debugging-2026-11-18/boot-m32-….log; also mirror under capture-log privately
+Wrong: ten QEMU boots with notes only in chat
+Wrong: tavera/specs/debugging.md (no component folder, no date)
+Wrong: overwriting yesterday’s debugging-*.md for a new fault
+Wrong: naming capture-log in the public debugging file
+Wrong: citing output/… after the file was copied into sources/
+Wrong: public sources/ copy with no private capture-log mirror
+```
+
+This rule does not replace `open-items.md`. Spec gaps still go there. The debugging file is the implementer’s running fault trail.

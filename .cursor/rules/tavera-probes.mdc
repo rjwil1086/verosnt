@@ -27,12 +27,18 @@ Wrong: editing probe-v1 after specs cite its captures as evidence
 
 Run output goes under `output/<module>/<probe-id>/` (for example `output/ntfs/probe-v1/`). Do not commit `output/`.
 
+In the same turn as a capture-backed Spec Sources citation, copy the cited
+files into `tavera/specs/<module>/sources/probes/<probe-id>/` and mirror them
+under the private capture-log tree per [tavera-specs-sources.mdc](tavera-specs-sources.mdc).
+
 ## Specs cite the probe
 
-Every capture-backed statement in `tavera/specs/<module>/` names the probe path and the capture (and marker when present).
+Every capture-backed statement in `tavera/specs/<module>/` names the probe path
+and the capture under `tavera/specs/<module>/sources/…` (and marker when present).
 
 ```text
-Right: output/ntfs/probe-v1/captures/manifest.txt from tavera/probes/ntfs/probe-v1
+Right: tavera/specs/ntfs/sources/probes/probe-v1/captures/manifest.txt from tavera/probes/ntfs/probe-v1
+Wrong: citing only output/… after the file was copied into sources/
 Wrong: "the probe" with no version path
 ```
 

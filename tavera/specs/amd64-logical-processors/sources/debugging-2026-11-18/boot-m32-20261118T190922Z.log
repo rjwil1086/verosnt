@@ -1,0 +1,5 @@
+(boot\freeldr\freeldr\lib\mm\heap.c:344) err: HEAP: Allocation of 0xfba8c bytes too large
+(boot\freeldr\freeldr\lib\mm\heap.c:344) err: HEAP: Allocation of 0x185b505 bytes too large
+(boot\freeldr\freeldr\lib\mm\heap.c:344) err: HEAP: Allocation of 0x2e45d3 bytes too large
+(boot\freeldr\freeldr\lib\mm\heap.c:344) err: HEAP: Allocation of 0xb4520 bytes too large
+(boot\freeldr\freeldr\lib\mm\heap.c:344) err: HEAP: Allocation of 0xd1e498 bytes too large

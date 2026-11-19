@@ -1,0 +1,26 @@
+DIFF SHAPE unknown
+DIFF BUILD probe-v1
+DIFF REL package flags=0 eff=0 group=0 mask=0xf
+DIFF REL core flags=0 eff=0 group=0 mask=0x1
+DIFF REL core flags=0 eff=0 group=0 mask=0x2
+DIFF REL core flags=0 eff=0 group=0 mask=0x4
+DIFF REL core flags=0 eff=0 group=0 mask=0x8
+DIFF REL numa node=0 group=0 mask=0xf
+DIFF REL group max=1 active=1
+DIFF REL groupinfo i=0 max=64 active=4 mask=0xf
+DIFF LOGICAL 4
+DIFF CORE_COUNT 4
+DIFF EX_DIE_RECORDS 0
+DIFF EX_MODULE_RECORDS 0
+DIFF CPUID max_basic=0xd
+DIFF CPUID topology_leaf=0xb
+DIFF CPUID topo sub=0 shift=1 level_type=1 edx=0x2
+DIFF CPUID topo sub=1 shift=2 level_type=2 edx=0x2
+DIFF CPUID topo sub=2 shift=0 level_type=0 edx=0x2
+DIFF CPUID max_ext=0x8000001e
+DIFF CPUID amd80000008 nc=3 apic_core_id_size=2
+DIFF CPUID amd8000001e core_id=1 threads_per_core=1 eax=0x2
+DIFF CPUID_DIE 0
+DIFF CPUID_MODULE 0
+DIFF PLACE cpu_a=1 count_a=285914 cpu_b=0 count_b=268176 shared_core=0
+DIFF END OK

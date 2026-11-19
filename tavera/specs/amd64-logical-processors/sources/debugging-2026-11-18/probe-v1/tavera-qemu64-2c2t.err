@@ -1,0 +1,1 @@
+D:\tavera\buildenv\tools\qemu\qemu-system-x86_64.exe: warning: This family of AMD CPU doesn't support hyperthreading(2). Please configure -smp options properly or try enabling topoext feature.
