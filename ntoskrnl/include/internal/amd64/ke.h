@@ -408,6 +408,19 @@ Ki386PerfEnd(VOID)
 struct _KPCR;
 
 DECLSPEC_NORETURN VOID KiSwitchToBootStack(IN ULONG_PTR InitialStack);
+
+VOID
+KiInitializeProcessorBootStructures(
+    _In_ ULONG ProcessorNumber,
+    _Out_ PKIPCR Pcr,
+    _In_ PKGDTENTRY64 GdtBase,
+    _In_ PKIDTENTRY64 IdtBase,
+    _In_ PKTSS64 TssBase,
+    _In_ PKTHREAD IdleThread,
+    _In_ PVOID KernelStack,
+    _In_ PVOID DpcStack,
+    _In_ PVOID DoubleFaultStack,
+    _In_ PVOID NmiStack);
 VOID KiDivideErrorFault(VOID);
 VOID KiDebugTrapOrFault(VOID);
 VOID KiNmiInterrupt(VOID);

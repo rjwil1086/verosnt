@@ -312,4 +312,6 @@
     SVC_(GetNextThread, 6)
     SVC_(CreateUserProcess, 11)
     SVC_(CreateThreadEx, 11)
+    /* Class 107 Ex path; ALP-003. Appended after CreateThreadEx so NT5 IDs stay fixed. */
+    SVC_(QuerySystemInformationEx, 6)
 #endif

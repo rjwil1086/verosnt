@@ -24,7 +24,7 @@ HKLM,"SYSTEM\CurrentControlSet\Services\Cdrom","Start",0x00010001,0x00000000
 ; Reset BootExecute to an empty value: AutoChk should not start in MiniNT mode
 HKLM,"SYSTEM\CurrentControlSet\Control\Session Manager","BootExecute",0x00010000,""
 
-; Shell
+; Shell - stock live Setup
 HKLM,"SYSTEM\Setup","CmdLine",0x00020000,"setup -mini"
 
 ; User Profile List
@@ -137,3 +137,4 @@ HKCR,"CLSID\{00000320-0000-0000-C000-000000000046}\InProcServer32","",0x00000000
 HKCR,"CLSID\{00000320-0000-0000-C000-000000000046}\InProcServer32","ThreadingModel",0x00000000,"Both"
 
 ; EOF
+

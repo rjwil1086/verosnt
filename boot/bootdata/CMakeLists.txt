@@ -1,6 +1,12 @@
 
 add_subdirectory(packages)
 
+# Milestone 32 topology probe (temporary live CD ship for Tavera DIFF capture).
+# Guest source: tavera/probes/amd64-logical-processors/probe-v1/guest/topology_probe.c
+add_cd_file(FILE ${CMAKE_CURRENT_SOURCE_DIR}/../../tavera/probes/amd64-logical-processors/probe-v1/guest/topology_probe.exe
+            DESTINATION VerOS/system32
+            FOR livecd)
+
 # Setup settings file
 add_cd_file(FILE ${CMAKE_CURRENT_SOURCE_DIR}/txtsetup.sif DESTINATION VerOS NO_CAB FOR bootcd regtest)
 

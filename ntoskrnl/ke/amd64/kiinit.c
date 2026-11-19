@@ -1,10 +1,15 @@
 /*
- * PROJECT:         ReactOS Kernel
+ * PROJECT:         Tavera OS Kernel
  * LICENSE:         GPL - See COPYING in the top level directory
  * FILE:            ntoskrnl/ke/amd64/kiinit.c
  * PURPOSE:         Kernel Initialization for x86 CPUs
+ * COPYRIGHT:       Copyright 2026 Ryan Wilson <ryan@taveraos.com>
  * PROGRAMMERS:     Alex Ionescu (alex.ionescu@reactos.org)
  *                  Timo Kreuzer (timo.kreuzer@reactos.org)
+ *                  Ryan Wilson <ryan@taveraos.com>
+ *
+ * Sources: tavera/specs/amd64-logical-processors/amd64-logical-processors.md
+ * (MultiThreadProcessorSet / MultiThreadSetMaster until ALP-006).
  */
 
 /* INCLUDES *****************************************************************/
@@ -138,8 +143,9 @@ KiInitializePcr(
     /* Set DPC Stack */
     Pcr->Prcb.DpcStack = DpcStack;
 
-    /* Setup the processor set */
+    /* Setup the processor set (single-bit until ALP-006 resolves SMT pairing) */
     Pcr->Prcb.MultiThreadProcessorSet = Pcr->Prcb.SetMember;
+    Pcr->Prcb.MultiThreadSetMaster = &Pcr->Prcb;
 
     /* Clear DR6/7 to cleanup bootloader debugging */
     Pcr->Prcb.ProcessorState.SpecialRegisters.KernelDr6 = 0;
@@ -491,6 +497,9 @@ KiSystemStartup(IN PLOADER_PARAMETER_BLOCK LoaderBlock)
     PKTHREAD InitialThread;
     ULONG64 InitialStack;
     PKIPCR Pcr;
+
+    /* AP trampoline breadcrumb (QEMU isa-debugcon); BSP also emits it once */
+    __outbyte(0xE9, 'I');
 
     /* Boot cycles timestamp */
     BootCycles = __rdtsc();

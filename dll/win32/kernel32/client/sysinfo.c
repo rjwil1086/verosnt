@@ -19,6 +19,14 @@
  * Public: https://learn.microsoft.com/en-us/windows/win32/api/processthreadsapi/nf-processthreadsapi-getsystemcpusetinformation
  * Firefox Troubleshoot application awaits Services.sysinfo.processInfo;
  * hal CreateHeterogeneousCpuInfo calls this export (gecko-dev WindowsHeterogeneousCpuInfo.cpp).
+ *
+ * GetLogicalProcessorInformationEx: Public Learn
+ * https://learn.microsoft.com/en-us/windows/win32/api/sysinfoapi/nf-sysinfoapi-getlogicalprocessorinformationex
+ * In-tree: dll/win32/kernelbase/wine/memory.c wrapper shape; ntoskrnl/ex/sysinfo.c
+ * SystemLogicalProcessorInformationEx (class 107); sdk/include/ndk/exfuncs.h
+ * NtQuerySystemInformationEx; tavera/specs/amd64-logical-processors/open-items.md ALP-003.
+ * Guest: output/amd64-logical-processors/probe-v1/tavera-4c1t.kd.log
+ * marker WARNING: calling stub GetLogicalProcessorInformationEx.
  */
 
 /* INCLUDES *******************************************************************/
@@ -259,6 +267,71 @@ GetLogicalProcessorInformation(OUT PSYSTEM_LOGICAL_PROCESSOR_INFORMATION Buffer,
 
     /* Normalize the error to what Win32 expects */
     if (Status == STATUS_INFO_LENGTH_MISMATCH) Status = STATUS_BUFFER_TOO_SMALL;
+    if (!NT_SUCCESS(Status))
+    {
+        BaseSetLastNTError(Status);
+        return FALSE;
+    }
+
+    return TRUE;
+}
+
+/*
+ * @implemented
+ *
+ * Same call shape as kernelbase wine/memory.c: NtQuerySystemInformationEx
+ * with SystemLogicalProcessorInformationEx and the relationship filter.
+ * Resolve the syscall by name: ntdll.spec gates the import at 0x601+ while
+ * kernel32 still links the 5.2 import library.
+ */
+typedef NTSTATUS (NTAPI *PFN_NtQuerySystemInformationEx)(
+    SYSTEM_INFORMATION_CLASS SystemInformationClass,
+    PVOID InputBuffer,
+    ULONG InputBufferLength,
+    PVOID SystemInformation,
+    ULONG SystemInformationLength,
+    PULONG ReturnLength);
+
+BOOL
+WINAPI
+GetLogicalProcessorInformationEx(IN LOGICAL_PROCESSOR_RELATIONSHIP Relationship,
+                                 OUT PSYSTEM_LOGICAL_PROCESSOR_INFORMATION_EX Buffer,
+                                 IN OUT PDWORD ReturnedLength)
+{
+    static PFN_NtQuerySystemInformationEx QueryEx = NULL;
+    static BOOLEAN LookedUp = FALSE;
+    NTSTATUS Status;
+
+    if (!ReturnedLength)
+    {
+        SetLastError(ERROR_INVALID_PARAMETER);
+        return FALSE;
+    }
+
+    if (!LookedUp)
+    {
+        QueryEx = (PFN_NtQuerySystemInformationEx)GetProcAddress(
+            GetModuleHandleW(L"ntdll.dll"),
+            "NtQuerySystemInformationEx");
+        LookedUp = TRUE;
+    }
+    if (!QueryEx)
+    {
+        SetLastError(ERROR_CALL_NOT_IMPLEMENTED);
+        return FALSE;
+    }
+
+    Status = QueryEx(SystemLogicalProcessorInformationEx,
+                     &Relationship,
+                     sizeof(Relationship),
+                     Buffer,
+                     *ReturnedLength,
+                     ReturnedLength);
+
+    if (Status == STATUS_INFO_LENGTH_MISMATCH)
+    {
+        Status = STATUS_BUFFER_TOO_SMALL;
+    }
     if (!NT_SUCCESS(Status))
     {
         BaseSetLastNTError(Status);

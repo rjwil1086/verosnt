@@ -188,8 +188,20 @@ KiSystemStartupBootStack(VOID)
         KiInitializeHandBuiltThread(Thread, Process, KernelStack);
     }
 
-    /* Calculate the CPU frequency */
-    KiCalculateCpuFrequency(Prcb);
+    /*
+     * AP frequency sampling uses KeStallExecutionProcessor and can hang under
+     * TCG before Prcb is cleared (park3). Copy BSP MHz for now.
+     */
+    if (Prcb->Number == 0)
+    {
+        KiCalculateCpuFrequency(Prcb);
+    }
+    else
+    {
+        Prcb->MHz = KiProcessorBlock[0] ? KiProcessorBlock[0]->MHz : 1000;
+        if (Prcb->MHz == 0)
+            Prcb->MHz = 1000;
+    }
 
     /* Raise to Dispatch */
     KfRaiseIrql(DISPATCH_LEVEL);
@@ -204,7 +216,8 @@ KiSystemStartupBootStack(VOID)
 
     /* Raise back to HIGH_LEVEL and clear the PRCB for the loader block */
     KfRaiseIrql(HIGH_LEVEL);
-    LoaderBlock->Prcb = 0;
+    InterlockedExchange64((LONG64 *)&KeLoaderBlock->Prcb, 0);
+    KeMemoryBarrier();
 
     /* Set the priority of this thread to 0 */
     Thread = KeGetCurrentThread();

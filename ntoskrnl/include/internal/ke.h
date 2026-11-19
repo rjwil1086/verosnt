@@ -355,6 +355,13 @@ KiIpiSend(
     ULONG IpiRequest
 );
 
+BOOLEAN
+NTAPI
+KiIpiServiceRoutine(
+    IN PKTRAP_FRAME TrapFrame,
+    IN PKEXCEPTION_FRAME ExceptionFrame
+);
+
 VOID
 NTAPI
 KiIpiSendPacket(

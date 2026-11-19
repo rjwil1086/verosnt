@@ -7,6 +7,9 @@
  *              Copyright 2026 Ryan Wilson <ryan@taveraos.com>
  * PROGRAMMERS: Timo Kreuzer (timo.kreuzer@reactos.org)
  *              Ryan Wilson <ryan@taveraos.com>
+ *
+ * Sources: ntoskrnl/ke/amd64/stubs.c (KiIdleLoop does not queue Idle);
+ * output/boot-m32-20261118T172209Z-smp4.log (Thread->State == Running).
  */
 
 /* INCLUDES ******************************************************************/
@@ -67,20 +70,38 @@ KiDpcInterruptHandler(VOID)
         /* Capture current thread data */
         OldThread = Prcb->CurrentThread;
         NewThread = Prcb->NextThread;
+        if (!NewThread)
+        {
+            /* IdleLoop or another path claimed it */
+            KiReleasePrcbLock(Prcb);
+        }
+        else
+        {
+            /* Set new thread data */
+            Prcb->NextThread = NULL;
+            Prcb->CurrentThread = NewThread;
 
-        /* Set new thread data */
-        Prcb->NextThread = NULL;
-        Prcb->CurrentThread = NewThread;
+            /* The thread is now running */
+            NewThread->State = Running;
+            OldThread->WaitReason = WrDispatchInt;
 
-        /* The thread is now running */
-        NewThread->State = Running;
-        OldThread->WaitReason = WrDispatchInt;
+            /*
+             * Idle stays off the ready lists (same as KiIdleLoop). Queuing
+             * Idle made State Ready/Standby races on -smp>1 and tripped
+             * KxQueueReadyThread's Running assert (output/...T172209Z-smp4.log).
+             */
+            if (OldThread != Prcb->IdleThread)
+            {
+                KxQueueReadyThread(OldThread, Prcb);
+            }
+            else
+            {
+                KiReleasePrcbLock(Prcb);
+            }
 
-        /* Make the old thread ready */
-        KxQueueReadyThread(OldThread, Prcb);
-
-        /* Swap to the new thread */
-        KiSwapContext(APC_LEVEL, OldThread);
+            /* Swap to the new thread */
+            KiSwapContext(APC_LEVEL, OldThread);
+        }
     }
 
     /* Disable interrupts and go back to old irql */

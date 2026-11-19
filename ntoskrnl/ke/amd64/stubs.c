@@ -1,8 +1,14 @@
 /*
- * PROJECT:         ReactOS Kernel
- * LICENSE:         GPL - See COPYING in the top level directory
- * PURPOSE:         stubs
+ * PROJECT:         Tavera OS Kernel
+ * LICENSE:         GNU General Public License, version 2 or later (GPL-2.0-or-later)
+ * FILE:            ntoskrnl/ke/amd64/stubs.c
+ * PURPOSE:         amd64 kernel stubs (idle loop, stack helpers)
+ * COPYRIGHT:       Copyright 2026 Ryan Wilson <ryan@taveraos.com>
  * PROGRAMMERS:     Timo Kreuzer (timo.kreuzer@reactos.org)
+ *                  Ryan Wilson <ryan@taveraos.com>
+ *
+ * Sources: ntoskrnl/ke/amd64/traphandler.c (DPC NextThread claim);
+ * output/boot-m32-20261118T172209Z-smp4.log (Thread->State == Running).
  */
 
 /* INCLUDES ******************************************************************/
@@ -132,16 +138,21 @@ KiIdleLoop(VOID)
             /* Enable interrupts */
             _enable();
 
-            /* Capture current thread data */
+            /* Claim NextThread under the PRCB lock (DPC may race) */
+            KiAcquirePrcbLock(Prcb);
             OldThread = Prcb->CurrentThread;
             NewThread = Prcb->NextThread;
+            if (!NewThread)
+            {
+                KiReleasePrcbLock(Prcb);
+                continue;
+            }
 
-            /* Set new thread data */
+            /* Set new thread data; never queue Idle onto ready lists */
             Prcb->NextThread = NULL;
             Prcb->CurrentThread = NewThread;
-
-            /* The thread is now running */
             NewThread->State = Running;
+            KiReleasePrcbLock(Prcb);
 
 #ifdef CONFIG_SMP
             /* Do the swap at SYNCH_LEVEL */

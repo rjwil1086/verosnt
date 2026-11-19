@@ -33,6 +33,16 @@
  * 20261118T073631Z: basics filled, snapshot-keys still missing). Firefox
  * GetProcInfo ignores SPI UserTime/KernelTime (uses CycleTime /
  * GetProcessTimes); leave those fields zero from the buffer wipe.
+ *
+ * SystemLogicalProcessorInformationEx (class 107): tavera/specs/
+ * amd64-logical-processors/amd64-logical-processors.md section 6;
+ * Learn GetLogicalProcessorInformationEx / SYSTEM_LOGICAL_PROCESSOR_INFORMATION_EX;
+ * Learn PROCESSOR_GROUP_INFO (MaximumProcessorCount);
+ * sdk/include/reactos/x86x64/Intel/Cpuid.h leaf CPUID_CACHE_PARAMS;
+ * sdk/include/reactos/x86x64/Cpuid.h leaf CPUID_CACHE_PARAMS_AMD;
+ * output/amd64-logical-processors/probe-v1/windows-*.log DIFF END OK;
+ * output/amd64-logical-processors/probe-v2/windows-*.log DIFF END OK (ALP-009);
+ * dll/win32/kernelbase/wine/memory.c wrapper; ALP-003/006/007/008/009.
  */
 
 /* INCLUDES *****************************************************************/
@@ -40,6 +50,7 @@
 #include <ntoskrnl.h>
 #include <wmidata.h>
 #include <wmistr.h>
+#include <x86x64/Cpuid.h>
 #define NDEBUG
 #include <debug.h>
 
@@ -3150,6 +3161,529 @@ NtQuerySystemInformation(
             /* Save the result length to the caller */
             if (ReturnLength)
                 *ReturnLength = CapturedResultLength;
+        }
+    }
+    _SEH2_EXCEPT(ExSystemExceptionFilter())
+    {
+        Status = _SEH2_GetExceptionCode();
+    }
+    _SEH2_END;
+
+    return Status;
+}
+
+/* Record sizes for Ex topology (GroupCount / GroupInfo count = 1). */
+#define EXP_SLPIEX_PROCESSOR_SIZE \
+    (FIELD_OFFSET(SYSTEM_LOGICAL_PROCESSOR_INFORMATION_EX, Processor) + \
+     FIELD_OFFSET(PROCESSOR_RELATIONSHIP, GroupMask) + sizeof(GROUP_AFFINITY))
+#define EXP_SLPIEX_NUMA_SIZE \
+    (FIELD_OFFSET(SYSTEM_LOGICAL_PROCESSOR_INFORMATION_EX, NumaNode) + \
+     sizeof(NUMA_NODE_RELATIONSHIP))
+#define EXP_SLPIEX_CACHE_SIZE \
+    (FIELD_OFFSET(SYSTEM_LOGICAL_PROCESSOR_INFORMATION_EX, Cache) + \
+     sizeof(CACHE_RELATIONSHIP))
+#define EXP_SLPIEX_GROUP_SIZE \
+    (FIELD_OFFSET(SYSTEM_LOGICAL_PROCESSOR_INFORMATION_EX, Group) + \
+     FIELD_OFFSET(GROUP_RELATIONSHIP, GroupInfo) + sizeof(PROCESSOR_GROUP_INFO))
+
+static
+VOID
+ExpInitGroupAffinity(
+    _Out_ PGROUP_AFFINITY Affinity,
+    _In_ KAFFINITY Mask)
+{
+    RtlZeroMemory(Affinity, sizeof(*Affinity));
+    Affinity->Mask = Mask;
+    Affinity->Group = 0;
+}
+
+static
+ULONG
+ExpRoundUpPow2(
+    _In_ ULONG Value)
+{
+    ULONG Result = 1;
+
+    if (Value == 0)
+        return 1;
+
+    while (Result < Value)
+        Result <<= 1;
+
+    return Result;
+}
+
+static
+PROCESSOR_CACHE_TYPE
+ExpMapCpuidCacheType(
+    _In_ ULONG CpuidType)
+{
+    switch (CpuidType)
+    {
+        case CPUID_CACHE_PARAMS_CACHE_TYPE_DATA:
+            return CacheData;
+        case CPUID_CACHE_PARAMS_CACHE_TYPE_INSTRUCTION:
+            return CacheInstruction;
+        case CPUID_CACHE_PARAMS_CACHE_TYPE_UNIFIED:
+        default:
+            return CacheUnified;
+    }
+}
+
+static
+NTSTATUS
+ExpAppendSlpiexRecord(
+    _Inout_ PUCHAR *Cursor,
+    _Inout_ PULONG Remaining,
+    _Inout_ PULONG TotalSize,
+    _In_ ULONG RecordSize,
+    _In_ LOGICAL_PROCESSOR_RELATIONSHIP Relationship,
+    _In_opt_ PVOID Payload,
+    _In_ ULONG PayloadSize)
+{
+    PSYSTEM_LOGICAL_PROCESSOR_INFORMATION_EX Record;
+
+    *TotalSize += RecordSize;
+
+    if (*Remaining < RecordSize)
+    {
+        *Remaining = 0;
+        return STATUS_INFO_LENGTH_MISMATCH;
+    }
+
+    Record = (PSYSTEM_LOGICAL_PROCESSOR_INFORMATION_EX)*Cursor;
+    RtlZeroMemory(Record, RecordSize);
+    Record->Relationship = Relationship;
+    Record->Size = RecordSize;
+    if (Payload != NULL && PayloadSize != 0)
+    {
+        RtlCopyMemory(&Record->Processor, Payload, PayloadSize);
+    }
+
+    *Cursor += RecordSize;
+    *Remaining -= RecordSize;
+    return STATUS_SUCCESS;
+}
+
+/*
+ * Emit one RelationCache record. Used by leaf 0x4 / 0x8000001D walks and by
+ * the empty-leaf fallback that matches section 6 (ALP-009).
+ */
+static
+NTSTATUS
+ExpAppendSlpiexCache(
+    _Inout_ PUCHAR *Cursor,
+    _Inout_ PULONG Remaining,
+    _Inout_ PULONG TotalSize,
+    _In_ UCHAR Level,
+    _In_ UCHAR Associativity,
+    _In_ USHORT LineSize,
+    _In_ ULONG CacheSize,
+    _In_ PROCESSOR_CACHE_TYPE Type,
+    _In_ KAFFINITY ShareMask)
+{
+    CACHE_RELATIONSHIP CacheRel;
+
+    RtlZeroMemory(&CacheRel, sizeof(CacheRel));
+    CacheRel.Level = Level;
+    CacheRel.Associativity = Associativity;
+    CacheRel.LineSize = LineSize;
+    CacheRel.CacheSize = CacheSize;
+    CacheRel.Type = Type;
+    ExpInitGroupAffinity(&CacheRel.GroupMask, ShareMask);
+
+    return ExpAppendSlpiexRecord(Cursor,
+                                 Remaining,
+                                 TotalSize,
+                                 EXP_SLPIEX_CACHE_SIZE,
+                                 RelationCache,
+                                 &CacheRel,
+                                 sizeof(CacheRel));
+}
+
+/*
+ * Pick the deterministic cache leaf for this CPU. Prefer Intel 0x4; else AMD
+ * 0x8000001D when present; else 0 (section 6 fallback). Probe-v2 / ALP-009:
+ * leaf 0x4 is null on all three QEMU shapes; 0x8000001D only on EPYC.
+ */
+static
+ULONG
+ExpPickCacheParamsLeaf(VOID)
+{
+    INT32 CpuidRegs[4];
+    CPUID_CACHE_PARAMS_EAX CacheEax;
+
+    __cpuidex(CpuidRegs, CPUID_CACHE_PARAMS, 0);
+    CacheEax.Uint32 = (UINT32)CpuidRegs[0];
+    if (CacheEax.Bits.CacheType != CPUID_CACHE_PARAMS_CACHE_TYPE_NULL)
+        return CPUID_CACHE_PARAMS;
+
+    __cpuid(CpuidRegs, 0x80000000);
+    if ((UINT32)CpuidRegs[0] >= CPUID_CACHE_PARAMS_AMD)
+    {
+        __cpuidex(CpuidRegs, CPUID_CACHE_PARAMS_AMD, 0);
+        CacheEax.Uint32 = (UINT32)CpuidRegs[0];
+        if (CacheEax.Bits.CacheType != CPUID_CACHE_PARAMS_CACHE_TYPE_NULL)
+            return CPUID_CACHE_PARAMS_AMD;
+    }
+
+    return 0;
+}
+
+static
+NTSTATUS
+ExpQuerySystemLogicalProcessorInformationEx(
+    _In_ LOGICAL_PROCESSOR_RELATIONSHIP RelationshipFilter,
+    _Out_writes_bytes_to_opt_(BufferLength, *ReturnLength) PVOID Buffer,
+    _In_ ULONG BufferLength,
+    _Out_ PULONG ReturnLength)
+{
+    NTSTATUS Status = STATUS_SUCCESS;
+    PUCHAR Cursor = Buffer;
+    ULONG Remaining = BufferLength;
+    ULONG TotalSize = 0;
+    KAFFINITY Active = KeActiveProcessors;
+    ULONG ProcessorCount = KeNumberProcessors;
+    ULONG Index;
+    KAFFINITY Bit;
+    PROCESSOR_RELATIONSHIP ProcessorRel;
+    NUMA_NODE_RELATIONSHIP NumaRel;
+    INT32 CpuidRegs[4];
+    ULONG CacheIndex;
+    ULONG CacheLeaf;
+    BOOLEAN EmitCacheFallback;
+    BOOLEAN EmittedL3Fallback = FALSE;
+    CPUID_CACHE_PARAMS_EAX CacheEax;
+    CPUID_CACHE_PARAMS_EBX CacheEbx;
+    ULONG Sets;
+    ULONG LineSize;
+    ULONG Associativity;
+    ULONG CacheSize;
+    ULONG ShareCount;
+    ULONG ShareMaskBits;
+    KAFFINITY ShareMask;
+
+    if ((RelationshipFilter != RelationAll) &&
+        (RelationshipFilter != RelationProcessorCore) &&
+        (RelationshipFilter != RelationNumaNode) &&
+        (RelationshipFilter != RelationCache) &&
+        (RelationshipFilter != RelationProcessorPackage) &&
+        (RelationshipFilter != RelationGroup) &&
+        (RelationshipFilter != RelationProcessorDie) &&
+        (RelationshipFilter != RelationNumaNodeEx) &&
+        (RelationshipFilter != RelationProcessorModule))
+    {
+        return STATUS_INVALID_PARAMETER;
+    }
+
+    /*
+     * RelationAll order from cited probe-v1 windows-4c1t.log: package, then
+     * per logical processor (core + caches whose share set first includes it),
+     * then NUMA, then group.
+     */
+
+    /* Package: one record covering all active processors. */
+    if ((RelationshipFilter == RelationAll) ||
+        (RelationshipFilter == RelationProcessorPackage))
+    {
+        RtlZeroMemory(&ProcessorRel, sizeof(ProcessorRel));
+        ProcessorRel.Flags = 0;
+        ProcessorRel.EfficiencyClass = 0;
+        ProcessorRel.GroupCount = 1;
+        ExpInitGroupAffinity(&ProcessorRel.GroupMask[0], Active);
+
+        if (!NT_SUCCESS(ExpAppendSlpiexRecord(&Cursor,
+                                              &Remaining,
+                                              &TotalSize,
+                                              EXP_SLPIEX_PROCESSOR_SIZE,
+                                              RelationProcessorPackage,
+                                              &ProcessorRel,
+                                              FIELD_OFFSET(PROCESSOR_RELATIONSHIP, GroupMask) +
+                                                  sizeof(GROUP_AFFINITY))))
+        {
+            Status = STATUS_INFO_LENGTH_MISMATCH;
+        }
+    }
+
+    /*
+     * Cores and caches interleaved (section 6 / ALP-006 / cited windows-*.log).
+     * Cache leaf: 0x4, else 0x8000001D, else section 6 qemu64 DIFF lines (ALP-009).
+     */
+    CacheLeaf = 0;
+    EmitCacheFallback = FALSE;
+    if ((RelationshipFilter == RelationAll) ||
+        (RelationshipFilter == RelationCache))
+    {
+        CacheLeaf = ExpPickCacheParamsLeaf();
+        EmitCacheFallback = (CacheLeaf == 0);
+    }
+
+    if ((RelationshipFilter == RelationAll) ||
+        (RelationshipFilter == RelationProcessorCore) ||
+        (RelationshipFilter == RelationCache))
+    {
+        for (Index = 0; Index < ProcessorCount; Index++)
+        {
+            Bit = AFFINITY_MASK(Index);
+            if ((Active & Bit) == 0)
+                continue;
+
+            if ((RelationshipFilter == RelationAll) ||
+                (RelationshipFilter == RelationProcessorCore))
+            {
+                RtlZeroMemory(&ProcessorRel, sizeof(ProcessorRel));
+                ProcessorRel.Flags = 0;
+                ProcessorRel.EfficiencyClass = 0;
+                ProcessorRel.GroupCount = 1;
+                ExpInitGroupAffinity(&ProcessorRel.GroupMask[0], Bit);
+
+                if (!NT_SUCCESS(ExpAppendSlpiexRecord(&Cursor,
+                                                      &Remaining,
+                                                      &TotalSize,
+                                                      EXP_SLPIEX_PROCESSOR_SIZE,
+                                                      RelationProcessorCore,
+                                                      &ProcessorRel,
+                                                      FIELD_OFFSET(PROCESSOR_RELATIONSHIP, GroupMask) +
+                                                          sizeof(GROUP_AFFINITY))))
+                {
+                    Status = STATUS_INFO_LENGTH_MISMATCH;
+                }
+            }
+
+            if ((RelationshipFilter != RelationAll) &&
+                (RelationshipFilter != RelationCache))
+            {
+                continue;
+            }
+
+            if (EmitCacheFallback)
+            {
+                /*
+                 * Section 6 qemu64 / windows-4c1t.log DIFF REL cache lines
+                 * (DIFF END OK). type=2 data, type=1 instruction, type=0 L2/L3.
+                 */
+                if (!NT_SUCCESS(ExpAppendSlpiexCache(&Cursor, &Remaining, &TotalSize,
+                                                     1, 2, 64, 65536, CacheData, Bit)))
+                {
+                    Status = STATUS_INFO_LENGTH_MISMATCH;
+                }
+                if (!NT_SUCCESS(ExpAppendSlpiexCache(&Cursor, &Remaining, &TotalSize,
+                                                     1, 2, 64, 65536, CacheInstruction, Bit)))
+                {
+                    Status = STATUS_INFO_LENGTH_MISMATCH;
+                }
+                if (!NT_SUCCESS(ExpAppendSlpiexCache(&Cursor, &Remaining, &TotalSize,
+                                                     2, 16, 64, 524288, CacheUnified, Bit)))
+                {
+                    Status = STATUS_INFO_LENGTH_MISMATCH;
+                }
+                if (!EmittedL3Fallback)
+                {
+                    if (!NT_SUCCESS(ExpAppendSlpiexCache(&Cursor, &Remaining, &TotalSize,
+                                                         3, 16, 64, 16777216, CacheUnified, Active)))
+                    {
+                        Status = STATUS_INFO_LENGTH_MISMATCH;
+                    }
+                    EmittedL3Fallback = TRUE;
+                }
+                continue;
+            }
+
+            for (CacheIndex = 0; CacheIndex < 64; CacheIndex++)
+            {
+                __cpuidex(CpuidRegs, (INT)CacheLeaf, (INT)CacheIndex);
+                CacheEax.Uint32 = (UINT32)CpuidRegs[0];
+                if (CacheEax.Bits.CacheType == CPUID_CACHE_PARAMS_CACHE_TYPE_NULL)
+                    break;
+
+                CacheEbx.Uint32 = (UINT32)CpuidRegs[1];
+                /* Intel/AMD deterministic cache: ECX is Number of Sets - 1. */
+                Sets = (ULONG)CpuidRegs[2] + 1;
+                LineSize = CacheEbx.Bits.LineSize + 1;
+                Associativity = CacheEbx.Bits.Ways + 1;
+                CacheSize = Associativity *
+                            (CacheEbx.Bits.LinePartitions + 1) *
+                            LineSize *
+                            Sets;
+
+                ShareCount = CacheEax.Bits.MaximumAddressableIdsForLogicalProcessors + 1;
+                ShareMaskBits = ExpRoundUpPow2(ShareCount);
+                ShareMask = ((ShareMaskBits >= 64) ? ~(KAFFINITY)0 :
+                             (((KAFFINITY)1 << ShareMaskBits) - 1))
+                            << (Index & ~(ShareMaskBits - 1));
+                ShareMask &= Active;
+
+                if (ShareMask == 0)
+                    continue;
+
+                /*
+                 * Source 27 EPYC Ex lines use a single-bit mask per logical
+                 * processor for every cache (including L3), even when the leaf
+                 * share set covers SMT siblings. Match that Ex shape.
+                 */
+                if (CacheLeaf == CPUID_CACHE_PARAMS_AMD)
+                {
+                    ShareMask = Bit;
+                }
+                else
+                {
+                    /* Emit shared cache once, on the lowest processor in the share set. */
+                    if ((ShareMask & Bit) == 0)
+                        continue;
+                    if ((ShareMask & (Bit - 1)) != 0)
+                        continue;
+                }
+
+                if (!NT_SUCCESS(ExpAppendSlpiexCache(&Cursor,
+                                                     &Remaining,
+                                                     &TotalSize,
+                                                     (UCHAR)CacheEax.Bits.CacheLevel,
+                                                     (UCHAR)Associativity,
+                                                     (USHORT)LineSize,
+                                                     CacheSize,
+                                                     ExpMapCpuidCacheType(CacheEax.Bits.CacheType),
+                                                     ShareMask)))
+                {
+                    Status = STATUS_INFO_LENGTH_MISMATCH;
+                }
+            }
+        }
+    }
+
+    /* One NUMA node covering the active set. */
+    if ((RelationshipFilter == RelationAll) ||
+        (RelationshipFilter == RelationNumaNode))
+    {
+        RtlZeroMemory(&NumaRel, sizeof(NumaRel));
+        NumaRel.NodeNumber = 0;
+        ExpInitGroupAffinity(&NumaRel.GroupMask, Active);
+
+        if (!NT_SUCCESS(ExpAppendSlpiexRecord(&Cursor,
+                                              &Remaining,
+                                              &TotalSize,
+                                              EXP_SLPIEX_NUMA_SIZE,
+                                              RelationNumaNode,
+                                              &NumaRel,
+                                              sizeof(NumaRel))))
+        {
+            Status = STATUS_INFO_LENGTH_MISMATCH;
+        }
+    }
+
+    /* Group 0. */
+    if ((RelationshipFilter == RelationAll) ||
+        (RelationshipFilter == RelationGroup))
+    {
+        PSYSTEM_LOGICAL_PROCESSOR_INFORMATION_EX GroupRecord;
+
+        TotalSize += EXP_SLPIEX_GROUP_SIZE;
+        if (Remaining < EXP_SLPIEX_GROUP_SIZE)
+        {
+            Remaining = 0;
+            Status = STATUS_INFO_LENGTH_MISMATCH;
+        }
+        else
+        {
+            GroupRecord = (PSYSTEM_LOGICAL_PROCESSOR_INFORMATION_EX)Cursor;
+            RtlZeroMemory(GroupRecord, EXP_SLPIEX_GROUP_SIZE);
+            GroupRecord->Relationship = RelationGroup;
+            GroupRecord->Size = EXP_SLPIEX_GROUP_SIZE;
+            GroupRecord->Group.MaximumGroupCount = 1;
+            GroupRecord->Group.ActiveGroupCount = 1;
+            /*
+             * Sources 27/31: MaximumProcessorCount equals ActiveProcessorCount
+             * on the three QEMU shapes (max=4 active=4). Source 29 max=64 failed
+             * the differential. Learn PROCESSOR_GROUP_INFO.
+             */
+            GroupRecord->Group.GroupInfo[0].MaximumProcessorCount =
+                (UCHAR)ProcessorCount;
+            GroupRecord->Group.GroupInfo[0].ActiveProcessorCount =
+                (UCHAR)ProcessorCount;
+            GroupRecord->Group.GroupInfo[0].ActiveProcessorMask = Active;
+
+            Cursor += EXP_SLPIEX_GROUP_SIZE;
+            Remaining -= EXP_SLPIEX_GROUP_SIZE;
+        }
+    }
+
+    /*
+     * Die/module: only when CPUID reports those levels. Probe-v1 showed 0 on
+     * the three QEMU shapes; leave absent (ALP-004).
+     */
+
+    *ReturnLength = TotalSize;
+    return Status;
+}
+
+/*
+ * Always compiled: trunk PE stamps stay 5.2 / NTDDI WS03 while user-mode
+ * still needs class 107 (ALP-003, Milestone 32). Do not gate on NTDDI_WIN7.
+ */
+__kernel_entry
+NTSTATUS
+NTAPI
+NtQuerySystemInformationEx(
+    _In_ SYSTEM_INFORMATION_CLASS SystemInformationClass,
+    _In_reads_bytes_(InputBufferLength) PVOID InputBuffer,
+    _In_ ULONG InputBufferLength,
+    _Out_writes_bytes_to_opt_(SystemInformationLength, *ReturnLength) PVOID SystemInformation,
+    _In_ ULONG SystemInformationLength,
+    _Out_opt_ PULONG ReturnLength)
+{
+    NTSTATUS Status;
+    ULONG CapturedResultLength = 0;
+    KPROCESSOR_MODE PreviousMode;
+    LOGICAL_PROCESSOR_RELATIONSHIP Relationship;
+
+    PAGED_CODE();
+
+    PreviousMode = ExGetPreviousMode();
+
+    _SEH2_TRY
+    {
+        if (PreviousMode != KernelMode)
+        {
+            ProbeForRead(InputBuffer, InputBufferLength, sizeof(ULONG));
+            if (SystemInformation != NULL)
+            {
+                ProbeForWrite(SystemInformation, SystemInformationLength, sizeof(ULONG));
+            }
+            if (ReturnLength != NULL)
+            {
+                ProbeForWriteUlong(ReturnLength);
+            }
+        }
+
+        if (ReturnLength != NULL)
+        {
+            *ReturnLength = 0;
+        }
+
+        switch (SystemInformationClass)
+        {
+            case SystemLogicalProcessorInformationEx: /* 107; NDK AndGroup alias */
+                if (InputBufferLength < sizeof(LOGICAL_PROCESSOR_RELATIONSHIP))
+                {
+                    Status = STATUS_INVALID_PARAMETER;
+                    break;
+                }
+
+                Relationship = *(LOGICAL_PROCESSOR_RELATIONSHIP *)InputBuffer;
+                Status = ExpQuerySystemLogicalProcessorInformationEx(Relationship,
+                                                                     SystemInformation,
+                                                                     SystemInformationLength,
+                                                                     &CapturedResultLength);
+                break;
+
+            default:
+                Status = STATUS_INVALID_INFO_CLASS;
+                CapturedResultLength = 0;
+                break;
+        }
+
+        if (ReturnLength != NULL)
+        {
+            *ReturnLength = CapturedResultLength;
         }
     }
     _SEH2_EXCEPT(ExSystemExceptionFilter())

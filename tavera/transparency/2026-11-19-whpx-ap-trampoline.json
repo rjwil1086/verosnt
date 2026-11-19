@@ -1,0 +1,45 @@
+{
+  "spdx": "GPL-2.0-or-later",
+  "question": "Why does the amd64 AP trampoline hang under QEMU WHPX after SIPI while TCG joins, and what live-CD VGA/machine flags reach Parent is Desktop?",
+  "allowedInputs": [
+    {
+      "title": "i386 AP trampoline CS-segment loads",
+      "path": "hal/halx86/smp/i386/apentry.S"
+    },
+    {
+      "title": "amd64 AP trampoline (pre-fix DS=0 ebp loads)",
+      "path": "hal/halx86/smp/amd64/apentry.S"
+    },
+    {
+      "title": "WHPX MP boot debugging log",
+      "path": "tavera/specs/amd64-logical-processors/debugging-2026-11-19-whpx.md"
+    },
+    {
+      "title": "WHPX smp2 hang before DS==CS fix (debugcon IA)",
+      "path": "tavera/specs/amd64-logical-processors/sources/debugging-2026-11-19-whpx/debugcon-whpx-smp2-w2a-20261119T133414.log"
+    },
+    {
+      "title": "TCG smp2 control after breadcrumbs",
+      "path": "tavera/specs/amd64-logical-processors/sources/debugging-2026-11-19-whpx/debugcon-smp2-tcg-ctrl-20261119T135303.log"
+    },
+    {
+      "title": "WHPX Gate B pass after DS==CS and ebp restore",
+      "path": "tavera/specs/amd64-logical-processors/sources/debugging-2026-11-19-whpx/boot-whpx-smp2-w2g-ebp-20261119T140945.log",
+      "marker": "Parent is Desktop"
+    },
+    {
+      "title": "WHPX Gate C smp4 pass",
+      "path": "tavera/specs/amd64-logical-processors/sources/debugging-2026-11-19-whpx/boot-whpx-smp4-w3a-20261119T141143.log",
+      "marker": "Parent is Desktop"
+    },
+    {
+      "title": "WHPX Gate A qxl pass",
+      "path": "tavera/specs/amd64-logical-processors/sources/debugging-2026-11-19-whpx/boot-whpx-smp1-qxlpc-20261119T133234.log",
+      "marker": "Parent is Desktop"
+    },
+    {
+      "title": "Reported: Spec/Implementer sessions for ALP; WHPX plan gates A–C",
+      "note": "Reported: implementer WHPX debugging loop; do not count TCG desktop as WHPX success"
+    }
+  ]
+}

@@ -412,6 +412,20 @@ NtQuerySystemInformation(
     _Out_opt_ PULONG ReturnLength
 );
 
+/* Always declared: trunk keeps NTDDI WS03 while class 107 is live (ALP-003). */
+__kernel_entry
+NTSYSCALLAPI
+NTSTATUS
+NTAPI
+NtQuerySystemInformationEx(
+    _In_ SYSTEM_INFORMATION_CLASS SystemInformationClass,
+    _In_reads_bytes_(InputBufferLength) PVOID InputBuffer,
+    _In_ ULONG InputBufferLength,
+    _Out_writes_bytes_to_opt_(SystemInformationLength, *ReturnLength) PVOID SystemInformation,
+    _In_ ULONG SystemInformationLength,
+    _Out_opt_ PULONG ReturnLength
+);
+
 NTSYSCALLAPI
 NTSTATUS
 NTAPI

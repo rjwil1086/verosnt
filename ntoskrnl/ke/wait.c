@@ -8,6 +8,9 @@
  * PROGRAMMERS: Alex Ionescu (alex.ionescu@reactos.org)
  *              Gunnar Dalsnes
  *              Ryan Wilson <ryan@taveraos.com>
+ *
+ * Sources: ntoskrnl/ke/amd64/stubs.c; ntoskrnl/ke/amd64/traphandler.c
+ * (Idle off ready lists).
  */
 
 /* INCLUDES ******************************************************************/
@@ -245,8 +248,18 @@ KiExitDispatcher(IN KIRQL OldIrql)
     /* Set thread to running */
     NextThread->State = Running;
 
-    /* Queue it on the ready lists */
-    KxQueueReadyThread(Thread, Prcb);
+    /*
+     * Idle stays off the ready lists (KiIdleLoop / KiDpcInterruptHandler).
+     * Sources: ntoskrnl/ke/amd64/stubs.c; ntoskrnl/ke/amd64/traphandler.c.
+     */
+    if (Thread != Prcb->IdleThread)
+    {
+        KxQueueReadyThread(Thread, Prcb);
+    }
+    else
+    {
+        KiReleasePrcbLock(Prcb);
+    }
 
     /* Set wait IRQL */
     Thread->WaitIrql = OldIrql;

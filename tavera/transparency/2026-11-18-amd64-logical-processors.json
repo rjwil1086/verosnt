@@ -1,0 +1,100 @@
+{
+  "spdx": "GPL-2.0-or-later",
+  "question": "How does the amd64 boot start application processors, broadcast IPI/TLB work, and report GetLogicalProcessorInformationEx topology for Milestone 32?",
+  "allowedInputs": [
+    {
+      "title": "amd64 logical processors spec",
+      "path": "tavera/specs/amd64-logical-processors/amd64-logical-processors.md"
+    },
+    {
+      "title": "amd64 logical processors open items",
+      "path": "tavera/specs/amd64-logical-processors/open-items.md"
+    },
+    {
+      "title": "GetLogicalProcessorInformationEx function (sysinfoapi.h)",
+      "url": "https://learn.microsoft.com/en-us/windows/win32/api/sysinfoapi/nf-sysinfoapi-getlogicalprocessorinformationex"
+    },
+    {
+      "title": "SYSTEM_LOGICAL_PROCESSOR_INFORMATION_EX (winnt.h)",
+      "url": "https://learn.microsoft.com/en-us/windows/win32/api/winnt/ns-winnt-system_logical_processor_information_ex"
+    },
+    {
+      "title": "PROCESSOR_GROUP_INFO (winnt.h)",
+      "url": "https://learn.microsoft.com/en-us/windows/win32/api/winnt/ns-winnt-processor_group_info"
+    },
+    {
+      "title": "KeIpiGenericCall function (wdm.h)",
+      "url": "https://learn.microsoft.com/en-us/windows/hardware/drivers/ddi/wdm/nf-wdm-keipigenericcall"
+    },
+    {
+      "title": "i386 AP start loop",
+      "path": "ntoskrnl/ke/i386/mproc.c"
+    },
+    {
+      "title": "i386 HalStartNextProcessor and apentry",
+      "path": "hal/halx86/smp/i386/spinup.c"
+    },
+    {
+      "title": "i386 AP trampoline",
+      "path": "hal/halx86/smp/i386/apentry.S"
+    },
+    {
+      "title": "freeldr ExitToLongMode",
+      "path": "boot/freeldr/freeldr/arch/realmode/amd64.S"
+    },
+    {
+      "title": "amd64 ke.h EFER/CR0/CR4 constants",
+      "path": "ntoskrnl/include/internal/amd64/ke.h"
+    },
+    {
+      "title": "Intel Cpuid.h cache and topology leaves",
+      "path": "sdk/include/reactos/x86x64/Intel/Cpuid.h"
+    },
+    {
+      "title": "Cpuid.h AMD cache params leaf",
+      "path": "sdk/include/reactos/x86x64/Cpuid.h"
+    },
+    {
+      "title": "ketypes.h Ex relationship types",
+      "path": "sdk/include/xdk/ketypes.h"
+    },
+    {
+      "title": "kernelbase GetLogicalProcessorInformationEx wrapper",
+      "path": "dll/win32/kernelbase/wine/memory.c"
+    },
+    {
+      "title": "probe-v1 Windows 4c1t capture",
+      "path": "tavera/specs/amd64-logical-processors/sources/probes/probe-v1/windows-4c1t.log",
+      "marker": "DIFF END OK"
+    },
+    {
+      "title": "probe-v1 Windows qemu64 2c2t capture",
+      "path": "tavera/specs/amd64-logical-processors/sources/probes/probe-v1/windows-qemu64-2c2t.log",
+      "marker": "DIFF END OK"
+    },
+    {
+      "title": "probe-v1 Windows EPYC 2c2t capture",
+      "path": "tavera/specs/amd64-logical-processors/sources/probes/probe-v1/windows-epyc-2c2t.log",
+      "marker": "DIFF END OK"
+    },
+    {
+      "title": "probe-v2 Windows 4c1t capture (ALP-009)",
+      "path": "tavera/specs/amd64-logical-processors/sources/probes/probe-v2/windows-4c1t.log",
+      "marker": "DIFF END OK"
+    },
+    {
+      "title": "probe-v2 Windows qemu64 2c2t capture (ALP-009)",
+      "path": "tavera/specs/amd64-logical-processors/sources/probes/probe-v2/windows-qemu64-2c2t.log",
+      "marker": "DIFF END OK"
+    },
+    {
+      "title": "probe-v2 Windows EPYC 2c2t capture (ALP-009)",
+      "path": "tavera/specs/amd64-logical-processors/sources/probes/probe-v2/windows-epyc-2c2t.log",
+      "marker": "DIFF END OK"
+    },
+    {
+      "title": "Reported: ALP-002 reuse i386 infinite AP wait; ALP-006 leave MultiThreadProcessorSet single-bit until resolved",
+      "note": "Reported: implementer open-items notes for timeout and SMT set vs Ex single-bit cores"
+    }
+  ]
+}

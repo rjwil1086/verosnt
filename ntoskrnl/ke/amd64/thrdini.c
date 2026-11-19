@@ -1,10 +1,15 @@
 /*
  * COPYRIGHT:       See COPYING in the top level directory
+ *                  Copyright 2026 Ryan Wilson <ryan@taveraos.com>
  * PROJECT:         ReactOS kernel
  * FILE:            ntoskrnl/ke/amd64/thrdini.c
  * PURPOSE:         amd64 Thread Context Creation
  * PROGRAMMER:      Timo Kreuzer (timo.kreuzer@reactos.org)
  *                  Alex Ionescu (alex@relsoft.net)
+ *                  Ryan Wilson <ryan@taveraos.com>
+ *
+ * Sources: ntoskrnl/ke/amd64/stubs.c (KiIdleLoop SYNCH_LEVEL); sdk/include/xdk/amd64/ke.h;
+ * tavera/specs/amd64-logical-processors (AP join then Phase1 PAGED_CODE assert).
  */
 
 /* INCLUDES ******************************************************************/
@@ -289,6 +294,17 @@ KiSwapContextResume(
 
     /* Old thread os no longer busy */
     OldThread->SwapBusy = FALSE;
+
+    /*
+     * Idle raises to SYNCH_LEVEL before KiSwapContext on SMP. The inbound
+     * thread resumes on this CPU still at that IRQL; drop to its WaitIrql
+     * so PAGED_CODE() in Phase1/Ob/Se does not assert.
+     * Sources: ntoskrnl/ke/amd64/stubs.c KiIdleLoop; sdk/include/xdk/amd64/ke.h.
+     */
+    if (NewThread->WaitIrql < (KIRQL)__readcr8())
+    {
+        KeLowerIrql(NewThread->WaitIrql);
+    }
 
     /* Kernel APCs may be pending */
     if (NewThread->ApcState.KernelApcPending)
