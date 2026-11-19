@@ -60,6 +60,9 @@ Every claim below names one of these entries (Learn URL, in-tree path, or guest 
 31. [PROCESSOR_GROUP_INFO (winnt.h)](https://learn.microsoft.com/en-us/windows/win32/api/winnt/ns-winnt-processor_group_info). `MaximumProcessorCount` and `ActiveProcessorCount`.
 32. `sdk/include/reactos/x86x64/Cpuid.h` in this tree. `CPUID_CACHE_PARAMS_AMD` (`0x8000001D`) for AMD deterministic cache parameters.
 33. Guest serial logs from `tavera/probes/amd64-logical-processors/probe-v2`, stored under `tavera/specs/amd64-logical-processors/sources/probes/probe-v2/`, each containing `DIFF END OK`: `windows-4c1t.log`, `windows-qemu64-2c2t.log`, `windows-epyc-2c2t.log`. Same Windows 10 22H2 QEMU TCG shapes as source 27. Date captured: 2026-11-19. Adds `DIFF CPUID cache4` (leaf `0x4`) and `DIFF CPUID amdcache` (leaf `0x8000001D`) beside the Ex cache lines.
+34. **(Rev.1)** Tavera OS WHPX live-CD serial logs under `tavera/specs/amd64-logical-processors/sources/debugging-2026-11-19-whpx/`, with cycle notes in `tavera/specs/amd64-logical-processors/debugging-2026-11-19-whpx.md` (W1f / W2a–W2g / W3a). Date captured: 2026-11-19. `boot-whpx-smp1-qxlpc-20261119T133234.log` (`Parent is Desktop`); `boot-whpx-smp2-w2g-ebp-20261119T140945.log` (`CPU 1 joined`, `Parent is Desktop`); `boot-whpx-smp4-w3a-20261119T141143.log` (`CPU 1/2/3 joined`, `Parent is Desktop`); TCG control `boot-smp2-tcg-ctrl-20261119T135303.log` (`CPU 1 joined`).
+35. **(Rev.1)** `hal/halx86/smp/amd64/apentry.S` in this tree. Real-mode `DS==CS` for stub-relative loads; keep `ebp=CS<<4` for identity long-mode pointer loads used after SIPI (ALP-011).
+36. **(Rev.1)** Buildenv rule `tavera-test-guest.mdc` (sibling checkout `buildenv/.cursor/rules/`). Live CD may use `-accel whpx` with `-cpu qemu64`, default `pc`, `-vga qxl`; upgrade/NTFS/paired captures stay TCG (ALP-012).
 
 No WDK or SDK headers, symbols, disassembly, or third-party struct dumps are sources. Geoff Chappell, Vergilius, syscall tables built from Microsoft binaries, and undocumented-API sites are not sources. Learn debugger command pages are not sources.
 
@@ -273,11 +276,15 @@ These checks confirm behavior. They do not prescribe coding steps beyond section
 4. **2-CPU gate then MP images.** Boot with two CPUs to the desktop on `ntkrnlmp`/`halmp` (or the interim images used to prove the gate). Then point the live CD at `ntkrnlmp.exe` and `halmp.dll`, rebuild, and boot `-smp 4`.
 5. **Milestone 8 probe.** Rerun `buildenv/differential-tests/syscall-diff` (or the tree's current path) so the recorded statuses do not regress. Reuse the Windows log when `Test-WindowsProbe.ps1` prints `REUSE`.
 6. **Desktop.** Every success boot still reaches the desktop before the log is treated as success. Interactive QEMU: name the window, what ready looks like, and when to report back. One QEMU on a disk at a time.
+7. **(Rev.1) WHPX live CD.** Boot `build-amd64/bootcd.iso` with `-accel whpx -cpu qemu64`, default `pc`, `-vga qxl`, at `-smp 1`, `2`, and `4`. Require serial `Parent is Desktop`; at `2` and `4` also require `CPU N joined` (source 34). Do not treat a TCG desktop as WHPX success. Paired captures and upgrade/NTFS stay on TCG (source 36).
 
 ## 9. Open questions
 
 - Windows APIC delivery by physical APIC ID past eight processors remains unobserved with allowed probes (ALP-005). Tavera smp9 (source 30) is implementation evidence only.
+- **(Rev.1)** WHPX MP desktop at `-smp 1` / `2` / `4` is an M32 success gate and is met (sources 34–36; ALP-011/012). No remaining open WHPX question for this milestone.
 
 ## 10. Review log
 
 Written 2026-11-18. Section 6 filled from probe-v1 Windows captures the same day. 2026-11-18 later: ALP-002/006/007/008 resolved (i386 wait, Ex-matching `MultiThreadProcessorSet`, exact cache DIFF lines, class 107 dual names). 2026-11-19: cited Tavera probe-v1 (source 29), smp9 (source 30), group `MaximumProcessorCount` (source 31), opened ALP-009 for cache leaves; softened x2APIC / stub source blurbs. 2026-11-19 later: probe-v2 source 33; ALP-009 resolved (Ex caches required when leaf `0x4` null / `0x8000001D` absent; EPYC `0x8000001D` sizes match Ex). A reviewer still has to confirm this file has no implementation detail from a forbidden source.
+
+**(Rev.1)** 2026-11-19: Sources 34–36; test plan item 7; open-questions note that WHPX MP desktop is an M32 gate and is met. ALP-011/012 resolved from `debugging-2026-11-19-whpx.md` W1f/W2a–W2g/W3a, `apentry.S`, and `tavera-test-guest.mdc`.
