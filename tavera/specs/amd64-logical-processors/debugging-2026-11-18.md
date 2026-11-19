@@ -9,7 +9,7 @@ PROGRAMMERS: Ryan Wilson <ryan@taveraos.com>
 
 # amd64 logical processors — debugging log
 
-Chronological record of the implementer debug loop for Milestone 32, starting when the plan todos were opened. Guest logs stay under gitignored `output/`. This file is the durable trail; chat alone is not enough.
+Chronological record of the implementer debug loop for Milestone 32, starting when the plan todos were opened. Cited guest logs are under `tavera/specs/amd64-logical-processors/sources/debugging-2026-11-18/` (copied from `output/`). This file is the durable trail; chat alone is not enough.
 
 **Harness (unless noted):** QEMU `D:\tavera\buildenv\tools\qemu\qemu-system-x86_64.exe`, `-accel tcg -m 8192`, headless, `-serial file:…`, optional `-debugcon file:… -global isa-debugcon.iobase=0xe9`. Build: `build-amd64\build-halmp-bootcd.cmd` (env.cmd / buildenv). Image: `build-amd64\bootcd.iso` with `KERNEL=NTKRNLMP.EXE HAL=HALMP.DLL` on the debug live path.
 
@@ -51,7 +51,7 @@ Chronological record of the implementer debug loop for Milestone 32, starting wh
 | AP after final CR3 | Read `LoaderBlock` via identity after map drop | Preload LoaderBlock/ProcessorState before CR3 switch | Still no join |
 | Bootcd link | Occasional mkisofs/pe flake | Retry | ISO produced |
 
-Representative early logs (SIPI, no join): `output/boot-m32-20261118T184833Z.log` … `T190940Z.log`.
+Representative early logs (SIPI, no join): `sources/debugging-2026-11-18/boot-m32-20261118T184833Z.log` … `T190940Z.log`.
 
 ---
 
@@ -59,7 +59,7 @@ Representative early logs (SIPI, no join): `output/boot-m32-20261118T184833Z.log
 
 Goal: get past SIPI into `KiSystemStartup` and clear `LoaderBlock->Prcb`.
 
-Breadcrumbs: port `0xE9` letters **A–H** in `apentry.S`, later **I** in `kiinit.c`. Serial: `output/boot-m32-<stamp>.log`. Debugcon: `output/boot-m32-<stamp>.debugcon`.
+Breadcrumbs: port `0xE9` letters **A–H** in `apentry.S`, later **I** in `kiinit.c`. Serial: `sources/debugging-2026-11-18/boot-m32-<stamp>.log`. Debugcon: `sources/debugging-2026-11-18/boot-m32-<stamp>.debugcon`.
 
 | Step | Hypothesis | Change | Evidence | Result |
 |------|------------|--------|----------|--------|
@@ -111,7 +111,7 @@ After join, first-chance `STATUS_ASSERTION_FAILURE` in Phase1 during `ObInit` �
 
 ## Boot log index (this loop)
 
-All under `output/` (gitignored). Times are local stamp names.
+All under `sources/debugging-2026-11-18/` (copied from gitignored `output/`). Times are local stamp names.
 
 | Log | Shape | Outcome (short) |
 |-----|-------|-----------------|
@@ -259,7 +259,7 @@ Update this file in the same turn as each new hypothesis → change → log → 
 
 | Step | Hypothesis | Change | Evidence | Result |
 |------|------------|--------|----------|--------|
-| H1 | Live Setup `CmdLine=topology_probe.exe` + COM1 free (LiveImg) or COM2 KD would reach DIFF | Rebuilt bootcd with probe in `reactos.cab`, hive CmdLine, LiveImg then LiveImg_Debug+COM2 dual serial | `output/amd64-logical-processors/probe-v1/tavera-4c1t-boot2.log` (Affinity=`0xf` after ObInit; `DxStartupDxgkInt`; no `Started setup`); earlier remasters `Fatal 0x1e` in LSASS/`apphelp` with `probeLen=0` | **Blocked:** guest reaches win32k/winlogon Dx path then hangs or bugchecks before `topology_probe` prints DIFF. F2 (`…T175405Z-f2.log`) still the last boot that started `setup -mini`. Temporary livecd CmdLine/DefaultOS/cmake probe hooks reverted. |
+| H1 | Live Setup `CmdLine=topology_probe.exe` + COM1 free (LiveImg) or COM2 KD would reach DIFF | Rebuilt bootcd with probe in `reactos.cab`, hive CmdLine, LiveImg then LiveImg_Debug+COM2 dual serial | `sources/debugging-2026-11-18/probe-v1/tavera-4c1t-boot2.log` (Affinity=`0xf` after ObInit; `DxStartupDxgkInt`; no `Started setup`); earlier remasters `Fatal 0x1e` in LSASS/`apphelp` with `probeLen=0` | **Blocked:** guest reaches win32k/winlogon Dx path then hangs or bugchecks before `topology_probe` prints DIFF. F2 (`…T175405Z-f2.log`) still the last boot that started `setup -mini`. Temporary livecd CmdLine/DefaultOS/cmake probe hooks reverted. |
 
 ### H2 — live CD after setup: mouse freeze / soft hang on MP
 
@@ -275,7 +275,7 @@ Update this file in the same turn as each new hypothesis → change → log → 
 | H2h | `-smp 2` hangcheck | headless | `…T211554Z-smp2-hangcheck.log` | Soft hang early (~30KB, pre-setup); CPU high |
 | H2i | `KeIpiGenericCall` infinite DoneCount wait | Re-arm packet + re-`HalRequestIpi` on stall; give up + DPRINT after long stall | `ntoskrnl/ke/amd64/ipi.c` | Retest `-smp 4` |
 | H2j | Re-arm still hangs | Keep re-arm; remove give-up | `…T213212Z-ipirearm.log` | **FAIL:** Parent is Desktop then serial freeze mid-umpnpmgr; QEMU CPU high. Filed [#46](https://github.com/taveraos/taveraos/issues/46). Temporary local-only TB flush (`cpu.c` `&& FALSE`) for e9local PASS. |
-| H2k | Silent LiveImg + RunOnce probe | LiveImg (no `/DEBUG`), RunOnce `topology_probe.exe tavera` | `output/.../probe-v1/tavera-4c1t.log` | **FAIL:** 17 min, serial stuck at freeldr heap lines only (2017 B); no `DIFF`. LiveImg without KD is silent after freeldr; RunOnce never observed. |
+| H2k | Silent LiveImg + RunOnce probe | LiveImg (no `/DEBUG`), RunOnce `topology_probe.exe tavera` | `sources/debugging-2026-11-18/probe-v1/tavera-4c1t.log` | **FAIL:** 17 min, serial stuck at freeldr heap lines only (2017 B); no `DIFF`. LiveImg without KD is silent after freeldr; RunOnce never observed. |
 | H2l | LiveImg_Debug menu sendkey | telnet monitor down×4 + ret | `…T040400Z-livedebug-sanity.log` | **FAIL:** stayed at freeldr (sendkey unreliable headless). |
 | H3 | Broadcast IPI is the hang; probe delivery needs Userinit | Sequential single-CPU `HalRequestIpi` + DoneCount wait; restore AllProcessors shootdown; `DefaultOS=LiveImg_Debug`; RunOnce expand-SZ + Userinit; probe COM1→COM2 | `…T041300Z-h3-seqipi.log` | **FAIL:** join+ObInit+win32k OK; serial froze at 23199 B during winlogon/services (pre-setup); QEMU CPU pegged; **no** `KeIpiGenericCall: stall` DPRINT — wait may not be the spin, or DPRINT never flushed |
 | H4 | DoneCount wait vs IPI delivery | Fire-and-forget: arm flags, single-CPU `HalRequestIpi`, **no** DoneCount spin; still run worker on caller | `…T043000Z-h4-nowait.log` | **Partial:** reached `Started setup` + `Parent is Desktop` + umpnpmgr; then soft hang at NDIS5 OID loop (same as H2f). **Conclusion:** hang is IPI_LEVEL flush delivery under load, not DoneCount wait alone. |
@@ -285,11 +285,20 @@ Update this file in the same turn as each new hypothesis → change → log → 
 
 | Step | Hypothesis | Change | Evidence | Result |
 |------|------------|--------|----------|--------|
-| H6a | COM2-first + dual `-serial` captures DIFF under LiveImg_Debug | Boot `-serial kd -serial probe` | `tavera-4c1t.kd.log` / `.log` | **FAIL capture:** `WL: Started setup 'topology_probe.exe'`; KD shows `WARNING: calling stub GetLogicalProcessorInformationEx` then `ExitProcess(0)`; probe COM2 file stuck at freeldr HEAP lines (2017 B); **no `DIFF` on either serial** |
-| H6b | kernel32 Ex export is still `-stub`; COM CreateFile fails under KD so emit is silent | Implement `GetLogicalProcessorInformationEx` → `NtQuerySystemInformationEx` in `kernel32/client/sysinfo.c`; drop `-stub` in `kernel32.spec`; ungate `NtQuerySystemInformationEx` (sysfuncs.h + ntdll.spec + exfuncs.h + sysinfo.c NTDDI); probe `emit_raw` also `OutputDebugStringA` | rebuild ntdll+ntkrnlmp+kernel32+probe+bootcd | **PASS 4c1t:** `tavera-4c1t.log` has `DIFF END OK`, `DIFF LOGICAL 4`, four single-bit cores `flags=0`. No `DIFF REL cache` lines (CPUID leaf 4 null on this QEMU cpu). |
-| H6c | qemu64-2c2t first boot | same ISO | `tavera-qemu64-2c2t.kd.log` | **FAIL once:** after `Started setup`, `RtlpWaitForCriticalSection` Deadlock → KDB INT3; no DIFF. |
-| H6d | Retry qemu64-2c2t (flake) | same ISO, kill QEMU before extract | `tavera-qemu64-2c2t.log` | **PASS:** `DIFF END OK`, `DIFF LOGICAL 4`, four single-bit cores; CPUID SMT `shift=1`. |
+| H6a | COM2-first + dual `-serial` captures DIFF under LiveImg_Debug | Boot `-serial kd -serial probe` | `sources/debugging-2026-11-18/probe-v1/tavera-4c1t.kd.log` / `tavera-4c1t.log` | **FAIL capture:** `WL: Started setup 'topology_probe.exe'`; KD shows `WARNING: calling stub GetLogicalProcessorInformationEx` then `ExitProcess(0)`; probe COM2 file stuck at freeldr HEAP lines (2017 B); **no `DIFF` on either serial** |
+| H6b | kernel32 Ex export is still `-stub`; COM CreateFile fails under KD so emit is silent | Implement `GetLogicalProcessorInformationEx` → `NtQuerySystemInformationEx` in `kernel32/client/sysinfo.c`; drop `-stub` in `kernel32.spec`; ungate `NtQuerySystemInformationEx` (sysfuncs.h + ntdll.spec + exfuncs.h + sysinfo.c NTDDI); probe `emit_raw` also `OutputDebugStringA` | rebuild ntdll+ntkrnlmp+kernel32+probe+bootcd | **PASS 4c1t:** `sources/debugging-2026-11-18/probe-v1/tavera-4c1t.log` (also Spec Source 29) has `DIFF END OK`, `DIFF LOGICAL 4`, four single-bit cores `flags=0`. No `DIFF REL cache` lines (CPUID leaf 4 null on this QEMU cpu). |
+| H6c | qemu64-2c2t first boot | same ISO | `sources/debugging-2026-11-18/probe-v1/tavera-qemu64-2c2t.kd.log` | **FAIL once:** after `Started setup`, `RtlpWaitForCriticalSection` Deadlock → KDB INT3; no DIFF. |
+| H6d | Retry qemu64-2c2t (flake) | same ISO, kill QEMU before extract | `sources/debugging-2026-11-18/probe-v1/tavera-qemu64-2c2t.log` | **PASS:** `DIFF END OK`, `DIFF LOGICAL 4`, four single-bit cores; CPUID SMT `shift=1`. |
 | H6e | Skip COM CreateFile (hang risk) | `open_com` returns `INVALID_HANDLE_VALUE`; OutputDebugString only | probe source updated | done (source); captures used prior COM-skip ISO with OutputDebugString |
-| H6f | epyc-2c2t | dual serial LiveImg_Debug | `tavera-epyc-2c2t.log` | **PASS:** `DIFF END OK`, `DIFF LOGICAL 4`, four single-bit cores |
-| H6g | Restore `KeIpiGenericCall` DoneCount barrier | `KiIpiGenericCallNoWait = FALSE`; TB stays on H5 DPC path | rebuild ntkrnlmp+bootcd; setup `-mini` restored | pending hangcheck after syscall-diff |
+| H6f | epyc-2c2t | dual serial LiveImg_Debug | `sources/debugging-2026-11-18/probe-v1/tavera-epyc-2c2t.log` | **PASS:** `DIFF END OK`, `DIFF LOGICAL 4`, four single-bit cores |
+| H6g | Restore `KeIpiGenericCall` DoneCount barrier | `KiIpiGenericCallNoWait = FALSE`; TB stays on H5 DPC path | rebuild ntkrnlmp+bootcd; setup `-mini` restored | hangcheck after H7 (see H6g row below) |
+
+### H7 — restore setup -mini after topology_probe CmdLine handoff
+
+| Step | Hypothesis | Change | Evidence | Result |
+|------|------------|--------|----------|--------|
+| H7 | Stock `CmdLine=setup -mini` recovers H5 desktop hangcheck | `livecd.inf` CmdLine restored; rebuild bootcd; headless `-smp 4` LiveImg_Debug | `sources/debugging-2026-11-18/boot-m32-20261119T101542Z-h7-setupmini.log` | **PASS:** join+affinity `0xf`+`Started setup 'setup -mini'`+`Parent is Desktop`; serial 63KB→323KB+ over ~9 min; no Fatal; QEMU CPU ~160 not pegged |
+| H6g | DoneCount wait OK under stock Setup (H5 DPC TB) | `KiIpiGenericCallNoWait = FALSE` in `ipi.c` | `output/boot-m32-20261119T102609Z-h6g-donecount.log` | **PASS:** setup -mini + Parent is Desktop; serial 380KB+ ~10 min; +29KB/45s; no Fatal. Closed [#46](https://github.com/taveraos/taveraos/issues/46). |
+| H7b | Ex cache + group max | `sysinfo.c`: leaf 0x4 else 0x8000001D else §6 qemu64 DIFF lines; `MaximumProcessorCount=Active` | ALP-009 / sources 27–33 | coded; verify after topology re-run |
+| H7c | Topology via RunOnce (not CmdLine) | `livecd.inf` RunOnce `topology_probe.exe tavera` | three Tavera shapes | pending |
 

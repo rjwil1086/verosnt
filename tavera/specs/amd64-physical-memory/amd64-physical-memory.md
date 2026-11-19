@@ -35,7 +35,7 @@ Every claim below names one of these entries (Learn URL or in-tree path). The da
 6. `ntoskrnl/mm/amd64/init.c` in this tree. `MmNonPagedPoolStart` and the pool-size multiply.
 7. `ntoskrnl/include/internal/amd64/mm.h` in this tree. `MI_MAX_NONPAGED_POOL_SIZE` is 128 GB.
 8. `ntoskrnl/ex/init.c` in this tree. The serial banner.
-9. A later boot log under `output/` is evidence only for what that log prints. No such log is cited yet.
+9. A later boot log copied into `tavera/specs/amd64-physical-memory/sources/` (from `output/`) is evidence only for what that log prints. No such log is cited yet.
 10. GitHub milestone [Milestone 31: amd64 physical memory](https://github.com/taveraos/taveraos/milestone/30) (API number 30). Project goal, task list, and success criteria.
 
 No WDK or SDK headers, symbols, disassembly, or third-party struct dumps are sources. Geoff Chappell, Vergilius, syscall tables built from Microsoft binaries, and undocumented-API sites are not sources.
@@ -114,7 +114,7 @@ Threading, IRQL, and memory ownership beyond the pool and loader addresses above
 
 No black-box test on Windows is recorded. No Windows build is named. The 6 TB and 128 GB figures are the published rows in source 1, not a measurement from a guest.
 
-No boot log under `output/` is cited yet (source 9).
+No boot log under `sources/` is cited yet (source 9).
 
 ## 7. Compatibility notes
 

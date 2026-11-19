@@ -1,0 +1,50 @@
+[2J[01;01H[=3h[2J[01;01H[2J[01;01H[=3h[2J[01;01H[2J[01;01H[=3h[2J[01;01HBdsDxe: loading Boot0001 "UEFI Misc Device" from PciRoot(0x0)/Pci(0x4,0x0)
+BdsDxe: starting Boot0001 "UEFI Misc Device" from PciRoot(0x0)/Pci(0x4,0x0)
+DIFF SHAPE epyc-2c2t
+DIFF BUILD probe-v2
+DIFF REL package flags=0 eff=0 group=0 mask=0xf
+DIFF REL core flags=0 eff=0 group=0 mask=0x1
+DIFF REL cache level=1 assoc=8 line=64 size=32768 type=2 group=0 mask=0x1
+DIFF REL cache level=1 assoc=4 line=64 size=65536 type=1 group=0 mask=0x1
+DIFF REL cache level=2 assoc=8 line=64 size=524288 type=0 group=0 mask=0x1
+DIFF REL cache level=3 assoc=16 line=64 size=8388608 type=0 group=0 mask=0x1
+DIFF REL core flags=0 eff=0 group=0 mask=0x2
+DIFF REL cache level=1 assoc=8 line=64 size=32768 type=2 group=0 mask=0x2
+DIFF REL cache level=1 assoc=4 line=64 size=65536 type=1 group=0 mask=0x2
+DIFF REL cache level=2 assoc=8 line=64 size=524288 type=0 group=0 mask=0x2
+DIFF REL cache level=3 assoc=16 line=64 size=8388608 type=0 group=0 mask=0x2
+DIFF REL core flags=0 eff=0 group=0 mask=0x4
+DIFF REL cache level=1 assoc=8 line=64 size=32768 type=2 group=0 mask=0x4
+DIFF REL cache level=1 assoc=4 line=64 size=65536 type=1 group=0 mask=0x4
+DIFF REL cache level=2 assoc=8 line=64 size=524288 type=0 group=0 mask=0x4
+DIFF REL cache level=3 assoc=16 line=64 size=8388608 type=0 group=0 mask=0x4
+DIFF REL core flags=0 eff=0 group=0 mask=0x8
+DIFF REL cache level=1 assoc=8 line=64 size=32768 type=2 group=0 mask=0x8
+DIFF REL cache level=1 assoc=4 line=64 size=65536 type=1 group=0 mask=0x8
+DIFF REL cache level=2 assoc=8 line=64 size=524288 type=0 group=0 mask=0x8
+DIFF REL cache level=3 assoc=16 line=64 size=8388608 type=0 group=0 mask=0x8
+DIFF REL numa node=0 group=0 mask=0xf
+DIFF REL group max=1 active=1
+DIFF REL groupinfo i=0 max=4 active=4 mask=0xf
+DIFF LOGICAL 4
+DIFF CORE_COUNT 4
+DIFF EX_DIE_RECORDS 0
+DIFF EX_MODULE_RECORDS 0
+DIFF CPUID max_basic=0xd
+DIFF CPUID cache4 sub=0 type=null
+DIFF CPUID topology_leaf=0xb
+DIFF CPUID topo sub=0 shift=1 level_type=1 edx=0x0
+DIFF CPUID topo sub=1 shift=2 level_type=2 edx=0x0
+DIFF CPUID topo sub=2 shift=0 level_type=0 edx=0x0
+DIFF CPUID max_ext=0x8000001e
+DIFF CPUID amdcache sub=0 type=1 level=1 line=64 ways=8 parts=1 sets=64 size=32768 share_ids_raw=1 eax=0x4121 ebx=0x1c0003f ecx=0x3f edx=0x1
+DIFF CPUID amdcache sub=1 type=2 level=1 line=64 ways=4 parts=1 sets=256 size=65536 share_ids_raw=1 eax=0x4122 ebx=0xc0003f ecx=0xff edx=0x1
+DIFF CPUID amdcache sub=2 type=3 level=2 line=64 ways=8 parts=1 sets=1024 size=524288 share_ids_raw=1 eax=0x4043 ebx=0x1c0003f ecx=0x3ff edx=0x0
+DIFF CPUID amdcache sub=3 type=3 level=3 line=64 ways=16 parts=1 sets=8192 size=8388608 share_ids_raw=3 eax=0xc163 ebx=0x3c0003f ecx=0x1fff edx=0x2
+DIFF CPUID amdcache sub=4 type=null
+DIFF CPUID amd80000008 nc=3 apic_core_id_size=2
+DIFF CPUID amd8000001e core_id=0 threads_per_core=1 eax=0x0
+DIFF CPUID_DIE 0
+DIFF CPUID_MODULE 0
+DIFF PLACE cpu_a=1 count_a=764705 cpu_b=2 count_b=440665 shared_core=0
+DIFF END OK

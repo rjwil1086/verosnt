@@ -1,0 +1,45 @@
+(boot\freeldr\freeldr\lib\mm\heap.c:344) err: HEAP: Allocation of 0xfba8c bytes too large
+(boot\freeldr\freeldr\lib\mm\heap.c:344) err: HEAP: Allocation of 0x185b505 bytes too large
+(boot\freeldr\freeldr\lib\mm\heap.c:344) err: HEAP: Allocation of 0x2e45d3 bytes too large
+(boot\freeldr\freeldr\lib\mm\heap.c:344) err: HEAP: Allocation of 0xb4520 bytes too large
+(boot\freeldr\freeldr\lib\mm\heap.c:344) err: HEAP: Allocation of 0xd1e498 bytes too large
+(boot\freeldr\freeldr\lib\mm\heap.c:344) err: HEAP: Allocation of 0x338294 bytes too large
+(boot\freeldr\freeldr\lib\mm\heap.c:344) err: HEAP: Allocation of 0x2a7681 bytes too large
+(boot\freeldr\freeldr\lib\mm\heap.c:344) err: HEAP: Allocation of 0x14097b bytes too large
+(boot\freeldr\freeldr\lib\mm\heap.c:344) err: HEAP: Allocation of 0xbdebc bytes too large
+(boot\freeldr\freeldr\lib\mm\heap.c:344) err: HEAP: Allocation of 0x1bb5d1 bytes too large
+(boot\freeldr\freeldr\lib\mm\heap.c:344) err: HEAP: Allocation of 0xc7528f bytes too large
+(boot\freeldr\freeldr\lib\mm\heap.c:344) err: HEAP: Allocation of 0x2a706b bytes too large
+(boot\freeldr\freeldr\lib\mm\heap.c:344) err: HEAP: Allocation of 0xbed06 bytes too large
+(boot\freeldr\freeldr\lib\mm\heap.c:344) err: HEAP: Allocation of 0xabbca bytes too large
+(boot\freeldr\freeldr\lib\mm\heap.c:344) err: HEAP: Allocation of 0x1d3480 bytes too large
+(boot\freeldr\freeldr\lib\mm\heap.c:344) err: HEAP: Allocation of 0xa599f bytes too large
+(boot\freeldr\freeldr\lib\mm\heap.c:344) err: HEAP: Allocation of 0xb5137 bytes too large
+(boot\freeldr\freeldr\lib\mm\heap.c:344) err: HEAP: Allocation of 0x2b1e8f bytes too large
+(boot\freeldr\freeldr\lib\mm\heap.c:344) err: HEAP: Allocation of 0x20ca52 bytes too large
+(boot\freeldr\freeldr\lib\mm\heap.c:344) err: HEAP: Allocation of 0x186f2d bytes too large
+(boot\freeldr\freeldr\lib\mm\heap.c:344) err: HEAP: Allocation of 0xf5ce0 bytes too large
+(boot\freeldr\freeldr\lib\mm\heap.c:344) err: HEAP: Allocation of 0x15664d bytes too large
+(ntoskrnl\kd64\kdinit.c:97) -----------------------------------------------------
+(ntoskrnl\kd64\kdinit.c:98) VerOS NT 0.1.1-amd64-dev (Build 20261118-84fa21f) (Commit 84fa21f7c273691f4f7c93e185e10420fb30c3db)
+(ntoskrnl\kd64\kdinit.c:99) 1 System Processor [8192 MB Memory]
+(ntoskrnl\kd64\kdinit.c:103) Command Line: DEBUG DEBUGPORT=COM1 BAUDRATE=115200 SOS FASTDETECT MININT KERNEL=NTKRNLMP.EXE HAL=HALMP.DLL
+(ntoskrnl\kd64\kdinit.c:106) ARC Paths: multi(0)disk(0)cdrom(96) \ multi(0)disk(0)cdrom(96) \VerOS\
+(ntoskrnl\ke\amd64\kiinit.c:576) Pcr = FFFFF8000324DC20, Gdt = FFFFF800073DF000, Idt = FFFFF80003240A00, Tss = FFFFF800073DE000
+(ntoskrnl\ke\amd64\cpu.c:279) Supported CPU features: KF_RDTSC KF_CR4 KF_CMOV KF_GLOBAL_PAGE KF_LARGE_PAGE KF_MTRR KF_CMPXCHG8B KF_MMX KF_PAT KF_FXSR KF_FAST_SYSCALL KF_XMMI KF_XMMI64 KF_BRANCH KF_SSE3 KF_CMPXCHG16B KF_AUTHENTICAMD KF_NX_BIT KF_NX_ENABLED X86_FEATURE_PAE X86_FEATURE_HT
+(hal\halx86\acpi\halacpi.c:782) ACPI Timer at: 608h (EXT: 0)
+(hal\halx86\acpi\halacpi.c:928) ACPI v1.0-1.0b detected. Tables: [RSDT] [APIC] [FACP]
+(hal\halx86\apic\rtctimer.c:147) Clock initialized
+(hal\halx86\apic\halinit.c:50) Using HAL: APIC SMP DBG
+(hal\halx86\acpi\madt.c:320) Physical processor count: 2
+(hal\halx86\acpi\madt.c:329)  Processor 0: ProcessorId 0, LapicId 0, ProcessorStarted 0, BSPCheck 1, ProcessorPrcb FFFFF8000324DDA0
+(hal\halx86\acpi\madt.c:329)  Processor 1: ProcessorId 1, LapicId 1, ProcessorStarted 0, BSPCheck 0, ProcessorPrcb 0000000000000000
+(hal\halx86\acpi\madt.c:339)  I/O APIC 0: Address 0xfec00000, GlobalIrqBase 0
+(ntoskrnl\mm\ARM3\mminit.c:1444) HAL I/O Mapping at FFFFFFFFFFFE0000 is unsafe
+(ntoskrnl\mm\ARM3\mminit.c:1444) HAL I/O Mapping at FFFFFFFFFFFE1000 is unsafe
+(ntoskrnl\mm\ARM3\largepag.c:37) MiInitializeLargePageSupport: PAE/x64 Not Implemented
+(hal\halx86\generic\x86bios.c:145) *x86BiosMemoryMapping: F000FF53F000FF53, F000FF53F000E2C3
+(ntoskrnl\ex\init.c:1537) VERPORT PsGetVersion 10.0.19045
+(ntoskrnl\ex\init.c:1541) VERPORT SharedUserData 10.0.19045
+(ntoskrnl\ke\amd64\mproc.c:138) KeStartAllProcessors: starting CPU 1
+(hal\halx86\smp\amd64\spinup.c:192) HalStartNextProcessor: SIPI CPU 1 stubPA=5b000 entry64=5b092 cr3=5c000

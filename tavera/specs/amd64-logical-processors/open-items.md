@@ -31,7 +31,7 @@ Handoff file for implementer ↔ spec agent. Do not delete entries. See `.cursor
 - Question: On Windows 10 22H2 build 19045, what exact `GetLogicalProcessorInformationEx(RelationAll)` record sequence, core masks, `Flags`, package, cache, NUMA, and group fields appear for (a) `-smp 4,sockets=1,cores=4,threads=1`, (b) `-cpu qemu64 -smp 4,sockets=1,cores=2,threads=2`, and (c) `-cpu EPYC -smp 4,sockets=1,cores=2,threads=2`?
 - Blocks: Filling section 6 observed behavior with capture-backed numbers; implementer comparison of Ex output beyond the milestone's high-level shapes.
 - Resolved: 2026-11-18
-- Resolution: Captured by `tavera/probes/amd64-logical-processors/probe-v1`. Logs `output/amd64-logical-processors/probe-v1/windows-4c1t.log`, `windows-qemu64-2c2t.log`, `windows-epyc-2c2t.log` each contain `DIFF END OK`. All three shapes reported `DIFF LOGICAL 4`, `DIFF CORE_COUNT 4`, four cores with `flags=0` and single-bit masks. Spec section 6 updated. The milestone's "2 cores with pair masks / LTP_PC_SMT" expectation for `threads=2` did not appear on Windows under these QEMU guests.
+- Resolution: Captured by `tavera/probes/amd64-logical-processors/probe-v1`. Logs `tavera/specs/amd64-logical-processors/sources/probes/probe-v1/windows-4c1t.log`, `windows-qemu64-2c2t.log`, `windows-epyc-2c2t.log` each contain `DIFF END OK`. All three shapes reported `DIFF LOGICAL 4`, `DIFF CORE_COUNT 4`, four cores with `flags=0` and single-bit masks. Spec section 6 updated. The milestone's "2 cores with pair masks / LTP_PC_SMT" expectation for `threads=2` did not appear on Windows under these QEMU guests.
 
 ### ALP-002
 - Status: resolved
@@ -64,7 +64,7 @@ Handoff file for implementer ↔ spec agent. Do not delete entries. See `.cursor
 - Blocks: Closing the "past 8 processors" IPI task with evidence; four-CPU success criteria can land first.
 - Note: API-behavior probes cannot observe APIC delivery without forbidden debugger or memory inspection. Implementation may verify Tavera `-smp >8` does not hang on TLB/IPI; that is not Windows APIC evidence.
 - Resolved: 2026-11-18
-- Resolution: Tavera evidence only (not Windows APIC capture). `output/boot-m32-20261118T175600Z-smp9.log`: QEMU `-smp 9`, MP kernel/HAL; CPUs 1–8 joined; Phase1 affinity restored to `0x1ff` after ObInit; `win32k.sys` loads. No TLB/`KeIpiGenericCall` hang past eight logical processors. Physical APIC ID / x2APIC delivery on Windows remains unobservable under clean-room probe rules.
+- Resolution: Tavera evidence only (not Windows APIC capture). `tavera/specs/amd64-logical-processors/sources/probes/boot-m32-20261118T175600Z-smp9.log`: QEMU `-smp 9`, MP kernel/HAL; CPUs 1–8 joined; Phase1 affinity restored to `0x1ff` after ObInit; `win32k.sys` loads. No TLB/`KeIpiGenericCall` hang past eight logical processors. Physical APIC ID / x2APIC delivery on Windows remains unobservable under clean-room probe rules.
 
 ### ALP-006
 - Status: resolved
@@ -77,7 +77,7 @@ Handoff file for implementer ↔ spec agent. Do not delete entries. See `.cursor
 ### ALP-007
 - Status: resolved
 - Opened: 2026-11-18
-- Question: Section 6 says "per-core L1/L2 and one L3 covering `0xf`" but does not paste exact `DIFF REL cache` fields (Level, Associativity, LineSize, CacheSize, Type, mask). Please promote those lines from `windows-4c1t.log` / `windows-qemu64-2c2t.log` / `windows-epyc-2c2t.log` into section 6 so the implementer does not have to re-interpret the capture beyond what the spec states.
+- Question: Section 6 says "per-core L1/L2 and one L3 covering `0xf`" but does not paste exact `DIFF REL cache` fields (Level, Associativity, LineSize, CacheSize, Type, mask). Please promote those lines from `tavera/specs/amd64-logical-processors/sources/probes/probe-v1/windows-4c1t.log` / `windows-qemu64-2c2t.log` / `windows-epyc-2c2t.log` into section 6 so the implementer does not have to re-interpret the capture beyond what the spec states.
 - Blocks: Bit-exact Ex cache comparison on Tavera differential runs.
 - Resolved: 2026-11-18
 - Resolution: Exact `DIFF REL cache` lines from each probe-v1 Windows log are now in spec section 6.
@@ -99,7 +99,7 @@ Handoff file for implementer ↔ spec agent. Do not delete entries. See `.cursor
 - Resolved: 2026-11-19
 - Question: On the same QEMU shapes, Windows emits section 6 `DIFF REL cache` lines while Tavera emits none (source 29). Probe-v1 never dumped CPUID leaf `0x4` (`CPUID_CACHE_PARAMS`) or `0x8000001D` (`CPUID_CACHE_PARAMS_AMD`). What subleaf values does Windows see on those guests, and must Ex cache records be filled from those leaves via the in-tree decode types?
 - Blocks: Bit-exact Ex cache match on Tavera; closing the cache gap without inventing sizes.
-- Resolution: Probe-v2 (spec source 33; `output/amd64-logical-processors/probe-v2/windows-*.log`, each `DIFF END OK`) on the same three shapes: leaf `0x4` is `cache4 sub=0 type=null` on every shape. On `4c1t` and `qemu64-2c2t`, `amdcache` is absent (`max=0x8000000a`) while Ex still emits the section 6 cache lines. On `epyc-2c2t`, `amdcache` subleaves 0–3 report sizes 32768 / 65536 / 524288 / 8388608 that match that shape’s Ex lines; subleaf 4 is null; leaf `0x4` stays null. Spec sections 4–6 and 9 updated: Ex cache records must match section 6 even when both leaves are empty or absent; leaf `0x8000001D` is optional corroboration when present, not a required sole fill path.
+- Resolution: Probe-v2 (spec source 33; `tavera/specs/amd64-logical-processors/sources/probes/probe-v2/windows-*.log`, each `DIFF END OK`) on the same three shapes: leaf `0x4` is `cache4 sub=0 type=null` on every shape. On `4c1t` and `qemu64-2c2t`, `amdcache` is absent (`max=0x8000000a`) while Ex still emits the section 6 cache lines. On `epyc-2c2t`, `amdcache` subleaves 0–3 report sizes 32768 / 65536 / 524288 / 8388608 that match that shape’s Ex lines; subleaf 4 is null; leaf `0x4` stays null. Spec sections 4–6 and 9 updated: Ex cache records must match section 6 even when both leaves are empty or absent; leaf `0x8000001D` is optional corroboration when present, not a required sole fill path.
 
 ### Implementer note E12–E15 (2026-11-18) — not a new open item
 - E12/E13: first `HalRequestIpi` during ObInit → `0xC0000420`; IPI IRQL on BSP was fine; MM stacks were a red herring for KD frame listing.

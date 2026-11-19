@@ -1,98 +1,113 @@
 ---
-description: Store durable copies of every cited spec or debugging source under capture-log/sources/spec/<component>/
+description: Guest/probe/debug evidence under tavera/specs/<component>/sources/ plus private capture-log copies
 alwaysApply: true
 ---
 
-# Spec sources (private capture-log)
+# Spec sources (public sources/ + private capture-log)
 
 SPDX-License-Identifier: GPL-2.0-or-later
 
-Whenever a file under `tavera/specs/<component>/` cites a source — a Spec
-**Sources** entry, an open-item resolution, or an evidence path in a
-`debugging-YYYY-MM-DD.md` log — store a durable local copy under the
-**private** project-root capture tree (sibling of `source/`, not committed
-to the public tree):
+Whenever a file under `tavera/specs/<component>/` cites guest, probe, or
+debugging evidence, keep **two** durable copies and make the **public** one
+the citation target.
+
+`<component>` matches `tavera/specs/<component>/` (for example
+`amd64-logical-processors`, `ntfs`).
+
+## Public evidence folder (cited)
+
+```text
+tavera/specs/<component>/sources/
+```
+
+This folder is committed with the public tree. It holds **only** evidence
+files the specs or debugging log actually reference: guest/probe logs from
+`output/`, related probe capture artifacts, and debugging-session logs.
+It does **not** hold Microsoft Learn / OpenSpecs PDFs, scraped web text, or
+unrelated build products (ISOs, `.exe`, disk images, firmware vars).
+
+Public Spec Sources, open-item resolutions, and `debugging-YYYY-MM-DD.md`
+cite paths under `tavera/specs/<component>/sources/…` (plus the probe under
+`tavera/probes/…` when applicable), with the marker (`DIFF END OK`, etc.).
+Do **not** cite raw `output/…` once the file has been copied here.
+
+Layout under the public folder:
+
+```text
+tavera/specs/<component>/sources/
+  README.md                      # optional; what belongs here
+  probes/<probe-id>/…            # Spec Sources guest / probe logs
+  debugging-YYYY-MM-DD/…         # evidence for that debugging log
+```
+
+Prefer the same basenames as under `output/`. Keep a short `README.md` that
+says these files are cited evidence, not Learn PDFs.
+
+## Private archive (also required; never named in public docs)
+
+Also copy every cited evidence file into the **private** project-root
+capture tree (sibling of `source/`, not committed to the public repo):
 
 ```text
 capture-log/sources/spec/<component>/
 ```
 
-`<component>` matches `tavera/specs/<component>/` (for example
-`amd64-logical-processors`, `ntfs`).
+Mirror the same relative layout (`probes/…`, `debugging-YYYY-MM-DD/…`).
+Refresh the private copy whenever the public `sources/` copy is refreshed.
 
-## Public documents stay silent
-
-Never name `capture-log`, `capture-log/sources`, or this archive layout in
-anything committed under `source/` that readers of the public tree see:
-`tavera/specs/`, transparency notes that describe sources, README text under
-`tavera/`, or other public docs. Agents keep the archive; public citations
-name only Learn/`https://` URLs, in-tree paths, `output/` logs with markers,
-`tavera/probes/…`, or this project’s GitHub URLs.
-
-Do not put archive copies under `tavera/specs/` or anywhere else that is
-committed to the public source repo. Microsoft Learn / OpenSpecs pages may
-be stored here as PDF for Ryan’s lookup; they must not enter the public tree.
-
-Every archive artifact must have a matching citation in the public specs
-tree (Learn/`https://` URL, in-tree path, `output/` log with marker, or this
-project’s GitHub URL). Do not leave an orphan PDF, excerpt, or log in the
-private archive with no public citation.
-
-## Layout
+This private tree also holds kinds that must **not** enter `tavera/specs/`:
 
 ```text
 capture-log/sources/spec/<component>/
   README.md
   manifest.md
-  web/                         # printed PDFs of cited public pages
+  web/                         # printed PDFs of cited Learn / OpenSpecs pages
   intree/                      # excerpts from this checkout
-  probes/                      # Spec Sources guest / probe logs
+  probes/                      # mirror of public guest / probe logs
   other/                       # this project's GitHub milestone JSON, etc.
-  debugging-YYYY-MM-DD/        # all output/ files for that debugging log
+  debugging-YYYY-MM-DD/        # mirror of public debugging evidence
 ```
 
-The debugging folder name matches the public file
-`tavera/specs/<component>/debugging-YYYY-MM-DD.md` (including `-2`, `-3`
-suffixes when used).
+Never name `capture-log`, `capture-log/sources`, or “private archive” in
+`tavera/specs/`, public README text under `tavera/`, or other public docs
+that describe Sources. Agents keep the private tree; public citations name
+Learn/`https://` URLs, in-tree paths, `tavera/specs/<component>/sources/…`,
+`tavera/probes/…`, or this project’s GitHub URLs.
 
-## What to store
+Every artifact in either tree must have a matching public citation. Do not
+leave an orphan log or PDF with no Spec Sources / debugging / open-item
+reference.
 
-| Kind | Artifact |
-|------|----------|
-| Public web page | **Print to PDF** (Edge/Chrome `--print-to-pdf`). Human-readable layout required. No scraped plain-text dump as the proof. Record URL and capture date in `manifest.md` and a `.meta.txt` beside the PDF. |
-| In-tree code | Short excerpt of the cited symbols/loops. Header must name: path from source root, **commit SHA**, **beginning line number** of each excerpt. |
-| Guest / probe log (Spec Sources) | Copy the cited log from `output/` into `probes/` (or DIFF/marker lines). Cite the marker (`DIFF END OK`, etc.) in the **public** spec. Name the probe under `tavera/probes/…`. |
-| Debugging-session `output/` | Copy **every** `output/` file the debugging log cites (and every stamp in a cited range that still exists on disk) into `debugging-YYYY-MM-DD/`. Prefer the same basename. Keep probe-tool subfolders when that helps (`probe-v1/…`). Do not archive ISOs, disk images, firmware vars, or built `.exe` unless the log cites them as the evidence itself. |
-| This project’s GitHub milestone / issue | JSON or markdown from `gh`. |
+## What to store where
 
-When the cited `output/` file still exists, copy it in the same turn as the
-citation (or as soon as the run finishes). Refresh the archive copy if the
-log on disk is replaced with a newer run that the spec or debugging file
-still names.
+| Kind | Public `tavera/specs/…/sources/` | Private `capture-log/sources/spec/…/` |
+|------|----------------------------------|----------------------------------------|
+| Guest / probe log | Yes — copy from `output/`; **cite this path** | Yes — same file mirrored |
+| Debugging-session log | Yes — under `debugging-YYYY-MM-DD/` | Yes — mirrored |
+| Learn / OpenSpecs page | No | Yes — print to PDF + `.meta.txt` |
+| In-tree excerpt | No (cite the live in-tree path) | Yes — short excerpt with commit SHA and start lines |
+| GitHub milestone / issue | No (cite the GitHub URL) | Yes — JSON/markdown from `gh` optional |
 
-Keep artifacts small enough to prove the citation. Do not paste proof
-bodies into the public spec ([specs.mdc](specs.mdc)).
+When the run finishes (or in the same turn as the citation), copy from
+`output/` into the public `sources/` path **and** into the private mirror.
+If `output/` is already gone but the public `sources/` copy exists, refresh
+the private mirror from that public copy.
 
-## Citation in the public specs tree
+Keep artifacts small enough to prove the citation. Do not paste log bodies
+into the markdown spec ([specs.mdc](specs.mdc)).
 
-Public citations name the **real** source only: Learn/OpenSpecs title +
-`https://` URL, in-tree path, guest log under `output/` with its marker, or
-this project’s GitHub URL. Map Spec Sources entries in the private
-`manifest.md`. Debugging archives may use a short private `README.md`
-inside `debugging-YYYY-MM-DD/`.
+## Citation examples
 
 ```text
+Right: tavera/specs/amd64-logical-processors/sources/probes/probe-v1/windows-4c1t.log (DIFF END OK); probe tavera/probes/…
+Right: debugging log cites tavera/specs/…/sources/debugging-2026-11-18/boot-m32-….log
 Right: [GetLogicalProcessorInformationEx](https://learn.microsoft.com/…). …
 Right: sdk/include/xdk/ketypes.h in this tree. …
-Right: output/…/windows-4c1t.log (DIFF END OK); probe tavera/probes/…
-Right: public debugging log cites only output/…; agent also copies that file into the private debugging-YYYY-MM-DD/ archive
-Wrong: any capture-log path, “private archive”, or manifest.md pointer in tavera/specs/
-Wrong: citing only a private PDF as the Sources entry
-Wrong: storing Learn PDFs under tavera/specs/
-Wrong: scraped text dump instead of a printed PDF in the private archive
-Wrong: an in-tree excerpt with no commit SHA or start line
-Wrong: citing output/… in a spec or debugging log and leaving no private archive copy when the file still exists
-Wrong: a PDF or log in the private archive with no matching public citation
+Wrong: citing only output/… after the file was copied into sources/
+Wrong: citing capture-log/… in tavera/specs/
+Wrong: storing Learn PDFs under tavera/specs/…/sources/
+Wrong: a log under sources/ with no matching public citation
+Wrong: public sources/ copy without a private capture-log mirror (or the reverse for guest logs)
 ```
 
 ## Clean-room
@@ -103,7 +118,8 @@ Forbidden pages still must not be opened or stored.
 
 ## When a copy cannot be made
 
-Leave the public citation, note “proof missing” in that component’s private
-`manifest.md` (or in `debugging-YYYY-MM-DD/README.md` for a debug log), and
-tell Ryan which URL or path failed. Do not write “proof missing” about the
-private archive into the public spec.
+Leave or restore the public citation as soon as a file exists. If the
+`output/` original is gone and neither copy exists, tell Ryan which path
+failed and note “proof missing” only in the private `manifest.md` (or
+private debugging `README.md`)—not as a `capture-log/` path inside the
+public spec.

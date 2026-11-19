@@ -28,7 +28,7 @@ In-tree:
 
 ## Probe gates
 
-- On-disk compressed unit framing (exact stored unit size and packing) beyond what the in-tree driver already reads/writes: if a mismatch with Windows appears, capture units under `output/<tool>/` before changing constants.
+- On-disk compressed unit framing (exact stored unit size and packing) beyond what the in-tree driver already reads/writes: if a mismatch with Windows appears, capture units under `output/<tool>/`, copy into `tavera/specs/ntfs/sources/`, then cite that `sources/` path before changing constants.
 - Do not invent a second compression algorithm; Learn documents LZNT1 as the only implemented method.
 
 ## Non-goals

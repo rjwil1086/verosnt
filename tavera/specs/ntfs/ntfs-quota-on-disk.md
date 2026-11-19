@@ -36,7 +36,7 @@ None of the pages above define the bytes stored in the `$Q` index entry.
 A future **probe session** must:
 
 1. Set and query quotas on Windows 10 22H2 through documented FSCTLs / APIs via [`tavera/probes/ntfs/probe-v1/`](../../probes/ntfs/probe-v1/).
-2. Capture `$Extend\$Quota:$Q` index entry bytes under `output/ntfs/probe-v1/`.
+2. Capture `$Extend\$Quota:$Q` index entry bytes under `output/ntfs/probe-v1/`, then copy into `tavera/specs/ntfs/sources/probes/probe-v1/` (and the private mirror) for citation.
 3. Extend **this** spec with each new field size/offset cited to a capture and probe step.
 
 No `NtfsSetQuota` implementation in that session. A later implementation session consumes only the updated spec.

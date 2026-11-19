@@ -38,7 +38,7 @@ In-tree:
 A future **probe session** must:
 
 1. Encrypt a file on Windows 10 22H2 with documented APIs (`EncryptFile` / related) via [`tavera/probes/ntfs/probe-v1/`](../../probes/ntfs/probe-v1/).
-2. Capture the on-disk data attribute / `$LOGGED_UTILITY_STREAM` (or other streams the capture shows) under `output/ntfs/probe-v1/`.
+2. Capture the on-disk data attribute / `$LOGGED_UTILITY_STREAM` (or other streams the capture shows) under `output/ntfs/probe-v1/`, then copy into `tavera/specs/ntfs/sources/probes/probe-v1/` (and the private mirror) for citation.
 3. Extend **this** spec with framing facts cited to captures and probe steps.
 
 No encrypted read/write implementation in that session. A later implementation session uses only the updated spec.

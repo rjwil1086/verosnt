@@ -53,13 +53,13 @@ Every claim below names one of these entries (Learn URL, in-tree path, or guest 
 24. `ntoskrnl/ke/amd64/kiinit.c` in this tree. `KiSystemStartup` is the kernel entry. Boot PRCB sets `MultiThreadProcessorSet` to `SetMember` today. `StartCycles` is initialized from the timestamp counter.
 25. `ntoskrnl/ke/thrdobj.c` `KeQueryTotalCycleTimeThread` in this tree. A running thread's cycle total uses the current processor cycle time and that processor's `StartCycles`.
 26. GitHub milestone [Milestone 32: amd64 logical processors](https://github.com/taveraos/taveraos/milestone/31) (API number 31). Project goal, task list, success criteria, one group of at most 64 logical processors, and scope exclusions.
-27. Guest serial logs from `tavera/probes/amd64-logical-processors/probe-v1` under `output/amd64-logical-processors/probe-v1/`, each containing `DIFF END OK`: `windows-4c1t.log`, `windows-qemu64-2c2t.log`, `windows-epyc-2c2t.log`. Windows 10 22H2 on QEMU TCG, `-m 8192`, `-snapshot`. Date captured: 2026-11-18.
+27. Guest serial logs from `tavera/probes/amd64-logical-processors/probe-v1`, stored under `tavera/specs/amd64-logical-processors/sources/probes/probe-v1/`, each containing `DIFF END OK`: `windows-4c1t.log`, `windows-qemu64-2c2t.log`, `windows-epyc-2c2t.log`. Windows 10 22H2 on QEMU TCG, `-m 8192`, `-snapshot`. Date captured: 2026-11-18.
 28. `sdk/include/ndk/extypes.h` in this tree. Class `107` is named both `SystemLogicalProcessorAndGroupInformation` and `SystemLogicalProcessorInformationEx` (same value).
-29. Tavera OS guest serial logs from the same probe under `output/amd64-logical-processors/probe-v1/`, each containing `DIFF END OK`: `tavera-4c1t.log`, `tavera-qemu64-2c2t.log`, `tavera-epyc-2c2t.log`. Date captured: 2026-11-19.
-30. Tavera OS boot log `output/boot-m32-20261118T175600Z-smp9.log` (`-smp 9`): CPUs 1–8 joined, Phase1 affinity `0x1ff`, no TLB/IPI hang. Tavera-only evidence; not Windows APIC delivery.
+29. Tavera OS guest serial logs from the same probe under `tavera/specs/amd64-logical-processors/sources/probes/probe-v1/`, each containing `DIFF END OK`: `tavera-4c1t.log`, `tavera-qemu64-2c2t.log`, `tavera-epyc-2c2t.log`. Date captured: 2026-11-19.
+30. Tavera OS boot log `tavera/specs/amd64-logical-processors/sources/probes/boot-m32-20261118T175600Z-smp9.log` (`-smp 9`): CPUs 1–8 joined, Phase1 affinity `0x1ff`, no TLB/IPI hang. Tavera-only evidence; not Windows APIC delivery.
 31. [PROCESSOR_GROUP_INFO (winnt.h)](https://learn.microsoft.com/en-us/windows/win32/api/winnt/ns-winnt-processor_group_info). `MaximumProcessorCount` and `ActiveProcessorCount`.
 32. `sdk/include/reactos/x86x64/Cpuid.h` in this tree. `CPUID_CACHE_PARAMS_AMD` (`0x8000001D`) for AMD deterministic cache parameters.
-33. Guest serial logs from `tavera/probes/amd64-logical-processors/probe-v2` under `output/amd64-logical-processors/probe-v2/`, each containing `DIFF END OK`: `windows-4c1t.log`, `windows-qemu64-2c2t.log`, `windows-epyc-2c2t.log`. Same Windows 10 22H2 QEMU TCG shapes as source 27. Date captured: 2026-11-19. Adds `DIFF CPUID cache4` (leaf `0x4`) and `DIFF CPUID amdcache` (leaf `0x8000001D`) beside the Ex cache lines.
+33. Guest serial logs from `tavera/probes/amd64-logical-processors/probe-v2`, stored under `tavera/specs/amd64-logical-processors/sources/probes/probe-v2/`, each containing `DIFF END OK`: `windows-4c1t.log`, `windows-qemu64-2c2t.log`, `windows-epyc-2c2t.log`. Same Windows 10 22H2 QEMU TCG shapes as source 27. Date captured: 2026-11-19. Adds `DIFF CPUID cache4` (leaf `0x4`) and `DIFF CPUID amdcache` (leaf `0x8000001D`) beside the Ex cache lines.
 
 No WDK or SDK headers, symbols, disassembly, or third-party struct dumps are sources. Geoff Chappell, Vergilius, syscall tables built from Microsoft binaries, and undocumented-API sites are not sources. Learn debugger command pages are not sources.
 
@@ -147,9 +147,9 @@ Do not point the live CD at `ntkrnlmp.exe` / `halmp.dll` until a 2-CPU boot has 
 
 ## 6. Observed behavior
 
-Windows 10 22H2 x64 on QEMU TCG (`-m 8192`, disk snapshot). Probe: `tavera/probes/amd64-logical-processors/probe-v1`. Each log below contains `DIFF END OK` (source 27).
+Windows 10 22H2 x64 on QEMU TCG (`-m 8192`, disk snapshot). Probe: `tavera/probes/amd64-logical-processors/probe-v1`. Logs live under `tavera/specs/amd64-logical-processors/sources/probes/probe-v1/` (source 27). Each contains `DIFF END OK`.
 
-### `-cpu qemu64 -smp 4,sockets=1,cores=4,threads=1` → `windows-4c1t.log`
+### `-cpu qemu64 -smp 4,sockets=1,cores=4,threads=1` → `sources/probes/probe-v1/windows-4c1t.log`
 
 - `DIFF LOGICAL 4`, `DIFF CORE_COUNT 4`
 - Four `DIFF REL core` lines: `flags=0 eff=0`, masks `0x1`, `0x2`, `0x4`, `0x8`
@@ -176,7 +176,7 @@ DIFF REL cache level=2 assoc=16 line=64 size=524288 type=0 group=0 mask=0x8
 - CPUID topology leaf `0xb` (no `0x1F`); `DIFF PLACE … shared_core=0`
 - Probe-v2 (source 33): `DIFF CPUID cache4 sub=0 type=null`; `DIFF CPUID amdcache absent max=0x8000000a`
 
-### `-cpu qemu64 -smp 4,sockets=1,cores=2,threads=2` → `windows-qemu64-2c2t.log`
+### `-cpu qemu64 -smp 4,sockets=1,cores=2,threads=2` → `sources/probes/probe-v1/windows-qemu64-2c2t.log`
 
 - `DIFF LOGICAL 4`, `DIFF CORE_COUNT 4` (not two cores)
 - Four `DIFF REL core` lines with `flags=0` and single-bit masks `0x1`…`0x8` (no pair masks, no `LTP_PC_SMT`)
@@ -204,7 +204,7 @@ DIFF REL cache level=2 assoc=16 line=64 size=524288 type=0 group=0 mask=0x8
 - `DIFF PLACE … shared_core=0`
 - Probe-v2 (source 33): `DIFF CPUID cache4 sub=0 type=null`; `DIFF CPUID amdcache absent max=0x8000000a`
 
-### `-cpu EPYC -smp 4,sockets=1,cores=2,threads=2` → `windows-epyc-2c2t.log`
+### `-cpu EPYC -smp 4,sockets=1,cores=2,threads=2` → `sources/probes/probe-v1/windows-epyc-2c2t.log`
 
 - Same Ex core shape: `DIFF LOGICAL 4`, `DIFF CORE_COUNT 4`, four cores `flags=0` single-bit masks
 - Exact cache lines from the log:

@@ -11,11 +11,11 @@ PROGRAMMERS: Ryan Wilson <ryan@taveraos.com>
 
 North star: enough clean-room specs that a later session can implement and verify an NTFS driver whose volumes and APIs behave as Windows 10 22H2 expects, including Windows mounting a Tevera OS–formatted volume cleanly.
 
-Allowed inputs only: public Learn / openspecs pages, paths already in this tree, and guest logs under `output/` that still contain their markers. Spec citations keep those URLs and paths. Missing on-disk layouts become **probe gates**, not guessed constants. Raw-format probes and implementation stay in separate sessions ([`.cursor/rules/clean-room-probe-separation.mdc`](../../../.cursor/rules/clean-room-probe-separation.mdc)).
+Allowed inputs only: public Learn / openspecs pages, paths already in this tree, and guest logs copied into `tavera/specs/ntfs/sources/` (from `output/`) with their markers. Spec citations keep those URLs and `sources/` paths. Missing on-disk layouts become **probe gates**, not guessed constants. Raw-format probes and implementation stay in separate sessions ([`.cursor/rules/clean-room-probe-separation.mdc`](../../../.cursor/rules/clean-room-probe-separation.mdc)).
 
 Suite catalog rows live in `unittests/ntfs/features.ps1` (buildenv). Names below match that catalog so later tests plug into the same inventory. This index does not edit that file.
 
-Raw-format probe sources live under [`tavera/probes/ntfs/`](../../probes/ntfs/) as versioned folders (`probe-v1`, `probe-v2`, … per [`.cursor/rules/tavera-probes.mdc`](../../../.cursor/rules/tavera-probes.mdc)). The current raw probe is [`probe-v1`](../../probes/ntfs/probe-v1/). Captures go under `output/ntfs/probe-v1/` (gitignored). Specs must name the probe version that produced each capture-backed fact. Do not edit `drivers/filesystems/ntfs` in a probe session.
+Raw-format probe sources live under [`tavera/probes/ntfs/`](../../probes/ntfs/) as versioned folders (`probe-v1`, `probe-v2`, … per [`.cursor/rules/tavera-probes.mdc`](../../../.cursor/rules/tavera-probes.mdc)). The current raw probe is [`probe-v1`](../../probes/ntfs/probe-v1/). Captures are written under `output/ntfs/probe-v1/` (gitignored), then copied into `tavera/specs/ntfs/sources/probes/probe-v1/` (and mirrored privately) for citation. Specs must name the probe version that produced each capture-backed fact. Do not edit `drivers/filesystems/ntfs` in a probe session.
 
 ## Status legend
 
@@ -55,4 +55,4 @@ Run [`tavera/probes/ntfs/probe-v1/Invoke-NtfsRawProbe.ps1`](../../probes/ntfs/pr
 3. Encrypted file on-disk body framing → `ntfs-encrypted-file-body.md`.
 4. Any probe gate called out inside a “Sourced” topic spec when an implementer hits a missing offset.
 
-Each probe session stores captures under `output/ntfs/<probe-id>/`, cites **that probe path** and the capture in the spec, and does not edit `ntfs.sys`. A later change that needs a different capture adds `probe-v2` (etc.) and leaves older versions in place unless an unused probe is retired per `tavera-probes.mdc`. Implementation is a later session that consumes only the updated specs and markers; gaps go in [`open-items.md`](open-items.md).
+Each probe session stores captures under `output/ntfs/<probe-id>/`, copies them into `tavera/specs/ntfs/sources/probes/<probe-id>/`, cites **that probe path** and the `sources/` capture in the spec, and does not edit `ntfs.sys`. A later change that needs a different capture adds `probe-v2` (etc.) and leaves older versions in place unless an unused probe is retired per `tavera-probes.mdc`. Implementation is a later session that consumes only the updated specs and markers; gaps go in [`open-items.md`](open-items.md).

@@ -37,7 +37,7 @@ None of the Learn pages above, and no declaration in `drivers/filesystems/ntfs/n
 A future **probe session** must:
 
 1. Cause Windows 10 22H2 to write real `$LogFile` content via [`tavera/probes/ntfs/probe-v1/`](../../probes/ntfs/probe-v1/) (documented volume activity only; no debugger).
-2. Store sector or stream captures under `output/ntfs/probe-v1/`.
+2. Store sector or stream captures under `output/ntfs/probe-v1/`, then copy into `tavera/specs/ntfs/sources/probes/probe-v1/` (and the private mirror) for citation.
 3. Extend **this** spec with every new size, offset, magic, or field name cited to a capture path and probe step.
 
 That session must **not** edit `NtfsReplayLog` / `NtfsLogFileRecord`. A later **implementation session** that has not interpreted the raw captures—only this updated spec—may implement replay.

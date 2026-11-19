@@ -1,0 +1,12 @@
+[
+  {
+    "Tag": "smp2",
+    "Pid": 41328,
+    "Log": "D:\\tavera\\source\\output\\boot-m32-20261118T205058Z-smp2.log"
+  },
+  {
+    "Tag": "smp4r",
+    "Pid": 35720,
+    "Log": "D:\\tavera\\source\\output\\boot-m32-20261118T205102Z-smp4r.log"
+  }
+]
