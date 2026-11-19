@@ -1,0 +1,1 @@
+Assertion 'BiosMode == Mode' failed at boot\freeldr\freeldr\arch\i386\pc\pcvideo.c line 411
