@@ -1,5 +1,5 @@
 /*
- * PROJECT:     VerOS NT
+ * PROJECT:     Tavera OS
  * LICENSE:     GNU General Public License, version 2 or later (GPL-2.0-or-later)
  * FILE:        base/applications/network/ipv6xchg/ipv6xchg.c
  * PURPOSE:     Exchange one TCP payload and one UDP payload over IPv6
@@ -7,7 +7,7 @@
  * PROGRAMMERS: Ryan Wilson <ryan@taveraos.com>
  *
  * Peer address fe80::2 and port 5470 are the echo target in
- * virtual-machines/veros-ntfs/Send-Ipv6Peer.ps1. Link-local form is
+ * virtual-machines/tavera-ntfs/Send-Ipv6Peer.ps1. Link-local form is
  * RFC 4291 Section 2.5.6 (https://www.rfc-editor.org/rfc/rfc4291).
  * SOCKADDR_IN6 is sdk/include/psdk/ws2tcpip.h. DbgPrint matches
  * base/applications/network/ping/ping.c. Serial accept lines are

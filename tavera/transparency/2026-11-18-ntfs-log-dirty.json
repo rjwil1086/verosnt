@@ -1,0 +1,21 @@
+{
+  "spdx": "GPL-2.0-or-later",
+  "question": "How does black-box dirty remount succeed for suite LogReplay/LogOps without inventing $LogFile restart/log-record field names?",
+  "allowedInputs": [
+    "tavera/specs/ntfs/ntfs-log-replay.md Rev.3–4 (probe-v7 black-box dirty remount; field names none; NTFS-LOG-002)",
+    "tavera/specs/ntfs/open-items.md NTFS-LOG-002 and NTFS-LOG-001 (named layout still open)",
+    "https://learn.microsoft.com/en-us/windows-hardware/drivers/ifs/fsctl-mark-volume-dirty",
+    "https://learn.microsoft.com/en-us/windows-hardware/drivers/ifs/fsctl-is-volume-dirty",
+    "https://learn.microsoft.com/en-us/windows-server/administration/windows-commands/fsutil-dirty",
+    "in-tree NTFS_VOLUME_DIRTY / $VOLUME_INFORMATION and NtfsClearVolumeDirty in drivers/filesystems/ntfs/ntfs3x.c",
+    "base/applications/cmdutils/fsutil/dirty.c FSCTL_MARK_VOLUME_DIRTY / FSCTL_IS_VOLUME_DIRTY",
+    "tavera/test-suites/ntfs/out/share-compliance/result.log (LogReplay green; LogOps green; 49 of 49)",
+    "Reported: implementer session; prior probe/spec session authored Rev.3–4; NTFS-LOG-001 remains open for named $LogFile fields"
+  ],
+  "harness": {
+    "guest": "Tavera live CD (ntfs-suite.iso, patched ntfs.sys)",
+    "name": "tavera/test-suites/ntfs Invoke-NtfsSuite.ps1 -Phase compliance",
+    "traceOrReplayId": "share-compliance/result.log",
+    "logSha256": "50fb68276e03326d016976ffa8f1613d84be08eeb5368ecf0708c07d543ee52d"
+  }
+}

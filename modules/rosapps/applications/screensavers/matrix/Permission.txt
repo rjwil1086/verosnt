@@ -1,4 +1,4 @@
-Matrrix2 screensaver for VerOS NT
+Matrrix2 screensaver for Tavera OS
 
 /*****************************************
 

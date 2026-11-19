@@ -1,6 +1,6 @@
-# VerOS NT™
+# Tavera OS™
 
-VerOS NT is my hobby. It's my fork of [ReactOS](https://github.com/reactos/reactos), and I'm the only person on it. I want a general-purpose operating system that can install and run what Windows 10 22H2 can, x64 first. 32-bit programs on that same boot come later. Cursor and Grok write most of the patches. Before one is committed, the diff is read again, and a hunk that looks copied is shown to me. I check its sources before it is committed.
+Tavera OS is my hobby. It's my fork of [ReactOS](https://github.com/reactos/reactos), and I'm the only person on it. I want a general-purpose operating system that can install and run what Windows 10 22H2 can, x64 first. 32-bit programs on that same boot come later. Cursor and Grok write most of the patches. Before one is committed, the diff is read again, and a hunk that looks copied is shown to me. I check its sources before it is committed.
 
 These builds are alpha. I run them in a virtual machine so I can see what breaks. Don't install this on a machine you use.
 
@@ -8,9 +8,9 @@ Right now the work is boot, NTFS, drivers, and the calls an application makes. T
 
 ## How I record Windows
 
-I boot Windows 10 22H2 and run my own probes in it. Each probe calls something the OS already offers, then prints what came back. The log is that printout. I compare it with the same probe on VerOS. What I keep from a Windows run is the name I asked about and the status code. I don't copy a program, a header, or a disassembly out of the guest.
+I boot Windows 10 22H2 and run my own probes in it. Each probe calls something the OS already offers, then prints what came back. The log is that printout. I compare it with the same probe on Tavera OS. What I keep from a Windows run is the name I asked about and the status code. I don't copy a program, a header, or a disassembly out of the guest.
 
-Windows 10 22H2 boots in QEMU with 8 GB of RAM and 4 CPUs, the same as VerOS. The boot does not write the Windows disk. A capture uses the plain emulator, not WHPX. A syscall probe calls `GetProcAddress` for a name, calls that function, and prints the status code. A kernel probe and a graphics probe do that for their calls. I use a Windows log when it ends with `DIFF END OK`. If I change a probe, I boot Windows again. If I don't, I reuse the log I have.
+Windows 10 22H2 boots in QEMU with 8 GB of RAM and 4 CPUs, the same as Tavera OS. The boot does not write the Windows disk. A capture uses the plain emulator, not WHPX. A syscall probe calls `GetProcAddress` for a name, calls that function, and prints the status code. A kernel probe and a graphics probe do that for their calls. I use a Windows log when it ends with `DIFF END OK`. If I change a probe, I boot Windows again. If I don't, I reuse the log I have.
 
 A separate trace records only a call number, a status, and four arguments, with no names. That trace stays out of the kernel. I don't take the guest apart to make up more syscall numbers.
 
@@ -26,7 +26,7 @@ Before a commit, the diff is read again. If a hunk has a whole function I didn't
 
 ## Source notes
 
-If Cursor commits a change to boot, the kernel, the HAL, a driver, NTFS, or a Windows DLL, that commit also adds a note under [`veros/transparency/`](veros/transparency/). Docs, branding, GitHub workflows, and the editor rules don't get one. The note is in the same commit. The name is picked first, with the date and a short title. It can't be that commit's id, because the id includes the file. If I miss one, a later commit adds a note named with the old commit's full id. One catch-up commit recorded the commits that were still missing a note. After that, a missed note goes in the next commit that changes the code. I don't make another commit whose only change is a note.
+If Cursor commits a change to boot, the kernel, the HAL, a driver, NTFS, or a Windows DLL, that commit also adds a note under [`tavera/transparency/`](tavera/transparency/). Docs, branding, GitHub workflows, and the editor rules don't get one. The note is in the same commit. The name is picked first, with the date and a short title. It can't be that commit's id, because the id includes the file. If I miss one, a later commit adds a note named with the old commit's full id. One catch-up commit recorded the commits that were still missing a note. After that, a missed note goes in the next commit that changes the code. I don't make another commit whose only change is a note.
 
 The note says what question I was answering, what I was allowed to use, and that the license is GPL-2.0-or-later. Each input is something that was actually used, and it says where to open it. A public document or another project's file includes an https link. A file in this tree includes its path. A guest log includes its path and the line that shows it finished, such as `DIFF END OK`. Something I said starts with `Reported:`. There's a harness section only if a guest ran. There's a before and after only if both numbers come from a log I committed or a dashboard snapshot. The prompt stays out. So do the old yes-or-no checkboxes, a copied trace, a header, a disassembly, and a Windows call number.
 
@@ -65,4 +65,4 @@ The license is [GPL-2.0](COPYING). There is no warranty. If a file header names 
 
 Upstream is [reactos/reactos](https://github.com/reactos/reactos). This fork is [taveraos/taveraos](https://github.com/taveraos/taveraos).
 
-VerOS NT is my trademark. Windows is a registered trademark of Microsoft Corporation. ReactOS is a registered trademark of ReactOS Deutschland e.V. I use those names to say what this is compared with and where the tree came from. I don't use their logos. Microsoft and the ReactOS Project have not licensed or endorsed this fork.
+Tavera OS is my trademark. Windows is a registered trademark of Microsoft Corporation. ReactOS is a registered trademark of ReactOS Deutschland e.V. I use those names to say what this is compared with and where the tree came from. I don't use their logos. Microsoft and the ReactOS Project have not licensed or endorsed this fork.

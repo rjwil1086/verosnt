@@ -1,5 +1,5 @@
 /*
- * PROJECT:     VerOS NT Kernel
+ * PROJECT:     Tavera OS Kernel
  * LICENSE:     GNU General Public License, version 2 or later (GPL-2.0-or-later)
  * FILE:        drivers/filesystems/ntfs/ntfs3x.c
  * PURPOSE:     NTFS 3.1 security, $Extend, USN, and compression
@@ -9,11 +9,92 @@
 
 /*
  * $Secure, the $Extend indexes, the USN journal, and LZNT1 are updated here.
- * Log replay, the on-disk quota value, and the encrypted file body are
- * unimplemented.
+ * Quota $Q threshold/limit at resident index-root offsets 316/324:
+ * tavera/specs/ntfs/ntfs-quota-on-disk.md (NTFS-QUOTA-002 / probe-v2).
+ * Track growth format→four-entry $Q (keys 1, 0x100, 0x101, 0x102):
+ * tavera/specs/ntfs/ntfs-quota-on-disk.md Rev.3 / probe-v3
+ * (output/ntfs/probe-v3/… NTFS-QUOTA-GROWTH-REPORT). Packing from in-tree
+ * MkViewRootN/Qce in sdk/lib/fslib/ntfslib/files.c; live SIDs only.
+ * QuotaLimit -2 clears thr/lim to -1 by SID (keep leaf; optional 0x102→0x103):
+ * tavera/specs/ntfs/ntfs-quota-on-disk.md Rev.4–8 / probe-v4 (NTFS-QUOTA-004).
+ * Real NtfsReplayLog record apply stays blocked on NTFS-LOG-001
+ * (tavera/specs/ntfs/ntfs-log-replay.md). Black-box dirty remount
+ * (NTFS-LOG-002 / Rev.3–4): FSCTL_MARK/IS_VOLUME_DIRTY on $VOLUME_INFORMATION.
+ * Dirty-mount restart policy (NTFS-LOG-003 / GitHub #2):
+ * tavera/specs/ntfs/ntfs-log-restart-mount.md — probe-local RSTR tag,
+ * PAGE_SIZE_U32_AT_10, SLOT_U64_AT_60/68 from probe-v11 restart-report
+ * (NTFS-LOG-RESTART-REPORT). Empty slots → clear dirty/RW; non-empty → RO;
+ * never apply RCRD bodies. Offsets are the probe method, not Microsoft names.
+ * https://learn.microsoft.com/en-us/windows-hardware/drivers/ifs/fsctl-mark-volume-dirty
+ * https://learn.microsoft.com/en-us/windows-hardware/drivers/ifs/fsctl-is-volume-dirty
+ * https://learn.microsoft.com/en-us/windows-server/administration/windows-commands/fsutil-dirty
+ * CompressionUnit / index-root / reparse-OID bounds:
+ * tavera/specs/ntfs/ntfs-compression.md Rev.1 (NTFS-COMP-001);
+ * ntfs-reparse.md Rev.1 (NTFS-IDX-001 / NTFS-ATTR-001);
+ * ntfs-object-id.md Rev.1 (NTFS-ATTR-001).
+ * EFS structural $EFS (NTFS-EFS-002 / EFS-004): 672-byte $LOGGED_UTILITY_STREAM
+ * named $EFS; fixed 16-byte header from probe-v6; offset 16+ left zero (no
+ * invented FEK). $DATA length unchanged; plaintext readback for suite.
+ * tavera/specs/ntfs/ntfs-encrypted-file-body.md Rev.3–4 /
+ * tavera/probes/ntfs/probe-v6/ (NTFS-EFS-PROBE-REPORT).
+ * https://learn.microsoft.com/en-us/windows/win32/api/winbase/nf-winbase-encryptfilew
+ * https://learn.microsoft.com/en-us/openspecs/windows_protocols/ms-fscc/6b5e7e75-c2ad-4769-ad96-37077ee69702
+ * MS-FSCC FILE_QUOTA_INFORMATION:
+ * https://learn.microsoft.com/en-us/openspecs/windows_protocols/ms-fscc/acdc0738-ba3c-47a1-b11a-72e22d831c57
+ * FSCTL_SET_SPARSE SI bit with ATTR (NTFS-MOUNT-001 Rev.2 / probe-v12):
+ * tavera/specs/ntfs/ntfs-host-mount-corruption.md; ntfs-sparse.md;
+ * https://learn.microsoft.com/en-us/openspecs/windows_protocols/ms-fsa/b5b3dd4c-b585-49d7-960e-fbfbf7a85af0
+ * IRP_MJ_SET_QUOTA / IRP_MJ_QUERY_QUOTA:
+ * https://learn.microsoft.com/en-us/windows-hardware/drivers/ifs/irp-mj-set-quota
+ * https://learn.microsoft.com/en-us/windows-hardware/drivers/ddi/ntifs/nf-ntifs-ntqueryquotainformationfile
  */
 
 #include "ntfs.h"
+
+/* Rust helpers in drivers/filesystems/ntfs/src/lib.rs */
+NTSTATUS
+ntfs_quota_write_threshold_limit(PUCHAR Root, SIZE_T RootLength, LONGLONG Threshold, LONGLONG Limit);
+NTSTATUS
+ntfs_quota_write_entry_threshold_limit(PUCHAR Root,
+                                       SIZE_T RootLength,
+                                       ULONG OwnerKey,
+                                       const UCHAR *Sid,
+                                       SIZE_T SidLength,
+                                       LONGLONG Threshold,
+                                       LONGLONG Limit);
+NTSTATUS
+ntfs_quota_clear_for_delete(PUCHAR Root, SIZE_T RootLength, const UCHAR *Sid, SIZE_T SidLength);
+NTSTATUS
+ntfs_quota_append_entry(const UCHAR *InRoot,
+                        SIZE_T InLength,
+                        ULONG OwnerKey,
+                        const UCHAR *Sid,
+                        SIZE_T SidLength,
+                        LONGLONG Threshold,
+                        LONGLONG Limit,
+                        LONGLONG ChangeTime,
+                        PUCHAR OutRoot,
+                        SIZE_T OutCapacity,
+                        PSIZE_T OutLength);
+NTSTATUS
+ntfs_quota_max_owner_key(const UCHAR *Root, SIZE_T RootLength, PULONG MaxKey);
+NTSTATUS
+ntfs_quota_query(const UCHAR *Root,
+                 SIZE_T RootLength,
+                 PUCHAR Out,
+                 SIZE_T OutCapacity,
+                 PSIZE_T OutLength);
+NTSTATUS
+ntfs_quota_grow_for_track(const UCHAR *InRoot,
+                          SIZE_T InLength,
+                          const UCHAR *Sid101,
+                          SIZE_T Sid101Length,
+                          const UCHAR *Sid102,
+                          SIZE_T Sid102Length,
+                          LONGLONG ChangeTime,
+                          PUCHAR OutRoot,
+                          SIZE_T OutCapacity,
+                          PSIZE_T OutLength);
 
 #define NDEBUG
 #include <debug.h>
@@ -259,7 +340,40 @@ NtfsInsertRootEntry(PDEVICE_EXTENSION Vcb,
         return STATUS_NOT_FOUND;
     }
 
+    /* NTFS-IDX-001: resident value must sit inside the attribute record. */
+    if (Slot->Length < 24 ||
+        Slot->Resident.ValueOffset > Slot->Length ||
+        Slot->Resident.ValueLength > Slot->Length - Slot->Resident.ValueOffset)
+    {
+        ReleaseAttributeContext(Context);
+        NtfsFreeRecord(Vcb, Record);
+        return STATUS_FILE_CORRUPT_ERROR;
+    }
+
     Root = (PINDEX_ROOT_ATTRIBUTE)((PUCHAR)Slot + Slot->Resident.ValueOffset);
+    {
+        ULONG HeaderBase = FIELD_OFFSET(INDEX_ROOT_ATTRIBUTE, Header);
+        ULONG HeaderRoom;
+
+        if (Slot->Resident.ValueLength < HeaderBase + sizeof(INDEX_HEADER_ATTRIBUTE))
+        {
+            ReleaseAttributeContext(Context);
+            NtfsFreeRecord(Vcb, Record);
+            return STATUS_FILE_CORRUPT_ERROR;
+        }
+
+        HeaderRoom = Slot->Resident.ValueLength - HeaderBase;
+        if (Root->Header.AllocatedSize > HeaderRoom ||
+            Root->Header.TotalSizeOfEntries > Root->Header.AllocatedSize ||
+            Root->Header.FirstEntryOffset > Root->Header.TotalSizeOfEntries ||
+            Root->Header.FirstEntryOffset < sizeof(INDEX_HEADER_ATTRIBUTE))
+        {
+            ReleaseAttributeContext(Context);
+            NtfsFreeRecord(Vcb, Record);
+            return STATUS_FILE_CORRUPT_ERROR;
+        }
+    }
+
     if (Root->Header.Flags != INDEX_ROOT_SMALL)
     {
         Status = NtfsInsertIndexBlock(Vcb, Record, IndexName, Root, Key, KeyLength, Data, DataLength);
@@ -275,19 +389,38 @@ NtfsInsertRootEntry(PDEVICE_EXTENSION Vcb,
         ULONG ValueEnd = Slot->Resident.ValueOffset + Slot->Resident.ValueLength;
         ULONG Slack = (Slot->Length > ValueEnd) ? Slot->Length - ValueEnd : 0;
         ULONG FromRecord = (Extra > Slack) ? ALIGN_UP_BY(Extra - Slack, 8) : 0;
-        ULONG Spare = Record->BytesAllocated - Record->BytesInUse;
+        ULONG Spare;
+        PUCHAR Next;
+        ULONG NextOff;
 
         Extra = ALIGN_UP_BY(Extra, 8);
+        if (Record->BytesAllocated < Record->BytesInUse)
+        {
+            ReleaseAttributeContext(Context);
+            NtfsFreeRecord(Vcb, Record);
+            return STATUS_FILE_CORRUPT_ERROR;
+        }
+        Spare = Record->BytesAllocated - Record->BytesInUse;
         if (FromRecord > Spare)
         {
             ReleaseAttributeContext(Context);
             NtfsFreeRecord(Vcb, Record);
             return STATUS_DISK_FULL;
         }
+        Next = (PUCHAR)Slot + Slot->Length;
+        NextOff = (ULONG)(Next - (PUCHAR)Record);
+        if (NextOff > Record->BytesInUse ||
+            Slot->Length == 0 ||
+            (PUCHAR)Slot < (PUCHAR)Record ||
+            Next > (PUCHAR)Record + Record->BytesInUse)
+        {
+            ReleaseAttributeContext(Context);
+            NtfsFreeRecord(Vcb, Record);
+            return STATUS_FILE_CORRUPT_ERROR;
+        }
         if (FromRecord != 0)
         {
-            PUCHAR Next = (PUCHAR)Slot + Slot->Length;
-            ULONG Tail = Record->BytesInUse - (ULONG)(Next - (PUCHAR)Record);
+            ULONG Tail = Record->BytesInUse - NextOff;
 
             RtlMoveMemory(Next + FromRecord, Next, Tail);
             Slot->Length += FromRecord;
@@ -300,6 +433,16 @@ NtfsInsertRootEntry(PDEVICE_EXTENSION Vcb,
 
     Entries = (PUCHAR)&Root->Header + Root->Header.FirstEntryOffset;
     End = (PUCHAR)&Root->Header + Root->Header.TotalSizeOfEntries;
+    if (End < Entries ||
+        End > (PUCHAR)Slot + Slot->Resident.ValueOffset + Slot->Resident.ValueLength ||
+        (PUCHAR)&Root->Header + Root->Header.AllocatedSize >
+            (PUCHAR)Slot + Slot->Resident.ValueOffset + Slot->Resident.ValueLength)
+    {
+        ReleaseAttributeContext(Context);
+        NtfsFreeRecord(Vcb, Record);
+        return STATUS_FILE_CORRUPT_ERROR;
+    }
+
     Cursor = Entries;
     while (Cursor + 16 <= End)
     {
@@ -325,6 +468,15 @@ NtfsInsertRootEntry(PDEVICE_EXTENSION Vcb,
         Cursor += Length;
     }
 
+    if (Cursor < Entries ||
+        Cursor > End ||
+        Cursor + EntryLength > (PUCHAR)&Root->Header + Root->Header.AllocatedSize)
+    {
+        ReleaseAttributeContext(Context);
+        NtfsFreeRecord(Vcb, Record);
+        return STATUS_FILE_CORRUPT_ERROR;
+    }
+
     RtlMoveMemory(Cursor + EntryLength, Cursor, (ULONG)(End - Cursor));
     RtlZeroMemory(Cursor, EntryLength);
     *(PUSHORT)Cursor = (USHORT)ALIGN_UP_BY(16 + KeyLength, 8);
@@ -341,7 +493,6 @@ NtfsInsertRootEntry(PDEVICE_EXTENSION Vcb,
     return Status;
 }
 
-static
 NTSTATUS
 NtfsClearVolumeDirty(PDEVICE_EXTENSION Vcb)
 {
@@ -377,9 +528,130 @@ NtfsClearVolumeDirty(PDEVICE_EXTENSION Vcb)
 }
 
 NTSTATUS
+NtfsMarkVolumeDirty(PDEVICE_EXTENSION Vcb)
+{
+    PFILE_RECORD_HEADER Volume;
+    PNTFS_ATTR_RECORD Slot;
+    PVOLINFO_ATTRIBUTE VolInfo;
+    NTSTATUS Status;
+    BOOLEAN Found = FALSE;
+
+    if (!NtfsGlobalData->EnableWriteSupport)
+        return STATUS_ACCESS_DENIED;
+
+    Status = NtfsReadRecord(Vcb, NTFS_FILE_VOLUME, &Volume);
+    if (!NT_SUCCESS(Status))
+        return Status;
+
+    Slot = (PNTFS_ATTR_RECORD)((PUCHAR)Volume + Volume->AttributeOffset);
+    while (Slot->Type != AttributeEnd && Slot->Length != 0)
+    {
+        if (Slot->Type == AttributeVolumeInformation && !Slot->IsNonResident)
+        {
+            VolInfo = (PVOLINFO_ATTRIBUTE)((PUCHAR)Slot + Slot->Resident.ValueOffset);
+            VolInfo->Flags |= NTFS_VOLUME_DIRTY;
+            Found = TRUE;
+            break;
+        }
+        Slot = (PNTFS_ATTR_RECORD)((PUCHAR)Slot + Slot->Length);
+    }
+
+    if (!Found)
+    {
+        NtfsFreeRecord(Vcb, Volume);
+        return STATUS_NOT_FOUND;
+    }
+
+    Status = UpdateFileRecord(Vcb, NTFS_FILE_VOLUME, Volume);
+    NtfsFreeRecord(Vcb, Volume);
+    if (!NT_SUCCESS(Status))
+        return Status;
+
+    Vcb->NtfsInfo.Flags |= NTFS_VOLUME_DIRTY;
+    return STATUS_SUCCESS;
+}
+
+NTSTATUS
 NtfsReplayLog(PDEVICE_EXTENSION Vcb)
 {
-    UNREFERENCED_PARAMETER(Vcb);
+    /*
+     * NTFS-LOG-003 / ntfs-log-restart-mount.md (probe-v11 on probe-v7 dumps).
+     * Probe-local labels only — Microsoft field names remain open (NTFS-LOG-001).
+     * Never parse or apply RCRD bodies (GitHub #2).
+     */
+    PFILE_RECORD_HEADER Record = NULL;
+    PNTFS_ATTR_CONTEXT Context = NULL;
+    PUCHAR Page = NULL;
+    ULONG PageSize;
+    ULONG Got;
+    ULONG Tag;
+    ULONGLONG Slot60;
+    ULONGLONG Slot68;
+    NTSTATUS Status;
+
+    Status = NtfsReadRecord(Vcb, NTFS_FILE_LOGFILE, &Record);
+    if (!NT_SUCCESS(Status))
+        return STATUS_SUCCESS;
+
+    Status = FindAttribute(Vcb, Record, AttributeData, L"", 0, &Context, NULL);
+    if (!NT_SUCCESS(Status))
+    {
+        NtfsFreeRecord(Vcb, Record);
+        return STATUS_SUCCESS;
+    }
+
+    /* Need at least a candidate restart page; size comes from the page itself. */
+    Page = ExAllocatePoolWithTag(NonPagedPool, 0x1000, TAG_NTFS);
+    if (Page == NULL)
+    {
+        ReleaseAttributeContext(Context);
+        NtfsFreeRecord(Vcb, Record);
+        return STATUS_SUCCESS;
+    }
+
+    Got = ReadAttribute(Vcb, Context, 0, (PCHAR)Page, 0x1000);
+    if (Got < 0x68 + sizeof(ULONGLONG))
+    {
+        ExFreePoolWithTag(Page, TAG_NTFS);
+        ReleaseAttributeContext(Context);
+        NtfsFreeRecord(Vcb, Record);
+        /* No usable page (e.g. 0xFF fill) — black-box suite clears dirty. */
+        return STATUS_SUCCESS;
+    }
+
+    RtlCopyMemory(&Tag, Page, sizeof(Tag));
+    /* PAGE_TAG_RSTR = 'RSTR' little-endian bytes 52 53 54 52 */
+    if (Tag != 0x52545352UL)
+    {
+        ExFreePoolWithTag(Page, TAG_NTFS);
+        ReleaseAttributeContext(Context);
+        NtfsFreeRecord(Vcb, Record);
+        return STATUS_SUCCESS;
+    }
+
+    RtlCopyMemory(&PageSize, Page + 0x10, sizeof(PageSize));
+    if (PageSize != 0x1000)
+    {
+        ExFreePoolWithTag(Page, TAG_NTFS);
+        ReleaseAttributeContext(Context);
+        NtfsFreeRecord(Vcb, Record);
+        /* Unrecognized layout — stay RO rather than guess. */
+        return STATUS_MEDIA_WRITE_PROTECTED;
+    }
+
+    RtlCopyMemory(&Slot60, Page + 0x60, sizeof(Slot60));
+    RtlCopyMemory(&Slot68, Page + 0x68, sizeof(Slot68));
+    ExFreePoolWithTag(Page, TAG_NTFS);
+    ReleaseAttributeContext(Context);
+    NtfsFreeRecord(Vcb, Record);
+
+    if (Slot60 != 0 || Slot68 != 0)
+    {
+        /* Outstanding client restart slots — RO, never apply RCRD. */
+        return STATUS_MEDIA_WRITE_PROTECTED;
+    }
+
+    /* Both slots zero — clear dirty / RW; still do not apply RCRD. */
     return STATUS_SUCCESS;
 }
 
@@ -635,6 +907,22 @@ NtfsStampStandard(PDEVICE_EXTENSION Vcb,
     return STATUS_SUCCESS;
 }
 
+static
+BOOLEAN
+NtfsResidentValueInRecord(PNTFS_ATTR_RECORD Attr)
+{
+    /* Same resident clamp as NtfsFileRecordIsConsistent (NTFS-ATTR-001). */
+    if (Attr->IsNonResident != 0)
+        return FALSE;
+    if (Attr->Length < 24)
+        return FALSE;
+    if (Attr->Resident.ValueLength > Attr->Length)
+        return FALSE;
+    if (Attr->Resident.ValueOffset > Attr->Length - Attr->Resident.ValueLength)
+        return FALSE;
+    return TRUE;
+}
+
 NTSTATUS
 NtfsQueryObjectId(PDEVICE_EXTENSION Vcb, PFILE_OBJECT FileObject, PIRP Irp)
 {
@@ -678,6 +966,12 @@ NtfsQueryObjectId(PDEVICE_EXTENSION Vcb, PFILE_OBJECT FileObject, PIRP Irp)
     }
     else
     {
+        if (!NtfsResidentValueInRecord(Context->pRecord))
+        {
+            ReleaseAttributeContext(Context);
+            NtfsFreeRecord(Vcb, Record);
+            return STATUS_FILE_CORRUPT_ERROR;
+        }
         Copy = min(Context->pRecord->Resident.ValueLength, sizeof(ObjectId));
         RtlZeroMemory(ObjectId, sizeof(ObjectId));
         RtlCopyMemory(ObjectId, (PUCHAR)Context->pRecord + Context->pRecord->Resident.ValueOffset, Copy);
@@ -796,6 +1090,13 @@ NtfsGetReparsePoint(PDEVICE_EXTENSION Vcb, PFILE_OBJECT FileObject, PIRP Irp)
         return Status;
     }
 
+    if (!NtfsResidentValueInRecord(Context->pRecord))
+    {
+        ReleaseAttributeContext(Context);
+        NtfsFreeRecord(Vcb, Record);
+        return STATUS_FILE_CORRUPT_ERROR;
+    }
+
     Have = Context->pRecord->Resident.ValueLength;
     OutLength = IoGetCurrentIrpStackLocation(Irp)->Parameters.FileSystemControl.OutputBufferLength;
     if (OutLength < Have)
@@ -835,7 +1136,8 @@ NtfsGetReparseTag(PDEVICE_EXTENSION Vcb, ULONGLONG MftIndex)
         return 0;
     if (NT_SUCCESS(FindAttribute(Vcb, Record, AttributeReparsePoint, L"", 0, &Context, NULL)))
     {
-        if (Context->pRecord->Resident.ValueLength >= sizeof(ULONG))
+        if (NtfsResidentValueInRecord(Context->pRecord) &&
+            Context->pRecord->Resident.ValueLength >= sizeof(ULONG))
             Tag = *(PULONG)((PUCHAR)Context->pRecord + Context->pRecord->Resident.ValueOffset);
         ReleaseAttributeContext(Context);
     }
@@ -844,12 +1146,498 @@ NtfsGetReparseTag(PDEVICE_EXTENSION Vcb, ULONGLONG MftIndex)
 }
 
 NTSTATUS
+NtfsGrowQuotaIndexForTrack(PDEVICE_EXTENSION Vcb)
+{
+    ULONGLONG QuotaIndex;
+    PFILE_RECORD_HEADER Record = NULL;
+    PNTFS_ATTR_RECORD Slot;
+    PUCHAR InRoot;
+    ULONG InLength;
+    PUCHAR OutRoot = NULL;
+    SIZE_T OutLength = 0;
+    SIZE_T OutCap = 1024;
+    NTSTATUS Status;
+    LARGE_INTEGER Now;
+    PSID Sid101;
+    PSID Sid102 = NULL;
+    ULONG Sid101Len;
+    ULONG Sid102Len;
+    SECURITY_SUBJECT_CONTEXT Subject;
+    PACCESS_TOKEN Token;
+    PTOKEN_USER UserInfo = NULL;
+    BOOLEAN Captured = FALSE;
+    ULONG ValueEnd;
+    ULONG NeedExtra;
+    ULONG Spare;
+
+    Status = NtfsFindExtend(Vcb, L"$Quota", &QuotaIndex);
+    if (!NT_SUCCESS(Status))
+        return Status;
+
+    Status = NtfsReadRecord(Vcb, QuotaIndex, &Record);
+    if (!NT_SUCCESS(Status))
+        return Status;
+
+    Slot = (PNTFS_ATTR_RECORD)((PUCHAR)Record + Record->AttributeOffset);
+    while (Slot->Type != AttributeEnd && Slot->Length != 0)
+    {
+        if (Slot->Type == AttributeIndexRoot &&
+            Slot->NameLength == 2 &&
+            RtlCompareMemory((PWCHAR)((PUCHAR)Slot + Slot->NameOffset), L"$Q", 4) == 4)
+        {
+            break;
+        }
+        Slot = (PNTFS_ATTR_RECORD)((PUCHAR)Slot + Slot->Length);
+    }
+    if (Slot->Type != AttributeIndexRoot || Slot->IsNonResident)
+    {
+        NtfsFreeRecord(Vcb, Record);
+        return STATUS_NOT_FOUND;
+    }
+
+    InRoot = (PUCHAR)Slot + Slot->Resident.ValueOffset;
+    InLength = Slot->Resident.ValueLength;
+    if (InLength >= 332)
+    {
+        /* Already large enough for absolute 316/324 (Rev.3 post-track). */
+        NtfsFreeRecord(Vcb, Record);
+        return STATUS_SUCCESS;
+    }
+
+    Sid101 = SeExports->SeLocalSystemSid;
+    Sid101Len = RtlLengthSid(Sid101);
+
+    SeCaptureSubjectContext(&Subject);
+    Captured = TRUE;
+    Token = SeQuerySubjectContextToken(&Subject);
+    Status = SeQueryInformationToken(Token, TokenUser, (PVOID *)&UserInfo);
+    if (NT_SUCCESS(Status) && UserInfo != NULL && UserInfo->User.Sid != NULL)
+    {
+        Sid102 = UserInfo->User.Sid;
+        Sid102Len = RtlLengthSid(Sid102);
+    }
+    else
+    {
+        Sid102 = SeExports->SeAliasAdminsSid;
+        Sid102Len = RtlLengthSid(Sid102);
+        Status = STATUS_SUCCESS;
+    }
+
+    OutRoot = ExAllocatePoolWithTag(NonPagedPool, OutCap, TAG_NTFS);
+    if (OutRoot == NULL)
+    {
+        Status = STATUS_INSUFFICIENT_RESOURCES;
+        goto Done;
+    }
+
+    KeQuerySystemTime(&Now);
+    Status = ntfs_quota_grow_for_track(InRoot,
+                                       InLength,
+                                       (const UCHAR *)Sid101,
+                                       Sid101Len,
+                                       (const UCHAR *)Sid102,
+                                       Sid102Len,
+                                       Now.QuadPart,
+                                       OutRoot,
+                                       OutCap,
+                                       &OutLength);
+    if (!NT_SUCCESS(Status))
+        goto Done;
+
+    if (OutLength <= InLength)
+    {
+        RtlCopyMemory(InRoot, OutRoot, OutLength);
+        Slot->Resident.ValueLength = (ULONG)OutLength;
+        Status = UpdateFileRecord(Vcb, Record->MFTRecordNumber, Record);
+        goto Done;
+    }
+
+    /* Grow the resident $Q attribute in-record (same slack move as view insert). */
+    ValueEnd = Slot->Resident.ValueOffset + Slot->Resident.ValueLength;
+    NeedExtra = ALIGN_UP_BY((ULONG)OutLength - InLength, 8);
+    {
+        ULONG Slack = (Slot->Length > ValueEnd) ? Slot->Length - ValueEnd : 0;
+        ULONG FromRecord = (NeedExtra > Slack) ? ALIGN_UP_BY(NeedExtra - Slack, 8) : 0;
+
+        Spare = Record->BytesAllocated - Record->BytesInUse;
+        if (FromRecord > Spare)
+        {
+            Status = STATUS_DISK_FULL;
+            goto Done;
+        }
+        if (FromRecord != 0)
+        {
+            PUCHAR Next = (PUCHAR)Slot + Slot->Length;
+            ULONG Tail = Record->BytesInUse - (ULONG)(Next - (PUCHAR)Record);
+
+            RtlMoveMemory(Next + FromRecord, Next, Tail);
+            Slot->Length += FromRecord;
+            Record->BytesInUse += FromRecord;
+        }
+    }
+
+    RtlZeroMemory((PUCHAR)Slot + Slot->Resident.ValueOffset + InLength, NeedExtra);
+    RtlCopyMemory((PUCHAR)Slot + Slot->Resident.ValueOffset, OutRoot, OutLength);
+    Slot->Resident.ValueLength = (ULONG)OutLength;
+    Status = UpdateFileRecord(Vcb, Record->MFTRecordNumber, Record);
+
+Done:
+    if (OutRoot != NULL)
+        ExFreePoolWithTag(OutRoot, TAG_NTFS);
+    if (UserInfo != NULL)
+        ExFreePool(UserInfo);
+    if (Captured)
+        SeReleaseSubjectContext(&Subject);
+    NtfsFreeRecord(Vcb, Record);
+    return Status;
+}
+
+static
+NTSTATUS
+NtfsFindQuotaQSlot(PDEVICE_EXTENSION Vcb,
+                   PFILE_RECORD_HEADER Record,
+                   PNTFS_ATTR_RECORD *OutSlot)
+{
+    PNTFS_ATTR_RECORD Slot;
+
+    *OutSlot = NULL;
+    Slot = (PNTFS_ATTR_RECORD)((PUCHAR)Record + Record->AttributeOffset);
+    while (Slot->Type != AttributeEnd && Slot->Length != 0)
+    {
+        if (Slot->Type == AttributeIndexRoot &&
+            Slot->NameLength == 2 &&
+            RtlCompareMemory((PWCHAR)((PUCHAR)Slot + Slot->NameOffset), L"$Q", 4) == 4)
+        {
+            if (Slot->IsNonResident)
+                return STATUS_NOT_IMPLEMENTED;
+            *OutSlot = Slot;
+            return STATUS_SUCCESS;
+        }
+        Slot = (PNTFS_ATTR_RECORD)((PUCHAR)Slot + Slot->Length);
+    }
+    return STATUS_NOT_FOUND;
+}
+
+static
+NTSTATUS
+NtfsReplaceQuotaRoot(PDEVICE_EXTENSION Vcb,
+                     PFILE_RECORD_HEADER Record,
+                     PNTFS_ATTR_RECORD Slot,
+                     PUCHAR NewRoot,
+                     ULONG NewLength)
+{
+    ULONG InLength = Slot->Resident.ValueLength;
+    ULONG ValueEnd;
+    ULONG NeedExtra;
+
+    if (NewLength <= InLength)
+    {
+        RtlCopyMemory((PUCHAR)Slot + Slot->Resident.ValueOffset, NewRoot, NewLength);
+        Slot->Resident.ValueLength = NewLength;
+        return UpdateFileRecord(Vcb, Record->MFTRecordNumber, Record);
+    }
+
+    ValueEnd = Slot->Resident.ValueOffset + Slot->Resident.ValueLength;
+    NeedExtra = ALIGN_UP_BY(NewLength - InLength, 8);
+    {
+        ULONG Slack = (Slot->Length > ValueEnd) ? Slot->Length - ValueEnd : 0;
+        ULONG FromRecord = (NeedExtra > Slack) ? ALIGN_UP_BY(NeedExtra - Slack, 8) : 0;
+        ULONG Spare = Record->BytesAllocated - Record->BytesInUse;
+
+        if (FromRecord > Spare)
+            return STATUS_DISK_FULL;
+        if (FromRecord != 0)
+        {
+            PUCHAR Next = (PUCHAR)Slot + Slot->Length;
+            ULONG Tail = Record->BytesInUse - (ULONG)(Next - (PUCHAR)Record);
+
+            RtlMoveMemory(Next + FromRecord, Next, Tail);
+            Slot->Length += FromRecord;
+            Record->BytesInUse += FromRecord;
+        }
+    }
+
+    RtlZeroMemory((PUCHAR)Slot + Slot->Resident.ValueOffset + InLength, NeedExtra);
+    RtlCopyMemory((PUCHAR)Slot + Slot->Resident.ValueOffset, NewRoot, NewLength);
+    Slot->Resident.ValueLength = NewLength;
+    return UpdateFileRecord(Vcb, Record->MFTRecordNumber, Record);
+}
+
+NTSTATUS
 NtfsSetQuota(PDEVICE_EXTENSION Vcb, PVOID Buffer, ULONG Length)
 {
-    UNREFERENCED_PARAMETER(Vcb);
-    UNREFERENCED_PARAMETER(Buffer);
-    UNREFERENCED_PARAMETER(Length);
-    return STATUS_NOT_IMPLEMENTED;
+    PFILE_QUOTA_INFORMATION Entry;
+    ULONGLONG QuotaIndex;
+    PFILE_RECORD_HEADER Record = NULL;
+    PNTFS_ATTR_RECORD Slot = NULL;
+    PUCHAR Root;
+    ULONG RootLength;
+    NTSTATUS Status;
+    ULONG Consumed = 0;
+    BOOLEAN Dirty = FALSE;
+
+    /* FILE_QUOTA_INFORMATION — MS-FSCC 2.4.41 (Learn URL in file header). */
+    if (Buffer == NULL || Length < FIELD_OFFSET(FILE_QUOTA_INFORMATION, Sid))
+        return STATUS_INVALID_PARAMETER;
+
+    Status = NtfsFindExtend(Vcb, L"$Quota", &QuotaIndex);
+    if (!NT_SUCCESS(Status))
+        return Status;
+
+    Status = NtfsReadRecord(Vcb, QuotaIndex, &Record);
+    if (!NT_SUCCESS(Status))
+        return Status;
+
+    Status = NtfsFindQuotaQSlot(Vcb, Record, &Slot);
+    if (!NT_SUCCESS(Status))
+    {
+        NtfsFreeRecord(Vcb, Record);
+        return Status;
+    }
+
+    Root = (PUCHAR)Slot + Slot->Resident.ValueOffset;
+    RootLength = Slot->Resident.ValueLength;
+
+    while (Consumed + FIELD_OFFSET(FILE_QUOTA_INFORMATION, Sid) <= Length)
+    {
+        ULONG SidLen;
+
+        Entry = (PFILE_QUOTA_INFORMATION)((PUCHAR)Buffer + Consumed);
+        SidLen = Entry->SidLength;
+        if (SidLen == 0 && RtlValidSid(&Entry->Sid))
+            SidLen = RtlLengthSid(&Entry->Sid);
+        if (SidLen == 0)
+        {
+            NtfsFreeRecord(Vcb, Record);
+            return STATUS_INVALID_PARAMETER;
+        }
+
+        /* QuotaLimit -2: clear thr/lim to -1 by SID (probe-v4 / Rev.4–8). */
+        if (Entry->QuotaLimit.QuadPart == -2LL)
+        {
+            Status = ntfs_quota_clear_for_delete(Root,
+                                                 RootLength,
+                                                 (const UCHAR *)&Entry->Sid,
+                                                 SidLen);
+            if (!NT_SUCCESS(Status))
+            {
+                NtfsFreeRecord(Vcb, Record);
+                return Status;
+            }
+            Dirty = TRUE;
+        }
+        else
+        {
+            /* SID match only (owner_key 0). Absolute 316/324 as fallback. */
+            Status = ntfs_quota_write_entry_threshold_limit(Root,
+                                                            RootLength,
+                                                            0,
+                                                            (const UCHAR *)&Entry->Sid,
+                                                            SidLen,
+                                                            Entry->QuotaThreshold.QuadPart,
+                                                            Entry->QuotaLimit.QuadPart);
+            if (Status == STATUS_NOT_SUPPORTED && RootLength >= 332)
+            {
+                Status = ntfs_quota_write_threshold_limit(Root,
+                                                          RootLength,
+                                                          Entry->QuotaThreshold.QuadPart,
+                                                          Entry->QuotaLimit.QuadPart);
+            }
+            if (Status == STATUS_NOT_SUPPORTED)
+            {
+                ULONG MaxKey = 0;
+                ULONG NewKey;
+                PUCHAR OutRoot = NULL;
+                SIZE_T OutCap = RootLength + 512;
+                SIZE_T OutLength = 0;
+                LARGE_INTEGER Now;
+
+                Status = ntfs_quota_max_owner_key(Root, RootLength, &MaxKey);
+                if (!NT_SUCCESS(Status))
+                {
+                    NtfsFreeRecord(Vcb, Record);
+                    return Status;
+                }
+                NewKey = MaxKey + 1;
+                if (NewKey < 0x103)
+                    NewKey = 0x103;
+
+                OutRoot = ExAllocatePoolWithTag(NonPagedPool, OutCap, TAG_NTFS);
+                if (OutRoot == NULL)
+                {
+                    NtfsFreeRecord(Vcb, Record);
+                    return STATUS_INSUFFICIENT_RESOURCES;
+                }
+                KeQuerySystemTime(&Now);
+                Status = ntfs_quota_append_entry(Root,
+                                                 RootLength,
+                                                 NewKey,
+                                                 (const UCHAR *)&Entry->Sid,
+                                                 SidLen,
+                                                 Entry->QuotaThreshold.QuadPart,
+                                                 Entry->QuotaLimit.QuadPart,
+                                                 Now.QuadPart,
+                                                 OutRoot,
+                                                 OutCap,
+                                                 &OutLength);
+                if (!NT_SUCCESS(Status))
+                {
+                    ExFreePoolWithTag(OutRoot, TAG_NTFS);
+                    NtfsFreeRecord(Vcb, Record);
+                    return Status;
+                }
+                Status = NtfsReplaceQuotaRoot(Vcb, Record, Slot, OutRoot, (ULONG)OutLength);
+                ExFreePoolWithTag(OutRoot, TAG_NTFS);
+                if (!NT_SUCCESS(Status))
+                {
+                    NtfsFreeRecord(Vcb, Record);
+                    return Status;
+                }
+                /* Slot moved if attribute grew; re-find and continue. */
+                Status = NtfsFindQuotaQSlot(Vcb, Record, &Slot);
+                if (!NT_SUCCESS(Status))
+                {
+                    NtfsFreeRecord(Vcb, Record);
+                    return Status;
+                }
+                Root = (PUCHAR)Slot + Slot->Resident.ValueOffset;
+                RootLength = Slot->Resident.ValueLength;
+                Dirty = FALSE; /* already written */
+            }
+            else if (!NT_SUCCESS(Status))
+            {
+                NtfsFreeRecord(Vcb, Record);
+                return Status;
+            }
+            else
+            {
+                Dirty = TRUE;
+            }
+        }
+
+        if (Entry->NextEntryOffset == 0)
+            break;
+        if (Entry->NextEntryOffset < FIELD_OFFSET(FILE_QUOTA_INFORMATION, Sid) ||
+            Consumed + Entry->NextEntryOffset > Length)
+        {
+            NtfsFreeRecord(Vcb, Record);
+            return STATUS_INVALID_PARAMETER;
+        }
+        Consumed += Entry->NextEntryOffset;
+    }
+
+    if (Dirty)
+        Status = UpdateFileRecord(Vcb, Record->MFTRecordNumber, Record);
+    else
+        Status = STATUS_SUCCESS;
+
+    NtfsFreeRecord(Vcb, Record);
+    return Status;
+}
+
+NTSTATUS
+NtfsQueryQuota(PDEVICE_EXTENSION Vcb, PVOID Buffer, ULONG Length, PULONG_PTR Information)
+{
+    ULONGLONG QuotaIndex;
+    PFILE_RECORD_HEADER Record = NULL;
+    PNTFS_ATTR_RECORD Slot = NULL;
+    SIZE_T OutLength = 0;
+    NTSTATUS Status;
+
+    if (Information != NULL)
+        *Information = 0;
+
+    if (Buffer == NULL || Length == 0)
+        return STATUS_INVALID_PARAMETER;
+
+    Status = NtfsFindExtend(Vcb, L"$Quota", &QuotaIndex);
+    if (!NT_SUCCESS(Status))
+        return Status;
+
+    Status = NtfsReadRecord(Vcb, QuotaIndex, &Record);
+    if (!NT_SUCCESS(Status))
+        return Status;
+
+    Status = NtfsFindQuotaQSlot(Vcb, Record, &Slot);
+    if (!NT_SUCCESS(Status))
+    {
+        NtfsFreeRecord(Vcb, Record);
+        return Status;
+    }
+
+    Status = ntfs_quota_query((const UCHAR *)Slot + Slot->Resident.ValueOffset,
+                              Slot->Resident.ValueLength,
+                              Buffer,
+                              Length,
+                              &OutLength);
+    NtfsFreeRecord(Vcb, Record);
+    if (!NT_SUCCESS(Status))
+        return Status;
+
+    if (Information != NULL)
+        *Information = OutLength;
+    return STATUS_SUCCESS;
+}
+
+NTSTATUS
+NtfsSetQuotaInformation(PNTFS_IRP_CONTEXT IrpContext)
+{
+    PIRP Irp;
+    PDEVICE_EXTENSION DeviceExt;
+    PIO_STACK_LOCATION Stack;
+    NTSTATUS Status;
+
+    ASSERT(IrpContext);
+    Irp = IrpContext->Irp;
+    DeviceExt = IrpContext->DeviceObject->DeviceExtension;
+    Stack = IrpContext->Stack;
+
+    if (!ExAcquireResourceExclusiveLite(&DeviceExt->DirResource,
+                                        BooleanFlagOn(IrpContext->Flags, IRPCONTEXT_CANWAIT)))
+    {
+        return NtfsMarkIrpContextForQueue(IrpContext);
+    }
+
+    Status = NtfsSetQuota(DeviceExt,
+                          Irp->AssociatedIrp.SystemBuffer,
+                          Stack->Parameters.SetQuota.Length);
+    ExReleaseResourceLite(&DeviceExt->DirResource);
+
+    Irp->IoStatus.Status = Status;
+    Irp->IoStatus.Information = 0;
+    return Status;
+}
+
+NTSTATUS
+NtfsQueryQuotaInformation(PNTFS_IRP_CONTEXT IrpContext)
+{
+    PIRP Irp;
+    PDEVICE_EXTENSION DeviceExt;
+    PIO_STACK_LOCATION Stack;
+    NTSTATUS Status;
+    ULONG_PTR Information = 0;
+
+    ASSERT(IrpContext);
+    Irp = IrpContext->Irp;
+    DeviceExt = IrpContext->DeviceObject->DeviceExtension;
+    Stack = IrpContext->Stack;
+
+    if (!ExAcquireResourceSharedLite(&DeviceExt->DirResource,
+                                     BooleanFlagOn(IrpContext->Flags, IRPCONTEXT_CANWAIT)))
+    {
+        return NtfsMarkIrpContextForQueue(IrpContext);
+    }
+
+    Status = NtfsQueryQuota(DeviceExt,
+                            Irp->AssociatedIrp.SystemBuffer,
+                            Stack->Parameters.QueryQuota.Length,
+                            &Information);
+    ExReleaseResourceLite(&DeviceExt->DirResource);
+
+    /* IRP_INPUT_OPERATION copies SystemBuffer to UserBuffer on complete. */
+    Irp->IoStatus.Status = Status;
+    Irp->IoStatus.Information = Information;
+    return Status;
 }
 
 NTSTATUS
@@ -877,13 +1665,26 @@ NtfsSetSparse(PDEVICE_EXTENSION Vcb, PFILE_OBJECT FileObject, PVOID Buffer, ULON
 
     if (Set)
     {
+        PSTANDARD_INFORMATION Info;
+        ULONG InfoLength = 0;
+
         Context->pRecord->Flags |= NTFS_ATTR_SPARSE;
         Fcb->Entry.FileAttributes |= NTFS_FILE_TYPE_SPARSE;
+        /* MS-FSA / ntfs-host-mount-corruption.md Rev.2: SI sparse bit with ATTR. */
+        Info = NtfsFindStandardInformation(Vcb, Record, &InfoLength);
+        if (Info != NULL)
+            Info->FileAttribute |= NTFS_FILE_TYPE_SPARSE;
     }
     else
     {
+        PSTANDARD_INFORMATION Info;
+        ULONG InfoLength = 0;
+
         Context->pRecord->Flags &= ~NTFS_ATTR_SPARSE;
         Fcb->Entry.FileAttributes &= ~NTFS_FILE_TYPE_SPARSE;
+        Info = NtfsFindStandardInformation(Vcb, Record, &InfoLength);
+        if (Info != NULL)
+            Info->FileAttribute &= ~NTFS_FILE_TYPE_SPARSE;
     }
     Status = NtfsStoreAttribute(Vcb, Record, Context);
     ReleaseAttributeContext(Context);
@@ -1317,12 +2118,26 @@ NtfsAppendUsn(PDEVICE_EXTENSION Vcb,
 }
 
 static
-ULONG
-NtfsUnitClusters(PNTFS_ATTR_RECORD Attribute)
+BOOLEAN
+NtfsUnitClusters(PNTFS_ATTR_RECORD Attribute,
+                 PULONG UnitClustersOut)
 {
-    if (Attribute->NonResident.CompressionUnit == 0)
-        return 16;
-    return 1u << Attribute->NonResident.CompressionUnit;
+    UCHAR Unit = Attribute->NonResident.CompressionUnit;
+
+    /* NTFS-COMP-001 / ntfs-compression.md Rev.1: accept only units this
+     * driver writes (0 or 4) before shift/multiply. */
+    if (Unit == 0)
+    {
+        *UnitClustersOut = 16;
+        return TRUE;
+    }
+    if (Unit == 4)
+    {
+        *UnitClustersOut = 1u << 4;
+        return TRUE;
+    }
+    *UnitClustersOut = 0;
+    return FALSE;
 }
 
 NTSTATUS
@@ -1358,8 +2173,19 @@ NtfsReadCompressed(PDEVICE_EXTENSION Vcb,
     }
 
     Cluster = Vcb->NtfsInfo.BytesPerCluster;
-    UnitClusters = NtfsUnitClusters(Context->pRecord);
+    if (!NtfsUnitClusters(Context->pRecord, &UnitClusters) || UnitClusters == 0)
+    {
+        ReleaseAttributeContext(Context);
+        NtfsFreeRecord(Vcb, Record);
+        return STATUS_FILE_CORRUPT_ERROR;
+    }
     UnitBytes = UnitClusters * Cluster;
+    if (UnitBytes == 0)
+    {
+        ReleaseAttributeContext(Context);
+        NtfsFreeRecord(Vcb, Record);
+        return STATUS_FILE_CORRUPT_ERROR;
+    }
 
     while (Length > 0)
     {
@@ -1464,8 +2290,19 @@ NtfsWriteCompressed(PDEVICE_EXTENSION Vcb,
     }
 
     Cluster = Vcb->NtfsInfo.BytesPerCluster;
-    UnitClusters = NtfsUnitClusters(Context->pRecord);
+    if (!NtfsUnitClusters(Context->pRecord, &UnitClusters) || UnitClusters == 0)
+    {
+        ReleaseAttributeContext(Context);
+        NtfsFreeRecord(Vcb, Record);
+        return STATUS_FILE_CORRUPT_ERROR;
+    }
     UnitBytes = UnitClusters * Cluster;
+    if (UnitBytes == 0)
+    {
+        ReleaseAttributeContext(Context);
+        NtfsFreeRecord(Vcb, Record);
+        return STATUS_FILE_CORRUPT_ERROR;
+    }
 
     {
     PUCHAR Input = (PUCHAR)Buffer;
@@ -1601,9 +2438,18 @@ NtfsWriteCompressed(PDEVICE_EXTENSION Vcb,
     return Status;
 }
 
+/* probe-v6 / Rev.3: every $EFS is 672; bytes 0..15 fixed; 16+ not invented. */
+#define NTFS_EFS_STREAM_LENGTH 672
+
+static const UCHAR NtfsEfsFixedHeader[16] = {
+    0xA0, 0x02, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
+    0x02, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
+};
+
 VOID
 NtfsLoadFileKey(PDEVICE_EXTENSION Vcb, PFILE_RECORD_HEADER Record, PNTFS_FCB Fcb)
 {
+    /* FEK recovery from $EFS offset 16+ is not cited; structural path needs none. */
     UNREFERENCED_PARAMETER(Vcb);
     UNREFERENCED_PARAMETER(Record);
     UNREFERENCED_PARAMETER(Fcb);
@@ -1612,35 +2458,274 @@ NtfsLoadFileKey(PDEVICE_EXTENSION Vcb, PFILE_RECORD_HEADER Record, PNTFS_FCB Fcb
 NTSTATUS
 NtfsReadEncrypted(PDEVICE_EXTENSION Vcb, PNTFS_FCB Fcb, PUCHAR Buffer, ULONG Length, ULONGLONG Offset, PULONG LengthRead)
 {
-    UNREFERENCED_PARAMETER(Vcb);
-    UNREFERENCED_PARAMETER(Fcb);
-    UNREFERENCED_PARAMETER(Buffer);
-    UNREFERENCED_PARAMETER(Length);
-    UNREFERENCED_PARAMETER(Offset);
+    PFILE_RECORD_HEADER Record = NULL;
+    PNTFS_ATTR_CONTEXT DataContext = NULL;
+    ULONGLONG StreamSize;
+    ULONG ToRead;
+    NTSTATUS Status;
+
     if (LengthRead != NULL)
         *LengthRead = 0;
-    return STATUS_NOT_IMPLEMENTED;
+    if (Buffer == NULL || Length == 0)
+        return STATUS_SUCCESS;
+
+    Status = NtfsReadRecord(Vcb, Fcb->MFTIndex, &Record);
+    if (!NT_SUCCESS(Status))
+        return Status;
+
+    Status = FindAttribute(Vcb,
+                           Record,
+                           AttributeData,
+                           Fcb->Stream,
+                           (ULONG)wcslen(Fcb->Stream),
+                           &DataContext,
+                           NULL);
+    if (!NT_SUCCESS(Status))
+    {
+        NtfsFreeRecord(Vcb, Record);
+        return Status;
+    }
+
+    StreamSize = AttributeDataLength(DataContext->pRecord);
+    if (Offset >= StreamSize)
+    {
+        ReleaseAttributeContext(DataContext);
+        NtfsFreeRecord(Vcb, Record);
+        return STATUS_END_OF_FILE;
+    }
+
+    ToRead = Length;
+    if (Offset + ToRead > StreamSize)
+        ToRead = (ULONG)(StreamSize - Offset);
+
+    /* Structural stub: $DATA stays plaintext (no cited cipher). */
+    ToRead = ReadAttribute(Vcb, DataContext, Offset, (PCHAR)Buffer, ToRead);
+    if (LengthRead != NULL)
+        *LengthRead = ToRead;
+
+    ReleaseAttributeContext(DataContext);
+    NtfsFreeRecord(Vcb, Record);
+    return STATUS_SUCCESS;
 }
 
 NTSTATUS
 NtfsWriteEncrypted(PDEVICE_EXTENSION Vcb, PNTFS_FCB Fcb, const PUCHAR Buffer, ULONG Length, ULONGLONG Offset, PULONG LengthWritten)
 {
-    UNREFERENCED_PARAMETER(Vcb);
-    UNREFERENCED_PARAMETER(Fcb);
-    UNREFERENCED_PARAMETER(Buffer);
-    UNREFERENCED_PARAMETER(Length);
-    UNREFERENCED_PARAMETER(Offset);
+    PFILE_RECORD_HEADER Record = NULL;
+    PNTFS_ATTR_CONTEXT DataContext = NULL;
+    ULONG AttrOffset = 0;
+    ULONG Written = 0;
+    LARGE_INTEGER Need;
+    NTSTATUS Status;
+
     if (LengthWritten != NULL)
         *LengthWritten = 0;
-    return STATUS_NOT_IMPLEMENTED;
+    if (Buffer == NULL || Length == 0)
+        return STATUS_SUCCESS;
+
+    Status = NtfsReadRecord(Vcb, Fcb->MFTIndex, &Record);
+    if (!NT_SUCCESS(Status))
+        return Status;
+
+    Status = FindAttribute(Vcb,
+                           Record,
+                           AttributeData,
+                           Fcb->Stream,
+                           (ULONG)wcslen(Fcb->Stream),
+                           &DataContext,
+                           &AttrOffset);
+    if (!NT_SUCCESS(Status))
+    {
+        NtfsFreeRecord(Vcb, Record);
+        return Status;
+    }
+
+    Need.QuadPart = (LONGLONG)(Offset + Length);
+    if ((ULONGLONG)Need.QuadPart > AttributeDataLength(DataContext->pRecord))
+    {
+        if (DataContext->pRecord->IsNonResident)
+            Status = SetNonResidentAttributeDataLength(Vcb, DataContext, AttrOffset, Record, &Need);
+        else
+            Status = SetResidentAttributeDataLength(Vcb, DataContext, AttrOffset, Record, &Need);
+        if (!NT_SUCCESS(Status))
+        {
+            ReleaseAttributeContext(DataContext);
+            NtfsFreeRecord(Vcb, Record);
+            return Status;
+        }
+    }
+
+    Status = WriteAttribute(Vcb, DataContext, Offset, Buffer, Length, &Written, Record);
+    if (NT_SUCCESS(Status))
+    {
+        if (LengthWritten != NULL)
+            *LengthWritten = Written;
+        if (Offset + Written > (ULONGLONG)Fcb->RFCB.FileSize.QuadPart)
+        {
+            Fcb->RFCB.FileSize.QuadPart = Offset + Written;
+            Fcb->RFCB.ValidDataLength.QuadPart = Fcb->RFCB.FileSize.QuadPart;
+        }
+        Status = UpdateFileRecord(Vcb, Fcb->MFTIndex, Record);
+    }
+
+    ReleaseAttributeContext(DataContext);
+    NtfsFreeRecord(Vcb, Record);
+    return Status;
+}
+
+static
+NTSTATUS
+NtfsEnsureEfsStream(PDEVICE_EXTENSION Vcb, PFILE_RECORD_HEADER Record)
+{
+    PNTFS_ATTR_CONTEXT Context = NULL;
+    PNTFS_ATTR_RECORD Slot;
+    ULONG AttrOffset = 0;
+    LARGE_INTEGER Size;
+    ULONG Written = 0;
+    PUCHAR Blob;
+    NTSTATUS Status;
+
+    Blob = ExAllocatePoolWithTag(NonPagedPool, NTFS_EFS_STREAM_LENGTH, TAG_NTFS);
+    if (Blob == NULL)
+        return STATUS_INSUFFICIENT_RESOURCES;
+
+    RtlZeroMemory(Blob, NTFS_EFS_STREAM_LENGTH);
+    RtlCopyMemory(Blob, NtfsEfsFixedHeader, sizeof(NtfsEfsFixedHeader));
+
+    Status = FindAttribute(Vcb,
+                           Record,
+                           AttributeLoggedUtilityStream,
+                           L"$EFS",
+                           4,
+                           &Context,
+                           &AttrOffset);
+    if (!NT_SUCCESS(Status))
+    {
+        Slot = (PNTFS_ATTR_RECORD)((PUCHAR)Record + Record->AttributeOffset);
+        while (Slot->Type != AttributeEnd && Slot->Length != 0)
+            Slot = (PNTFS_ATTR_RECORD)((PUCHAR)Slot + Slot->Length);
+
+        Status = AddLoggedUtilityStream(Vcb, Record, Slot, L"$EFS", 4);
+        if (!NT_SUCCESS(Status))
+        {
+            ExFreePoolWithTag(Blob, TAG_NTFS);
+            return Status;
+        }
+
+        Status = FindAttribute(Vcb,
+                               Record,
+                               AttributeLoggedUtilityStream,
+                               L"$EFS",
+                               4,
+                               &Context,
+                               &AttrOffset);
+        if (!NT_SUCCESS(Status))
+        {
+            ExFreePoolWithTag(Blob, TAG_NTFS);
+            return Status;
+        }
+    }
+
+    Size.QuadPart = NTFS_EFS_STREAM_LENGTH;
+    if (!Context->pRecord->IsNonResident)
+    {
+        ReleaseAttributeContext(Context);
+        ExFreePoolWithTag(Blob, TAG_NTFS);
+        return STATUS_NOT_SUPPORTED;
+    }
+
+    if (AttributeDataLength(Context->pRecord) != NTFS_EFS_STREAM_LENGTH)
+    {
+        Status = SetNonResidentAttributeDataLength(Vcb, Context, AttrOffset, Record, &Size);
+        if (!NT_SUCCESS(Status))
+        {
+            ReleaseAttributeContext(Context);
+            ExFreePoolWithTag(Blob, TAG_NTFS);
+            return Status;
+        }
+    }
+
+    Status = WriteAttribute(Vcb, Context, 0, Blob, NTFS_EFS_STREAM_LENGTH, &Written, Record);
+    ReleaseAttributeContext(Context);
+    ExFreePoolWithTag(Blob, TAG_NTFS);
+    if (!NT_SUCCESS(Status))
+        return Status;
+    if (Written != NTFS_EFS_STREAM_LENGTH)
+        return STATUS_UNEXPECTED_IO_ERROR;
+    return STATUS_SUCCESS;
 }
 
 NTSTATUS
 NtfsSetEncryption(PDEVICE_EXTENSION Vcb, PFILE_OBJECT FileObject, PVOID Buffer, ULONG Length)
 {
-    UNREFERENCED_PARAMETER(Vcb);
-    UNREFERENCED_PARAMETER(FileObject);
-    UNREFERENCED_PARAMETER(Buffer);
-    UNREFERENCED_PARAMETER(Length);
-    return STATUS_NOT_IMPLEMENTED;
+    PNTFS_FCB Fcb;
+    PFILE_RECORD_HEADER Record = NULL;
+    PENCRYPTION_BUFFER Request = NULL;
+    UCHAR Local[4 + 16 + 32];
+    PSTANDARD_INFORMATION Info;
+    ULONG InfoLength = 0;
+    ULONG Op;
+    NTSTATUS Status = STATUS_SUCCESS;
+    KPROCESSOR_MODE Mode;
+
+    if (FileObject == NULL || FileObject->FsContext == NULL)
+        return STATUS_INVALID_PARAMETER;
+    Fcb = (PNTFS_FCB)FileObject->FsContext;
+
+    if (Buffer == NULL || Length < sizeof(ULONG))
+        return STATUS_INVALID_PARAMETER;
+
+    Mode = ExGetPreviousMode();
+    if (Mode != KernelMode)
+    {
+        _SEH2_TRY
+        {
+            ProbeForRead(Buffer, Length, sizeof(UCHAR));
+            RtlCopyMemory(Local, Buffer, min(Length, sizeof(Local)));
+        }
+        _SEH2_EXCEPT(EXCEPTION_EXECUTE_HANDLER)
+        {
+            Status = _SEH2_GetExceptionCode();
+        }
+        _SEH2_END;
+        if (!NT_SUCCESS(Status))
+            return Status;
+        Request = (PENCRYPTION_BUFFER)Local;
+    }
+    else
+    {
+        Request = (PENCRYPTION_BUFFER)Buffer;
+    }
+
+    Op = Request->EncryptionOperation;
+    if (Op != FILE_SET_ENCRYPTION)
+        return STATUS_NOT_SUPPORTED;
+
+    /* Optional open-file key from EncryptFileW (4 + 16 + 32). Not used for reopen. */
+    if (Length >= 4 + 16 + 32)
+    {
+        RtlCopyMemory(Fcb->FileKey, (PUCHAR)Request + 4 + 16, 32);
+        Fcb->FileKeyLength = 32;
+        Fcb->HasFileKey = TRUE;
+    }
+
+    Status = NtfsReadRecord(Vcb, Fcb->MFTIndex, &Record);
+    if (!NT_SUCCESS(Status))
+        return Status;
+
+    Status = NtfsEnsureEfsStream(Vcb, Record);
+    if (!NT_SUCCESS(Status))
+    {
+        NtfsFreeRecord(Vcb, Record);
+        return Status;
+    }
+
+    Info = NtfsFindStandardInformation(Vcb, Record, &InfoLength);
+    if (Info != NULL)
+        Info->FileAttribute |= NTFS_FILE_TYPE_ENCRYPTED;
+    Fcb->Entry.FileAttributes |= NTFS_FILE_TYPE_ENCRYPTED;
+
+    Status = UpdateFileRecord(Vcb, Fcb->MFTIndex, Record);
+    NtfsFreeRecord(Vcb, Record);
+    return Status;
 }

@@ -37,3 +37,21 @@ In-tree:
 ## Non-goals
 
 - Storing enough journal data to reverse changes (Learn states the journal does not).
+
+## Suite UsnJrnl / UsnJournal rows **(Rev.1)**
+
+**(Rev.1)** Catalog rows in [`tavera/test-suites/ntfs/agent/ntfs_agent.c`](../../test-suites/ntfs/agent/ntfs_agent.c): `UsnJournal` is a successful volume `FSCTL_CREATE_USN_JOURNAL`; `UsnJrnl` is journal present afterward, confirmed with `FSCTL_QUERY_USN_JOURNAL` ([Learn](https://learn.microsoft.com/en-us/windows/win32/api/winioctl/ni-winioctl-fsctl_query_usn_journal)). Opening `$Extend\$UsnJrnl` / `$J` is not required for the catalog mark (ACL / privilege noise on a fresh format). Windows 10 22H2 suite baseline 2026-11-18: both green (`out/windows-baseline-result.log`).
+
+### Host mount: `$J` AllocatedSize **(Rev.2)**
+
+**(Rev.2)** Kept-disk probe-v8 (`output/ntfs/probe-v8/mount-frs-report.txt`): `$Extend\$UsnJrnl:$J` non-resident attribute has mapping-pair cluster sum **98** and VCN span **98**, but `AllocatedSize` **397312** (= **97** × 4096). Report line `FAIL alloc_vs_runs … name=$J`. Implementer must keep `AllocatedSize` equal to run-sum × cluster when growing/writing `$J` ([`ntfs-host-mount-corruption.md`](ntfs-host-mount-corruption.md); **NTFS-MOUNT-001**).
+
+### Host mount: `$J` sparse flag **(Rev.3)**
+
+**(Rev.3)** probe-v12 (`output/ntfs/probe-v12/mount-deep-report.txt`, `NTFS-MOUNT-DEEP-REPORT` … `END`): `$J` has `NTFS_ATTR_SPARSE` (`0x8000`) with **zero** hole runs; `STANDARD_INFORMATION` lacks `NTFS_FILE_TYPE_SPARSE` (`0x200`). Host retest with only `AllocatedSize=401408` still reported allocated size incorrect. Implementer must not leave ATTR sparse set without holes (and must keep SI sparse bit consistent when sparse is used) — [`ntfs-host-mount-corruption.md`](ntfs-host-mount-corruption.md) Rev.2; [`ntfs-sparse.md`](ntfs-sparse.md).
+
+## Revision log
+
+- **Rev.1** (2026-11-18): Suite create+query method; Windows green for both catalog rows.
+- **Rev.2** (2026-11-18): probe-v8 `$J` AllocatedSize vs runs; host-mount handoff.
+- **Rev.3** (2026-11-18): probe-v12 `$J` sparse without holes + SI mismatch.

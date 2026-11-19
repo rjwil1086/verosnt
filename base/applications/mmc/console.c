@@ -151,7 +151,7 @@ FrameOnCreate(HWND hwnd,
     SetMenu(Info->hwnd,
             Info->hMenuConsoleSmall);
 
-    SetWindowText(Info->hwnd, TEXT("VerOS NT Management Console"));
+    SetWindowText(Info->hwnd, TEXT("Tavera OS Management Console"));
 
     ccs.hWindowMenu = GetSubMenu(Info->hMenuConsoleLarge, 1);
     ccs.idFirstChild = IDM_MDI_FIRSTCHILD;

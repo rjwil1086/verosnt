@@ -1,5 +1,5 @@
 {
-  "capturedAt": "2026-11-11T14:16:26Z",
+  "capturedAt": "2026-11-19T03:17:37Z",
   "section": "sdk-targets",
   "sdkTargets": [
     {
@@ -866,6 +866,15 @@
           "label": "Windows Vista"
         },
         {
+          "name": "cryptbase",
+          "path": "dll/win32/cryptbase/CMakeLists.txt",
+          "win32Winnt": "0x0502",
+          "ntddiVersion": "0x05020100",
+          "winntFrom": "cmake",
+          "ntddiFrom": "header",
+          "label": "Windows Server 2003 SP1"
+        },
+        {
           "name": "cryptdlg",
           "path": "dll/win32/cryptdlg/CMakeLists.txt",
           "win32Winnt": "0x0502",
@@ -1721,6 +1730,15 @@
           "label": "Windows Server 2003 SP1"
         },
         {
+          "name": "ipv6xchg",
+          "path": "base/applications/network/ipv6xchg/CMakeLists.txt",
+          "win32Winnt": "0x0502",
+          "ntddiVersion": "0x05020100",
+          "winntFrom": "cmake",
+          "ntddiFrom": "header",
+          "label": "Windows Server 2003 SP1"
+        },
+        {
           "name": "itircl",
           "path": "dll/win32/itircl/CMakeLists.txt",
           "win32Winnt": "0x0502",
@@ -1795,20 +1813,20 @@
         {
           "name": "kernel32_vista",
           "path": "dll/win32/kernel32/kernel32_vista/CMakeLists.txt",
-          "win32Winnt": "0x0600",
-          "ntddiVersion": "0x06000000",
+          "win32Winnt": "0x0A00",
+          "ntddiVersion": "0x0A00000B",
           "winntFrom": "cmake",
-          "ntddiFrom": "header",
-          "label": "Windows Vista"
+          "ntddiFrom": "cmake",
+          "label": "Windows 10.0.19044 / 21H2 / Cobalt"
         },
         {
           "name": "kernel32_vista_static",
           "path": "dll/win32/kernel32/kernel32_vista/CMakeLists.txt",
-          "win32Winnt": "0x0600",
-          "ntddiVersion": "0x06000000",
+          "win32Winnt": "0x0A00",
+          "ntddiVersion": "0x0A00000B",
           "winntFrom": "cmake",
-          "ntddiFrom": "header",
-          "label": "Windows Vista"
+          "ntddiFrom": "cmake",
+          "label": "Windows 10.0.19044 / 21H2 / Cobalt"
         },
         {
           "name": "kernelbase_ros",
@@ -1827,6 +1845,15 @@
           "winntFrom": "cmake",
           "ntddiFrom": "cmake",
           "label": "Windows 10.0.19044 / 21H2 / Cobalt"
+        },
+        {
+          "name": "ktmw32",
+          "path": "dll/win32/ktmw32/CMakeLists.txt",
+          "win32Winnt": "0x0502",
+          "ntddiVersion": "0x05020100",
+          "winntFrom": "cmake",
+          "ntddiFrom": "header",
+          "label": "Windows Server 2003 SP1"
         },
         {
           "name": "l3codeca.acm",
@@ -2713,6 +2740,15 @@
         {
           "name": "nddeapi",
           "path": "dll/win32/nddeapi/CMakeLists.txt",
+          "win32Winnt": "0x0502",
+          "ntddiVersion": "0x05020100",
+          "winntFrom": "cmake",
+          "ntddiFrom": "header",
+          "label": "Windows Server 2003 SP1"
+        },
+        {
+          "name": "ndisuio_smoke",
+          "path": "base/applications/network/ndisuio_smoke/CMakeLists.txt",
           "win32Winnt": "0x0502",
           "ntddiVersion": "0x05020100",
           "winntFrom": "cmake",
@@ -5245,6 +5281,15 @@
           "label": "Windows Server 2003 SP1"
         },
         {
+          "name": "lldp",
+          "path": "drivers/network/lldp/CMakeLists.txt",
+          "win32Winnt": "0x0502",
+          "ntddiVersion": "0x05020100",
+          "winntFrom": "cmake",
+          "ntddiFrom": "header",
+          "label": "Windows Server 2003 SP1"
+        },
+        {
           "name": "mouclass",
           "path": "drivers/input/mouclass/CMakeLists.txt",
           "win32Winnt": "0x0502",
@@ -6155,6 +6200,15 @@
           "label": "Windows Server 2003 SP1"
         },
         {
+          "name": "d3d11",
+          "path": "dll/directx/wine/d3d11/CMakeLists.txt",
+          "win32Winnt": "0x0600",
+          "ntddiVersion": "0x06000000",
+          "winntFrom": "cmake",
+          "ntddiFrom": "header",
+          "label": "Windows Vista"
+        },
+        {
           "name": "d3d8",
           "path": "dll/directx/wine/d3d8/CMakeLists.txt",
           "win32Winnt": "0x0502",
@@ -6407,6 +6461,15 @@
           "label": "Windows Server 2003 SP1"
         },
         {
+          "name": "dwrite",
+          "path": "dll/directx/wine/dwrite/CMakeLists.txt",
+          "win32Winnt": "0x0600",
+          "ntddiVersion": "0x06000000",
+          "winntFrom": "cmake",
+          "ntddiFrom": "header",
+          "label": "Windows Vista"
+        },
+        {
           "name": "dxapi",
           "path": "win32ss/reactx/dxapi/CMakeLists.txt",
           "win32Winnt": "0x0502",
@@ -6432,6 +6495,15 @@
           "winntFrom": "cmake",
           "ntddiFrom": "header",
           "label": "Windows Server 2003 SP1"
+        },
+        {
+          "name": "dxgi",
+          "path": "dll/directx/wine/dxgi/CMakeLists.txt",
+          "win32Winnt": "0x0600",
+          "ntddiVersion": "0x06000000",
+          "winntFrom": "cmake",
+          "ntddiFrom": "header",
+          "label": "Windows Vista"
         },
         {
           "name": "dxgthk",
@@ -7481,7 +7553,7 @@
       "win32Winnt": "0x0502",
       "ntddiVersion": "0x05020100",
       "label": "Windows Server 2003 SP1",
-      "count": 731
+      "count": 736
     },
     {
       "win32Winnt": "0x0502",
@@ -7493,7 +7565,7 @@
       "win32Winnt": "0x0600",
       "ntddiVersion": "0x06000000",
       "label": "Windows Vista",
-      "count": 65
+      "count": 66
     },
     {
       "win32Winnt": "0x0601",
@@ -7517,9 +7589,9 @@
       "win32Winnt": "0x0A00",
       "ntddiVersion": "0x0A00000B",
       "label": "Windows 10.0.19044 / 21H2 / Cobalt",
-      "count": 1
+      "count": 3
     }
   ],
   "sdkTargetsNote": "Core kernel components (ntoskrnl, hal, and win32k) remain intentionally pinned to 0x0502 for stability while user-mode modules advance incrementally to 0x0A00 (NTDDI_WIN10_CO, Windows 10 version 21H2, build 19044) per Milestone 14.",
-  "sdkLevel": 3.5
+  "sdkLevel": 3.7
 }

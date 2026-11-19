@@ -1,0 +1,21 @@
+{
+  "spdx": "GPL-2.0-or-later",
+  "question": "How does FILE_VC_QUOTA_TRACK grow resident $Extend\\$Quota:$Q so fsutil quota modify can write threshold/limit without inventing -2 delete encoding?",
+  "allowedInputs": [
+    "tavera/specs/ntfs/ntfs-quota-on-disk.md Rev.3 (probe-v3 F/T/M; implementer recipe; keys 1/0x100/0x101/0x102; data+0x18/+0x20)",
+    "tavera/specs/ntfs/open-items.md NTFS-QUOTA-003 (growth half; -2 still open)",
+    "Reported: probe-v3 growth-report NTFS-QUOTA-GROWTH-REPORT … END (cited by Rev.3; implementer session did not re-read captures)",
+    "sdk/lib/fslib/ntfslib/files.c MkViewRootN and Qce format-time $Quota writer",
+    "https://learn.microsoft.com/en-us/openspecs/windows_protocols/ms-fscc/acdc0738-ba3c-47a1-b11a-72e22d831c57 (FILE_QUOTA_INFORMATION; -1 none; -2 delete blocked)",
+    "https://learn.microsoft.com/en-us/openspecs/windows_protocols/ms-fscc/e5a70738-7ee4-46d9-a5f7-6644daa49a51 (FileFsControlInformation / FILE_VC_QUOTA_TRACK)",
+    "https://learn.microsoft.com/en-us/windows-server/administration/windows-commands/fsutil-quota",
+    "tavera/test-suites/ntfs/out/share-compliance/result.log (QuotaAccounting green; Encryption red EncryptFile finalpath; 44 of 45)",
+    "Reported: implementer session; prior probe/spec session authored Rev.3; NTFS-EFS-002 and NTFS-LOG-001 remain open"
+  ],
+  "harness": {
+    "guest": "Tavera live CD (ntfs-suite.iso, patched ntfs.sys)",
+    "name": "tavera/test-suites/ntfs Invoke-NtfsSuite.ps1 -Phase compliance",
+    "traceOrReplayId": "share-compliance/result.log",
+    "logSha256": "71291a7a308df9c0c6068a89fdf98851f05f889609fc0ab7225e40ae5205c732"
+  }
+}

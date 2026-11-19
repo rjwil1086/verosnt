@@ -8,4 +8,4 @@ if(MSVC)
     add_importlibs(arping ntdll)
 endif()
 
-add_cd_file(TARGET arping DESTINATION VerOS/system32 FOR all)
+add_cd_file(TARGET arping DESTINATION "Tavera/system32" FOR all)

@@ -17,11 +17,16 @@
  *  Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA.
  *
  * COPYRIGHT:        See COPYING in the top level directory
+ *                   Copyright 2026 Ryan Wilson <ryan@taveraos.com>
  * PROJECT:          ReactOS kernel
  * FILE:             drivers/filesystem/ntfs/blockdev.c
  * PURPOSE:          NTFS filesystem driver
  * PROGRAMMERS:      Eric Kohl
  *                   Trevor Thompson
+ *                   Ryan Wilson <ryan@taveraos.com>
+ *
+ * Sources: Sparse write policy — tavera/specs/ntfs/ntfs-sparse.md;
+ *          NTFS_SPARSE_LBO in drivers/filesystems/ntfs/ntfs.h.
  */
 
 /* INCLUDES *****************************************************************/
@@ -308,7 +313,9 @@ NtfsIssueIoRuns(IN PDEVICE_OBJECT DeviceObject,
 
         if (MajorFunction != IRP_MJ_READ)
         {
-            DPRINT1("FIXME: Writing to sparse files is not supported yet!\n");
+            /* Callers must materialize holes first (NtfsMaterializeSparseRange). */
+            DPRINT1("Write hit an NTFS_SPARSE_LBO run that was not materialized! (off=%lu len=%lu)\n",
+                    Run->BufferOffset, Run->ByteCount);
             return STATUS_NOT_IMPLEMENTED;
         }
 

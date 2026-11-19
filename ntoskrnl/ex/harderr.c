@@ -8,7 +8,7 @@
  *                  Ryan Wilson <ryan@taveraos.com>
  *
  * memcpy_s: https://learn.microsoft.com/en-us/cpp/c-runtime-library/reference/memcpy-s-wmemcpy-s
- * PE import list virtual-machines/veros-ntfs/e1q62x64-imports.txt Symbol: memcpy_s
+ * PE import list virtual-machines/tavera-ntfs/e1q62x64-imports.txt Symbol: memcpy_s
  */
 
 /* INCLUDES *****************************************************************/
@@ -794,7 +794,7 @@ _purecall(VOID)
  * CRT-secure copy exported by ntoskrnl for kernel drivers. Behavior and
  * EINVAL (22) / ERANGE (34) from
  * https://learn.microsoft.com/en-us/cpp/c-runtime-library/reference/memcpy-s-wmemcpy-s
- * PE import list virtual-machines/veros-ntfs/e1q62x64-imports.txt Symbol: memcpy_s
+ * PE import list virtual-machines/tavera-ntfs/e1q62x64-imports.txt Symbol: memcpy_s
  * (batched after output/e1000e-20261118T034236Z.log).
  */
 errno_t

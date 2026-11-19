@@ -1,0 +1,22 @@
+{
+  "spdx": "GPL-2.0-or-later",
+  "question": "How does NtSetQuotaInformationFile with QuotaLimit -2 clear a SID's $Q thr/lim so suite QuotaDelete matches Windows 10 22H2?",
+  "allowedInputs": [
+    "tavera/specs/ntfs/ntfs-quota-on-disk.md Rev.4–8 (probe-v4; QuotaLimit -2 clears thr/lim to -1, keep leaf; optional owner key 0x102→0x103)",
+    "tavera/specs/ntfs/open-items.md NTFS-QUOTA-004",
+    "Reported: output/ntfs/probe-v4 cited by Rev.4–8; implementer session did not re-read captures",
+    "https://learn.microsoft.com/en-us/openspecs/windows_protocols/ms-fscc/acdc0738-ba3c-47a1-b11a-72e22d831c57 (FILE_QUOTA_INFORMATION; -1 none; -2 delete)",
+    "https://learn.microsoft.com/en-us/windows-hardware/drivers/ifs/irp-mj-set-quota",
+    "https://learn.microsoft.com/en-us/windows-hardware/drivers/ddi/ntifs/nf-ntifs-ntqueryquotainformationfile",
+    "sdk/include/xdk/iotypes.h FILE_QUOTA_INFORMATION and IRP QueryQuota/SetQuota parameters",
+    "sdk/lib/fslib/ntfslib/files.c MkViewRootN/Qce packing for upsert control entries",
+    "tavera/test-suites/ntfs/out/share-compliance/result.log (QuotaDelete green; QuotaAccounting green; Encryption red EncryptFile finalpath; LogReplay red fsutil dirty set; 45 of 47)",
+    "Reported: implementer session; prior probe/spec session authored Rev.8; NTFS-EFS-002 and NTFS-LOG-001 remain open"
+  ],
+  "harness": {
+    "guest": "Tavera live CD (ntfs-suite.iso, patched ntoskrnl.exe + ntfs.sys)",
+    "name": "tavera/test-suites/ntfs Invoke-NtfsSuite.ps1 -Phase compliance",
+    "traceOrReplayId": "share-compliance/result.log",
+    "logSha256": "5bd424e2c901c8e066deeb6278d6c27e9758a8231d508181fc3e130a5b46e7f2"
+  }
+}

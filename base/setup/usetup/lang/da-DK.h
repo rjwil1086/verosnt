@@ -8,14 +8,14 @@ static MUI_ENTRY daDKSetupInitPageEntries[] =
     {
         4,
         3,
-        " VerOS NT " KERNEL_VERSION_STR " installationen ",
+        " Tavera OS " KERNEL_VERSION_STR " installationen ",
         TEXT_STYLE_UNDERLINE,
         TEXT_ID_STATIC
     },
     {
         0,
         20,
-        "Please wait while the VerOS NT Setup initializes itself",
+        "Please wait while the Tavera OS Setup initializes itself",
         TEXT_STYLE_NORMAL | TEXT_ALIGN_CENTER,
         TEXT_ID_STATIC
     },
@@ -46,7 +46,7 @@ static MUI_ENTRY daDKLanguagePageEntries[] =
     {
         4,
         3,
-        " VerOS NT " KERNEL_VERSION_STR " installationen ",
+        " Tavera OS " KERNEL_VERSION_STR " installationen ",
         TEXT_STYLE_UNDERLINE,
         TEXT_ID_STATIC
     },
@@ -98,21 +98,21 @@ static MUI_ENTRY daDKWelcomePageEntries[] =
     {
         4,
         3,
-        " VerOS NT " KERNEL_VERSION_STR " installationen ",
+        " Tavera OS " KERNEL_VERSION_STR " installationen ",
         TEXT_STYLE_UNDERLINE,
         TEXT_ID_STATIC
     },
     {
         6,
         8,
-        "Velkommen til VerOS NT installationen",
+        "Velkommen til Tavera OS installationen",
         TEXT_STYLE_HIGHLIGHT,
         TEXT_ID_STATIC
     },
     {
         6,
         11,
-        "Denne del af installationen vil kopiere VerOS NT opreativsystemet",
+        "Denne del af installationen vil kopiere Tavera OS opreativsystemet",
         TEXT_STYLE_NORMAL,
         TEXT_ID_STATIC
     },
@@ -126,35 +126,35 @@ static MUI_ENTRY daDKWelcomePageEntries[] =
     {
         8,
         15,
-        "\x07  Press ENTER to install or upgrade VerOS NT.",
+        "\x07  Press ENTER to install or upgrade Tavera OS.",
         TEXT_STYLE_NORMAL,
         TEXT_ID_STATIC
     },
     {
         8,
         17,
-        "\x07  Tryk p\206 R reparere VerOS NT.",
+        "\x07  Tryk p\206 R reparere Tavera OS.",
         TEXT_STYLE_NORMAL,
         TEXT_ID_STATIC
     },
     {
         8,
         19,
-        "\x07  Tryk p\206 L for at f\206 vist VerOS NT licensbetingelser og vilk\206r.",
+        "\x07  Tryk p\206 L for at f\206 vist Tavera OS licensbetingelser og vilk\206r.",
         TEXT_STYLE_NORMAL,
         TEXT_ID_STATIC
     },
     {
         8,
         21,
-        "\x07  Tryk p\206 F3 for at afslutte uden at installere VerOS NT.",
+        "\x07  Tryk p\206 F3 for at afslutte uden at installere Tavera OS.",
         TEXT_STYLE_NORMAL,
         TEXT_ID_STATIC
     },
     {
         6,
         23,
-        "For at f\206 mere infomation om VerOS NT, g\206 ind p\206:",
+        "For at f\206 mere infomation om Tavera OS, g\206 ind p\206:",
         TEXT_STYLE_NORMAL,
         TEXT_ID_STATIC
     },
@@ -185,21 +185,21 @@ static MUI_ENTRY daDKIntroPageEntries[] =
     {
         4,
         3,
-        " VerOS NT " KERNEL_VERSION_STR " installationen ",
+        " Tavera OS " KERNEL_VERSION_STR " installationen ",
         TEXT_STYLE_UNDERLINE,
         TEXT_ID_STATIC
     },
     {
         6,
         8,
-        "VerOS NT Version Status",
+        "Tavera OS Version Status",
         TEXT_STYLE_HIGHLIGHT,
         TEXT_ID_STATIC
     },
     {
         6,
         11,
-        "VerOS NT is in Alpha stage, meaning it is not feature-complete",
+        "Tavera OS is in Alpha stage, meaning it is not feature-complete",
         TEXT_STYLE_NORMAL,
         TEXT_ID_STATIC
     },
@@ -227,21 +227,21 @@ static MUI_ENTRY daDKIntroPageEntries[] =
     {
         6,
         16,
-        "to run VerOS NT on real hardware.",
+        "to run Tavera OS on real hardware.",
         TEXT_STYLE_NORMAL,
         TEXT_ID_STATIC
     },
     {
         8,
         19,
-        "\x07  Press ENTER to continue VerOS NT Setup.",
+        "\x07  Press ENTER to continue Tavera OS Setup.",
         TEXT_STYLE_NORMAL,
         TEXT_ID_STATIC
     },
     {
         8,
         21,
-        "\x07  Press F3 to quit without installing VerOS NT.",
+        "\x07  Press F3 to quit without installing Tavera OS.",
         TEXT_STYLE_NORMAL,
         TEXT_ID_STATIC
     },
@@ -265,7 +265,7 @@ static MUI_ENTRY daDKLicensePageEntries[] =
     {
         4,
         3,
-        " VerOS NT " KERNEL_VERSION_STR " installationen ",
+        " Tavera OS " KERNEL_VERSION_STR " installationen ",
         TEXT_STYLE_UNDERLINE,
         TEXT_ID_STATIC
     },
@@ -279,7 +279,7 @@ static MUI_ENTRY daDKLicensePageEntries[] =
     {
         8,
         8,
-        "VerOS NT systemet er licenseret under betingelserne beskrevet i",
+        "Tavera OS systemet er licenseret under betingelserne beskrevet i",
         TEXT_STYLE_NORMAL,
         TEXT_ID_STATIC
     },
@@ -300,7 +300,7 @@ static MUI_ENTRY daDKLicensePageEntries[] =
     {
         8,
         11,
-        "Alt software som er en del af VerOS NT systemet er",
+        "Alt software som er en del af Tavera OS systemet er",
         TEXT_STYLE_NORMAL,
         TEXT_ID_STATIC
     },
@@ -335,7 +335,7 @@ static MUI_ENTRY daDKLicensePageEntries[] =
     {
         8,
         17,
-        "VerOS NT d\221kker kun distribution til tredjeparter",
+        "Tavera OS d\221kker kun distribution til tredjeparter",
         TEXT_STYLE_NORMAL,
         TEXT_ID_STATIC
     },
@@ -349,7 +349,7 @@ static MUI_ENTRY daDKLicensePageEntries[] =
     {
         8,
         19,
-        "af GNU General Public Licensen sammen med VerOS NT, bes\233g siden",
+        "af GNU General Public Licensen sammen med Tavera OS, bes\233g siden",
         TEXT_STYLE_NORMAL,
         TEXT_ID_STATIC
     },
@@ -384,7 +384,7 @@ static MUI_ENTRY daDKLicensePageEntries[] =
     {
         8,
         26,
-        "om VerOS NT KAN BRUGES TIL NOGET BESTEMT.",
+        "om Tavera OS KAN BRUGES TIL NOGET BESTEMT.",
         TEXT_STYLE_NORMAL,
         TEXT_ID_STATIC
     },
@@ -408,7 +408,7 @@ static MUI_ENTRY daDKDevicePageEntries[] =
     {
         4,
         3,
-        " VerOS NT " KERNEL_VERSION_STR " installationen ",
+        " Tavera OS " KERNEL_VERSION_STR " installationen ",
         TEXT_STYLE_UNDERLINE,
         TEXT_ID_STATIC
     },
@@ -515,14 +515,14 @@ static MUI_ENTRY daDKRepairPageEntries[] =
     {
         4,
         3,
-        " VerOS NT " KERNEL_VERSION_STR " installationen ",
+        " Tavera OS " KERNEL_VERSION_STR " installationen ",
         TEXT_STYLE_UNDERLINE,
         TEXT_ID_STATIC
     },
     {
         6,
         8,
-        "VerOS NT installationen er i en tilelig udviklingsfase. Derfor",
+        "Tavera OS installationen er i en tilelig udviklingsfase. Derfor",
         TEXT_STYLE_NORMAL,
         TEXT_ID_STATIC
     },
@@ -595,21 +595,21 @@ static MUI_ENTRY daDKUpgradePageEntries[] =
     {
         4,
         3,
-        " VerOS NT " KERNEL_VERSION_STR " installationen ",
+        " Tavera OS " KERNEL_VERSION_STR " installationen ",
         TEXT_STYLE_UNDERLINE,
         TEXT_ID_STATIC
     },
     {
         6,
         8,
-        "The VerOS NT Setup can upgrade one of the available VerOS NT installations",
+        "The Tavera OS Setup can upgrade one of the available Tavera OS installations",
         TEXT_STYLE_NORMAL,
         TEXT_ID_STATIC
     },
     {
         6,
         9,
-        "listed below, or, if a VerOS NT installation is damaged, the Setup program",
+        "listed below, or, if a Tavera OS installation is damaged, the Setup program",
         TEXT_STYLE_NORMAL,
         TEXT_ID_STATIC
     },
@@ -651,7 +651,7 @@ static MUI_ENTRY daDKUpgradePageEntries[] =
     {
         8,
         21,
-        "\x07  Press F3 to quit without installing VerOS NT.",
+        "\x07  Press F3 to quit without installing Tavera OS.",
         TEXT_STYLE_NORMAL,
         TEXT_ID_STATIC
     },
@@ -675,7 +675,7 @@ static MUI_ENTRY daDKComputerPageEntries[] =
     {
         4,
         3,
-        " VerOS NT " KERNEL_VERSION_STR " installationen ",
+        " Tavera OS " KERNEL_VERSION_STR " installationen ",
         TEXT_STYLE_UNDERLINE,
         TEXT_ID_STATIC
     },
@@ -734,7 +734,7 @@ static MUI_ENTRY daDKFlushPageEntries[] =
     {
         4,
         3,
-        " VerOS NT " KERNEL_VERSION_STR " installationen ",
+        " Tavera OS " KERNEL_VERSION_STR " installationen ",
         TEXT_STYLE_UNDERLINE,
         TEXT_ID_STATIC
     },
@@ -779,14 +779,14 @@ static MUI_ENTRY daDKQuitPageEntries[] =
     {
         4,
         3,
-        " VerOS NT " KERNEL_VERSION_STR " installationen ",
+        " Tavera OS " KERNEL_VERSION_STR " installationen ",
         TEXT_STYLE_UNDERLINE,
         TEXT_ID_STATIC
     },
     {
         10,
         6,
-        "VerOS NT er ikke blevet helt installeret.",
+        "Tavera OS er ikke blevet helt installeret.",
         TEXT_STYLE_NORMAL,
         TEXT_ID_STATIC
     },
@@ -831,7 +831,7 @@ static MUI_ENTRY daDKDisplayPageEntries[] =
     {
         4,
         3,
-        " VerOS NT " KERNEL_VERSION_STR " installationen ",
+        " Tavera OS " KERNEL_VERSION_STR " installationen ",
         TEXT_STYLE_UNDERLINE,
         TEXT_ID_STATIC
     },
@@ -890,14 +890,14 @@ static MUI_ENTRY daDKSuccessPageEntries[] =
     {
         4,
         3,
-        " VerOS NT " KERNEL_VERSION_STR " installationen ",
+        " Tavera OS " KERNEL_VERSION_STR " installationen ",
         TEXT_STYLE_UNDERLINE,
         TEXT_ID_STATIC
     },
     {
         10,
         6,
-        "De grundl\221ggende komponenter i VerOS NT blev installeret med success.",
+        "De grundl\221ggende komponenter i Tavera OS blev installeret med success.",
         TEXT_STYLE_NORMAL,
         TEXT_ID_STATIC
     },
@@ -942,7 +942,7 @@ static MUI_ENTRY daDKSelectPartitionEntries[] =
     {
         4,
         3,
-        " VerOS NT " KERNEL_VERSION_STR " installationen ",
+        " Tavera OS " KERNEL_VERSION_STR " installationen ",
         TEXT_STYLE_UNDERLINE,
         TEXT_ID_STATIC
     },
@@ -970,7 +970,7 @@ static MUI_ENTRY daDKSelectPartitionEntries[] =
     {
         8,
         13,
-        "\x07  Tryk p\206 ENTER for at installere VerOS NT til den valgte patition.",
+        "\x07  Tryk p\206 ENTER for at installere Tavera OS til den valgte patition.",
         TEXT_STYLE_NORMAL,
         TEXT_ID_STATIC
     },
@@ -1015,7 +1015,7 @@ static MUI_ENTRY daDKChangeSystemPartition[] =
     {
         4,
         3,
-        " VerOS NT " KERNEL_VERSION_STR " Setup ",
+        " Tavera OS " KERNEL_VERSION_STR " Setup ",
         TEXT_STYLE_UNDERLINE,
         TEXT_ID_STATIC
     },
@@ -1036,14 +1036,14 @@ static MUI_ENTRY daDKChangeSystemPartition[] =
     {
         6,
         16,
-        "uses a format not supported by VerOS NT.",
+        "uses a format not supported by Tavera OS.",
         TEXT_STYLE_NORMAL,
         TEXT_ID_STATIC
     },
     {
         6,
         18,
-        "In order to successfully install VerOS NT, the Setup program must change",
+        "In order to successfully install Tavera OS, the Setup program must change",
         TEXT_STYLE_NORMAL,
         TEXT_ID_STATIC
     },
@@ -1113,7 +1113,7 @@ static MUI_ENTRY daDKChangeSystemPartition[] =
     {
         6,
         35,
-        "to the original one after finishing the installation of VerOS NT.",
+        "to the original one after finishing the installation of Tavera OS.",
         TEXT_STYLE_NORMAL,
         TEXT_ID_STATIC
     },
@@ -1137,7 +1137,7 @@ static MUI_ENTRY daDKConfirmDeleteSystemPartitionEntries[] =
     {
         4,
         3,
-        " VerOS NT " KERNEL_VERSION_STR " installationen ",
+        " Tavera OS " KERNEL_VERSION_STR " installationen ",
         TEXT_STYLE_UNDERLINE,
         TEXT_ID_STATIC
     },
@@ -1158,7 +1158,7 @@ static MUI_ENTRY daDKConfirmDeleteSystemPartitionEntries[] =
     {
         6,
         11,
-        "oprativsystem (s\206 som VerOS NT) eller styreprogrammer til hardware.",
+        "oprativsystem (s\206 som Tavera OS) eller styreprogrammer til hardware.",
         TEXT_STYLE_NORMAL,
         TEXT_ID_STATIC
     },
@@ -1186,7 +1186,7 @@ static MUI_ENTRY daDKConfirmDeleteSystemPartitionEntries[] =
     {
         6,
         17,
-        "fra din harddisk f\233r at du har gennemf\233rt installatonen af VerOS NT.",
+        "fra din harddisk f\233r at du har gennemf\233rt installatonen af Tavera OS.",
         TEXT_STYLE_NORMAL,
         TEXT_ID_STATIC
     },
@@ -1238,7 +1238,7 @@ static MUI_ENTRY daDKFormatPartitionEntries[] =
     {
         4,
         3,
-        " VerOS NT " KERNEL_VERSION_STR " installationen ",
+        " Tavera OS " KERNEL_VERSION_STR " installationen ",
         TEXT_STYLE_UNDERLINE,
         TEXT_ID_STATIC
     },
@@ -1276,7 +1276,7 @@ static MUI_ENTRY daDKCheckFSEntries[] =
     {
         4,
         3,
-        " VerOS NT " KERNEL_VERSION_STR " installationen ",
+        " Tavera OS " KERNEL_VERSION_STR " installationen ",
         TEXT_STYLE_UNDERLINE,
         TEXT_ID_STATIC
     },
@@ -1307,7 +1307,7 @@ static MUI_ENTRY daDKInstallDirectoryEntries[] =
     {
         4,
         3,
-        " VerOS NT " KERNEL_VERSION_STR " installationen ",
+        " Tavera OS " KERNEL_VERSION_STR " installationen ",
         TEXT_STYLE_UNDERLINE,
         TEXT_ID_STATIC
     },
@@ -1321,7 +1321,7 @@ static MUI_ENTRY daDKInstallDirectoryEntries[] =
     {
         6,
         9,
-        "V\221lg den mappe hvor du \233nsker VerOS NT skal installeres:",
+        "V\221lg den mappe hvor du \233nsker Tavera OS skal installeres:",
         TEXT_STYLE_NORMAL,
         TEXT_ID_STATIC
     },
@@ -1342,7 +1342,7 @@ static MUI_ENTRY daDKInstallDirectoryEntries[] =
     {
         6,
         16,
-        "VerOS NT skal installeres til.",
+        "Tavera OS skal installeres til.",
         TEXT_STYLE_NORMAL,
         TEXT_ID_STATIC
     },
@@ -1366,21 +1366,21 @@ static MUI_ENTRY daDKFileCopyEntries[] =
     {
         4,
         3,
-        " VerOS NT " KERNEL_VERSION_STR " installationen ",
+        " Tavera OS " KERNEL_VERSION_STR " installationen ",
         TEXT_STYLE_UNDERLINE,
         TEXT_ID_STATIC
     },
     {
         0,
         12,
-        "Vent mens VerOS NT installationen kopiere filer til din",
+        "Vent mens Tavera OS installationen kopiere filer til din",
         TEXT_STYLE_NORMAL | TEXT_ALIGN_CENTER,
         TEXT_ID_STATIC
     },
     {
         0,
         13,
-        "VerOS NT-installationsmappe.",
+        "Tavera OS-installationsmappe.",
         TEXT_STYLE_NORMAL | TEXT_ALIGN_CENTER,
         TEXT_ID_STATIC
     },
@@ -1411,7 +1411,7 @@ static MUI_ENTRY daDKBootLoaderSelectPageEntries[] =
     {
         4,
         3,
-        " VerOS NT " KERNEL_VERSION_STR " installationen ",
+        " Tavera OS " KERNEL_VERSION_STR " installationen ",
         TEXT_STYLE_UNDERLINE,
         TEXT_ID_STATIC
     },
@@ -1470,7 +1470,7 @@ static MUI_ENTRY daDKBootLoaderInstallPageEntries[] =
     {
         4,
         3,
-        " VerOS NT " KERNEL_VERSION_STR " Setup ",
+        " Tavera OS " KERNEL_VERSION_STR " Setup ",
         TEXT_STYLE_UNDERLINE,
         TEXT_ID_STATIC
     },
@@ -1501,7 +1501,7 @@ static MUI_ENTRY daDKBootLoaderRemovableDiskPageEntries[] =
     {
         4,
         3,
-        " VerOS NT " KERNEL_VERSION_STR " installationen ",
+        " Tavera OS " KERNEL_VERSION_STR " installationen ",
         TEXT_STYLE_UNDERLINE,
         TEXT_ID_STATIC
     },
@@ -1547,7 +1547,7 @@ static MUI_ENTRY daDKKeyboardSettingsEntries[] =
     {
         4,
         3,
-        " VerOS NT " KERNEL_VERSION_STR " installationen ",
+        " Tavera OS " KERNEL_VERSION_STR " installationen ",
         TEXT_STYLE_UNDERLINE,
         TEXT_ID_STATIC
     },
@@ -1606,7 +1606,7 @@ static MUI_ENTRY daDKLayoutSettingsEntries[] =
     {
         4,
         3,
-        " VerOS NT " KERNEL_VERSION_STR " installationen ",
+        " Tavera OS " KERNEL_VERSION_STR " installationen ",
         TEXT_STYLE_UNDERLINE,
         TEXT_ID_STATIC
     },
@@ -1666,14 +1666,14 @@ static MUI_ENTRY daDKPrepareCopyEntries[] =
     {
         4,
         3,
-        " VerOS NT " KERNEL_VERSION_STR " installationen ",
+        " Tavera OS " KERNEL_VERSION_STR " installationen ",
         TEXT_STYLE_UNDERLINE,
         TEXT_ID_STATIC
     },
     {
         6,
         8,
-        "Installationen g\233r din computer klar til at kopiere VerOS NT filerne.",
+        "Installationen g\233r din computer klar til at kopiere Tavera OS filerne.",
         TEXT_STYLE_NORMAL,
         TEXT_ID_STATIC
     },
@@ -1698,7 +1698,7 @@ static MUI_ENTRY daDKSelectFSEntries[] =
     {
         4,
         3,
-        " VerOS NT " KERNEL_VERSION_STR " installationen ",
+        " Tavera OS " KERNEL_VERSION_STR " installationen ",
         TEXT_STYLE_UNDERLINE,
         TEXT_ID_STATIC
     },
@@ -1746,7 +1746,7 @@ static MUI_ENTRY daDKDeletePartitionEntries[] =
     {
         4,
         3,
-        " VerOS NT " KERNEL_VERSION_STR " installationen ",
+        " Tavera OS " KERNEL_VERSION_STR " installationen ",
         TEXT_STYLE_UNDERLINE,
         TEXT_ID_STATIC
     },
@@ -1798,7 +1798,7 @@ static MUI_ENTRY daDKRegistryEntries[] =
     {
         4,
         3,
-        " VerOS NT " KERNEL_VERSION_STR " installationen ",
+        " Tavera OS " KERNEL_VERSION_STR " installationen ",
         TEXT_STYLE_UNDERLINE,
         TEXT_ID_STATIC
     },
@@ -1833,9 +1833,9 @@ MUI_ERROR daDKErrorEntries[] =
     },
     {
         // ERROR_NOT_INSTALLED
-        "VerOS NT er endnu ikke f\221rdiginstalleret p\206\n"
+        "Tavera OS er endnu ikke f\221rdiginstalleret p\206\n"
         "din computer. Hvis du afslutter installationen nu skal\n"
-        "du k\233rer installationen igen for at installere VerOS NT.\n"
+        "du k\233rer installationen igen for at installere Tavera OS.\n"
         "\n"
         "  \x07  Tryk p\206 ENTER for at forts\221tte installationen.\n"
         "  \x07  Tryk p\206 F3 afslutte installationen.",
@@ -1843,7 +1843,7 @@ MUI_ERROR daDKErrorEntries[] =
     },
     {
         // ERROR_NO_BUILD_PATH
-        "Failed to build the installation paths for the VerOS NT installation directory!\n"
+        "Failed to build the installation paths for the Tavera OS installation directory!\n"
         "ENTER = Reboot computer"
     },
     {
@@ -1853,7 +1853,7 @@ MUI_ERROR daDKErrorEntries[] =
     },
     {
         // ERROR_SOURCE_DIR
-        "You cannot install VerOS NT within the installation source directory!\n"
+        "You cannot install Tavera OS within the installation source directory!\n"
         "ENTER = Reboot computer"
     },
     {
@@ -2045,7 +2045,7 @@ MUI_ERROR daDKErrorEntries[] =
     },
     {
         // ERROR_INSUFFICIENT_PARTITION_SIZE,
-        "Den valgte partition er ikke stor nok til at installere VerOS NT.\n"
+        "Den valgte partition er ikke stor nok til at installere Tavera OS.\n"
         "The install partition must have a size of at least %lu MB.\n"
         "installationspartitionen skal mindst have %lu MB ledig.\n"
         "\n"
@@ -2231,13 +2231,13 @@ MUI_STRING daDKStrings[] =
     {STRING_PARTFORMAT,
     "Denne partition vil blive formateret som det n\221ste."},
     {STRING_NONFORMATTEDPART,
-    "Du har valgt at installere VerOS NT til en ny eller uformateret partition."},
+    "Du har valgt at installere Tavera OS til en ny eller uformateret partition."},
     {STRING_NONFORMATTEDSYSTEMPART,
     "Systempartitionen er endnu ikke blevet formateret."},
     {STRING_NONFORMATTEDOTHERPART,
     "Den nye partition er endnu ikke blevet formateret."},
     {STRING_INSTALLONPART,
-    "Installationen installere VerOS NT p\206 partitionen"},
+    "Installationen installere Tavera OS p\206 partitionen"},
     {STRING_CONTINUE,
     "ENTER = Forts\221t"},
     {STRING_QUITCONTINUE,

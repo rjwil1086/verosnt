@@ -1,5 +1,5 @@
 /*
- * PROJECT:     VerOS NT Kernel
+ * PROJECT:     Tavera OS Kernel
  * LICENSE:     GNU General Public License, version 2 or later (GPL-2.0-or-later)
  * FILE:        drivers/filesystems/ntfs/rw.c
  * PURPOSE:     NTFS filesystem driver
@@ -934,8 +934,9 @@ NtfsCachedWrite(
 * STATUS_NOT_IMPLEMENTED or STATUS_ACCESS_DENIED if a required feature isn't implemented.
 * STATUS_PARTIAL_COPY, STATUS_UNSUCCESSFUL, or STATUS_OBJECT_NAME_NOT_FOUND if NtfsWriteFile() fails.
 *
-* @remarks Called by NtfsDispatch() in response to an IRP_MJ_WRITE request. Page files are not implemented.
-* File locks, transactions, etc - not implemented.
+* @remarks Called by NtfsDispatch() in response to an IRP_MJ_WRITE request.
+* Paging-file create uses SL_OPEN_PAGING_FILE (ntfs-pagefile.md). Byte-range
+* locks go through FsRtl (lockctrl.c).
 *
 */
 NTSTATUS

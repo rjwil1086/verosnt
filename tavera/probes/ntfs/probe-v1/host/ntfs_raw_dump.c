@@ -443,8 +443,8 @@ int main(int argc, char **argv)
         }
     }
 
-    /* Scan early MFT for $Quota and secret.txt by $FILE_NAME. */
-    for (i = 0; i < 256; i++) {
+    /* Scan MFT for $Quota and secret.txt by $FILE_NAME (user files may be past 256). */
+    for (i = 0; i < 4096; i++) {
         uint32_t used;
         if (read_record(img, n, vol, lcns, lens, runs, cluster, rec_bytes, (uint64_t)i, rec) != 0)
             continue;
@@ -471,7 +471,8 @@ int main(int argc, char **argv)
         }
         if (!found_secret && filename_in_record(rec, used, "secret.txt")) {
             const uint8_t *data = find_attr(rec, used, ATTR_DATA, NULL, 0);
-            const uint8_t *efs = find_attr(rec, used, 0x100, NULL, 0);
+            /* $LOGGED_UTILITY_STREAM is named $EFS (MS-FSCC stream names). */
+            const uint8_t *efs = find_attr(rec, used, 0x100, "$EFS", 4);
             snprintf(path, sizeof(path), "%s/mft_record_%d_secret.bin", outdir, i);
             write_blob(path, rec, rec_bytes);
             fprintf(man, "BLOB\tmft_secret_record\t%s\trecord=%d\n", path, i);

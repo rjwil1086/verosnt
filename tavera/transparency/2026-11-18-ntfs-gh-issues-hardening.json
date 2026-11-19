@@ -1,0 +1,22 @@
+{
+  "spdx": "GPL-2.0-or-later",
+  "question": "Land GitHub #2 restart dirty-mount policy, #3 pagefile+TxF API staging, #4/#5/#6/#8 hardening, and #22 $J AllocatedSize sync from cited NTFS specs without inventing Microsoft $LogFile field names or $RmMetadata layouts.",
+  "allowedInputs": [
+    "tavera/specs/ntfs/ntfs-log-restart-mount.md — NTFS-LOG-003; probe-local RSTR / SLOT_U64_AT_60/68; never apply RCRD",
+    "Reported: probe-v11 restart-report NTFS-LOG-RESTART-REPORT … END",
+    "tavera/specs/ntfs/ntfs-host-mount-corruption.md — AllocatedSize = run-sum × cluster; probe-v8 FAIL alloc_vs_runs on $J",
+    "Reported: probe-v8 mount-frs-report NTFS-MOUNT-FRS-REPORT … END",
+    "tavera/specs/ntfs/ntfs-pagefile.md",
+    "https://learn.microsoft.com/en-us/previous-versions/windows/drivers/ifs/irp-mj-create",
+    "tavera/specs/ntfs/ntfs-txf.md",
+    "https://learn.microsoft.com/en-us/windows/win32/fileio/how-to-use-transactional-ntfs",
+    "https://learn.microsoft.com/en-us/windows/win32/api/winbase/nf-winbase-createfiletransactedw",
+    "tavera/specs/ntfs/ntfs-compression.md Rev.1 NTFS-COMP-001",
+    "tavera/specs/ntfs/ntfs-reparse.md Rev.1 NTFS-IDX-001 / NTFS-ATTR-001",
+    "tavera/specs/ntfs/ntfs-object-id.md Rev.1 NTFS-ATTR-001",
+    "tavera/specs/ntfs/ntfs-quota-on-disk.md Rev.9 NTFS-QUOTA-005",
+    "https://learn.microsoft.com/en-us/windows-hardware/drivers/ifs/privileges",
+    "drivers/filesystems/ntfs/fsctl.c NtfsFileRecordIsConsistent resident clamp",
+    "drivers/filesystems/btrfs/fsctl.c SeManageVolumePrivilege check pattern"
+  ]
+}

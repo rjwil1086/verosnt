@@ -1,5 +1,5 @@
 /*
- * PROJECT:     VerOS NT Kernel
+ * PROJECT:     Tavera OS Kernel
  * LICENSE:     GNU General Public License, version 2 or later (GPL-2.0-or-later)
  * FILE:        drivers/filesystems/ntfs/ntfs.h
  * PURPOSE:     NTFS filesystem driver
@@ -174,6 +174,11 @@ typedef struct
     ULONGLONG LogAppendPage;
     ULONG Flags;
     ULONG OpenHandleCount;
+
+    /* FileFsControlInformation (MS-FSCC): FILE_VC_QUOTA_* and defaults. */
+    ULONG QuotaControlFlags;
+    LARGE_INTEGER DefaultQuotaThreshold;
+    LARGE_INTEGER DefaultQuotaLimit;
 
 } DEVICE_EXTENSION, *PDEVICE_EXTENSION, NTFS_VCB, *PNTFS_VCB;
 
@@ -645,6 +650,8 @@ typedef struct _NTFS_ATTR_CONTEXT
 #define FCB_IS_VOLUME           0x0004
 #define FCB_DELETE_PENDING      0x0008
 #define FCB_DELETED             0x0010
+/* Paging file opened with SL_OPEN_PAGING_FILE (ntfs-pagefile.md / probe-v9). */
+#define FCB_IS_PAGE_FILE        0x0020
 #define MAX_PATH                260
 
 typedef struct _FCB
@@ -750,12 +757,28 @@ AddRun(PNTFS_VCB Vcb,
        ULONGLONG NextAssignedCluster,
        ULONG RunLength);
 
+/* NTFS-MOUNT-001 / ntfs-host-mount-corruption.md Rev.2 (probe-v12):
+ * AllocatedSize = non-hole run sum × cluster; clear NTFS_ATTR_SPARSE when
+ * there are no hole runs; keep SI NTFS_FILE_TYPE_SPARSE in sync. */
+VOID
+NtfsApplySparseAllocatedRules(PDEVICE_EXTENSION Vcb,
+                              PNTFS_ATTR_CONTEXT AttrContext,
+                              PNTFS_ATTR_RECORD DestinationAttribute OPTIONAL,
+                              PFILE_RECORD_HEADER FileRecord OPTIONAL);
+
 NTSTATUS
 AddIndexAllocation(PNTFS_VCB Vcb,
                    PFILE_RECORD_HEADER FileRecord,
                    PNTFS_ATTR_RECORD AttributeAddress,
                    PCWSTR Name,
                    USHORT NameLength);
+
+NTSTATUS
+AddLoggedUtilityStream(PNTFS_VCB Vcb,
+                       PFILE_RECORD_HEADER FileRecord,
+                       PNTFS_ATTR_RECORD AttributeAddress,
+                       PCWSTR Name,
+                       USHORT NameLength);
 
 NTSTATUS
 AddIndexRoot(PNTFS_VCB Vcb,
@@ -1656,6 +1679,12 @@ NtfsInitializeFunctionPointers(PDRIVER_OBJECT DriverObject);
 NTSTATUS
 NtfsReplayLog(PDEVICE_EXTENSION Vcb);
 
+NTSTATUS
+NtfsClearVolumeDirty(PDEVICE_EXTENSION Vcb);
+
+NTSTATUS
+NtfsMarkVolumeDirty(PDEVICE_EXTENSION Vcb);
+
 VOID
 NtfsLoadFileKey(PDEVICE_EXTENSION Vcb,
                 PFILE_RECORD_HEADER Record,
@@ -1700,9 +1729,24 @@ NtfsGetReparseTag(PDEVICE_EXTENSION Vcb,
                   ULONGLONG MftIndex);
 
 NTSTATUS
+NtfsGrowQuotaIndexForTrack(PDEVICE_EXTENSION Vcb);
+
+NTSTATUS
 NtfsSetQuota(PDEVICE_EXTENSION Vcb,
              PVOID Buffer,
              ULONG Length);
+
+NTSTATUS
+NtfsQueryQuota(PDEVICE_EXTENSION Vcb,
+               PVOID Buffer,
+               ULONG Length,
+               PULONG_PTR Information);
+
+NTSTATUS
+NtfsSetQuotaInformation(PNTFS_IRP_CONTEXT IrpContext);
+
+NTSTATUS
+NtfsQueryQuotaInformation(PNTFS_IRP_CONTEXT IrpContext);
 
 NTSTATUS
 NtfsSetSparse(PDEVICE_EXTENSION Vcb,

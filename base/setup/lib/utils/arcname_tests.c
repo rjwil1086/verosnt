@@ -29,7 +29,7 @@
 
 int _tmain(int argc, _TCHAR* argv[])
 {
-    WCHAR ArcPath[MAX_PATH] = L"multi(5)disk()rdisk(1)partition()\\VerOS";
+    WCHAR ArcPath[MAX_PATH] = L"multi(5)disk()rdisk(1)partition()\\Tavera OS";
     WCHAR NormalizedArcPathBuffer[MAX_PATH];
     UNICODE_STRING NormalizedArcPath;
     WCHAR NtPathBuffer[MAX_PATH];
@@ -51,7 +51,7 @@ int _tmain(int argc, _TCHAR* argv[])
     wprintf(L"NtPath = '%wZ'\n", &NtPath);
     ArcPathToNtPath(&NtPath, L"ramdisk(0)");                // OK
     wprintf(L"NtPath = '%wZ'\n", &NtPath);
-    ArcPathToNtPath(&NtPath, L"ramdisk(0)\\VerOS\\system32\\ntoskrnl.exe");   // OK
+    ArcPathToNtPath(&NtPath, L"ramdisk(0)\\Tavera\\system32\\ntoskrnl.exe");   // OK
     wprintf(L"NtPath = '%wZ'\n", &NtPath);
     ArcPathToNtPath(&NtPath, L"net(0)\\Foobar");            // OK but not supported
     wprintf(L"NtPath = '%wZ'\n", &NtPath);

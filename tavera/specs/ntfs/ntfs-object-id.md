@@ -37,3 +37,11 @@ In-tree:
 ## Non-goals
 
 - Applications modifying object ids (Learn warns that modification can lose data).
+
+### Resident object-id read bounds **(Rev.1)**
+
+**(Rev.1)** In-tree `NtfsQueryObjectId` (`drivers/filesystems/ntfs/ntfs3x.c`) uses resident value offset/length for copies. Acceptance (**NTFS-ATTR-001**): same resident + in-record clamp as reparse reads before copy. No new Windows field names.
+
+## Revision log
+
+- **Rev.1** (2026-11-18): resident object-id read bounds; **NTFS-ATTR-001**.

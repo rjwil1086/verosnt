@@ -1,4 +1,4 @@
-# PROJECT: VerOS NT
+# PROJECT: Tavera OS
 # LICENSE: GNU General Public License, version 2 or later (GPL-2.0-or-later)
 # FILE: tools/transparency/check_records.py
 # PURPOSE: Reject a scoped commit that changes Windows behavior and omits its source note

@@ -1,5 +1,5 @@
 /*
- * PROJECT:     VerOS NT Kernel
+ * PROJECT:     Tavera OS Kernel
  * LICENSE:     GNU General Public License, version 2 or later (GPL-2.0-or-later)
  * FILE:        drivers/filesystems/ntfs/volinfo.c
  * PURPOSE:     NTFS filesystem driver
@@ -9,6 +9,18 @@
  * PROGRAMMERS: Eric Kohl
  *              Pierre Schweitzer (pierre@reactos.org)
  *              Ryan Wilson <ryan@taveraos.com>
+ *
+ * Sources: FILE_SUPPORTS_ENCRYPTION / FILE_VOLUME_QUOTAS —
+ *          https://learn.microsoft.com/en-us/openspecs/windows_protocols/ms-fsa/4e3695bd-7574-4f24-a223-b4679c065b63
+ *          https://learn.microsoft.com/en-us/windows/win32/api/fileapi/nf-fileapi-getvolumeinformationw
+ *          FileFsControlInformation / FILE_VC_QUOTA_TRACK —
+ *          https://learn.microsoft.com/en-us/openspecs/windows_protocols/ms-fscc/e5a70738-7ee4-46d9-a5f7-6644daa49a51
+ *          https://learn.microsoft.com/en-us/windows-server/administration/windows-commands/fsutil-quota
+ *          tavera/specs/ntfs/ntfs-encrypted-file-body.md Rev.1 (NTFS-EFS-003);
+ *          tavera/specs/ntfs/ntfs-quota-on-disk.md Rev.3 (track grows $Q; modify
+ *          writes data+0x18/+0x20; probe-v3 NTFS-QUOTA-GROWTH-REPORT).
+ *          NtfsSetEncryption / structural $EFS: ntfs-encrypted-file-body.md Rev.3–4.
+ *          QuotaLimit -2 delete remains blocked on NTFS-QUOTA-003.
  */
 
 /* INCLUDES *****************************************************************/
@@ -586,7 +598,7 @@ NtfsGetFsAttributeInformation(PDEVICE_EXTENSION DeviceExt,
                               PFILE_FS_ATTRIBUTE_INFORMATION FsAttributeInfo,
                               PULONG BufferLength)
 {
-    UNREFERENCED_PARAMETER(DeviceExt);
+    ULONG Attributes;
 
     DPRINT("NtfsGetFsAttributeInformation()\n");
     DPRINT("FsAttributeInfo = %p\n", FsAttributeInfo);
@@ -599,8 +611,29 @@ NtfsGetFsAttributeInformation(PDEVICE_EXTENSION DeviceExt,
     if (*BufferLength < (sizeof(FILE_FS_ATTRIBUTE_INFORMATION) + 8))
         return STATUS_BUFFER_OVERFLOW;
 
-    FsAttributeInfo->FileSystemAttributes =
-        FILE_CASE_PRESERVED_NAMES | FILE_UNICODE_ON_DISK | FILE_READ_ONLY_VOLUME;
+    /* MS-FSA Appendix A: FILE_SUPPORTS_ENCRYPTION if 3.0+; FILE_VOLUME_QUOTAS
+     * for quota-capable NTFS. Sparse/reparse/object-id/USN match features
+     * already wired in this driver. */
+    Attributes = FILE_CASE_PRESERVED_NAMES |
+                 FILE_UNICODE_ON_DISK |
+                 FILE_PERSISTENT_ACLS |
+                 FILE_FILE_COMPRESSION |
+                 FILE_VOLUME_QUOTAS |
+                 FILE_SUPPORTS_SPARSE_FILES |
+                 FILE_SUPPORTS_REPARSE_POINTS |
+                 FILE_SUPPORTS_OBJECT_IDS |
+                 FILE_NAMED_STREAMS |
+                 FILE_SUPPORTS_HARD_LINKS |
+                 FILE_SUPPORTS_USN_JOURNAL;
+
+    if (DeviceExt->NtfsInfo.MajorVersion >= 3)
+        Attributes |= FILE_SUPPORTS_ENCRYPTION;
+
+    if (!NtfsGlobalData->EnableWriteSupport ||
+        (DeviceExt->Flags & VCB_VOLUME_READ_ONLY))
+        Attributes |= FILE_READ_ONLY_VOLUME;
+
+    FsAttributeInfo->FileSystemAttributes = Attributes;
     FsAttributeInfo->MaximumComponentNameLength = 255;
     FsAttributeInfo->FileSystemNameLength = 8;
 
@@ -610,6 +643,49 @@ NtfsGetFsAttributeInformation(PDEVICE_EXTENSION DeviceExt,
 
     *BufferLength -= (sizeof(FILE_FS_ATTRIBUTE_INFORMATION) + 8);
     DPRINT("BufferLength %lu\n", *BufferLength);
+
+    return STATUS_SUCCESS;
+}
+
+static
+NTSTATUS
+NtfsGetFsControlInformation(PDEVICE_EXTENSION DeviceExt,
+                            PFILE_FS_CONTROL_INFORMATION ControlInfo,
+                            PULONG BufferLength)
+{
+    if (*BufferLength < sizeof(FILE_FS_CONTROL_INFORMATION))
+        return STATUS_BUFFER_OVERFLOW;
+
+    RtlZeroMemory(ControlInfo, sizeof(FILE_FS_CONTROL_INFORMATION));
+    ControlInfo->DefaultQuotaThreshold = DeviceExt->DefaultQuotaThreshold;
+    ControlInfo->DefaultQuotaLimit = DeviceExt->DefaultQuotaLimit;
+    ControlInfo->FileSystemControlFlags = DeviceExt->QuotaControlFlags;
+
+    *BufferLength -= sizeof(FILE_FS_CONTROL_INFORMATION);
+    return STATUS_SUCCESS;
+}
+
+static
+NTSTATUS
+NtfsSetFsControlInformation(PDEVICE_EXTENSION DeviceExt,
+                            PFILE_FS_CONTROL_INFORMATION ControlInfo,
+                            ULONG BufferLength)
+{
+    ULONG QuotaBits;
+
+    if (BufferLength < sizeof(FILE_FS_CONTROL_INFORMATION))
+        return STATUS_BUFFER_TOO_SMALL;
+
+    /* Accept FILE_VC_QUOTA_TRACK / ENFORCE so fsutil quota track succeeds
+     * (MS-FSCC FileFsControlInformation; ntfs-quota-on-disk.md Rev.3). */
+    QuotaBits = ControlInfo->FileSystemControlFlags & FILE_VC_QUOTA_MASK;
+    DeviceExt->QuotaControlFlags =
+        (DeviceExt->QuotaControlFlags & ~FILE_VC_QUOTA_MASK) | QuotaBits;
+    DeviceExt->DefaultQuotaThreshold = ControlInfo->DefaultQuotaThreshold;
+    DeviceExt->DefaultQuotaLimit = ControlInfo->DefaultQuotaLimit;
+
+    if (QuotaBits & FILE_VC_QUOTA_TRACK)
+        return NtfsGrowQuotaIndexForTrack(DeviceExt);
 
     return STATUS_SUCCESS;
 }
@@ -732,6 +808,12 @@ NtfsQueryVolumeInformation(PNTFS_IRP_CONTEXT IrpContext)
                                                 &BufferLength);
             break;
 
+        case FileFsControlInformation:
+            Status = NtfsGetFsControlInformation(DeviceExt,
+                                                 SystemBuffer,
+                                                 &BufferLength);
+            break;
+
         default:
             Status = STATUS_NOT_SUPPORTED;
     }
@@ -752,16 +834,44 @@ NTSTATUS
 NtfsSetVolumeInformation(PNTFS_IRP_CONTEXT IrpContext)
 {
     PIRP Irp;
+    PDEVICE_EXTENSION DeviceExt;
+    PIO_STACK_LOCATION Stack;
+    FS_INFORMATION_CLASS FsInformationClass;
+    NTSTATUS Status;
 
     DPRINT("NtfsSetVolumeInformation() called\n");
 
     ASSERT(IrpContext);
 
     Irp = IrpContext->Irp;
-    Irp->IoStatus.Status = STATUS_NOT_SUPPORTED;
-    Irp->IoStatus.Information = 0;
+    DeviceExt = IrpContext->DeviceObject->DeviceExtension;
+    Stack = IrpContext->Stack;
+    FsInformationClass = Stack->Parameters.SetVolume.FsInformationClass;
 
-    return STATUS_NOT_SUPPORTED;
+    if (!ExAcquireResourceExclusiveLite(&DeviceExt->DirResource,
+                                        BooleanFlagOn(IrpContext->Flags, IRPCONTEXT_CANWAIT)))
+    {
+        return NtfsMarkIrpContextForQueue(IrpContext);
+    }
+
+    switch (FsInformationClass)
+    {
+        case FileFsControlInformation:
+            Status = NtfsSetFsControlInformation(DeviceExt,
+                                                 Irp->AssociatedIrp.SystemBuffer,
+                                                 Stack->Parameters.SetVolume.Length);
+            break;
+
+        default:
+            Status = STATUS_NOT_SUPPORTED;
+            break;
+    }
+
+    ExReleaseResourceLite(&DeviceExt->DirResource);
+
+    Irp->IoStatus.Status = Status;
+    Irp->IoStatus.Information = 0;
+    return Status;
 }
 
 /* EOF */

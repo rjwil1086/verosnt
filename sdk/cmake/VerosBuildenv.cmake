@@ -1,4 +1,4 @@
-# PROJECT:     VerOS NT
+# PROJECT:     Tavera OS
 # LICENSE:     GNU General Public License, version 2 or later (GPL-2.0-or-later)
 # FILE:        sdk/cmake/VerosBuildenv.cmake
 # PURPOSE:     Locate the buildenv tools directory for nested or side-by-side layouts

@@ -8,11 +8,11 @@ add_cd_file(FILE ${CMAKE_CURRENT_SOURCE_DIR}/../../tavera/probes/amd64-logical-p
             FOR livecd)
 
 # Setup settings file
-add_cd_file(FILE ${CMAKE_CURRENT_SOURCE_DIR}/txtsetup.sif DESTINATION VerOS NO_CAB FOR bootcd regtest)
+add_cd_file(FILE ${CMAKE_CURRENT_SOURCE_DIR}/txtsetup.sif DESTINATION "Tavera" NO_CAB FOR bootcd regtest)
 
 add_custom_target(converted_caroots_inf DEPENDS ${CMAKE_CURRENT_BINARY_DIR}/caroots.inf)
 utf16le_convert(${CMAKE_CURRENT_SOURCE_DIR}/caroots.inf ${CMAKE_CURRENT_BINARY_DIR}/caroots.inf)
-add_cd_file(TARGET converted_caroots_inf FILE ${CMAKE_CURRENT_BINARY_DIR}/caroots.inf DESTINATION VerOS NO_CAB FOR bootcd regtest)
+add_cd_file(TARGET converted_caroots_inf FILE ${CMAKE_CURRENT_BINARY_DIR}/caroots.inf DESTINATION "Tavera" NO_CAB FOR bootcd regtest)
 
 # Common hives
 add_registry_inf(
@@ -23,7 +23,7 @@ add_registry_inf(
     hivebcd.inf)
 
 # Regtest
-add_cd_file(FILE ${CMAKE_CURRENT_SOURCE_DIR}/bootcdregtest/regtest.cmd DESTINATION VerOS/bin FOR all)
+add_cd_file(FILE ${CMAKE_CURRENT_SOURCE_DIR}/bootcdregtest/regtest.cmd DESTINATION "Tavera/bin" FOR all)
 
 # autorun.inf
 add_cd_file(FILE ${CMAKE_CURRENT_SOURCE_DIR}/autorun.inf DESTINATION root NO_CAB FOR bootcd)
@@ -33,13 +33,13 @@ add_cd_file(FILE ${CMAKE_CURRENT_SOURCE_DIR}/icon.ico DESTINATION root NO_CAB FO
 
 # readme.txt
 add_cd_file(FILE ${CMAKE_CURRENT_SOURCE_DIR}/readme.txt DESTINATION root NO_CAB FOR bootcd)
-add_cd_file(FILE ${CMAKE_CURRENT_SOURCE_DIR}/readme.txt DESTINATION VerOS FOR all)
+add_cd_file(FILE ${CMAKE_CURRENT_SOURCE_DIR}/readme.txt DESTINATION "Tavera" FOR all)
 
 ## NOTE: The root setup.exe file is a renamed welcome.exe for BootCD purposes.
 # welcome.exe optional custom configuration (only for LiveImage)
 if(EXISTS ${CMAKE_CURRENT_SOURCE_DIR}/welcome_config/)
     # Copy the main configuration file
-    add_cd_file(FILE ${CMAKE_CURRENT_SOURCE_DIR}/welcome_config/welcome.ini DESTINATION VerOS NO_CAB FOR livecd)
+    add_cd_file(FILE ${CMAKE_CURRENT_SOURCE_DIR}/welcome_config/welcome.ini DESTINATION "Tavera" NO_CAB FOR livecd)
 
     # Convert the translation files (name format: xx-YY.ini) into UTF-16
     file(MAKE_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}/welcome_config)
@@ -48,7 +48,7 @@ if(EXISTS ${CMAKE_CURRENT_SOURCE_DIR}/welcome_config/)
         set(_converted_file ${CMAKE_CURRENT_BINARY_DIR}/welcome_config/${_file})
         set(_source_file ${CMAKE_CURRENT_SOURCE_DIR}/welcome_config/${_file})
         utf16le_convert(${_source_file} ${_converted_file})
-        add_cd_file(TARGET converted_welcome_i18n_files FILE ${_converted_file} DESTINATION VerOS/welcome NO_CAB NAME_ON_CD ${_file} FOR livecd)
+        add_cd_file(TARGET converted_welcome_i18n_files FILE ${_converted_file} DESTINATION "Tavera/welcome" NO_CAB NAME_ON_CD ${_file} FOR livecd)
         list(APPEND _converted_welcome_i18n_files ${_converted_file})
     endforeach(_file)
     add_custom_target(converted_welcome_i18n_files DEPENDS ${_converted_welcome_i18n_files})
@@ -59,10 +59,10 @@ add_cd_file(FILE ${CMAKE_CURRENT_SOURCE_DIR}/bootcd.ini DESTINATION root NO_CAB 
 add_cd_file(FILE ${CMAKE_CURRENT_SOURCE_DIR}/bootcd_regtest.ini DESTINATION root NO_CAB NAME_ON_CD freeldr.ini FOR regtest)
 
 # Unattend
-add_cd_file(FILE ${CMAKE_CURRENT_SOURCE_DIR}/bootcd/unattend.inf DESTINATION VerOS NO_CAB FOR bootcd)
-add_cd_file(FILE ${CMAKE_CURRENT_SOURCE_DIR}/bootcd/upgrade.inf DESTINATION VerOS NO_CAB FOR bootcd)
-add_cd_file(FILE ${CMAKE_CURRENT_SOURCE_DIR}/bootcdregtest/unattend.inf DESTINATION VerOS NO_CAB FOR regtest)
-add_cd_file(FILE ${CMAKE_CURRENT_SOURCE_DIR}/livecd/unattend.inf DESTINATION VerOS NO_CAB FOR livecd)
+add_cd_file(FILE ${CMAKE_CURRENT_SOURCE_DIR}/bootcd/unattend.inf DESTINATION "Tavera" NO_CAB FOR bootcd)
+add_cd_file(FILE ${CMAKE_CURRENT_SOURCE_DIR}/bootcd/upgrade.inf DESTINATION "Tavera" NO_CAB FOR bootcd)
+add_cd_file(FILE ${CMAKE_CURRENT_SOURCE_DIR}/bootcdregtest/unattend.inf DESTINATION "Tavera" NO_CAB FOR regtest)
+add_cd_file(FILE ${CMAKE_CURRENT_SOURCE_DIR}/livecd/unattend.inf DESTINATION "Tavera" NO_CAB FOR livecd)
 
 # LiveImage shortcuts
 add_custom_target(livecd_links)
@@ -120,9 +120,9 @@ set(dir_quicklaunch             "Users/Default/AppData/Roaming/Microsoft/Interne
 
 cmdenvvar(envvar_systemdrive "SystemDrive" TRUE)
 cmdenvvar(envvar_archdir     "PROCESSOR_ARCHITECTURE:x86=I386" TRUE)
-add_livecd_shortcut("Install VerOS NT"
+add_livecd_shortcut("Install Tavera OS"
     "shell:system\\cmd.exe"
-    CMDLINE_ARGS "/D /E:ON /C \"start ${envvar_systemdrive}\\${envvar_archdir}\\reactos.exe\""
+    CMDLINE_ARGS "/D /E:ON /C \"start ${envvar_systemdrive}\\${envvar_archdir}\\Tavera OS.exe\""
     ICON "${envvar_systemroot}\\system32\\msiexec.exe"
     MINIMIZE
     DESTINATION "${dir_allusers_desktop}")
@@ -131,7 +131,7 @@ add_livecd_shortcut("Read Me"
     "shell:windows\\readme.txt"
     ICON "${envvar_systemroot}\\system32\\shell32.dll" ICON_INDEX -152
     DESTINATION "${dir_allusers_desktop}")
-add_livecd_shortcut("VerOS NT Explorer"
+add_livecd_shortcut("Tavera OS Explorer"
     "shell:windows\\explorer.exe" ICON_INDEX 1
     WORKDIR "${envvar_homedrive}${envvar_homepath}"
     DESTINATION "${dir_startmenu_programs}" "${dir_quicklaunch}")

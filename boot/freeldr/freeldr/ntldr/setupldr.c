@@ -420,7 +420,7 @@ LoadReactOSSetup(
 #elif defined(_M_MRX000)
         "MIPS\\",
 #endif
-        "VerOS\\",
+        "Tavera\\",
     };
 
     /* Retrieve the (mandatory) boot type */
@@ -430,7 +430,7 @@ LoadReactOSSetup(
         ERR("No 'BootType' value, aborting!\n");
         return EINVAL;
     }
-    if (_stricmp(ArgValue, "VerOSSetup") != 0)
+    if (_stricmp(ArgValue, "Tavera") != 0)
     {
         ERR("Unknown 'BootType' value '%s', aborting!\n", ArgValue);
         return EINVAL;
@@ -447,7 +447,7 @@ LoadReactOSSetup(
     /* Let the user know we started loading */
     UiDrawBackdrop(UiGetScreenHeight());
     UiDrawStatusText("Setup is loading...");
-    UiDrawProgressBarCenter("Loading VerOS NT Setup...");
+    UiDrawProgressBarCenter("Loading Tavera OS Setup...");
 
     /* Retrieve the system path */
     *BootPath = ANSI_NULL;

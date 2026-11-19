@@ -67,13 +67,13 @@ BEGIN
     BEGIN
         BLOCK "040704b0"
         BEGIN
-            VALUE "CompanyName", "VerOS NT WDM Streaming ActiveMovie Proxy"
-            VALUE "FileDescription", "VerOS NT WDM Streaming ActiveMovie Proxy"
+            VALUE "CompanyName", "Tavera OS WDM Streaming ActiveMovie Proxy"
+            VALUE "FileDescription", "Tavera OS WDM Streaming ActiveMovie Proxy"
             VALUE "FileVersion", "5, 3, 2600, 3264"
             VALUE "InternalName", "ksproxy"
             VALUE "LegalCopyright", "Copyright (C) 2010"
             VALUE "OriginalFilename", "ksproxy.dll"
-            VALUE "ProductName", "VerOS NT WDM Streaming ActiveMovie Proxy"
+            VALUE "ProductName", "Tavera OS WDM Streaming ActiveMovie Proxy"
             VALUE "ProductVersion", "5, 3, 2600, 3264"
         END
     END

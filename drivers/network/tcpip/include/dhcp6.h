@@ -1,5 +1,5 @@
 /*
- * PROJECT:     VerOS NT Kernel
+ * PROJECT:     Tavera OS Kernel
  * LICENSE:     GNU General Public License, version 2 or later (GPL-2.0-or-later)
  * FILE:        drivers/network/tcpip/include/dhcp6.h
  * PURPOSE:     DHCPv6 client sketch (RFC 8415)
@@ -9,7 +9,7 @@
  * Message types and UDP ports from RFC 8415 Sections 5.1, 7.2, 7.3, and 18
  * (https://www.rfc-editor.org/rfc/rfc8415). All-DHCP-Agents multicast
  * FF02::1:2 is Section 7.1. The peer that answers is
- * virtual-machines/veros-ntfs/Send-Ipv6Peer.ps1 -Mode Dhcp6.
+ * virtual-machines/tavera-ntfs/Send-Ipv6Peer.ps1 -Mode Dhcp6.
  */
 
 #pragma once
