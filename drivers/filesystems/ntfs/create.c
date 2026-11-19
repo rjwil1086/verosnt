@@ -9,6 +9,13 @@
  * PROGRAMMERS: Eric Kohl
  *              Pierre Schweitzer (pierre@reactos.org)
  *              Ryan Wilson <ryan@taveraos.com>
+ *
+ * Sources: SL_OPEN_PAGING_FILE —
+ *   https://learn.microsoft.com/en-us/previous-versions/windows/drivers/ifs/irp-mj-create
+ *   tavera/specs/ntfs/ntfs-pagefile.md (probe-v9 NTFS-PAGE-PROBE-DONE ok).
+ *   Create rollback after AddNewMftEntry (host-mount rule 7):
+ *   tavera/specs/ntfs/ntfs-host-mount-corruption.md Rev.2;
+ *   output/ntfs/probe-v12/mount-deep-report.txt (NTFS-MOUNT-DEEP-REPORT).
  */
 
 /* INCLUDES *****************************************************************/
@@ -621,7 +628,7 @@ NtfsCreateFile(PDEVICE_OBJECT DeviceObject,
     ULONG RequestedDisposition;
     ULONG RequestedOptions;
     PNTFS_FCB Fcb = NULL;
-//    PWSTR FileName;
+    BOOLEAN PagingFileCreate;
     NTSTATUS Status;
     UNICODE_STRING FullPath = { 0, 0, NULL };
     PIRP Irp = IrpContext->Irp;
@@ -635,7 +642,7 @@ NtfsCreateFile(PDEVICE_OBJECT DeviceObject,
 
     RequestedDisposition = ((Stack->Parameters.Create.Options >> 24) & 0xff);
     RequestedOptions = Stack->Parameters.Create.Options & FILE_VALID_OPTION_FLAGS;
-//  PagingFileCreate = (Stack->Flags & SL_OPEN_PAGING_FILE) ? TRUE : FALSE;
+    PagingFileCreate = BooleanFlagOn(Stack->Flags, SL_OPEN_PAGING_FILE);
     if (RequestedOptions & FILE_DIRECTORY_FILE &&
         RequestedDisposition == FILE_SUPERSEDE)
     {
@@ -766,6 +773,13 @@ NtfsCreateFile(PDEVICE_OBJECT DeviceObject,
             Irp->IoStatus.Information = FILE_EXISTS;
             NtfsCloseFile(DeviceExt, FileObject);
             return STATUS_OBJECT_NAME_COLLISION;
+        }
+
+        /* ntfs-pagefile.md: ordinary open of a paging file fails (probe e=32). */
+        if (!PagingFileCreate && (Fcb->Flags & FCB_IS_PAGE_FILE))
+        {
+            NtfsCloseFile(DeviceExt, FileObject);
+            return STATUS_SHARING_VIOLATION;
         }
 
         if (RequestedOptions & FILE_NON_DIRECTORY_FILE &&
@@ -976,6 +990,12 @@ NtfsCreateFile(PDEVICE_OBJECT DeviceObject,
             Irp->IoStatus.Information = 0;
             return Status;
         }
+
+        if (PagingFileCreate && Fcb != NULL)
+        {
+            Fcb->Flags |= FCB_IS_PAGE_FILE;
+            Fcb->RFCB.Flags2 |= FSRTL_FLAG2_IS_PAGING_FILE;
+        }
     }
 
     /*
@@ -1175,6 +1195,8 @@ NtfsCreateDirectory(PDEVICE_EXTENSION DeviceExt,
     Status = AddNewMftEntry(FileRecord, DeviceExt, &FileMftIndex, CanWait);
     if (NT_SUCCESS(Status))
     {
+        ULONGLONG PlainMftIndex = FileMftIndex;
+
         // The highest 2 bytes should be the sequence number, unless the parent happens to be root
         if (FileMftIndex == NTFS_FILE_ROOT)
             FileMftIndex = FileMftIndex + ((ULONGLONG)NTFS_FILE_ROOT << 48);
@@ -1209,6 +1231,19 @@ NtfsCreateDirectory(PDEVICE_EXTENSION DeviceExt,
                           USN_REASON_FILE_CREATE,
                           FilenameAttribute->FileAttributes,
                           &FinalName);
+        }
+        else
+        {
+            NTSTATUS RollStatus;
+
+            /* Index add failed after the MFT bit was taken — retire so replace
+             * cannot leave an in-use FRS claiming this parent/$FILE_NAME. */
+            RollStatus = NtfsDeleteFileRecord(DeviceExt, PlainMftIndex, CaseSensitive);
+            if (!NT_SUCCESS(RollStatus))
+            {
+                DPRINT1("ERROR: Failed to roll back MFT %I64u after index add (Status %lx)\n",
+                        PlainMftIndex, RollStatus);
+            }
         }
     }
 
@@ -1391,6 +1426,8 @@ NtfsCreateFileRecord(PDEVICE_EXTENSION DeviceExt,
     Status = AddNewMftEntry(FileRecord, DeviceExt, &FileMftIndex, CanWait);
     if (NT_SUCCESS(Status))
     {
+        ULONGLONG PlainMftIndex = FileMftIndex;
+
         // The highest 2 bytes should be the sequence number, unless the parent happens to be root
         if (FileMftIndex == NTFS_FILE_ROOT)
             FileMftIndex = FileMftIndex + ((ULONGLONG)NTFS_FILE_ROOT << 48);
@@ -1425,6 +1462,19 @@ NtfsCreateFileRecord(PDEVICE_EXTENSION DeviceExt,
                           USN_REASON_FILE_CREATE,
                           FilenameAttribute->FileAttributes,
                           &FinalName);
+        }
+        else
+        {
+            NTSTATUS RollStatus;
+
+            /* Index add failed after the MFT bit was taken — retire so replace
+             * cannot leave an in-use FRS claiming this parent/$FILE_NAME. */
+            RollStatus = NtfsDeleteFileRecord(DeviceExt, PlainMftIndex, CaseSensitive);
+            if (!NT_SUCCESS(RollStatus))
+            {
+                DPRINT1("ERROR: Failed to roll back MFT %I64u after index add (Status %lx)\n",
+                        PlainMftIndex, RollStatus);
+            }
         }
     }
 

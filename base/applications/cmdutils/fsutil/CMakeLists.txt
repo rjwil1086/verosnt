@@ -4,10 +4,11 @@ list(APPEND SOURCE
     fsinfo.c
     fsutil.c
     hardlink.c
+    quota.c
     volume.c
     fsutil.h)
 add_executable(fsutil ${SOURCE} fsutil.rc)
 set_module_type(fsutil win32cui UNICODE)
-add_importlibs(fsutil msvcrt kernel32 ntdll)
+add_importlibs(fsutil advapi32 msvcrt kernel32 ntdll)
 add_pch(fsutil fsutil.h SOURCE)
 add_cd_file(TARGET fsutil DESTINATION "Tavera/system32" FOR all)

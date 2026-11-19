@@ -1,9 +1,11 @@
 /*
  * COPYRIGHT:       See COPYING in the top level directory
+ * Copyright 2026 Ryan Wilson <ryan@taveraos.com>
  * PROJECT:         ReactOS FS utility tool
- * FILE:            base/applications/cmdutils/common.c
+ * FILE:            base/applications/cmdutils/fsutil/common.c
  * PURPOSE:         FSutil common functions
  * PROGRAMMERS:     Pierre Schweitzer <pierre@reactos.org>
+ * Ryan Wilson <ryan@taveraos.com>
  */
 
 #include "fsutil.h"
@@ -46,13 +48,15 @@ int FindHandler(int argc,
     return ret;
 }
 
-HANDLE OpenVolume(const TCHAR * Volume,
-                  BOOLEAN AllowRemote,
-                  BOOLEAN NtfsOnly)
+HANDLE OpenVolumeEx(const TCHAR * Volume,
+                    BOOLEAN AllowRemote,
+                    BOOLEAN NtfsOnly,
+                    BOOLEAN WriteAccess)
 {
     UINT Type;
     HANDLE hVolume;
     TCHAR VolumeID[PATH_MAX];
+    DWORD Access;
 
     /* Get volume type */
     if (!AllowRemote && Volume[1] == L':')
@@ -87,8 +91,12 @@ HANDLE OpenVolume(const TCHAR * Volume,
     /* Create full name */
     _stprintf(VolumeID, _T("\\\\.\\%s"), Volume);
 
+    Access = GENERIC_READ;
+    if (WriteAccess)
+        Access |= GENERIC_WRITE;
+
     /* Open the volume */
-    hVolume = CreateFile(VolumeID, GENERIC_READ, FILE_SHARE_READ | FILE_SHARE_WRITE,
+    hVolume = CreateFile(VolumeID, Access, FILE_SHARE_READ | FILE_SHARE_WRITE,
                          NULL, OPEN_EXISTING, FILE_ATTRIBUTE_NORMAL, NULL);
     if (hVolume == INVALID_HANDLE_VALUE)
     {
@@ -97,6 +105,13 @@ HANDLE OpenVolume(const TCHAR * Volume,
     }
 
     return hVolume;
+}
+
+HANDLE OpenVolume(const TCHAR * Volume,
+                  BOOLEAN AllowRemote,
+                  BOOLEAN NtfsOnly)
+{
+    return OpenVolumeEx(Volume, AllowRemote, NtfsOnly, FALSE);
 }
 
 void PrintDefaultUsage(const TCHAR * Command,

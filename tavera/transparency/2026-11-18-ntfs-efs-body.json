@@ -1,0 +1,22 @@
+{
+  "spdx": "GPL-2.0-or-later",
+  "question": "How does NtfsSetEncryption create structural $EFS framing (EFS-002) so EncryptFileW + plaintext readback make suite Encryption and EfsBody green (EFS-004)?",
+  "allowedInputs": [
+    "tavera/specs/ntfs/ntfs-encrypted-file-body.md Rev.3–4 (probe-v6; $EFS always 672; fixed 16-byte header A0 02… / LE 672 + u32 2; offset 16+ not invented; $DATA length = logical length)",
+    "tavera/specs/ntfs/open-items.md NTFS-EFS-002 (structural recipe; Microsoft field names none) and NTFS-EFS-004",
+    "Reported: probe-v6 efs-report NTFS-EFS-PROBE-REPORT … END (cited by Rev.3; implementer session did not re-read captures)",
+    "https://learn.microsoft.com/en-us/windows/win32/api/winbase/nf-winbase-encryptfilew",
+    "https://learn.microsoft.com/en-us/openspecs/windows_protocols/ms-fscc/6b5e7e75-c2ad-4769-ad96-37077ee69702 ($EFS stream name)",
+    "https://learn.microsoft.com/en-us/openspecs/windows_protocols/ms-fscc/a82e9105-2405-4e37-b2c3-28c773902d85 ($LOGGED_UTILITY_STREAM)",
+    "sdk/lib/fslib/ntfslib/data.h AttrDef $LOGGED_UTILITY_STREAM NonResident",
+    "dll/win32/advapi32/misc/efs.c EncryptFileW FSCTL_SET_ENCRYPTION + open-file key layout",
+    "tavera/test-suites/ntfs/out/share-compliance/result.log (Encryption green; EfsBody green; LogReplay red fsutil dirty set; 47 of 48)",
+    "Reported: implementer session; prior probe/spec session authored Rev.3–4; NTFS-LOG-001 remains open"
+  ],
+  "harness": {
+    "guest": "Tavera live CD (ntfs-suite.iso, patched ntfs.sys)",
+    "name": "tavera/test-suites/ntfs Invoke-NtfsSuite.ps1 -Phase compliance",
+    "traceOrReplayId": "share-compliance/result.log",
+    "logSha256": "694255e6b22d161e10d3eb509f9cd1b6831f6c932a2934cbcc83e9fb19c16ff1"
+  }
+}

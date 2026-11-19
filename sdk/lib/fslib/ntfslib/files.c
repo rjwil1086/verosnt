@@ -1356,9 +1356,11 @@ WriteMetafiles(VOID)
         Len = MkFileName(Val, MFT_REFERENCE(MREC_EXTEND), FA_HIDDEN | FA_SYSTEM,
                          0, 0, Now, L"$UsnJrnl", FILE_NAME_POSIX);
         MkAddResident(&Rec, AttributeFileName, NULL, 0, RA_INDEXED, Val, Len);
-        /* No unnamed data. $J is a sparse stream and $Max is the journal
-         * parameters. CREATE_USN_JOURNAL fills $Max in when a caller asks. */
-        MkAddNonResident(&Rec, AttributeData, L"$J", 2, 0x8000, NULL, 0, (ULONGLONG)-1, 0, 0, 0);
+        /* No unnamed data. $J starts empty and non-sparse (HighestVCN -1);
+         * CREATE_USN_JOURNAL fills $Max. Do not set ATTR_IS_SPARSE without
+         * hole runs (NTFS-MOUNT-001 / ntfs-host-mount-corruption.md Rev.2;
+         * probe-v12 FAIL J_sparse_flag_without_holes). */
+        MkAddNonResident(&Rec, AttributeData, L"$J", 2, 0, NULL, 0, (ULONGLONG)-1, 0, 0, 0);
         RtlZeroMemory(Val, 32);
         MkAddResident(&Rec, AttributeData, L"$Max", 4, 0, Val, 32);
         MkFinalize(&Rec);

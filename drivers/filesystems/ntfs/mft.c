@@ -12,6 +12,19 @@
  *              Hervé Poussineau (hpoussin@reactos.org)
  *              Trevor Thompson
  *              Ryan Wilson <ryan@taveraos.com>
+ *
+ * Sources: Sparse hole writes use in-tree NTFS_SPARSE_LBO / LargeMCB runs
+ *          (ntfs.h, NtfsSetZeroData in ntfs3x.c, NtfsAllocateClusters);
+ *          tavera/specs/ntfs/ntfs-sparse.md.
+ *          AllocatedSize before AddRun (NTFS-MOUNT-001):
+ *          tavera/specs/ntfs/ntfs-host-mount-corruption.md; probe-v8
+ *          output/ntfs/probe-v8/mount-frs-report.txt (NTFS-MOUNT-FRS-REPORT).
+ *          Non-hole AllocatedSize + clear sparse-without-holes (Rev.2):
+ *          output/ntfs/probe-v12/mount-deep-report.txt (NTFS-MOUNT-DEEP-REPORT).
+ *          Orphan replace rule 7 (retire prior FRS / $Bitmap / no LCN overlap):
+ *          tavera/specs/ntfs/ntfs-host-mount-corruption.md Rev.2;
+ *          output/ntfs/probe-v12/mount-deep-report.txt (FAIL orphan_frs /
+ *          bitmap / LCN overlap for 0x7C7 / 0x7D3).
  */
 
 /* INCLUDES *****************************************************************/
@@ -908,17 +921,17 @@ NtfsExtendAllocation(
             return Status;
         }
 
-        // now we need to add the clusters we allocated to the data run
+        /* Bump AllocatedSize before AddRun so an in-place UpdateFileRecord
+         * inside AddRun already has the matching size (NTFS-MOUNT-001). */
+        AttrContext->pRecord->NonResident.AllocatedSize += (ULONGLONG)AssignedClusters * BytesPerCluster;
+        DestinationAttribute->NonResident.AllocatedSize = AttrContext->pRecord->NonResident.AllocatedSize;
+
         Status = AddRun(Vcb, AttrContext, AttrOffset, FileRecord, NextAssignedCluster, AssignedClusters);
         if (!NT_SUCCESS(Status))
         {
             DPRINT1("Error: Unable to add data run!\n");
             return Status;
         }
-
-        /* AddRun() places the next run after HighestVCN only once the
-         * attribute owns clusters, so count these before looping */
-        AttrContext->pRecord->NonResident.AllocatedSize += (ULONGLONG)AssignedClusters * BytesPerCluster;
 
         ClustersNeeded -= AssignedClusters;
         DesiredCluster = NextAssignedCluster + AssignedClusters;
@@ -1458,8 +1471,8 @@ SetResidentAttributeDataLength(PDEVICE_EXTENSION Vcb,
 * beyond the last allocated cluster, or STATUS_INSUFFICIENT_RESOURCES.
 *
 * @remarks Holes are recorded as NTFS_SPARSE_LBO runs rather than rejected
-* here: reads satisfy them by zeroing and writes fail on them, so the policy
-* belongs to the caller.
+* here: reads satisfy them by zeroing; writes call NtfsMaterializeSparseRange
+* first so holes become real clusters using the same NTFS_SPARSE_LBO sentinel.
 *
 */
 static
@@ -1567,6 +1580,290 @@ NtfsMapAttributeRuns(PDEVICE_EXTENSION Vcb,
     Context->CacheRunCurrentOffset = Offset + Mapped;
     *MappedLength = Mapped;
     return Status;
+}
+
+/**
+* @name NtfsMaterializeSparseRange
+* @implemented
+*
+* Allocates clusters for NTFS_SPARSE_LBO (Lbn == -1) holes that overlap
+* [Offset, Offset+Length) and rewrites the attribute's run list. Uses only
+* the in-tree sparse sentinel and existing allocate / ConvertLargeMCB paths
+* (tavera/specs/ntfs/ntfs-sparse.md).
+*/
+static
+NTSTATUS
+NtfsMaterializeSparseRange(PDEVICE_EXTENSION Vcb,
+                           PNTFS_ATTR_CONTEXT Context,
+                           PFILE_RECORD_HEADER FileRecord,
+                           ULONGLONG Offset,
+                           ULONG Length)
+{
+    ULONG Cluster = Vcb->NtfsInfo.BytesPerCluster;
+    ULONGLONG StartVcn;
+    ULONGLONG EndVcn;
+    LONGLONG SavedV[64];
+    LONGLONG SavedL[64];
+    LONGLONG SavedC[64];
+    ULONG Saved = 0;
+    ULONG Index = 0;
+    ULONG Assigned = 0;
+    ULONG NextCluster = 0;
+    ULONGLONG AddedClusters = 0;
+    NTSTATUS Status;
+    BOOLEAN NeedWork = FALSE;
+
+    if (!Context->pRecord->IsNonResident)
+        return STATUS_SUCCESS;
+    if (Length == 0)
+        return STATUS_SUCCESS;
+
+    StartVcn = Offset / Cluster;
+    EndVcn = (Offset + Length + Cluster - 1) / Cluster;
+
+    {
+        ULONGLONG CoveredTo = StartVcn;
+
+        while (Saved < 64 &&
+               FsRtlGetNextLargeMcbEntry(&Context->DataRunsMCB, Index, &SavedV[Saved], &SavedL[Saved], &SavedC[Saved]))
+        {
+            ULONGLONG RunStart = (ULONGLONG)SavedV[Saved];
+            ULONGLONG RunEnd = RunStart + (ULONGLONG)SavedC[Saved];
+
+            /* Keep every run in Saved so a truncate+rebuild does not drop the
+             * tail. Only the write window drives NeedWork. */
+            if (RunEnd > StartVcn && RunStart < EndVcn)
+            {
+                if (RunStart > CoveredTo)
+                    NeedWork = TRUE; /* gap in the write window */
+                if (SavedL[Saved] == -1)
+                    NeedWork = TRUE;
+                if (RunEnd > CoveredTo)
+                    CoveredTo = min(RunEnd, EndVcn);
+            }
+            Saved++;
+            Index++;
+        }
+        if (CoveredTo < EndVcn)
+            NeedWork = TRUE; /* tail gap / empty MCB in the write window */
+    }
+    /* More than 64 runs total: do not truncate the MCB. */
+    {
+        LONGLONG ExtraV;
+        LONGLONG ExtraL;
+        LONGLONG ExtraC;
+
+        if (FsRtlGetNextLargeMcbEntry(&Context->DataRunsMCB, Index, &ExtraV, &ExtraL, &ExtraC))
+            return STATUS_NOT_IMPLEMENTED;
+    }
+    if (!NeedWork)
+        return STATUS_SUCCESS;
+
+    /* Hole/gap without NTFS_ATTR_SPARSE: format $Bad is the intentional
+     * named hole stream — do not allocate the volume. Unnamed gaps are a
+     * writer bug (size past MCB); allocate to satisfy Mm paging writes so
+     * shutdown does not spin (suite hang after UsnJrnl). */
+    if ((Context->pRecord->Flags & NTFS_ATTR_SPARSE) == 0)
+    {
+        if (Context->pRecord->NameLength != 0)
+        {
+            DPRINT1("Write into named hole without ATTR sparse MFT=%I64u nameLen=%u\n",
+                    Context->FileMFTIndex, Context->pRecord->NameLength);
+            return STATUS_ACCESS_DENIED;
+        }
+        DPRINT1("Filling unnamed gap without ATTR sparse MFT=%I64u\n",
+                Context->FileMFTIndex);
+    }
+
+    FsRtlTruncateLargeMcb(&Context->DataRunsMCB, 0);
+
+    /* Allocate real clusters for [From, To). */
+#define NTFS_MATERIALIZE_ALLOC_RANGE(From, To)                                \
+    do {                                                                      \
+        ULONGLONG _At = (From);                                               \
+        ULONGLONG _Rem = (To) - (From);                                       \
+        while (_Rem > 0)                                                      \
+        {                                                                     \
+            Status = NtfsAllocateClusters(Vcb,                                \
+                                          0,                                  \
+                                          (ULONG)min(_Rem, 0xFFFFFFFFULL),    \
+                                          &NextCluster,                       \
+                                          &Assigned,                          \
+                                          FALSE);                             \
+            if (!NT_SUCCESS(Status))                                          \
+                return Status;                                                \
+            if (!FsRtlAddLargeMcbEntry(&Context->DataRunsMCB,                 \
+                                       (LONGLONG)_At,                         \
+                                       (LONGLONG)NextCluster,                 \
+                                       (LONGLONG)Assigned))                   \
+                return STATUS_UNSUCCESSFUL;                                   \
+            _At += Assigned;                                                  \
+            _Rem -= Assigned;                                                 \
+            AddedClusters += Assigned;                                        \
+        }                                                                     \
+    } while (0)
+
+    if (Saved == 0)
+    {
+        NTFS_MATERIALIZE_ALLOC_RANGE(StartVcn, EndVcn);
+    }
+    else
+    {
+        ULONGLONG Cursor = StartVcn;
+
+        for (Index = 0; Index < Saved; Index++)
+        {
+            ULONGLONG RunStart = (ULONGLONG)SavedV[Index];
+            ULONGLONG RunCount = (ULONGLONG)SavedC[Index];
+            ULONGLONG RunEnd = RunStart + RunCount;
+            LONGLONG RunLbn = SavedL[Index];
+
+            if (RunEnd <= StartVcn || RunStart >= EndVcn)
+            {
+                if (!FsRtlAddLargeMcbEntry(&Context->DataRunsMCB,
+                                           SavedV[Index],
+                                           SavedL[Index],
+                                           SavedC[Index]))
+                    return STATUS_UNSUCCESSFUL;
+                continue;
+            }
+
+            if (RunStart > Cursor && Cursor < EndVcn)
+                NTFS_MATERIALIZE_ALLOC_RANGE(Cursor, min(RunStart, EndVcn));
+
+            if (RunLbn != -1)
+            {
+                if (!FsRtlAddLargeMcbEntry(&Context->DataRunsMCB,
+                                           SavedV[Index],
+                                           SavedL[Index],
+                                           SavedC[Index]))
+                    return STATUS_UNSUCCESSFUL;
+            }
+            else
+            {
+                if (RunStart < StartVcn)
+                {
+                    if (!FsRtlAddLargeMcbEntry(&Context->DataRunsMCB,
+                                               SavedV[Index],
+                                               -1,
+                                               (LONGLONG)(StartVcn - RunStart)))
+                        return STATUS_UNSUCCESSFUL;
+                }
+
+                {
+                    ULONGLONG HoleStart = max(RunStart, StartVcn);
+                    ULONGLONG HoleEnd = min(RunEnd, EndVcn);
+
+                    if (HoleEnd > HoleStart)
+                        NTFS_MATERIALIZE_ALLOC_RANGE(HoleStart, HoleEnd);
+                }
+
+                if (RunEnd > EndVcn)
+                {
+                    if (!FsRtlAddLargeMcbEntry(&Context->DataRunsMCB,
+                                               (LONGLONG)EndVcn,
+                                               -1,
+                                               (LONGLONG)(RunEnd - EndVcn)))
+                        return STATUS_UNSUCCESSFUL;
+                }
+            }
+
+            if (RunEnd > Cursor)
+                Cursor = RunEnd;
+        }
+
+        if (Cursor < EndVcn)
+            NTFS_MATERIALIZE_ALLOC_RANGE(Cursor, EndVcn);
+    }
+#undef NTFS_MATERIALIZE_ALLOC_RANGE
+
+    if (Context->pRecord->Flags & (NTFS_ATTR_COMPRESSION_MASK | NTFS_ATTR_SPARSE))
+        Context->pRecord->NonResident.CompressedSize = 0;
+    UNREFERENCED_PARAMETER(AddedClusters);
+
+    /* Grow HighestVCN when we allocated into a previously empty/short MCB. */
+    {
+        LONGLONG LastV = 0;
+        LONGLONG LastL = 0;
+        LONGLONG LastC = 0;
+        ULONG Walk = 0;
+        ULONGLONG Span = 0;
+
+        while (FsRtlGetNextLargeMcbEntry(&Context->DataRunsMCB, Walk, &LastV, &LastL, &LastC))
+        {
+            Span = (ULONGLONG)LastV + (ULONGLONG)LastC;
+            Walk++;
+        }
+        if (Walk != 0 && Span > 0)
+            Context->pRecord->NonResident.HighestVCN = Span - 1;
+    }
+
+    {
+        PUCHAR Pairs = (PUCHAR)Context->pRecord + Context->pRecord->NonResident.MappingPairsOffset;
+        ULONG Room = Context->pRecord->Length - Context->pRecord->NonResident.MappingPairsOffset;
+        ULONG Used = 0;
+        ULONGLONG VcnCount = Context->pRecord->NonResident.HighestVCN + 1;
+
+        if (Context->pRecord->NonResident.HighestVCN == (ULONGLONG)-1)
+            VcnCount = 0;
+
+        Status = ConvertLargeMCBToDataRuns(&Context->DataRunsMCB,
+                                           VcnCount,
+                                           Pairs,
+                                           Room,
+                                           &Used);
+        if (!NT_SUCCESS(Status))
+            return Status;
+    }
+
+    {
+        PFILE_RECORD_HEADER Target = FileRecord;
+        BOOLEAN LocalRecord = FALSE;
+        PNTFS_ATTR_CONTEXT Found = NULL;
+        ULONG AttrOffset = 0;
+
+        if (Target == NULL)
+        {
+            Target = ExAllocateFromNPagedLookasideList(&Vcb->FileRecLookasideList);
+            if (Target == NULL)
+                return STATUS_INSUFFICIENT_RESOURCES;
+            LocalRecord = TRUE;
+            Status = ReadFileRecord(Vcb, Context->FileMFTIndex, Target);
+            if (!NT_SUCCESS(Status))
+            {
+                ExFreeToNPagedLookasideList(&Vcb->FileRecLookasideList, Target);
+                return Status;
+            }
+        }
+
+        /* Rev.2: AllocatedSize from non-hole runs; drop ATTR sparse if no holes. */
+        NtfsApplySparseAllocatedRules(Vcb, Context, NULL, Target);
+
+        Status = FindAttribute(Vcb,
+                               Target,
+                               Context->pRecord->Type,
+                               (PCWSTR)((ULONG_PTR)Context->pRecord + Context->pRecord->NameOffset),
+                               Context->pRecord->NameLength,
+                               &Found,
+                               &AttrOffset);
+        if (NT_SUCCESS(Status))
+        {
+            PNTFS_ATTR_RECORD Slot = (PNTFS_ATTR_RECORD)((ULONG_PTR)Target + AttrOffset);
+
+            if (Slot->Length >= Context->pRecord->Length)
+            {
+                RtlCopyMemory(Slot, Context->pRecord, Context->pRecord->Length);
+                Status = UpdateFileRecord(Vcb, Context->FileMFTIndex, Target);
+            }
+            else
+                Status = STATUS_BUFFER_TOO_SMALL;
+            ReleaseAttributeContext(Found);
+        }
+
+        if (LocalRecord)
+            ExFreeToNPagedLookasideList(&Vcb->FileRecLookasideList, Target);
+        return Status;
+    }
 }
 
 /**
@@ -1828,8 +2125,22 @@ WriteAttributeFromIrp(PDEVICE_EXTENSION Vcb,
         return Status;
     }
 
-    // This is a non-resident attribute: map the requested range onto the
-    // volume, then issue every run it spans in a single parallel batch.
+    // This is a non-resident attribute: fill sparse holes that the write
+    // covers (NTFS_SPARSE_LBO / Lbn -1), map the range, then issue one batch.
+    // Always consult materialize first so hole-without-sparse ($Bad) returns
+    // ACCESS_DENIED instead of IssueIoRuns STATUS_NOT_IMPLEMENTED (Mm spin).
+
+    Status = NtfsMaterializeSparseRange(Vcb, Context, FileRecord, Offset, Length);
+    if (!NT_SUCCESS(Status))
+    {
+        DPRINT1("Materialize failed MFT=%I64u nameLen=%u flags=%x Status=%lx\n",
+                Context->FileMFTIndex,
+                Context->pRecord->NameLength,
+                Context->pRecord->Flags,
+                Status);
+        *RealLengthWritten = 0;
+        return Status;
+    }
 
     Status = NtfsMapAttributeRuns(Vcb, Context, Offset, Length, &RunList, &MappedLength);
 
@@ -1845,8 +2156,6 @@ WriteAttributeFromIrp(PDEVICE_EXTENSION Vcb,
 
     if (NT_SUCCESS(Status))
     {
-        // Writing into a hole would mean allocating clusters, which we cannot
-        // do here; NtfsPerformIrpIoRuns() rejects sparse runs on IRP_MJ_WRITE.
         Status = NtfsPerformIrpIoRuns(Vcb->StorageDevice,
                                       IRP_MJ_WRITE,
                                       Vcb->NtfsInfo.BytesPerSector,
@@ -3692,11 +4001,15 @@ FreeMftEntry(PDEVICE_EXTENSION DeviceExt,
 * @return
 * STATUS_SUCCESS on success.
 *
-* @remarks
-* Callers must have established that the file may be deleted, in particular that a directory
-* is empty. Clusters are released before the names, so a failure part-way through leaves a
-* reachable file rather than orphaned allocation.
-*/
+ * @remarks
+ * Callers must have established that the file may be deleted, in particular that a directory
+ * is empty. Names leave the index first so a failure still leaves a reachable file. A name
+ * already absent from the index (STATUS_OBJECT_NAME_NOT_FOUND) does not abort retirement:
+ * host-mount rule 7 forbids leaving an in-use FRS that still claims the parent/$FILE_NAME
+ * after $I30 points elsewhere. FRH_IN_USE is cleared on the in-memory record before
+ * FreeClusters rewrites it, so a bitmap free cannot resurrect an in-use orphan if
+ * FreeMftEntry later fails. Empty non-resident streams (HighestVCN == -1) are skipped.
+ */
 NTSTATUS
 NtfsDeleteFileRecord(PDEVICE_EXTENSION DeviceExt,
                      ULONGLONG MftIndex,
@@ -3722,10 +4035,9 @@ NtfsDeleteFileRecord(PDEVICE_EXTENSION DeviceExt,
         return Status;
     }
 
-    // Remove every name this file has from its parent's index before anything is freed, so a
-    // failure leaves the file whole instead of an entry pointing at a released record. A file
-    // with both a long name and an 8.3 name is indexed twice, and both parents are named by
-    // the attributes themselves.
+    /* Remove every name from its parent's index before clusters or the MFT bit
+     * are released. A file with both a long name and an 8.3 name is indexed
+     * twice; both parents come from the attributes themselves. */
     Attribute = (PNTFS_ATTR_RECORD)((ULONG_PTR)FileRecord + FileRecord->AttributeOffset);
     AttributeOffset = FileRecord->AttributeOffset;
 
@@ -3741,7 +4053,12 @@ NtfsDeleteFileRecord(PDEVICE_EXTENSION DeviceExt,
                                                      FileName->DirectoryFileReferenceNumber & NTFS_MFT_MASK,
                                                      FileName,
                                                      CaseSensitive);
-            if (!NT_SUCCESS(Status))
+            if (Status == STATUS_OBJECT_NAME_NOT_FOUND)
+            {
+                /* Already unlinked (partial prior delete / replace). Keep retiring. */
+                Status = STATUS_SUCCESS;
+            }
+            else if (!NT_SUCCESS(Status))
             {
                 DPRINT1("ERROR: Failed to remove '%.*S' from directory %I64u!\n",
                         FileName->NameLength,
@@ -3759,14 +4076,19 @@ NtfsDeleteFileRecord(PDEVICE_EXTENSION DeviceExt,
         Attribute = (PNTFS_ATTR_RECORD)((ULONG_PTR)FileRecord + AttributeOffset);
     }
 
-    // Release the clusters held by every non-resident attribute
+    /* FreeClusters may UpdateFileRecord with this buffer. Clear in-use first so
+     * that write cannot leave an in-use FRS whose data LCNs are already free. */
+    FileRecord->Flags &= ~FRH_IN_USE;
+
     Attribute = (PNTFS_ATTR_RECORD)((ULONG_PTR)FileRecord + FileRecord->AttributeOffset);
     AttributeOffset = FileRecord->AttributeOffset;
 
     while (AttributeOffset < DeviceExt->NtfsInfo.BytesPerFileRecord &&
            Attribute->Type != AttributeEnd)
     {
-        if (Attribute->IsNonResident)
+        if (Attribute->IsNonResident &&
+            Attribute->NonResident.HighestVCN != (ULONGLONG)-1 &&
+            Attribute->NonResident.HighestVCN >= Attribute->NonResident.LowestVCN)
         {
             Status = FindAttribute(DeviceExt,
                                    FileRecord,
@@ -3777,7 +4099,8 @@ NtfsDeleteFileRecord(PDEVICE_EXTENSION DeviceExt,
                                    NULL);
             if (NT_SUCCESS(Status))
             {
-                ULONGLONG ClusterCount = Attribute->NonResident.HighestVCN - Attribute->NonResident.LowestVCN + 1;
+                ULONGLONG ClusterCount = Attribute->NonResident.HighestVCN -
+                                        Attribute->NonResident.LowestVCN + 1;
 
                 Status = FreeClusters(DeviceExt, AttributeContext, AttributeOffset, FileRecord, (ULONG)ClusterCount);
                 if (!NT_SUCCESS(Status))

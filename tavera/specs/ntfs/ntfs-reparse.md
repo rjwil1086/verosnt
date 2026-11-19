@@ -41,3 +41,15 @@ In-tree:
 ## Non-goals
 
 - Implementing every reparse tag vendor under the sun; mount points and documented tags used by the suite come first.
+
+### Resident attribute read / index-root insert bounds **(Rev.1)**
+
+**(Rev.1)** In-tree `NtfsGetReparsePoint` and `NtfsGetReparseTag` (`drivers/filesystems/ntfs/ntfs3x.c`) copy using `Resident.ValueOffset` / `Resident.ValueLength` without requiring the attribute to be resident and the value range to sit inside the attribute record.
+
+**(Rev.1)** Acceptance (**NTFS-ATTR-001**): require resident + in-record value bounds (types already in this tree’s headers) before copy.
+
+**(Rev.1)** In-tree `NtfsInsertRootEntry` trusts disk index-root sizes then `RtlMoveMemory`s entries. Acceptance (**NTFS-IDX-001**): clamp header/`TotalSizeOfEntries` / entry chain to the resident value length and file-record bounds already typed in this tree before moving memory. No new Windows field names.
+
+## Revision log
+
+- **Rev.1** (2026-11-18): resident reparse read bounds (**NTFS-ATTR-001**); index-root insert clamp (**NTFS-IDX-001**).

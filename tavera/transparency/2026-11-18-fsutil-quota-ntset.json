@@ -1,0 +1,12 @@
+{
+  "spdx": "GPL-2.0-or-later",
+  "question": "Why did suite QuotaAccounting fail on fsutil modify after NTFS-QUOTA-005, and how should modify set threshold/limit without weakening the local FSCTL privilege gate?",
+  "allowedInputs": [
+    "tavera/specs/ntfs/ntfs-quota-on-disk.md Rev.4 — NtSetQuotaInformationFile path; FSCTL_SET_QUOTA returned Win32 error 1 on Windows",
+    "https://learn.microsoft.com/en-us/windows-hardware/drivers/ddi/ntifs/nf-ntifs-ntsetquotainformationfile",
+    "https://learn.microsoft.com/en-us/windows/win32/secauthz/privilege-constants (SeIncreaseQuotaPrivilege)",
+    "tavera/specs/ntfs/ntfs-quota-on-disk.md Rev.9 NTFS-QUOTA-005 — local CTL 0x900 keeps SeManageVolumePrivilege; modify uses IRP_MJ_SET_QUOTA",
+    "tavera/test-suites/ntfs/agent/ntfs_agent.c QuotaDelete NtSet + privilege 5",
+    "tavera/specs/ntfs/open-items.md NTFS-QUOTA-005"
+  ]
+}

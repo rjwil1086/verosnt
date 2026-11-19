@@ -23,6 +23,12 @@
  *          Reported: Browser Console Move overwrite sessionCheckpoints.json.tmp
  *          → sessionCheckpoints.json (NS_ERROR_FILE_ALREADY_EXISTS) while .tmp
  *          write succeeded.
+ *          Reparse tag: tavera/specs/ntfs/ntfs-reparse.md; NtfsGetReparseTag in
+ *          drivers/filesystems/ntfs/ntfs3x.c (in-tree $REPARSE_POINT read).
+ *          Replace target retirement (host-mount rule 7):
+ *          tavera/specs/ntfs/ntfs-host-mount-corruption.md Rev.2;
+ *          output/ntfs/probe-v12/mount-deep-report.txt (NTFS-MOUNT-DEEP-REPORT);
+ *          NtfsDeleteFileRecord in drivers/filesystems/ntfs/mft.c.
  */
 
 /* INCLUDES *****************************************************************/
@@ -141,8 +147,11 @@ NtfsGetAttributeTagInformation(PNTFS_FCB Fcb,
 
     NtfsFileFlagsToAttributes(FileName->FileAttributes, &AttributeTagInfo->FileAttributes);
 
-    /* FIXME: Read the tag from $REPARSE_POINT for a reparse point */
-    AttributeTagInfo->ReparseTag = 0;
+    /* Tag from the resident $REPARSE_POINT attribute (ntfs-reparse.md / NtfsGetReparseTag). */
+    if (FileName->FileAttributes & NTFS_FILE_TYPE_REPARSE)
+        AttributeTagInfo->ReparseTag = NtfsGetReparseTag(Fcb->Vcb, Fcb->MFTIndex);
+    else
+        AttributeTagInfo->ReparseTag = 0;
 
     *BufferLength -= sizeof(FILE_ATTRIBUTE_TAG_INFORMATION);
 

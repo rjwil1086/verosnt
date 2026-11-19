@@ -25,24 +25,26 @@ $Clang = Join-Path $Buildenv 'tools\clang\bin\clang.exe'
 $Out = Join-Path $SourceRoot 'output\ntfs\probe-v1'
 New-Item -ItemType Directory -Force -Path $Out | Out-Null
 
+function Find-MingwGcc {
+    $winget = Join-Path $env:LOCALAPPDATA 'Microsoft\WinGet\Packages'
+    $found = Get-ChildItem -Path $winget -Filter 'x86_64-w64-mingw32-gcc.exe' -Recurse -ErrorAction SilentlyContinue |
+        Select-Object -First 1
+    if ($found) { return $found.FullName }
+    $rosbe = Join-Path $Buildenv 'tools\rosbe\i386\bin\gcc.exe'
+    if (Test-Path $rosbe) { return $rosbe }
+    $pathGcc = Get-Command gcc -ErrorAction SilentlyContinue
+    if ($pathGcc) { return $pathGcc.Source }
+    return $null
+}
+
 function Build-Guest {
-    $kitRoot = Join-Path ${env:ProgramFiles(x86)} 'Windows Kits\10'
-    $ver = Get-ChildItem (Join-Path $kitRoot 'Include') | Sort-Object Name -Descending | Select-Object -First 1
-    if (-not $ver) { throw 'Windows SDK was not found' }
+    # Prefer MinGW. The Windows Kits tree is not an implementation input for this
+    # probe and is often missing on the build host.
     $exe = Join-Path $Out 'ntfs_raw_probe.exe'
     $src = Join-Path $Probe 'guest\ntfs_raw_probe.c'
-    $args = @(
-        '-target', 'x86_64-pc-windows-msvc', '-std=c11', '-O1', '-Wall',
-        '-Wno-unused-function', '-Wno-unused-variable', '-fno-builtin',
-        '-fno-stack-protector', '-mno-stack-arg-probe', '-nostdlib', '-fuse-ld=lld',
-        '-Wl,-entry:MainCRTStartup', '-Wl,-subsystem:console',
-        '-isystem', (Join-Path $kitRoot "Include\$($ver.Name)\ucrt"),
-        '-isystem', (Join-Path $kitRoot "Include\$($ver.Name)\shared"),
-        '-isystem', (Join-Path $kitRoot "Include\$($ver.Name)\um"),
-        '-L', (Join-Path $kitRoot "Lib\$($ver.Name)\um\x64"),
-        '-lkernel32', '-ladvapi32', $src, '-o', $exe
-    )
-    & $Clang @args
+    $gcc = Find-MingwGcc
+    if (-not $gcc) { throw 'MinGW gcc was not found (x86_64-w64-mingw32-gcc)' }
+    & $gcc -std=c11 -O1 -Wall -mconsole $src -o $exe -lkernel32 -ladvapi32
     if ($LASTEXITCODE -ne 0) { throw 'ntfs_raw_probe failed to build' }
     return $exe
 }
@@ -64,7 +66,8 @@ function Start-WindowsRawProbe {
 
     $img = Join-Path (Split-Path $Qemu -Parent) 'qemu-img.exe'
     if (Test-Path $Disk) { Remove-Item -Force $Disk }
-    & $img create -f raw $Disk 256M | Out-Null
+    # Same size as unittests/ntfs (agent PickDisk accepts 48-96 MiB).
+    & $img create -f raw $Disk 64M | Out-Null
     if ($LASTEXITCODE -ne 0) { throw 'qemu-img create failed' }
 
     $sys = Join-Path $Out 'windows-system.vhdx'
@@ -93,13 +96,16 @@ function Start-WindowsRawProbe {
     $code = Join-Path $Buildenv 'tools\qemu\share\edk2-x86_64-code.fd'
     $vars = Join-Path $Out 'win-ovmf-vars.fd'
     Copy-Item (Join-Path $Buildenv 'virtual-machines\win10-22h2\ovmf-vars.fd') $vars -Force
-    $shareFwd = ($Share -replace '\\', '/')
     $diskFwd = ($Disk -replace '\\', '/')
     $sysFwd = ($sys -replace '\\', '/')
     $codeFwd = ($code -replace '\\', '/')
     $varsFwd = ($vars -replace '\\', '/')
     $err = Join-Path $Out 'windows-qemu.err'
+    $serial = Join-Path $Out 'guest-serial.log'
+    $serialFwd = ($serial -replace '\\', '/')
+    if (Test-Path $serial) { Remove-Item -Force $serial }
     # Capture boots use TCG per windows-capture.mdc (not WHPX).
+    # Probe exe is already on the system VHDX via RunOnce; skip fat:rw (vvfat aborted).
     $argList = @(
         '-accel', 'tcg',
         '-machine', 'q35',
@@ -109,6 +115,7 @@ function Start-WindowsRawProbe {
         '-display', 'gtk',
         '-vga', 'qxl',
         '-no-reboot',
+        '-serial', "file:$serialFwd",
         '-device', 'qemu-xhci',
         '-device', 'usb-tablet',
         '-drive', "if=pflash,format=raw,readonly=on,file=$codeFwd",
@@ -116,28 +123,25 @@ function Start-WindowsRawProbe {
         '-drive', "file=$sysFwd,format=vhdx,if=none,id=hd,snapshot=on",
         '-device', 'virtio-blk-pci,drive=hd,bootindex=1',
         '-drive', "file=$diskFwd,format=raw,if=none,id=blank",
-        '-device', 'virtio-blk-pci,drive=blank',
-        '-drive', "file=fat:rw:${shareFwd},format=raw,if=none,id=share",
-        '-device', 'virtio-blk-pci,drive=share'
+        '-device', 'virtio-blk-pci,drive=blank'
     )
     Write-Host 'Booting Windows 10 22H2 (TCG). Logon runs C:\temp\ntfs_raw_probe.exe.'
-    Write-Host 'Window: QEMU. Ready when the guest reaches the desktop / RunOnce probe.'
+    Write-Host "Window: QEMU. Probe status on COM1 -> $serial"
     if (Test-Path $err) { Remove-Item $err -Force }
     $proc = Start-Process -FilePath $Qemu -ArgumentList $argList -PassThru -RedirectStandardError $err
     $deadline = (Get-Date).AddSeconds($TimeoutSec)
-    $result = Join-Path $Share 'result.log'
     while ((Get-Date) -lt $deadline) {
-        if ((Test-Path $result) -and (Select-String -Path $result -Pattern 'NTFS-RAW-PROBE-DONE' -Quiet)) { break }
-        if ($proc.HasExited -and (Test-Path $result)) { break }
+        if ((Test-Path $serial) -and (Select-String -Path $serial -Pattern 'NTFS-RAW-PROBE-DONE' -Quiet)) { break }
+        if ($proc.HasExited) { break }
         Start-Sleep -Seconds 2
     }
     if (-not $proc.HasExited) {
         Start-Sleep -Seconds 5
         Stop-Process -Id $proc.Id -Force -ErrorAction SilentlyContinue
     }
-    if (-not (Test-Path $result)) { throw 'Windows did not write result.log' }
-    if (-not (Select-String -Path $result -Pattern 'NTFS-RAW-PROBE-DONE\tok' -Quiet)) {
-        throw "probe did not finish ok; see $result"
+    if (-not (Test-Path $serial)) { throw 'Windows did not write guest-serial.log' }
+    if (-not (Select-String -Path $serial -Pattern 'NTFS-RAW-PROBE-DONE\tok' -Quiet)) {
+        throw "probe did not finish ok; see $serial"
     }
 }
 

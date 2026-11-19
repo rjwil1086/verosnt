@@ -1,0 +1,13 @@
+{
+  "spdx": "GPL-2.0-or-later",
+  "question": "How should writers stop leaving $UsnJrnl:$J with NTFS_ATTR_SPARSE and zero hole runs, keep AllocatedSize equal to non-hole run sum, and keep STANDARD_INFORMATION sparse bit consistent?",
+  "allowedInputs": [
+    "tavera/specs/ntfs/ntfs-host-mount-corruption.md Rev.2 rules 4–6; probe-v12 FAIL J_sparse_flag_without_holes / SI mismatch / non-hole alloc",
+    "Reported: probe-v12 mount-deep-report NTFS-MOUNT-DEEP-REPORT … END",
+    "tavera/specs/ntfs/ntfs-usn.md Rev.3",
+    "tavera/specs/ntfs/ntfs-sparse.md",
+    "https://learn.microsoft.com/en-us/openspecs/windows_protocols/ms-fsa/b5b3dd4c-b585-49d7-960e-fbfbf7a85af0",
+    "drivers/filesystems/ntfs/ntfs.h NTFS_ATTR_SPARSE / NTFS_FILE_TYPE_SPARSE",
+    "tavera/specs/ntfs/open-items.md NTFS-MOUNT-001"
+  ]
+}

@@ -1,0 +1,12 @@
+{
+  "spdx": "GPL-2.0-or-later",
+  "question": "Which capture-cited $Q offsets and in-tree sparse/reparse paths may the implementer wire without inventing EFS or $LogFile field layouts?",
+  "allowedInputs": [
+    "tavera/specs/ntfs/ntfs-quota-on-disk.md citing probe-v2 LE int64 @316 threshold and @324 limit; Reported: probe-v2 diff-report NTFS-DIFF-REPORT … END; open item NTFS-QUOTA-002",
+    "https://learn.microsoft.com/en-us/openspecs/windows_protocols/ms-fscc/acdc0738-ba3c-47a1-b11a-72e22d831c57 (MS-FSCC FILE_QUOTA_INFORMATION)",
+    "tavera/specs/ntfs/ntfs-sparse.md and in-tree NTFS_SPARSE_LBO / NtfsSetZeroData / NtfsAllocateClusters in drivers/filesystems/ntfs/",
+    "tavera/specs/ntfs/ntfs-reparse.md and NtfsGetReparseTag in drivers/filesystems/ntfs/ntfs3x.c",
+    "tavera/specs/ntfs/open-items.md: NTFS-EFS-002 and NTFS-LOG-001 remain open (do not implement NtfsSetEncryption or real NtfsReplayLog)",
+    "Reported: implementer session consuming tavera/specs/ntfs/ handoff; prior probe/spec session produced probe-v1/probe-v2 captures"
+  ]
+}

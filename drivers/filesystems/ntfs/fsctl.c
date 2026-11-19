@@ -10,6 +10,23 @@
  *              Valentin Verkhovsky
  *              Pierre Schweitzer
  *              Ryan Wilson <ryan@taveraos.com>
+ *
+ * Sources: FSCTL_GET_NTFS_VOLUME_DATA extended tail —
+ *          https://learn.microsoft.com/en-us/windows/win32/api/winioctl/ns-winioctl-ntfs_extended_volume_data
+ *          in-tree NTFS_EXTENDED_VOLUME_DATA (winioctl.h / iotypes.h);
+ *          tavera/specs/ntfs/ntfs-volume-system-files.md; suite ProbeVersion
+ *          in tavera/test-suites/ntfs/agent/ntfs_agent.c (NTFS-VER-001).
+ *          FSCTL_MARK_VOLUME_DIRTY / FSCTL_IS_VOLUME_DIRTY (NTFS-LOG-002):
+ *          https://learn.microsoft.com/en-us/windows-hardware/drivers/ifs/fsctl-mark-volume-dirty
+ *          https://learn.microsoft.com/en-us/windows-hardware/drivers/ifs/fsctl-is-volume-dirty
+ *          https://learn.microsoft.com/en-us/windows-server/administration/windows-commands/fsutil-dirty
+ *          tavera/specs/ntfs/ntfs-log-replay.md Rev.3–4.
+ *          Dirty-mount restart slots (NTFS-LOG-003 / GitHub #2):
+ *          tavera/specs/ntfs/ntfs-log-restart-mount.md; probe-v11
+ *          output/ntfs/probe-v11/restart-report.txt (NTFS-LOG-RESTART-REPORT).
+ *          Set-quota privilege / local CTL (NTFS-QUOTA-005 / GitHub #8):
+ *          https://learn.microsoft.com/en-us/windows-hardware/drivers/ifs/privileges
+ *          tavera/specs/ntfs/ntfs-quota-on-disk.md Rev.9.
  */
 
 /* INCLUDES *****************************************************************/
@@ -22,10 +39,11 @@ C_ASSERT(sizeof(NTFS_EXTENDED_VOLUME_DATA) == 32);
 C_ASSERT(FIELD_OFFSET(NTFS_EXTENDED_VOLUME_DATA, MajorVersion) == 4);
 C_ASSERT(FIELD_OFFSET(NTFS_EXTENDED_VOLUME_DATA, BytesPerPhysicalSector) == 8);
 
-/* Function 32 with METHOD_BUFFERED and write access. The header's function 32
- * is FSCTL_ALLOW_EXTENDED_DASD_IO, which is METHOD_NEITHER, so the codes differ. */
+/* Local CTL — unused function 0x900 in this driver's space (not a Microsoft
+ * FSCTL number). Avoids colliding with FSCTL_ALLOW_EXTENDED_DASD_IO (fn 32).
+ * NTFS-QUOTA-005 / ntfs-quota-on-disk.md Rev.9. */
 #define FSCTL_SET_QUOTA \
-    CTL_CODE(FILE_DEVICE_FILE_SYSTEM, 32, METHOD_BUFFERED, FILE_WRITE_DATA)
+    CTL_CODE(FILE_DEVICE_FILE_SYSTEM, 0x900, METHOD_BUFFERED, FILE_ANY_ACCESS)
 
 #define NDEBUG
 #include <debug.h>
@@ -610,6 +628,9 @@ NtfsMountVolume(PDEVICE_OBJECT DeviceObject,
 
     Vcb->Identifier.Type = NTFS_TYPE_VCB;
     Vcb->Identifier.Size = sizeof(NTFS_TYPE_VCB);
+    /* MS-FSCC: threshold/limit -1 means none is set. */
+    Vcb->DefaultQuotaThreshold.QuadPart = -1LL;
+    Vcb->DefaultQuotaLimit.QuadPart = -1LL;
 
     Status = NtfsGetVolumeData(DeviceToMount,
                                Vcb);
@@ -703,7 +724,12 @@ NtfsMountVolume(PDEVICE_OBJECT DeviceObject,
     }
 
     if (Vcb->Flags & VCB_VOLUME_READ_ONLY)
-        NtfsReplayLog(Vcb);
+    {
+        /* NTFS-LOG-003: empty restart slots → clear dirty/RW; non-empty → stay RO.
+         * Never apply RCRD (ntfs-log-restart-mount.md). STATUS_SUCCESS means clear. */
+        if (NtfsReplayLog(Vcb) == STATUS_SUCCESS)
+            NtfsClearVolumeDirty(Vcb);
+    }
 
     KeInitializeSpinLock(&Vcb->FcbListLock);
 
@@ -781,10 +807,13 @@ GetNfsVolumeData(PDEVICE_EXTENSION DeviceExt,
     DataBuffer = (PNTFS_VOLUME_DATA_BUFFER)Irp->AssociatedIrp.SystemBuffer;
     Stack = IoGetCurrentIrpStackLocation(Irp);
 
+    /* METHOD_BUFFERED: payload is SystemBuffer. UserBuffer may be NULL. */
     if (Stack->Parameters.FileSystemControl.OutputBufferLength < sizeof(NTFS_VOLUME_DATA_BUFFER) ||
-        Irp->UserBuffer == NULL)
+        DataBuffer == NULL)
     {
-        DPRINT1("Invalid output! %d %p\n", Stack->Parameters.FileSystemControl.OutputBufferLength, Irp->UserBuffer);
+        DPRINT1("Invalid output! %lu %p\n",
+                Stack->Parameters.FileSystemControl.OutputBufferLength,
+                DataBuffer);
         return STATUS_INVALID_PARAMETER;
     }
 
@@ -819,21 +848,31 @@ GetNfsVolumeData(PDEVICE_EXTENSION DeviceExt,
 
     Irp->IoStatus.Information = sizeof(NTFS_VOLUME_DATA_BUFFER);
 
-    /* The extended tail is part of the system buffer. Completion copies that
-     * buffer back over the caller's, so writing the tail to UserBuffer is lost. */
-    if (Stack->Parameters.FileSystemControl.OutputBufferLength >=
-        sizeof(NTFS_VOLUME_DATA_BUFFER) + sizeof(NTFS_EXTENDED_VOLUME_DATA))
+    /* Extended tail sits in the same SystemBuffer (Learn NTFS_EXTENDED_VOLUME_DATA).
+     * Fill whatever fits after the base buffer: older winioctl.h callers only
+     * allocate the first 8 bytes (ByteCount + Major/Minor). */
+    if (Stack->Parameters.FileSystemControl.OutputBufferLength >
+        sizeof(NTFS_VOLUME_DATA_BUFFER))
     {
         PNTFS_EXTENDED_VOLUME_DATA ExtendedData;
+        ULONG Available;
+        ULONG ToWrite;
+        NTFS_EXTENDED_VOLUME_DATA LocalExtended;
+
+        Available = Stack->Parameters.FileSystemControl.OutputBufferLength -
+                    sizeof(NTFS_VOLUME_DATA_BUFFER);
+        ToWrite = min(Available, sizeof(NTFS_EXTENDED_VOLUME_DATA));
+
+        RtlZeroMemory(&LocalExtended, sizeof(LocalExtended));
+        LocalExtended.ByteCount = sizeof(NTFS_EXTENDED_VOLUME_DATA);
+        LocalExtended.MajorVersion = DeviceExt->NtfsInfo.MajorVersion;
+        LocalExtended.MinorVersion = DeviceExt->NtfsInfo.MinorVersion;
+        LocalExtended.BytesPerPhysicalSector = DeviceExt->NtfsInfo.BytesPerSector;
 
         ExtendedData = (PNTFS_EXTENDED_VOLUME_DATA)((PUCHAR)DataBuffer +
                                                     sizeof(NTFS_VOLUME_DATA_BUFFER));
-        RtlZeroMemory(ExtendedData, sizeof(NTFS_EXTENDED_VOLUME_DATA));
-        ExtendedData->ByteCount = sizeof(NTFS_EXTENDED_VOLUME_DATA);
-        ExtendedData->MajorVersion = DeviceExt->NtfsInfo.MajorVersion;
-        ExtendedData->MinorVersion = DeviceExt->NtfsInfo.MinorVersion;
-        ExtendedData->BytesPerPhysicalSector = DeviceExt->NtfsInfo.BytesPerSector;
-        Irp->IoStatus.Information += sizeof(NTFS_EXTENDED_VOLUME_DATA);
+        RtlCopyMemory(ExtendedData, &LocalExtended, ToWrite);
+        Irp->IoStatus.Information += ToWrite;
     }
 
     return STATUS_SUCCESS;
@@ -1213,6 +1252,29 @@ NtfsUserFsRequest(PDEVICE_OBJECT DeviceObject,
             Status = NtfsDismountVolume(DeviceExt, Irp);
             break;
 
+        case FSCTL_MARK_VOLUME_DIRTY:
+            Status = NtfsMarkVolumeDirty(DeviceExt);
+            break;
+
+        case FSCTL_IS_VOLUME_DIRTY:
+        {
+            PULONG Flags;
+
+            if (Stack->Parameters.FileSystemControl.OutputBufferLength < sizeof(ULONG) ||
+                Irp->AssociatedIrp.SystemBuffer == NULL)
+            {
+                Status = STATUS_INVALID_PARAMETER;
+                break;
+            }
+            Flags = (PULONG)Irp->AssociatedIrp.SystemBuffer;
+            *Flags = 0;
+            if (DeviceExt->NtfsInfo.Flags & NTFS_VOLUME_DIRTY)
+                *Flags |= VOLUME_IS_DIRTY;
+            Irp->IoStatus.Information = sizeof(ULONG);
+            Status = STATUS_SUCCESS;
+            break;
+        }
+
         case FSCTL_GET_NTFS_VOLUME_DATA:
             Status = GetNfsVolumeData(DeviceExt, Irp);
             break;
@@ -1277,6 +1339,13 @@ NtfsUserFsRequest(PDEVICE_OBJECT DeviceObject,
             break;
 
         case FSCTL_SET_QUOTA:
+            /* NTFS-QUOTA-005: SeManageVolumePrivilege before updating $Quota. */
+            if (!SeSinglePrivilegeCheck(RtlConvertLongToLuid(SE_MANAGE_VOLUME_PRIVILEGE),
+                                        Irp->RequestorMode))
+            {
+                Status = STATUS_PRIVILEGE_NOT_HELD;
+                break;
+            }
             Status = NtfsSetQuota(DeviceExt,
                                   Irp->AssociatedIrp.SystemBuffer,
                                   Stack->Parameters.FileSystemControl.InputBufferLength);
