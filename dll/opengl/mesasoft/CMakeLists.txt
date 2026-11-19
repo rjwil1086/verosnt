@@ -1,4 +1,4 @@
-???# Mesa 24.0.9 softpipe WGL ICD staged by Build-MesaSoft.ps1 into bin/.
+# Mesa 24.0.9 softpipe WGL ICD staged by Build-MesaSoft.ps1 into bin/.
 # Source: downloads/mesa/mesa-src (https://gitlab.freedesktop.org/mesa/mesa.git, MIT).
 
 set(_MESASOFT_BIN ${CMAKE_CURRENT_SOURCE_DIR}/bin)
