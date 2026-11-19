@@ -3,9 +3,9 @@
  * PROJECT:     ReactOS TCP/IP protocol driver
  * FILE:        include/icmp.h
  * PURPOSE:     Internet Control Message Protocol definitions
- * COPYRIGHT:   Copyright 2026 Ryan Wilson <ryan@verosnt.com>
+ * COPYRIGHT:   Copyright 2026 Ryan Wilson <ryan@taveraos.com>
  * PROGRAMMERS: Casper S. Hornstrup (chorns@users.sourceforge.net)
- *              Ryan Wilson <ryan@verosnt.com>
+ *              Ryan Wilson <ryan@taveraos.com>
  *
  * ICMPv6 type values and echo layout from RFC 4443 Sections 2.1 and 4.1-4.2
  * (https://www.rfc-editor.org/rfc/rfc4443). IPv6 next-header 58 from

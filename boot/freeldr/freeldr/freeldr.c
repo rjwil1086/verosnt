@@ -1,12 +1,12 @@
 /*
- * PROJECT:     VerOS NT Kernel
+ * PROJECT:     Tavera OS Kernel
  * LICENSE:     GNU General Public License, version 2 or later (GPL-2.0-or-later)
  * FILE:        boot/freeldr/freeldr/freeldr.c
  * PURPOSE:     FreeLoader entry point
  * COPYRIGHT:   Copyright 1998-2003 Brian Palmer <brianp@sginet.com>
- *              Copyright 2026 Ryan Wilson <ryan@verosnt.com>
+ *              Copyright 2026 Ryan Wilson <ryan@taveraos.com>
  * PROGRAMMERS: Brian Palmer
- *              Ryan Wilson <ryan@verosnt.com>
+ *              Ryan Wilson <ryan@taveraos.com>
  */
 
 /* INCLUDES *******************************************************************/

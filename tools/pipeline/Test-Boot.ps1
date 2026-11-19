@@ -1,9 +1,9 @@
-# PROJECT:     VerOS NT
+# PROJECT:     Tavera OS
 # LICENSE:     GNU General Public License, version 2 or later (GPL-2.0-or-later)
 # FILE:        tools/pipeline/Test-Boot.ps1
 # PURPOSE:     Boot the bootcd and wait for the desktop
-# COPYRIGHT:   Copyright 2026 Ryan Wilson <ryan@verosnt.com>
-# PROGRAMMERS: Ryan Wilson <ryan@verosnt.com>
+# COPYRIGHT:   Copyright 2026 Ryan Wilson <ryan@taveraos.com>
+# PROGRAMMERS: Ryan Wilson <ryan@taveraos.com>
 
 param(
     [string]$Iso = "",
@@ -54,7 +54,7 @@ $qemuLog = Join-Path $OutputDir "qemu-$stamp.log"
 $bios = Join-Path (Split-Path $Qemu -Parent) "share"
 $argLine = "-accel tcg -L `"$bios`" -m 8192 -smp 4 -cdrom `"$Iso`" -boot d -no-reboot -serial `"file:$serial`""
 if ($ShowWindow) {
-    $argLine += " -display gtk -name `"VerOS NT`""
+    $argLine += " -display gtk -name `"Tavera OS`""
 } else {
     $argLine += " -display none"
 }
@@ -114,7 +114,7 @@ if ($result -eq "hang") {
     exit 2
 }
 
-$installedDisk = Join-Path $BuildenvRoot "virtual-machines\veros-ntfs\disk.qcow2"
+$installedDisk = Join-Path $BuildenvRoot "virtual-machines\tavera-ntfs\disk.qcow2"
 if (-not (Test-Path $installedDisk)) {
     Write-Host "Installed disk was not found at $installedDisk"
     exit 0
@@ -125,7 +125,7 @@ $installedSerial = Join-Path $OutputDir "installed-$installedStamp.log"
 $installedQemuLog = Join-Path $OutputDir "qemu-installed-$installedStamp.log"
 $installedArgs = "-accel tcg -L `"$bios`" -m 8192 -smp 4 -drive `"file=$installedDisk,format=qcow2,if=ide,index=0,media=disk`" -boot c -no-reboot -serial `"file:$installedSerial`""
 if ($ShowWindow) {
-    $installedArgs += " -display gtk -name `"VerOS NT`""
+    $installedArgs += " -display gtk -name `"Tavera OS`""
 } else {
     $installedArgs += " -display none"
 }

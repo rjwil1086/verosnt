@@ -1,10 +1,10 @@
 /*
- * PROJECT:     VerOS NT Kernel
+ * PROJECT:     Tavera OS Kernel
  * LICENSE:     GNU General Public License, version 2 or later (GPL-2.0-or-later)
  * FILE:        drivers/network/ndis/src/check.rs
  * PURPOSE:     Run the measured NDIS calls when the driver loads
- * COPYRIGHT:   Copyright 2026 Ryan Wilson <ryan@verosnt.com>
- * PROGRAMMERS: Ryan Wilson <ryan@verosnt.com>
+ * COPYRIGHT:   Copyright 2026 Ryan Wilson <ryan@taveraos.com>
+ * PROGRAMMERS: Ryan Wilson <ryan@taveraos.com>
  */
 
 /*
@@ -22,7 +22,7 @@
  * Capture 2026-11-15T161622Z: with offset 0x88 empty, the list arrives
  * at offset 0x90. Argument 0 was null.
  * differential-tests/ndis-discovery/METHOD.md records the registration
- * headers and that this check is the VerOS result for those paths.
+ * headers and that this check is the Tavera OS result for those paths.
  * output/ndis-discovery/windows.log (DIFF END OK) accepts a protocol of
  * type 0x95, revision 2, size 0x80, and calls offsets 0x20 and 0x48.
  * A version other than bytes 6 and 84 returns 0xC0010004. A non-zero

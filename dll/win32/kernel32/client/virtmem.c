@@ -4,8 +4,8 @@
  * FILE:            dll/win32/kernel32/client/virtmem.c
  * PURPOSE:         Handles virtual memory APIs
  * PROGRAMMERS:     Alex Ionescu (alex.ionescu@reactos.org)
- *                  Ryan Wilson <ryan@verosnt.com>
- * COPYRIGHT:       Copyright 2026 Ryan Wilson <ryan@verosnt.com>
+ *                  Ryan Wilson <ryan@taveraos.com>
+ * COPYRIGHT:       Copyright 2026 Ryan Wilson <ryan@taveraos.com>
  */
 
 /* INCLUDES *******************************************************************/

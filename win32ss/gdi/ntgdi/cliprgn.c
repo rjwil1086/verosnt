@@ -1,12 +1,12 @@
 /*
- * PROJECT:     VerOS NT Subsystem
+ * PROJECT:     Tavera OS Subsystem
  * LICENSE:     GNU General Public License, version 2 or later (GPL-2.0-or-later)
  * FILE:        win32ss/gdi/ntgdi/cliprgn.c
  * PURPOSE:     Clip region functions
  * COPYRIGHT:   Copyright ReactOS Team
- *              Copyright 2026 Ryan Wilson <ryan@verosnt.com>
+ *              Copyright 2026 Ryan Wilson <ryan@taveraos.com>
  * PROGRAMMERS: Unknown
- *              Ryan Wilson <ryan@verosnt.com>
+ *              Ryan Wilson <ryan@taveraos.com>
  *
  * Empty GetClipBox fallback for window DCs: guest
  * output/ntdll-apps/firefox-clip-guest-log/firefox-stdout.txt

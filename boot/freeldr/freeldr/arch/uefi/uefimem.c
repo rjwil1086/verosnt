@@ -1,12 +1,12 @@
 /*
- * PROJECT:     VerOS NT Kernel
+ * PROJECT:     Tavera OS Kernel
  * LICENSE:     GNU General Public License, version 2 or later (GPL-2.0-or-later)
  * FILE:        boot/freeldr/freeldr/arch/uefi/uefimem.c
  * PURPOSE:     Memory Management Functions
  * COPYRIGHT:   Copyright 2022 Justin Miller <justinmiller100@gmail.com>
- *              Copyright 2026 Ryan Wilson <ryan@verosnt.com>
+ *              Copyright 2026 Ryan Wilson <ryan@taveraos.com>
  * PROGRAMMERS: Justin Miller
- *              Ryan Wilson <ryan@verosnt.com>
+ *              Ryan Wilson <ryan@taveraos.com>
  */
 
 /* INCLUDES ******************************************************************/

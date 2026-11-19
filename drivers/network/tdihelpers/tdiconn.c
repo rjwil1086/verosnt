@@ -1,11 +1,11 @@
 /*
  * COPYRIGHT:        See COPYING in the top level directory
- *                   Copyright 2026 Ryan Wilson <ryan@verosnt.com>
+ *                   Copyright 2026 Ryan Wilson <ryan@taveraos.com>
  * PROJECT:          ReactOS kernel
  * FILE:             drivers/net/tdihelpers/tdiconn.c
  * PURPOSE:          Ancillary functions driver
  * PROGRAMMER:       Art Yerkes (ayerkes@speakeasy.net)
- *                   Ryan Wilson <ryan@verosnt.com>
+ *                   Ryan Wilson <ryan@taveraos.com>
  * UPDATE HISTORY:
  * 20040708 Created
  * 20251021 Moved to tdihelpers since it is used by 2 drivers (AFD, NETIO) now

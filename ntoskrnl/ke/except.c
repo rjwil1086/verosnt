@@ -1,13 +1,13 @@
 /*
- * PROJECT:     VerOS NT Kernel
+ * PROJECT:     Tavera OS Kernel
  * LICENSE:     GNU General Public License, version 2 or later (GPL-2.0-or-later)
  * FILE:        ntoskrnl/ke/except.c
  * PURPOSE:     Platform independent exception handling
  * COPYRIGHT:   See COPYING in the top level directory
- *              Copyright 2026 Ryan Wilson <ryan@verosnt.com>
+ *              Copyright 2026 Ryan Wilson <ryan@taveraos.com>
  * PROGRAMMERS: ReactOS Portable Systems Group
  *              Alex Ionescu (alex.ionescu@reactos.org)
- *              Ryan Wilson <ryan@verosnt.com>
+ *              Ryan Wilson <ryan@taveraos.com>
  */
 
 /* INCLUDES ******************************************************************/

@@ -1,12 +1,12 @@
 /*
- * PROJECT:     VerOS NT Subsystem
+ * PROJECT:     Tavera OS Subsystem
  * LICENSE:     GNU General Public License, version 2 or later (GPL-2.0-or-later)
  * FILE:        win32ss/drivers/miniport/vbe/vbemp.c
  * PURPOSE:     ReactOS VBE miniport video driver
  * COPYRIGHT:   Copyright (C) 2004 Filip Navara
  *              Copyright (C) 2004 Magnus Olsen
- *              Copyright 2026 Ryan Wilson <ryan@verosnt.com>
- * PROGRAMMERS: Ryan Wilson <ryan@verosnt.com>
+ *              Copyright 2026 Ryan Wilson <ryan@taveraos.com>
+ * PROGRAMMERS: Ryan Wilson <ryan@taveraos.com>
  */
 /*
  * Power Management and VBE 1.2 support

@@ -1,13 +1,13 @@
 /*
- * PROJECT:     VerOS NT Kernel
+ * PROJECT:     Tavera OS Kernel
  * LICENSE:     GNU General Public License, version 2 or later (GPL-2.0-or-later)
  * FILE:        ntoskrnl/ke/amd64/except.c
  * PURPOSE:     Exception Dispatching for amd64
  * COPYRIGHT:   See COPYING in the top level directory
- *              Copyright 2026 Ryan Wilson <ryan@verosnt.com>
+ *              Copyright 2026 Ryan Wilson <ryan@taveraos.com>
  * PROGRAMMERS: Timo Kreuzer (timo.kreuzer@reactos.org)
  *              Alex Ionescu (alex.ionescu@reactos.org)
- *              Ryan Wilson <ryan@verosnt.com>
+ *              Ryan Wilson <ryan@taveraos.com>
  *
  * User AV lines name the loaded module+RVA and trap registers.
  * Guest serial output/ntdll-apps/serial-App-20261116T075237Z.log:

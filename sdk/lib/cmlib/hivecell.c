@@ -1,14 +1,14 @@
 /*
- * PROJECT:     VerOS NT
+ * PROJECT:     Tavera OS
  * LICENSE:     GNU General Public License, version 2 or later (GPL-2.0-or-later)
  * FILE:        sdk/lib/cmlib/hivecell.c
  * PURPOSE:     Configuration Manager Library - Hive cell allocation
  * COPYRIGHT:   Copyright 2005 Filip Navara <navaraf@reactos.org>
  *              Copyright 2001 - 2005 Eric Kohl
- *              Copyright 2026 Ryan Wilson <ryan@verosnt.com>
+ *              Copyright 2026 Ryan Wilson <ryan@taveraos.com>
  * PROGRAMMERS: Filip Navara
  *              Eric Kohl
- *              Ryan Wilson <ryan@verosnt.com>
+ *              Ryan Wilson <ryan@taveraos.com>
  */
 
 #include "cmlib.h"

@@ -27,7 +27,7 @@ int WINAPI wWinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPWSTR lpCmdLi
     if (!Winver_GetOSInfo(&OSInfo))
     {
         /* OS info is not available, display the default contents */
-        StringCchCopyW(OSInfo.szName, _countof(OSInfo.szName), L"VerOS NT");
+        StringCchCopyW(OSInfo.szName, _countof(OSInfo.szName), L"Tavera OS");
         OSInfo.szCompatInfo[0] = UNICODE_NULL;
     }
 

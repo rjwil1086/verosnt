@@ -1,10 +1,10 @@
 /*
- * PROJECT:     VerOS NT
+ * PROJECT:     Tavera OS
  * LICENSE:     GNU General Public License, version 2 or later (GPL-2.0-or-later)
  * FILE:        sdk/lib/rtl/qpc.c
  * PURPOSE:     RtlQueryPerformanceCounter / Frequency via NtQueryPerformanceCounter
- * COPYRIGHT:   Copyright 2026 Ryan Wilson <ryan@verosnt.com>
- * PROGRAMMERS: Ryan Wilson <ryan@verosnt.com>
+ * COPYRIGHT:   Copyright 2026 Ryan Wilson <ryan@taveraos.com>
+ * PROGRAMMERS: Ryan Wilson <ryan@taveraos.com>
  *
  * Declarations: sdk/include/wine/winternl.h RtlQueryPerformanceCounter /
  * RtlQueryPerformanceFrequency (BOOL, LARGE_INTEGER*). NtQueryPerformanceCounter:

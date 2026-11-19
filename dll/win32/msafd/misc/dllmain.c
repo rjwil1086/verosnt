@@ -1,13 +1,13 @@
 /*
  * COPYRIGHT:   See COPYING in the top level directory
- *              Copyright 2026 Ryan Wilson <ryan@verosnt.com>
+ *              Copyright 2026 Ryan Wilson <ryan@taveraos.com>
  * PROJECT:     ReactOS Ancillary Function Driver DLL
  * FILE:        dll/win32/msafd/misc/dllmain.c
  * PURPOSE:     DLL entry point
  * PROGRAMMERS: Casper S. Hornstrup (chorns@users.sourceforge.net)
  *              Alex Ionescu (alex@relsoft.net)
  *              Pierre Schweitzer (pierre@reactos.org)
- *              Ryan Wilson <ryan@verosnt.com>
+ *              Ryan Wilson <ryan@taveraos.com>
  * REVISIONS:
  *              CSH 01/09-2000 Created
  *              Alex 16/07/2004 - Complete Rewrite

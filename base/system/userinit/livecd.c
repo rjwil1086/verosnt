@@ -1,12 +1,12 @@
 /*
- * PROJECT:     VerOS NT
+ * PROJECT:     Tavera OS
  * LICENSE:     GNU General Public License, version 2 or later (GPL-2.0-or-later)
  * FILE:        base/system/userinit/livecd.c
- * PURPOSE:     VerOS NT
+ * PURPOSE:     Tavera OS
  * COPYRIGHT:   See COPYING in the top level directory
- *              Copyright 2026 Ryan Wilson <ryan@verosnt.com>
+ *              Copyright 2026 Ryan Wilson <ryan@taveraos.com>
  * PROGRAMMERS: Eric Kohl
- *              Ryan Wilson <ryan@verosnt.com>
+ *              Ryan Wilson <ryan@taveraos.com>
  */
 
 #include "userinit.h"
@@ -709,7 +709,7 @@ LocaleDlgProc(
                         static WCHAR szMsg[RC_STRING_MAX_SIZE];
                         INT ret;
                         LoadStringW(GetModuleHandle(NULL), IDS_CANCEL_CONFIRM, szMsg, ARRAYSIZE(szMsg));
-                        ret = MessageBoxW(hwndDlg, szMsg, L"VerOS NT LiveCD", MB_ICONWARNING | MB_YESNO | MB_DEFBUTTON2);
+                        ret = MessageBoxW(hwndDlg, szMsg, L"Tavera OS LiveCD", MB_ICONWARNING | MB_YESNO | MB_DEFBUTTON2);
                         if (ret == IDOK || ret == IDYES)
                         {
                             pState->NextPage = DONE;
@@ -880,7 +880,7 @@ StartDlgProc(
                             static WCHAR szMsg[RC_STRING_MAX_SIZE];
                             INT ret;
                             LoadStringW(GetModuleHandle(NULL), IDS_CANCEL_CONFIRM, szMsg, ARRAYSIZE(szMsg));
-                            ret = MessageBoxW(hwndDlg, szMsg, L"VerOS NT LiveCD", MB_ICONWARNING | MB_YESNO | MB_DEFBUTTON2);
+                            ret = MessageBoxW(hwndDlg, szMsg, L"Tavera OS LiveCD", MB_ICONWARNING | MB_YESNO | MB_DEFBUTTON2);
                             if (ret == IDOK || ret == IDYES)
                             {
                                 pState->NextPage = DONE;
@@ -918,7 +918,7 @@ ParseUnattend(
         return;
     }
 
-    if (_wcsicmp(Buffer, L"$VerOS$") &&
+    if (_wcsicmp(Buffer, L"$Tavera$") &&
         _wcsicmp(Buffer, L"$ReactOS$") &&
         _wcsicmp(Buffer, L"$Windows NT$"))
     {
@@ -956,7 +956,7 @@ ParseUnattend(
 
 /**
  * @brief
- * Expands the path for the ReactOS Installer "reactos.exe".
+ * Expands the path for the ReactOS Installer "Tavera OS.exe".
  * See also base/setup/welcome/welcome.c!ExpandInstallerPath()
  **/
 static BOOL
@@ -1087,12 +1087,12 @@ RunLiveCD(
     WCHAR UnattendInf[MAX_PATH];
 
     /* Try to locate the ReactOS Installer */
-    if (!ExpandInstallerPath(L"reactos.exe", Installer, _countof(Installer)))
+    if (!ExpandInstallerPath(L"Tavera OS.exe", Installer, _countof(Installer)))
         *Installer = UNICODE_NULL;
     if (*Installer)
-        TRACE("VerOS NT Installer: '%S'\n", Installer);
+        TRACE("Tavera OS Installer: '%S'\n", Installer);
     else
-        WARN("Could not find the VerOS NT Installer\n");
+        WARN("Could not find the Tavera OS Installer\n");
 
     /* If the ReactOS Installer was located, use its path for the
      * unattended file; otherwise, use the current ReactOS directory. */

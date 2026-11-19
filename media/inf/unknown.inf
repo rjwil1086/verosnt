@@ -1,10 +1,10 @@
 [Version]
 Signature  = "$Windows NT$"
-;Signature  = "$VerOS NT$"
+;Signature  = "$Tavera$"
 LayoutFile = layout.inf
 Class      = Unknown
 ClassGUID  = {4D36E97E-E325-11CE-BFC1-08002BE10318}
-Provider   = %VerOS NT%
+Provider   = %Tavera OS%
 DriverVer  = 10/11/2005,1.01.0.0
 
 [ClassInstall32.NT]
@@ -24,40 +24,40 @@ ReactOS = "ReactOS Project"
 UnknownClassName = "Other Devices"
 
 [Strings.0404]
-UnknownClassName = "其他裝置"
+UnknownClassName = "????????????"
 
 [Strings.0405]
-UnknownClassName = "Ostatní zařízení"
+UnknownClassName = "Ostatn?? za????zen??"
 
 [Strings.0407]
-UnknownClassName = "Andere Geräte"
+UnknownClassName = "Andere Ger??te"
 
 [Strings.0a]
 UnknownClassName = "Otros dispositivos"
 
 [Strings.040D]
-UnknownClassName = "התקנים אחרים"
+UnknownClassName = "???????????? ??????????"
 
 [Strings.0415]
-UnknownClassName = "Nieznane urządzenie"
+UnknownClassName = "Nieznane urz??dzenie"
 
 [Strings.0418]
 UnknownClassName = "Alte dispozitive"
 
 [Strings.0419]
-UnknownClassName = "Другие устройства"
+UnknownClassName = "???????????? ????????????????????"
 
 [Strings.041f]
-UnknownClassName = "Diğer Aygıtlar"
+UnknownClassName = "Di??er Ayg??tlar"
 
 [Strings.0422]
-UnknownClassName = "Інші пристрої"
+UnknownClassName = "???????? ????????????????"
 
 [Strings.0804]
-UnknownClassName = "其它设备"
+UnknownClassName = "????????????"
 
 [Strings.0816]
 UnknownClassName = "Outros dispositivos"
 
 [Strings.0C04]
-UnknownClassName = "其他裝置"
+UnknownClassName = "????????????"

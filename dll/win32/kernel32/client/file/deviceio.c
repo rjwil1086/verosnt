@@ -1,12 +1,12 @@
 /*
- * PROJECT:     VerOS NT System Libraries
+ * PROJECT:     Tavera OS System Libraries
  * LICENSE:     GNU General Public License, version 2 or later (GPL-2.0-or-later)
  * FILE:        dll/win32/kernel32/client/file/deviceio.c
  * PURPOSE:     Device I/O Base Client Functionality
  * COPYRIGHT:   See COPYING in the top level directory
- *              Copyright 2026 Ryan Wilson <ryan@verosnt.com>
+ *              Copyright 2026 Ryan Wilson <ryan@taveraos.com>
  * PROGRAMMERS: Alex Ionescu (alex.ionescu@reactos.org)
- *              Ryan Wilson <ryan@verosnt.com>
+ *              Ryan Wilson <ryan@taveraos.com>
  */
 
 /* INCLUDES *******************************************************************/

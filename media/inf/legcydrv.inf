@@ -1,10 +1,10 @@
 [Version]
 Signature  = "$Windows NT$"
-;Signature  = "$VerOS NT$"
+;Signature  = "$Tavera$"
 LayoutFile = layout.inf
 Class      = LegacyDriver
 ClassGUID  = {8ECC055D-047F-11D1-A537-0000F8753ED1}
-Provider   = %VerOS NT%
+Provider   = %Tavera OS%
 DriverVer  = 03/20/2012,1.01.0.0
 
 [ClassInstall32.NT]
@@ -26,10 +26,10 @@ ReactOS = "ReactOS Project"
 LegacyDriverClassName = "Non-Plug and Play Drivers"
 
 [Strings.0404]
-LegacyDriverClassName = "非隨插即用驅動程式"
+LegacyDriverClassName = "???????????????????????????"
 
 [Strings.0405]
-LegacyDriverClassName = "Zařízení nepodporující Plug and Play"
+LegacyDriverClassName = "Za????zen?? nepodporuj??c?? Plug and Play"
 
 [Strings.0407]
 LegacyDriverClassName = "Nicht-PnP Treiber"
@@ -44,13 +44,13 @@ LegacyDriverClassName = "Sterowniki niezgodne z Plug and Play"
 LegacyDriverClassName = "Drivere de dispozitiv ce nu sunt Plug and Play"
 
 [Strings.0419]
-LegacyDriverClassName = "Драйверы устройств не Plug and Play"
+LegacyDriverClassName = "???????????????? ?????????????????? ???? Plug and Play"
 
 [Strings.041f]
-LegacyDriverClassName = "Tak ve Çalıştır Olmayan Sürücüler"
+LegacyDriverClassName = "Tak ve ??al????t??r Olmayan S??r??c??ler"
 
 [Strings.0816]
 LegacyDriverClassName = "Controladores incompativeis com PnP"
 
 [Strings.0C04]
-LegacyDriverClassName = "非隨插即用驅動程式"
+LegacyDriverClassName = "???????????????????????????"

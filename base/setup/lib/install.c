@@ -1,12 +1,12 @@
 /*
  * COPYRIGHT:       See COPYING in the top level directory
- *                  Copyright 2026 Ryan Wilson <ryan@verosnt.com>
+ *                  Copyright 2026 Ryan Wilson <ryan@taveraos.com>
  * PROJECT:         ReactOS Setup Library
  * FILE:            base/setup/lib/install.c
  * PURPOSE:         Installation functions
  * PROGRAMMERS:     Hervé Poussineau (hpoussin@reactos.org)
  *                  Hermes Belusca-Maito (hermes.belusca@sfr.fr)
- *                  Ryan Wilson <ryan@verosnt.com>
+ *                  Ryan Wilson <ryan@taveraos.com>
  */
 
 /* INCLUDES *****************************************************************/
@@ -277,7 +277,7 @@ BuildFullDirectoryPath(
 
 /*
  * This code enumerates the list of files in reactos.dff / reactos.inf
- * that need to be extracted from reactos.cab and be installed in their
+ * that need to be extracted from taveraos.cab and be installed in their
  * respective directories.
  */
 /*

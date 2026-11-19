@@ -306,7 +306,7 @@ InitLogs()
         (key.SetDWORDValue(L"CategoryCount", dwCategoryNum) == ERROR_SUCCESS))
 
     {
-        hLog = RegisterEventSourceW(NULL, L"VerOS NT Application Manager");
+        hLog = RegisterEventSourceW(NULL, L"Tavera OS Application Manager");
     }
 }
 

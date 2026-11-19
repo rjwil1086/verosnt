@@ -9,8 +9,8 @@
  *                  Stanislav Motylkov (x86corez@gmail.com)
  *                  Mark Jansen (mark.jansen@reactos.org)
  *                  Copyright 2023 Ratin Gao <ratin@knsoft.org>
- *                  Copyright 2026 Ryan Wilson <ryan@verosnt.com>
- * PROGRAMMERS:     Ryan Wilson <ryan@verosnt.com>
+ *                  Copyright 2026 Ryan Wilson <ryan@taveraos.com>
+ * PROGRAMMERS:     Ryan Wilson <ryan@taveraos.com>
  *
  * GetSystemCpuSetInformation: guest
  * output/ntdll-apps/serial-App-20261116T235322Z.log

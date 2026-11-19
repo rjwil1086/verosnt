@@ -1,17 +1,17 @@
 /*
- * PROJECT:     VerOS NT Kernel
+ * PROJECT:     Tavera OS Kernel
  * LICENSE:     GNU General Public License, version 2 or later (GPL-2.0-or-later)
  * FILE:        drivers/network/tcpip/ip/network/dhcp6.c
  * PURPOSE:     DHCPv6 Solicit and Request client
- * COPYRIGHT:   Copyright 2026 Ryan Wilson <ryan@verosnt.com>
- * PROGRAMMERS: Ryan Wilson <ryan@verosnt.com>
+ * COPYRIGHT:   Copyright 2026 Ryan Wilson <ryan@taveraos.com>
+ * PROGRAMMERS: Ryan Wilson <ryan@taveraos.com>
  *
  * Solicit, Advertise, Request, and Reply from RFC 8415 Sections 7.3 and
  * 18.2 (https://www.rfc-editor.org/rfc/rfc8415). All-DHCP-Agents multicast
  * FF02::1:2 and UDP ports 546/547 are Sections 7.1 and 7.2. DUID-LL is
  * Section 11.2. Ethernet multicast mapping is RFC 2464 Section 7
  * (https://www.rfc-editor.org/rfc/rfc2464). The server is
- * virtual-machines/veros-ntfs/Send-Ipv6Peer.ps1 -Mode Dhcp6, which offers
+ * virtual-machines/tavera-ntfs/Send-Ipv6Peer.ps1 -Mode Dhcp6, which offers
  * fec0::10. Accept line is "DHCP6 ADDR fec0::10".
  */
 

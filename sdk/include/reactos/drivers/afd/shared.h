@@ -3,7 +3,7 @@
  * PROJECT:     ReactOS Ancillary Function Driver
  * FILE:        include/reactos/drivers/afd/shared.h
  * PURPOSE:     Shared definitions for AFD.SYS and MSAFD.DLL
- * COPYRIGHT:   Copyright 2026 Ryan Wilson <ryan@verosnt.com>
+ * COPYRIGHT:   Copyright 2026 Ryan Wilson <ryan@taveraos.com>
  */
 #ifndef __AFD_SHARED_H
 #define __AFD_SHARED_H

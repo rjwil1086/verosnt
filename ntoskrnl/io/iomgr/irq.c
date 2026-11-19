@@ -3,9 +3,9 @@
  * LICENSE:         GPL - See COPYING in the top level directory
  * FILE:            ntoskrnl/io/iomgr/irq.c
  * PURPOSE:         I/O Wrappers (called Completion Ports) for Kernel Queues
- * COPYRIGHT:       Copyright 2026 Ryan Wilson <ryan@verosnt.com>
+ * COPYRIGHT:       Copyright 2026 Ryan Wilson <ryan@taveraos.com>
  * PROGRAMMERS:     Alex Ionescu (alex.ionescu@reactos.org)
- *                  Ryan Wilson <ryan@verosnt.com>
+ *                  Ryan Wilson <ryan@taveraos.com>
  *
  * IoGetAffinityInterrupt: declared in sdk/include/xdk/iofuncs.h;
  * GROUP_AFFINITY in sdk/include/xdk/ntbasedef.h; Number on KINTERRUPT in

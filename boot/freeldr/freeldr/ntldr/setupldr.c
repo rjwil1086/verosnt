@@ -3,9 +3,9 @@
  * LICENSE:     GPL-2.0+ (https://spdx.org/licenses/GPL-2.0+)
  * PURPOSE:     Windows-compatible NT OS Setup Loader.
  * COPYRIGHT:   Copyright 2009-2019 Aleksey Bragin <aleksey@reactos.org>
- *              Copyright 2026 Ryan Wilson <ryan@verosnt.com>
+ *              Copyright 2026 Ryan Wilson <ryan@taveraos.com>
  * PROGRAMMERS: Aleksey Bragin
- *              Ryan Wilson <ryan@verosnt.com>
+ *              Ryan Wilson <ryan@taveraos.com>
  */
 
 #include <freeldr.h>
@@ -420,7 +420,7 @@ LoadReactOSSetup(
 #elif defined(_M_MRX000)
         "MIPS\\",
 #endif
-        "VerOS\\",
+        "Tavera\\",
     };
 
     /* Retrieve the (mandatory) boot type */
@@ -430,7 +430,7 @@ LoadReactOSSetup(
         ERR("No 'BootType' value, aborting!\n");
         return EINVAL;
     }
-    if (_stricmp(ArgValue, "VerOSSetup") != 0)
+    if (_stricmp(ArgValue, "Tavera") != 0)
     {
         ERR("Unknown 'BootType' value '%s', aborting!\n", ArgValue);
         return EINVAL;
@@ -447,7 +447,7 @@ LoadReactOSSetup(
     /* Let the user know we started loading */
     UiDrawBackdrop(UiGetScreenHeight());
     UiDrawStatusText("Setup is loading...");
-    UiDrawProgressBarCenter("Loading VerOS NT Setup...");
+    UiDrawProgressBarCenter("Loading Tavera OS Setup...");
 
     /* Retrieve the system path */
     *BootPath = ANSI_NULL;

@@ -1,10 +1,10 @@
 /*
- * PROJECT:     VerOS NT Kernel
+ * PROJECT:     Tavera OS Kernel
  * LICENSE:     GNU General Public License, version 2 or later (GPL-2.0-or-later)
  * FILE:        boot/freeldr/freeldr/ntldr/updatestage.c
  * PURPOSE:     Apply a signed file manifest before the kernel loads
- * COPYRIGHT:   Copyright 2026 Ryan Wilson <ryan@verosnt.com>
- * PROGRAMMERS: Ryan Wilson <ryan@verosnt.com>
+ * COPYRIGHT:   Copyright 2026 Ryan Wilson <ryan@taveraos.com>
+ * PROGRAMMERS: Ryan Wilson <ryan@taveraos.com>
  */
 
 #include <freeldr.h>
@@ -539,7 +539,7 @@ UpdateStageApply(PCSTR BootPath, PCSTR BootOptions)
         CHAR Hold[260];
 
         /* A source that is already gone is a finished delete. The rollback
-           of C:\VerOS\a.txt stamped "fail 3" and dir of that path was
+           of C:\Tavera OS\a.txt stamped "fail 3" and dir of that path was
            "File not found". Code 3 is the lookup miss in NtfsMoveFile. */
         if (!NtfsPathExists(UpdateStageDeviceId, deletes[Index]))
         {

@@ -1,10 +1,10 @@
 /*
- * PROJECT:     VerOS NT
+ * PROJECT:     Tavera OS
  * LICENSE:     GNU General Public License, version 2 or later (GPL-2.0-or-later)
  * FILE:        base/applications/verreport/verreport.c
  * PURPOSE:     Print the runtime NT version and the unmanifested GetVersion lie
- * COPYRIGHT:   Copyright 2026 Ryan Wilson <ryan@verosnt.com>
- * PROGRAMMERS: Ryan Wilson <ryan@verosnt.com>
+ * COPYRIGHT:   Copyright 2026 Ryan Wilson <ryan@taveraos.com>
+ * PROGRAMMERS: Ryan Wilson <ryan@taveraos.com>
  */
 
 #include <stdio.h>

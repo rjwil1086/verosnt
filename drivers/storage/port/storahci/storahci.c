@@ -1,11 +1,11 @@
 /*
- * PROJECT:     VerOS NT Kernel
+ * PROJECT:     Tavera OS Kernel
  * LICENSE:     GNU General Public License, version 2 only (GPL-2.0-only)
  * FILE:        drivers/storage/port/storahci/storahci.c
  * PURPOSE:     To Implement AHCI Miniport driver targeting storport NT 5.2
- * COPYRIGHT:   Copyright 2026 Ryan Wilson <ryan@verosnt.com>
+ * COPYRIGHT:   Copyright 2026 Ryan Wilson <ryan@taveraos.com>
  * PROGRAMMERS: Aman Priyadarshi (aman.eureka@gmail.com)
- *              Ryan Wilson <ryan@verosnt.com>
+ *              Ryan Wilson <ryan@taveraos.com>
  */
 
 #include "storahci.h"

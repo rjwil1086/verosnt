@@ -1,14 +1,14 @@
 /*
- * PROJECT:     VerOS NT Kernel
+ * PROJECT:     Tavera OS Kernel
  * LICENSE:     GNU General Public License, version 2 or later (GPL-2.0-or-later)
  * FILE:        drivers/filesystems/ntfs/dirctl.c
  * PURPOSE:     NTFS filesystem driver
  * COPYRIGHT:   Copyright (C) 2002, 2003, 2014 ReactOS Team
- *              Copyright 2026 Ryan Wilson <ryan@verosnt.com>
+ *              Copyright 2026 Ryan Wilson <ryan@taveraos.com>
  * PROGRAMMERS: Eric Kohl
  *              Pierre Schweitzer (pierre@reactos.org)
  *              Hervé Poussineau (hpoussin@reactos.org)
- *              Ryan Wilson <ryan@verosnt.com>
+ *              Ryan Wilson <ryan@taveraos.com>
  */
 
 /* INCLUDES *****************************************************************/

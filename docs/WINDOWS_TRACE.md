@@ -5,8 +5,8 @@ This is the truth source for Windows 10 22H2 x64 call behavior. The traces are p
 ## Tools
 
 - Install and capture use the buildenv `tools\qemu\qemu-system-x86_64.exe` resolved by `tools/pipeline/Resolve-VerosPaths.ps1`, then `%ProgramFiles%\qemu` if that file is missing.
-- `qemu-system-x86_64.exe` is the VerOS boot binary. The daily boot passes `-accel tcg`.
-- The x86_64 binary has WHPX and TCG. The Windows guest disk is the buildenv `virtual-machines\win10-22h2\disk.qcow2` (or a path you pass). Capture uses OVMF, NVMe, and `-accel tcg -snapshot -m 8192 -smp 4`. The plugin instruments TCG only. The VerOS NT boot uses the same memory and CPU count.
+- `qemu-system-x86_64.exe` is the Tavera OS boot binary. The daily boot passes `-accel tcg`.
+- The x86_64 binary has WHPX and TCG. The Windows guest disk is the buildenv `virtual-machines\win10-22h2\disk.qcow2` (or a path you pass). Capture uses OVMF, NVMe, and `-accel tcg -snapshot -m 8192 -smp 4`. The plugin instruments TCG only. The Tavera OS boot uses the same memory and CPU count.
 
 ## Commands
 

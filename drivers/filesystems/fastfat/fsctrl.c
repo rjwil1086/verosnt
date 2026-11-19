@@ -3,11 +3,11 @@
 
 Copyright (c) 1989-2000 Microsoft Corporation
 
-Copyright 2026 Ryan Wilson <ryan@verosnt.com>
+Copyright 2026 Ryan Wilson <ryan@taveraos.com>
 
 Programmers:
 
-    Ryan Wilson <ryan@verosnt.com>
+    Ryan Wilson <ryan@taveraos.com>
 
 Module Name:
 

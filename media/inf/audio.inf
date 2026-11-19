@@ -4,11 +4,11 @@
 
 [Version]
 Signature  = "$Windows NT$"
-;Signature  = "$VerOS NT$"
+;Signature  = "$Tavera$"
 LayoutFile = layout.inf
 Class      = MEDIA
 ClassGUID  = {4d36e96c-e325-11ce-bfc1-08002be10318}
-Provider   = %VerOS NT%
+Provider   = %Tavera OS%
 DriverVer  = 10/19/1999,5.00.2157.1
 
 [DestinationDirs]
@@ -73,43 +73,43 @@ ReactOS = "ReactOS Project"
 AUDIOClassName = "Audio & Videocontroller"
 
 [Strings.0404]
-AUDIOClassName = "音訊及視訊控制器"
+AUDIOClassName = "????????????????????????"
 
 [Strings.0405]
-AUDIOClassName = "Řadiče zvuku a obrazu"
+AUDIOClassName = "??adi??e zvuku a obrazu"
 
 [Strings.0407]
 AUDIOClassName = "Audio-, Video- und Gamecontroller"
 
 [Strings.0a]
-AUDIOClassName = "Dispositivos de sonido, vídeo y juegos"
+AUDIOClassName = "Dispositivos de sonido, v??deo y juegos"
 
 [Strings.0415]
 AUDIOClassName = "Kontrolery audio, wideo i gier"
 
 [Strings.0416]
-AUDIOClassName = "Controladores de som, vídeo e jogo"
+AUDIOClassName = "Controladores de som, v??deo e jogo"
 
 [Strings.0418]
 AUDIOClassName = "Dispozitive audio & video"
 
 [Strings.0419]
-AUDIOClassName = "Аудио и видео контроллер"
+AUDIOClassName = "?????????? ?? ?????????? ????????????????????"
 
 [Strings.041f]
 AUDIOClassName = "Ses ve Video Denetleyicisi"
 
 [Strings.0422]
-AUDIOClassName = "Контроллер аудіо та відео"
+AUDIOClassName = "???????????????????? ?????????? ???? ??????????"
 
 [Strings.0427]
-AUDIOClassName = "Garso, vaizdo ir žaidimu irenginiai"
+AUDIOClassName = "Garso, vaizdo ir ??aidimu irenginiai"
 
 [Strings.0804]
-AUDIOClassName = "音视频控制器"
+AUDIOClassName = "??????????????????"
 
 [Strings.0816]
-AUDIOClassName = "Controladores de som, vídeo e jogos"
+AUDIOClassName = "Controladores de som, v??deo e jogos"
 
 [Strings.0C04]
-AUDIOClassName = "音訊及視訊控制器"
+AUDIOClassName = "????????????????????????"

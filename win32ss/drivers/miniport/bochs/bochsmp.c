@@ -1,11 +1,11 @@
 /*
- * PROJECT:     VerOS NT Subsystem
+ * PROJECT:     Tavera OS Subsystem
  * LICENSE:     GNU General Public License, version 2 or later (GPL-2.0-or-later)
  * FILE:        win32ss/drivers/miniport/bochs/bochsmp.c
  * PURPOSE:     Bochs graphics card driver
  * COPYRIGHT:   Copyright 2022 Hervé Poussineau <hpoussin@reactos.org>
- *              Copyright 2026 Ryan Wilson <ryan@verosnt.com>
- * PROGRAMMERS: Ryan Wilson <ryan@verosnt.com>
+ *              Copyright 2026 Ryan Wilson <ryan@taveraos.com>
+ * PROGRAMMERS: Ryan Wilson <ryan@taveraos.com>
  */
 
 #include "bochsmp.h"

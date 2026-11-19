@@ -2,11 +2,9 @@
  * PROJECT:     Tavera OS System Libraries
  * LICENSE:     GNU Lesser General Public License, version 2.1 or later (LGPL-2.1-or-later)
  * FILE:        dll/win32/ktmw32/ktmw32.c
- * PURPOSE:     KTM + CreateFileTransacted staging for TxF API acceptance
- * COPYRIGHT:   Copyright 2026 Ryan Wilson <ryan@verosnt.com>
- *              Copyright 2026 Ryan Wilson <ryan@taveraos.com>
- * PROGRAMMERS: Ryan Wilson <ryan@verosnt.com>
- *              Ryan Wilson <ryan@taveraos.com>
+ * PURPOSE:     Kernel Transaction Manager user stubs for Firefox xul.dll
+ * COPYRIGHT:   Copyright 2026 Ryan Wilson <ryan@taveraos.com>
+ * PROGRAMMERS: Ryan Wilson <ryan@taveraos.com>
  *
  * Sources:
  *   https://learn.microsoft.com/en-us/windows/win32/fileio/how-to-use-transactional-ntfs

@@ -1,13 +1,13 @@
 /*
- * PROJECT:     VerOS NT System Libraries
+ * PROJECT:     Tavera OS System Libraries
  * LICENSE:     GNU General Public License, version 2 or later (GPL-2.0-or-later)
  * FILE:        dll/ntdll/rtl/libsupp.c
  * PURPOSE:     RTL Support Routines
  * COPYRIGHT:   See COPYING in the top level directory
- *              Copyright 2026 Ryan Wilson <ryan@verosnt.com>
+ *              Copyright 2026 Ryan Wilson <ryan@taveraos.com>
  * PROGRAMMERS: Alex Ionescu (alex@relsoft.net)
  *              Gunnar Dalsnes
- *              Ryan Wilson <ryan@verosnt.com>
+ *              Ryan Wilson <ryan@taveraos.com>
  */
 
 /* INCLUDES *****************************************************************/

@@ -1,9 +1,9 @@
-# PROJECT:     VerOS NT
+# PROJECT:     Tavera OS
 # LICENSE:     GNU General Public License, version 2 or later (GPL-2.0-or-later)
 # FILE:        tools/windows-trace/Collect-Traces.ps1
 # PURPOSE:     Record numeric syscall lines from the Windows guest
-# COPYRIGHT:   Copyright 2026 Ryan Wilson <ryan@verosnt.com>
-# PROGRAMMERS: Ryan Wilson <ryan@verosnt.com>
+# COPYRIGHT:   Copyright 2026 Ryan Wilson <ryan@taveraos.com>
+# PROGRAMMERS: Ryan Wilson <ryan@taveraos.com>
 
 param(
     [string]$SourceRoot = (Resolve-Path (Join-Path $PSScriptRoot "..\..")).Path,

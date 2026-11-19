@@ -1,10 +1,10 @@
 /*
- * PROJECT:     VerOS NT System Libraries
+ * PROJECT:     Tavera OS System Libraries
  * LICENSE:     GNU Lesser General Public License, version 2.1 or later (LGPL-2.1-or-later)
  * FILE:        dll/win32/ucrtbase/stubs.c
  * PURPOSE:     ucrtbase helpers and C99 math exports softpipe needs
- * COPYRIGHT:   Copyright 2026 Ryan Wilson <ryan@verosnt.com>
- * PROGRAMMERS: Ryan Wilson <ryan@verosnt.com>
+ * COPYRIGHT:   Copyright 2026 Ryan Wilson <ryan@taveraos.com>
+ * PROGRAMMERS: Ryan Wilson <ryan@taveraos.com>
  *
  * lround/cbrtf: guest output/ntdll-apps/serial-App-20261116T224834Z.log
  * marker WARNING: calling stub lround(100.000000) and calling stub cbrtf.

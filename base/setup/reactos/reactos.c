@@ -5,7 +5,7 @@
  * COPYRIGHT:   Copyright 2008-2010 Matthias Kupfer <mkupfer@reactos.org>
  *              Copyright 2008-2009 Dmitry Chapyshev <dmitry@reactos.org>
  *              Copyright 2018-2026 Hermès Bélusca-Maïto <hermes.belusca-maito@reactos.org>
- *              Copyright 2026 Ryan Wilson <ryan@verosnt.com>
+ *              Copyright 2026 Ryan Wilson <ryan@taveraos.com>
  */
 
 #include "reactos.h"
@@ -1216,7 +1216,7 @@ SummaryDlgProc(
                     else
                     {
                         StringCchCopyW(CurrentItemText, ARRAYSIZE(CurrentItemText),
-                                       L"New VerOS NT installation");
+                                       L"New Tavera OS installation");
                     }
                     SetDlgItemTextW(hwndDlg, IDC_INSTALLTYPE, CurrentItemText);
 

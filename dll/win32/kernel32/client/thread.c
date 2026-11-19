@@ -1,13 +1,13 @@
 /*
- * PROJECT:     VerOS NT System Libraries
+ * PROJECT:     Tavera OS System Libraries
  * LICENSE:     GNU General Public License, version 2 or later (GPL-2.0-or-later)
  * FILE:        dll/win32/kernel32/client/thread.c
  * PURPOSE:     Thread functions
  * COPYRIGHT:   See COPYING in the top level directory
- *              Copyright 2026 Ryan Wilson <ryan@verosnt.com>
+ *              Copyright 2026 Ryan Wilson <ryan@taveraos.com>
  * PROGRAMMERS: Alex Ionescu (alex.ionescu@reactos.org)
  *              Ariadne (ariadne@xs4all.nl)
- *              Ryan Wilson <ryan@verosnt.com>
+ *              Ryan Wilson <ryan@taveraos.com>
  *
  * QueryThreadCycleTime: guest
  * output/ntdll-apps/serial-App-20261118T042848Z.log

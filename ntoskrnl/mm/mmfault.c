@@ -4,9 +4,9 @@
  * FILE:            ntoskrnl/mm/mmfault.c
  * PURPOSE:         Kernel memory management functions
  * COPYRIGHT:       See COPYING in the top directory
- *                  Copyright 2026 Ryan Wilson <ryan@verosnt.com>
+ *                  Copyright 2026 Ryan Wilson <ryan@taveraos.com>
  * PROGRAMMERS:     David Welch (welch@cwcom.net)
- *                  Ryan Wilson <ryan@verosnt.com>
+ *                  Ryan Wilson <ryan@taveraos.com>
  */
 
 /*

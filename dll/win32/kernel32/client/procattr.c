@@ -1,11 +1,11 @@
 /*
- * PROJECT:     VerOS NT System Libraries
+ * PROJECT:     Tavera OS System Libraries
  * LICENSE:     GNU Lesser General Public License, version 2.1 or later (LGPL-2.1-or-later)
  * FILE:        dll/win32/kernel32/client/procattr.c
  * PURPOSE:     Process/thread attribute list APIs for CreateProcess
  * COPYRIGHT:   Copyright 1996, 1998 Alexandre Julliard
- *              Copyright 2026 Ryan Wilson <ryan@verosnt.com>
- * PROGRAMMERS: Ryan Wilson <ryan@verosnt.com>
+ *              Copyright 2026 Ryan Wilson <ryan@taveraos.com>
+ * PROGRAMMERS: Ryan Wilson <ryan@taveraos.com>
  *
  * Attribute-list layout and Initialize/Update/Delete behavior from
  * dll/win32/kernelbase/wine/process.c (Wine, already in this tree).

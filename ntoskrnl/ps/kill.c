@@ -1,14 +1,14 @@
 /*
- * PROJECT:     VerOS NT Kernel
+ * PROJECT:     Tavera OS Kernel
  * LICENSE:     GNU General Public License, version 2 or later (GPL-2.0-or-later)
  * FILE:        ntoskrnl/ps/kill.c
  * PURPOSE:     Process Manager: Process and Thread Termination
  * COPYRIGHT:   See COPYING in the top level directory
- *              Copyright 2026 Ryan Wilson <ryan@verosnt.com>
+ *              Copyright 2026 Ryan Wilson <ryan@taveraos.com>
  * PROGRAMMERS: Alex Ionescu (alex.ionescu@reactos.org)
  *              Filip Navara (xnavara@reactos.org)
  *              Thomas Weidenmueller (w3seek@reactos.org
- *              Ryan Wilson <ryan@verosnt.com>
+ *              Ryan Wilson <ryan@taveraos.com>
  */
 
 /* INCLUDES *****************************************************************/

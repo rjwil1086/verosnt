@@ -1,13 +1,13 @@
 /*
  * COPYRIGHT:       See COPYING in the top level directory
- *                  Copyright 2026 Ryan Wilson <ryan@verosnt.com>
+ *                  Copyright 2026 Ryan Wilson <ryan@taveraos.com>
  * PROJECT:         ReactOS system libraries
  * FILE:            dll/win32/kernel32/client/file/find.c
  * PURPOSE:         Find functions
  * PROGRAMMERS:     Ariadne (ariadne@xs4all.nl)
  *                  Pierre Schweitzer (pierre.schweitzer@reactos.org)
  *                  Hermes Belusca-Maito
- *                  Ryan Wilson <ryan@verosnt.com>
+ *                  Ryan Wilson <ryan@taveraos.com>
  *
  * Sources: FindFirstFileEx dwAdditionalFlags — Microsoft Learn
  *          "FindFirstFileExW function" FIND_FIRST_EX_LARGE_FETCH;

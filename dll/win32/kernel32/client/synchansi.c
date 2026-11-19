@@ -1,10 +1,10 @@
 /*
  * COPYRIGHT:       See COPYING in the top level directory
- *                  Copyright 2026 Ryan Wilson <ryan@verosnt.com>
+ *                  Copyright 2026 Ryan Wilson <ryan@taveraos.com>
  * PROJECT:         ReactOS system libraries
  * FILE:            dll/win32/kernel32/client/synchansi.c
  * PURPOSE:         Synchronization functions (ANSI)
- * PROGRAMMERS:     Ryan Wilson <ryan@verosnt.com>
+ * PROGRAMMERS:     Ryan Wilson <ryan@taveraos.com>
  */
 
 

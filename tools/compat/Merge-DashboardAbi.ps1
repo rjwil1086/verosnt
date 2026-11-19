@@ -1,9 +1,9 @@
-# PROJECT:     VerOS NT
+# PROJECT:     Tavera OS
 # LICENSE:     GNU General Public License, version 2 or later (GPL-2.0-or-later)
 # FILE:        tools/compat/Merge-DashboardAbi.ps1
 # PURPOSE:     Merge plugin ABI scores into the dashboard snapshot
-# COPYRIGHT:   Copyright 2026 Ryan Wilson <ryan@verosnt.com>
-# PROGRAMMERS: Ryan Wilson <ryan@verosnt.com>
+# COPYRIGHT:   Copyright 2026 Ryan Wilson <ryan@taveraos.com>
+# PROGRAMMERS: Ryan Wilson <ryan@taveraos.com>
 
 param(
     [string]$SourceRoot = (Resolve-Path (Join-Path $PSScriptRoot "..\..")).Path,
@@ -177,7 +177,7 @@ function Update-WebsiteAbi {
     }
 
     $gaps = $site.unmeasured
-    $gaps = Sync-Gap -Gaps $gaps -Section "kernelAbi" -Reason "The Windows 10 22H2 kernel and the VerOS kernel have not both finished the kernel probe." -Measured $kernelMeasured
+    $gaps = Sync-Gap -Gaps $gaps -Section "kernelAbi" -Reason "The Windows 10 22H2 kernel and the Tavera OS kernel have not both finished the kernel probe." -Measured $kernelMeasured
     $gaps = Sync-Gap -Gaps $gaps -Section "driverAbi" -Reason "The snapshot has no driver ABI export that returned or bugchecked in the plugin log." -Measured $driverMeasured
 
     $unchanged = (Test-SameScore $site.driverAbi $driverPercent) -and ([string]$site.notes -eq $notes)

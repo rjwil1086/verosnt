@@ -1,12 +1,12 @@
 /*
- * PROJECT:     VerOS NT Subsystem
+ * PROJECT:     Tavera OS Subsystem
  * LICENSE:     GNU General Public License, version 2 or later (GPL-2.0-or-later)
  * FILE:        win32ss/user/ntuser/sysparams.c
  * PURPOSE:     System parameters functions
  * COPYRIGHT:   GPL, see COPYING in the top level directory
- *              Copyright 2026 Ryan Wilson <ryan@verosnt.com>
+ *              Copyright 2026 Ryan Wilson <ryan@taveraos.com>
  * PROGRAMMERS: Timo Kreuzer (timo.kreuzer@reactos.org)
- *              Ryan Wilson <ryan@verosnt.com>
+ *              Ryan Wilson <ryan@taveraos.com>
  */
 
 // TODO:

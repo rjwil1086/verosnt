@@ -1,10 +1,10 @@
 /*
- * PROJECT:     VerOS NT
+ * PROJECT:     Tavera OS
  * LICENSE:     GNU General Public License, version 2 or later (GPL-2.0-or-later)
  * FILE:        base/setup/reactos/stage.c
  * PURPOSE:     Stage an in-place upgrade from the welcome menu
- * COPYRIGHT:   Copyright 2026 Ryan Wilson <ryan@verosnt.com>
- * PROGRAMMERS: Ryan Wilson <ryan@verosnt.com>
+ * COPYRIGHT:   Copyright 2026 Ryan Wilson <ryan@taveraos.com>
+ * PROGRAMMERS: Ryan Wilson <ryan@taveraos.com>
  */
 
 /*
@@ -545,7 +545,7 @@ AddOneShotBootEntry(
                   RTL_FIELD_SIZE(NTOS_OPTIONS, Signature));
     Options->OsLoadPath = Setup->DestinationArcPath.Buffer;
     Options->OsLoadOptions = L"/DEBUG /DEBUGPORT=COM1 /BAUDRATE=115200 /SOS /FASTDETECT";
-    BootEntry->FriendlyName = L"\"VerOS NT Upgrade\"";
+    BootEntry->FriendlyName = L"\"Tavera OS Upgrade\"";
 
     Status = OpenBootStore(&Store,
                            Setup->DestinationRootPath.Buffer,
@@ -580,7 +580,7 @@ AddOneShotBootEntry(
     }
     else
     {
-        StringCchCopyW(PreviousDefault, cchPrevious, L"VerOS");
+        StringCchCopyW(PreviousDefault, cchPrevious, L"Tavera");
     }
 
     Status = AddBootStoreEntry(Store, BootEntry, (ULONG_PTR)L"UpgradeCommit");
@@ -616,8 +616,8 @@ StageExistingInstall(VOID)
         GetNumberOfListEntries(SetupData.NtOsInstallsList) == 0)
     {
         MessageBoxW(NULL,
-                    L"No existing VerOS NT installation was found.",
-                    L"VerOS NT",
+                    L"No existing Tavera OS installation was found.",
+                    L"Tavera OS",
                     MB_ICONERROR);
         return FALSE;
     }
@@ -630,7 +630,7 @@ StageExistingInstall(VOID)
     {
         MessageBoxW(NULL,
                     L"The existing installation has no volume.",
-                    L"VerOS NT",
+                    L"Tavera OS",
                     MB_ICONERROR);
         return FALSE;
     }
@@ -641,7 +641,7 @@ StageExistingInstall(VOID)
     Status = InitDestinationPaths(&SetupData.USetupData, StageDir, Installation->Volume);
     if (!NT_SUCCESS(Status))
     {
-        MessageBoxW(NULL, L"The upgrade directory could not be prepared.", L"VerOS NT", MB_ICONERROR);
+        MessageBoxW(NULL, L"The upgrade directory could not be prepared.", L"Tavera OS", MB_ICONERROR);
         return FALSE;
     }
 
@@ -654,7 +654,7 @@ StageExistingInstall(VOID)
                                   ARRAYSIZE(StageWin32),
                                   SetupData.USetupData.DestinationPath.Buffer))
     {
-        MessageBoxW(NULL, L"The install volume has no drive letter.", L"VerOS NT", MB_ICONERROR);
+        MessageBoxW(NULL, L"The install volume has no drive letter.", L"Tavera OS", MB_ICONERROR);
         return FALSE;
     }
 
@@ -665,7 +665,7 @@ StageExistingInstall(VOID)
         !DoFileCopy(&SetupData.USetupData, StageFileCallback, &Progress))
     {
         StageCloseProgress(&Progress);
-        MessageBoxW(NULL, L"The new files could not be copied.", L"VerOS NT", MB_ICONERROR);
+        MessageBoxW(NULL, L"The new files could not be copied.", L"Tavera OS", MB_ICONERROR);
         return FALSE;
     }
 
@@ -679,7 +679,7 @@ StageExistingInstall(VOID)
                          ARRAYSIZE(Text),
                          L"The existing hives could not be staged (error %lu).",
                          Error);
-        MessageBoxW(NULL, Text, L"VerOS NT", MB_ICONERROR);
+        MessageBoxW(NULL, Text, L"Tavera OS", MB_ICONERROR);
         return FALSE;
     }
 
@@ -693,7 +693,7 @@ StageExistingInstall(VOID)
                          ARRAYSIZE(Text),
                          L"The commit program could not be staged (error %lu).",
                          Error);
-        MessageBoxW(NULL, Text, L"VerOS NT", MB_ICONERROR);
+        MessageBoxW(NULL, Text, L"Tavera OS", MB_ICONERROR);
         return FALSE;
     }
 
@@ -705,7 +705,7 @@ StageExistingInstall(VOID)
         !WriteCommitFile(StageWin32, PreviousDefault, PreviousTimeout))
     {
         StageCloseProgress(&Progress);
-        MessageBoxW(NULL, L"The one-shot boot entry could not be written.", L"VerOS NT", MB_ICONERROR);
+        MessageBoxW(NULL, L"The one-shot boot entry could not be written.", L"Tavera OS", MB_ICONERROR);
         return FALSE;
     }
 
@@ -723,7 +723,7 @@ StageExistingInstall(VOID)
             !SetHiveRunOnce(L"VerosUpgradeDelete", OriginalHive, L"DeleteUpgrade", L"upgrade.exe /delete"))
         {
             StageCloseProgress(&Progress);
-            MessageBoxW(NULL, L"The next boot could not be scheduled.", L"VerOS NT", MB_ICONERROR);
+            MessageBoxW(NULL, L"The next boot could not be scheduled.", L"Tavera OS", MB_ICONERROR);
             return FALSE;
         }
     }

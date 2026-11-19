@@ -49,7 +49,7 @@ Revision History:
 #include <debug.h>
 
 // REACTOS
-#define ROSWDFNOTIMPLEMENTED (DbgPrint("(%s:%d) VerOS NT KMDF: %s not implemented\n", __RELFILE__, __LINE__, __FUNCTION__))
+#define ROSWDFNOTIMPLEMENTED (DbgPrint("(%s:%d) Tavera OS KMDF: %s not implemented\n", __RELFILE__, __LINE__, __FUNCTION__))
 // REACTOS
 
 #ifdef __cplusplus

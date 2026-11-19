@@ -1,9 +1,9 @@
-# PROJECT:     VerOS NT
+# PROJECT:     Tavera OS
 # LICENSE:     GNU General Public License, version 2 or later (GPL-2.0-or-later)
 # FILE:        tools/qemu-harness/New-ExportMap.ps1
 # PURPOSE:     Write the ntoskrnl, hal, and wdf export map
-# COPYRIGHT:   Copyright 2026 Ryan Wilson <ryan@verosnt.com>
-# PROGRAMMERS: Ryan Wilson <ryan@verosnt.com>
+# COPYRIGHT:   Copyright 2026 Ryan Wilson <ryan@taveraos.com>
+# PROGRAMMERS: Ryan Wilson <ryan@taveraos.com>
 
 param(
     [string]$SourceRoot = (Resolve-Path (Join-Path $PSScriptRoot "..\..")).Path,

@@ -1,10 +1,10 @@
 /*
- * PROJECT:     VerOS NT System Libraries
+ * PROJECT:     Tavera OS System Libraries
  * LICENSE:     GNU General Public License, version 2 or later (GPL-2.0-or-later)
  * FILE:        dll/ntdll/ldr/ldrpe.c
  * PURPOSE:     Loader Functions dealing low-level PE Format structures
  * COPYRIGHT:   See COPYING in the top level directory
- *              Copyright 2026 Ryan Wilson <ryan@verosnt.com>
+ *              Copyright 2026 Ryan Wilson <ryan@taveraos.com>
  * PROGRAMMERS: Alex Ionescu (alex@relsoft.net)
  *              Ryan Wilson
  *

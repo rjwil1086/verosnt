@@ -4,7 +4,7 @@
  * FILE:        dll/win32/ws2_32/src/addrinfo.c
  * PURPOSE:     Protocol-Independent Address Resolution
  * PROGRAMMER:  Alex Ionescu (alex@relsoft.net)
- *              Ryan Wilson <ryan@verosnt.com>
+ *              Ryan Wilson <ryan@taveraos.com>
  */
 
 /*

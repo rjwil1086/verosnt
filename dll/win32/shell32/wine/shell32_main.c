@@ -4,7 +4,7 @@
  * Copyright 1998 Marcus Meissner
  * Copyright 1998 Juergen Schmied (jsch)  *  <juergen.schmied@metronet.de>
  * Copyright 2017 Katayama Hirofumi MZ <katayama.hirofumi.mz@gmail.com>
- * Copyright 2026 Ryan Wilson <ryan@verosnt.com>
+ * Copyright 2026 Ryan Wilson <ryan@taveraos.com>
  *
  * This library is free software; you can redistribute it and/or
  * modify it under the terms of the GNU Lesser General Public

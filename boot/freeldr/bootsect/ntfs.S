@@ -4,9 +4,9 @@
  * FILE:            boot/freeldr/bootsect/ntfs.S
  * PURPOSE:         Implementing boot sector for NTFS
  * COPYRIGHT:       Copyright 2020 Sylvain Deverre <deverre.sylv@gmail.com>
- *                  Copyright 2026 Ryan Wilson <ryan@verosnt.com>
+ *                  Copyright 2026 Ryan Wilson <ryan@taveraos.com>
  * PROGRAMMERS:     Sylvain Deverre
- *                  Ryan Wilson <ryan@verosnt.com>
+ *                  Ryan Wilson <ryan@taveraos.com>
  */
 
 /* INCLUDES ******************************************************************/

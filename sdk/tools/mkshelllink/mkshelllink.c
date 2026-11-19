@@ -5,11 +5,11 @@
  * COPYRIGHT:   Copyright 2011 Rafal Harabien <rafalh@reactos.org>
  *              Copyright 2024 Whindmar Saksit <whindsaks@proton.me>
  *              Copyright 2026 Hermès Bélusca-Maïto <hermes.belusca-maito@reactos.org>
- *              Copyright 2026 Ryan Wilson <ryan@verosnt.com>
+ *              Copyright 2026 Ryan Wilson <ryan@taveraos.com>
  * PROGRAMMERS:     Rafal Harabien
  *                  Whindmar Saksit
  *                  Hermès Bélusca-Maïto
- *                  Ryan Wilson <ryan@verosnt.com>
+ *                  Ryan Wilson <ryan@taveraos.com>
  */
 
 /* INCLUDES ******************************************************************/
@@ -236,8 +236,8 @@ static const struct SPECIALFOLDER
     const char* dummyPath;
     const char* unexpPath;
 } g_specialfolders[] = {
-    { CSIDL_WINDOWS, "windows", "X:\\VerOS", "%SystemRoot%" },
-    { CSIDL_SYSTEM,  "system",  "X:\\VerOS\\system32", "%SystemRoot%\\system32" },
+    { CSIDL_WINDOWS, "windows", "X:\\Tavera OS", "%SystemRoot%" },
+    { CSIDL_SYSTEM,  "system",  "X:\\Tavera\\system32", "%SystemRoot%\\system32" },
     { 0, NULL, NULL, NULL }
 };
 

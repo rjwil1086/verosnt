@@ -3,12 +3,12 @@
  * LICENSE:         GNU General Public License, version 2 or later (GPL-2.0-or-later)
  * FILE:            ntoskrnl/io/iomgr/irp.c
  * PURPOSE:         IRP Handling Functions
- * COPYRIGHT:       Copyright 2026 Ryan Wilson <ryan@verosnt.com>
+ * COPYRIGHT:       Copyright 2026 Ryan Wilson <ryan@taveraos.com>
  * PROGRAMMERS:     Alex Ionescu (alex.ionescu@reactos.org)
  *                  Gunnar Dalsnes
  *                  Filip Navara (navaraf@reactos.org)
  *                  Pierre Schweitzer (pierre@reactos.org)
- *                  Ryan Wilson <ryan@verosnt.com>
+ *                  Ryan Wilson <ryan@taveraos.com>
  */
 
 /* INCLUDES ****************************************************************/

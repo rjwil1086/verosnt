@@ -1,11 +1,11 @@
 /*
  * COPYRIGHT:       See COPYING in the top level directory
- *                  Copyright 2026 Ryan Wilson <ryan@verosnt.com>
+ *                  Copyright 2026 Ryan Wilson <ryan@taveraos.com>
  * PROJECT:         ReactOS user32.dll
  * FILE:            win32ss/user/user32/misc/desktop.c
  * PURPOSE:         Desktops
  * PROGRAMMER:      Casper S. Hornstrup (chorns@users.sourceforge.net)
- *                  Ryan Wilson <ryan@verosnt.com>
+ *                  Ryan Wilson <ryan@taveraos.com>
  * UPDATE HISTORY:
  *      06-06-2001  CSH  Created
  */

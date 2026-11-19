@@ -1,11 +1,11 @@
 /*
  * COPYRIGHT:   See COPYING in the top level directory
- *              Copyright 2026 Ryan Wilson <ryan@verosnt.com>
+ *              Copyright 2026 Ryan Wilson <ryan@taveraos.com>
  * PROJECT:     ReactOS Ancillary Function Driver
  * FILE:        tdihelpers/tdi.c
  * PURPOSE:     Transport Driver Interface functions
  * PROGRAMMERS: Casper S. Hornstrup (chorns@users.sourceforge.net)
- *              Ryan Wilson <ryan@verosnt.com>
+ *              Ryan Wilson <ryan@taveraos.com>
  * REVISIONS:
  *   CSH 01/09-2000 Created
  *   20251021 Moved to tdihelpers since it is used by 2 drivers (AFD, NETIO) now

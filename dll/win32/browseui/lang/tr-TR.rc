@@ -82,7 +82,7 @@ BEGIN
     END
     POPUP "Ya&rdım", FCIDM_MENU_HELP
     BEGIN
-        MENUITEM "&VerOS NT Hakkında", IDM_HELP_ABOUT
+        MENUITEM "&Tavera OS Hakkında", IDM_HELP_ABOUT
     END
 END
 
@@ -346,6 +346,6 @@ END
 
 STRINGTABLE
 BEGIN
-    IDS_PARSE_ADDR_ERR_TITLE "VerOS NT Gezgini"
-    IDS_PARSE_ADDR_ERR_TEXT "VerOS NT Gezgini '%1' ögesini bulamadı. Girdiğiniz değeri kontrol edin ve yeniden arayın."
+    IDS_PARSE_ADDR_ERR_TITLE "Tavera OS Gezgini"
+    IDS_PARSE_ADDR_ERR_TEXT "Tavera OS Gezgini '%1' ögesini bulamadı. Girdiğiniz değeri kontrol edin ve yeniden arayın."
 END

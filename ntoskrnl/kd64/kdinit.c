@@ -1,13 +1,13 @@
 /*
- * PROJECT:     VerOS NT Kernel
+ * PROJECT:     Tavera OS Kernel
  * LICENSE:     GNU General Public License, version 2 or later (GPL-2.0-or-later)
  * FILE:        ntoskrnl/kd64/kdinit.c
  * PURPOSE:     KD64 Initialization Code
  * COPYRIGHT:   See COPYING in the top level directory
- *              Copyright 2026 Ryan Wilson <ryan@verosnt.com>
+ *              Copyright 2026 Ryan Wilson <ryan@taveraos.com>
  * PROGRAMMERS: Alex Ionescu (alex.ionescu@reactos.org)
  *              Stefan Ginsberg (stefan.ginsberg@reactos.org)
- *              Ryan Wilson <ryan@verosnt.com>
+ *              Ryan Wilson <ryan@taveraos.com>
  */
 
 /* INCLUDES ******************************************************************/
@@ -95,7 +95,7 @@ KdpPrintBanner(VOID)
     SIZE_T MemSizeMBs = KdpGetMemorySizeInMBs(KeLoaderBlock);
 
     DPRINT1("-----------------------------------------------------\n");
-    DPRINT1("VerOS NT " KERNEL_VERSION_STR " (Build " KERNEL_VERSION_BUILD_STR ") (Commit " KERNEL_VERSION_COMMIT_HASH ")\n");
+    DPRINT1("Tavera OS " KERNEL_VERSION_STR " (Build " KERNEL_VERSION_BUILD_STR ") (Commit " KERNEL_VERSION_COMMIT_HASH ")\n");
     DPRINT1("%u System Processor [%u MB Memory]\n", KeNumberProcessors, MemSizeMBs);
 
     if (KeLoaderBlock)

@@ -1,9 +1,9 @@
 /*
- * PROJECT:     VerOS NT System Libraries
+ * PROJECT:     Tavera OS System Libraries
  * LICENSE:     GNU Lesser General Public License, version 2.1 or later (LGPL-2.1-or-later)
  * FILE:        dll/ntdll/etw/trace.c
  * PURPOSE:     ntdll Event Tracing stubs and helpers
- * COPYRIGHT:   Copyright 2026 Ryan Wilson <ryan@verosnt.com>
+ * COPYRIGHT:   Copyright 2026 Ryan Wilson <ryan@taveraos.com>
  * PROGRAMMERS: Ryan Wilson
  *
  * EtwEventRegister writes a non-zero REGHANDLE because the generated

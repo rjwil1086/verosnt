@@ -9,7 +9,7 @@
 #pragma once
 
 /* Language-independent Vendor strings */
-#define VENDOR_REACTOS      L"VerOS NT"
+#define VENDOR_REACTOS      L"Tavera OS"
 #define VENDOR_MICROSOFT    L"Microsoft"
 
 typedef struct _NTOS_INSTALLATION

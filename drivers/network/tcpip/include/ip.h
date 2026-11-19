@@ -4,8 +4,8 @@
  * LICENSE:     GNU General Public License, version 2 or later (GPL-2.0-or-later)
  * FILE:        include/ip.h
  * PURPOSE:     Internet Protocol related definitions
- * COPYRIGHT:   Copyright 2026 Ryan Wilson <ryan@verosnt.com>
- * PROGRAMMERS: Ryan Wilson <ryan@verosnt.com>
+ * COPYRIGHT:   Copyright 2026 Ryan Wilson <ryan@taveraos.com>
+ * PROGRAMMERS: Ryan Wilson <ryan@taveraos.com>
  *
  * Dhcp6Address holds an IA_NA address from RFC 8415
  * (https://www.rfc-editor.org/rfc/rfc8415).

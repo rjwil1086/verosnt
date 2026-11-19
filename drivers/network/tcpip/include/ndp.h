@@ -1,10 +1,10 @@
 /*
- * PROJECT:     VerOS NT Kernel
+ * PROJECT:     Tavera OS Kernel
  * LICENSE:     GNU General Public License, version 2 or later (GPL-2.0-or-later)
  * FILE:        drivers/network/tcpip/include/ndp.h
  * PURPOSE:     Neighbor Discovery Protocol (NDP) definitions
- * COPYRIGHT:   Copyright 2026 Ryan Wilson <ryan@verosnt.com>
- * PROGRAMMERS: Ryan Wilson <ryan@verosnt.com>
+ * COPYRIGHT:   Copyright 2026 Ryan Wilson <ryan@taveraos.com>
+ * PROGRAMMERS: Ryan Wilson <ryan@taveraos.com>
  *
  * ICMPv6 Neighbor Solicitation/Advertisement types, option types, and
  * message layouts from RFC 4861 Sections 4.3, 4.4, and 4.6

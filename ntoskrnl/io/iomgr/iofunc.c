@@ -7,7 +7,6 @@
  *                  Gunnar Dalsnes
  *                  Filip Navara (navaraf@reactos.org)
  *                  Pierre Schweitzer (pierre@reactos.org)
- *                  Ryan Wilson <ryan@verosnt.com>
  *                  Ryan Wilson <ryan@taveraos.com>
  *
  * Copyright 2026 Ryan Wilson <ryan@taveraos.com>

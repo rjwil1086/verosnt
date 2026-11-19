@@ -1,13 +1,13 @@
 /*
- * PROJECT:     VerOS NT System Libraries
+ * PROJECT:     Tavera OS System Libraries
  * LICENSE:     GNU General Public License, version 2 or later (GPL-2.0-or-later)
  * FILE:        dll/win32/kernel32/client/fiber.c
  * PURPOSE:     Fiber Implementation
  * COPYRIGHT:   Copyright 2005-2011 Alex Ionescu (alex@relsoft.net)
  *              Copyright 2003-2008 KJK::Hyperion (noog@libero.it)
  *              Copyright 2018 Mark Jansen (mark.jansen@reactos.org)
- *              Copyright 2026 Ryan Wilson <ryan@verosnt.com>
- * PROGRAMMERS: Ryan Wilson <ryan@verosnt.com>
+ *              Copyright 2026 Ryan Wilson <ryan@taveraos.com>
+ * PROGRAMMERS: Ryan Wilson <ryan@taveraos.com>
  */
 
 #include <k32.h>

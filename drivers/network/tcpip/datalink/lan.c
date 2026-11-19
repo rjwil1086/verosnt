@@ -1,11 +1,11 @@
 /*
  * COPYRIGHT:   See COPYING in the top level directory
- *              Copyright 2026 Ryan Wilson <ryan@verosnt.com>
+ *              Copyright 2026 Ryan Wilson <ryan@taveraos.com>
  * PROJECT:     ReactOS TCP/IP protocol driver
  * FILE:        datalink/lan.c
  * PURPOSE:     Local Area Network media routines
  * PROGRAMMERS: Casper S. Hornstrup (chorns@users.sourceforge.net)
- *              Ryan Wilson <ryan@verosnt.com>
+ *              Ryan Wilson <ryan@taveraos.com>
  * REVISIONS:
  *   CSH 01/08-2000 Created
  */

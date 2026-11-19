@@ -3,9 +3,9 @@
  * PROJECT:     ReactOS TCP/IP protocol driver
  * FILE:        transport/tcp/accept.c
  * PURPOSE:     Transmission Control Protocol Listen/Accept code
- * COPYRIGHT:   Copyright 2026 Ryan Wilson <ryan@verosnt.com>
+ * COPYRIGHT:   Copyright 2026 Ryan Wilson <ryan@taveraos.com>
  * PROGRAMMERS: Art Yerkes (arty@users.sf.net)
- *              Ryan Wilson <ryan@verosnt.com>
+ *              Ryan Wilson <ryan@taveraos.com>
  * REVISIONS:
  *   arty 12/21/2004 Created
  */

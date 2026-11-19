@@ -58,7 +58,7 @@ int
 main (int argc, char * argv [] )
 {
 	printf (
-		"VerOS NT/Win32 %s - List DOS Devices Utility\n"
+		"Tavera/Win32 %s - List DOS Devices Utility\n"
 		"Written by E.Aliberti (%s)\n\n",
 		KERNEL_VERSION_STR,
 		__DATE__

@@ -1,12 +1,12 @@
 /*
  * COPYRIGHT:       See COPYING in the top level directory
- *                  Copyright 2026 Ryan Wilson <ryan@verosnt.com>
+ *                  Copyright 2026 Ryan Wilson <ryan@taveraos.com>
  * PROJECT:         ReactOS kernel
  * FILE:            ntoskrnl/kd/kdio.c
  * PURPOSE:         NT Kernel Debugger Input/Output Functions
  *
  * PROGRAMMERS:     Alex Ionescu (alex@relsoft.net)
- *                  Ryan Wilson <ryan@verosnt.com>
+ *                  Ryan Wilson <ryan@taveraos.com>
  */
 
 /*

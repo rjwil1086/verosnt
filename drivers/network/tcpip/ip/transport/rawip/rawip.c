@@ -3,9 +3,9 @@
  * PROJECT:     ReactOS TCP/IP protocol driver
  * FILE:        transport/rawip/rawip.c
  * PURPOSE:     Raw IP datagram routines
- * COPYRIGHT:   Copyright 2026 Ryan Wilson <ryan@verosnt.com>
+ * COPYRIGHT:   Copyright 2026 Ryan Wilson <ryan@taveraos.com>
  * PROGRAMMERS: Casper S. Hornstrup (chorns@users.sourceforge.net)
- *              Ryan Wilson <ryan@verosnt.com>
+ *              Ryan Wilson <ryan@taveraos.com>
  * REVISIONS:
  *   CSH 01/08-2000 Created
  */

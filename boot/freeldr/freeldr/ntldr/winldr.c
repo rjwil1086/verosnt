@@ -4,9 +4,9 @@
  * FILE:        boot/freeldr/freeldr/ntldr/winldr.c
  * PURPOSE:     Windows-compatible NT OS Loader.
  * COPYRIGHT:   Copyright 2006-2019 Aleksey Bragin <aleksey@reactos.org>
- *              Copyright 2026 Ryan Wilson <ryan@verosnt.com>
+ *              Copyright 2026 Ryan Wilson <ryan@taveraos.com>
  * PROGRAMMERS: Aleksey Bragin
- *              Ryan Wilson <ryan@verosnt.com>
+ *              Ryan Wilson <ryan@taveraos.com>
  */
 
 #include <freeldr.h>

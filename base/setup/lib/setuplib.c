@@ -1,13 +1,13 @@
 /*
  * COPYRIGHT:       See COPYING in the top level directory
- *                  Copyright 2026 Ryan Wilson <ryan@verosnt.com>
+ *                  Copyright 2026 Ryan Wilson <ryan@taveraos.com>
  * PROJECT:         ReactOS Setup Library
  * FILE:            base/setup/lib/setuplib.c
  * PURPOSE:         Setup Library - Main initialization helpers
  * PROGRAMMERS:     Casper S. Hornstrup (chorns@users.sourceforge.net)
  *                  Hermes Belusca-Maito (hermes.belusca@sfr.fr)
  *                  Whindmar Saksit <whindsaks@proton.me>
- *                  Ryan Wilson <ryan@verosnt.com>
+ *                  Ryan Wilson <ryan@taveraos.com>
  */
 
 /* INCLUDES *****************************************************************/
@@ -28,7 +28,7 @@
 
 HANDLE ProcessHeap;
 BOOLEAN IsUnattendedSetup = FALSE;
-static PCWSTR InfUnattendSignature = L"$VerOS$";
+static PCWSTR InfUnattendSignature = L"$Tavera$";
 
 /* FUNCTIONS ****************************************************************/
 
@@ -711,10 +711,10 @@ GetSourcePaths(
      * can reference other symlinks. This is what happens, for example when
      * booting the installation from a removable hard-disk. We can have:
      *
-     *          \SystemRoot ---> \Device\Harddisk1\Partition1\VerOS
+     *          \SystemRoot ---> \Device\Harddisk1\Partition1\Tavera
      * and:     \Device\Harddisk1\Partition1 ---> \Device\HarddiskVolume2
      * etc.
-     * and we wish to resolve \SystemRoot to: \Device\HarddiskVolume2\VerOS
+     * and we wish to resolve \SystemRoot to: \Device\HarddiskVolume2\Tavera
      *
      * We then verify whether it prefixes the image file path obtained
      * from the step above, which is a fully reparsed path.
@@ -728,7 +728,7 @@ GetSourcePaths(
      *
      * - A call to NtQueryInformationFile(FileNameInformation) alone on
      *   the obtained handle would only retrieve the FS directory name,
-     *   i.e. \VerOS , but not the whole NT path.
+     *   i.e. \Tavera , but not the whole NT path.
      *
      * - We therefore use NtQueryObject(), which allows retrieving the
      *   full resolved NT path (device name + FS directory name).

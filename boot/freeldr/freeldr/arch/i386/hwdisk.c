@@ -3,7 +3,7 @@
  *
  *  Copyright (C) 2003, 2004  Eric Kohl
  *  Copyright (C) 2009  Hervé Poussineau
- *  Copyright 2026 Ryan Wilson <ryan@verosnt.com>
+ *  Copyright 2026 Ryan Wilson <ryan@taveraos.com>
  *
  *  This program is free software; you can redistribute it and/or modify
  *  it under the terms of the GNU General Public License as published by

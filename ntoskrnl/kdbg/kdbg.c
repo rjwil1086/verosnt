@@ -5,11 +5,11 @@
  * COPYRIGHT:   Copyright 2020-2021 Hervé Poussineau <hpoussin@reactos.org>
  *              Copyright 2021 Jérôme Gardou <jerome.gardou@reactos.org>
  *              Copyright 2023 Hermès Bélusca-Maïto <hermes.belusca-maito@reactos.org>
- *              Copyright 2026 Ryan Wilson <ryan@verosnt.com>
+ *              Copyright 2026 Ryan Wilson <ryan@taveraos.com>
  * PROGRAMMERS: Hervé Poussineau <hpoussin@reactos.org>
  *              Jérôme Gardou <jerome.gardou@reactos.org>
  *              Hermès Bélusca-Maïto <hermes.belusca-maito@reactos.org>
- *              Ryan Wilson <ryan@verosnt.com>
+ *              Ryan Wilson <ryan@taveraos.com>
  *
  * PreviousMode for KDB enter conditions used SegCs & 1. App serial
  * output/ntdll-apps/serial-App-20261116T092124Z.log: user AV in

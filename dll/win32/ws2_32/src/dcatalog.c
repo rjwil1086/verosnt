@@ -1,11 +1,11 @@
 /*
  * COPYRIGHT:   See COPYING in the top level directory
- *              Copyright 2026 Ryan Wilson <ryan@verosnt.com>
+ *              Copyright 2026 Ryan Wilson <ryan@taveraos.com>
  * PROJECT:     ReactOS WinSock 2 API
  * FILE:        dll/win32/ws2_32/src/dcatalog.c
  * PURPOSE:     Transport Catalog Object
  * PROGRAMMER:  Alex Ionescu (alex@relsoft.net)
- *              Ryan Wilson <ryan@verosnt.com>
+ *              Ryan Wilson <ryan@taveraos.com>
  *
  * AF_INET6 catalog match uses the AF_INET provider. The packed catalog is
  * media/inf/nettcpip.inf Protocol_Catalog9, which lists address family 2.

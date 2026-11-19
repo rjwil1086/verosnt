@@ -3,9 +3,9 @@
  * PROJECT:     ReactOS TCP/IP protocol driver
  * FILE:        datalink/loopback.c
  * PURPOSE:     Loopback adapter
- * COPYRIGHT:   Copyright 2026 Ryan Wilson <ryan@verosnt.com>
+ * COPYRIGHT:   Copyright 2026 Ryan Wilson <ryan@taveraos.com>
  * PROGRAMMERS: Casper S. Hornstrup (chorns@users.sourceforge.net)
- *              Ryan Wilson <ryan@verosnt.com>
+ *              Ryan Wilson <ryan@taveraos.com>
  * REVISIONS:
  *   CSH 01/08-2000 Created
  *

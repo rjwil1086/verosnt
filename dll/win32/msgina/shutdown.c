@@ -1,13 +1,13 @@
 /*
  * COPYRIGHT:       See COPYING in the top level directory
- *                  Copyright 2026 Ryan Wilson <ryan@verosnt.com>
+ *                  Copyright 2026 Ryan Wilson <ryan@taveraos.com>
  * PROJECT:         ReactOS msgina.dll
  * FILE:            lib/msgina/shutdown.c
  * PURPOSE:         Shutdown Dialog Box (GUI only)
  * PROGRAMMERS:     Lee Schroeder (spaceseel at gmail dot com)
  *                  Hermes Belusca-Maito (hermes.belusca@sfr.fr)
  *                  Arnav Bhatt (arnavbhatt288 at gmail dot com)
- *                  Ryan Wilson <ryan@verosnt.com>
+ *                  Ryan Wilson <ryan@taveraos.com>
  */
 
 #include "msgina.h"
@@ -1440,7 +1440,7 @@ ShellShutdownDialog(
                             StringCbCopyW(text, sizeof(text), choices.Choices[index].Label);
                             StringCbCatW(text, sizeof(text), L"\n");
                             StringCbCatW(text, sizeof(text), choices.Choices[index].Detail);
-                            if (MessageBoxW(hWndParent, text, L"VerOS", MB_YESNO) != IDYES)
+                            if (MessageBoxW(hWndParent, text, L"Tavera OS", MB_YESNO) != IDYES)
                                 continue;
                             ZeroMemory(&committed, sizeof(committed));
                             committed.ChoiceId = choices.Choices[index].Id;

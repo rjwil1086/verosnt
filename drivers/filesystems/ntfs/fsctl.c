@@ -1,16 +1,14 @@
 /*
- * PROJECT:     VerOS NT Kernel
+ * PROJECT:     Tavera OS Kernel
  * LICENSE:     GNU General Public License, version 2 or later (GPL-2.0-or-later)
  * FILE:        drivers/filesystems/ntfs/fsctl.c
  * PURPOSE:     NTFS filesystem driver
  * COPYRIGHT:   Copyright (C) 2002 ReactOS Team
  *              See COPYING in the top level directory
- *              Copyright 2026 Ryan Wilson <ryan@verosnt.com>
  *              Copyright 2026 Ryan Wilson <ryan@taveraos.com>
  * PROGRAMMERS: Eric Kohl
  *              Valentin Verkhovsky
  *              Pierre Schweitzer
- *              Ryan Wilson <ryan@verosnt.com>
  *              Ryan Wilson <ryan@taveraos.com>
  *
  * Sources: FSCTL_GET_NTFS_VOLUME_DATA extended tail —

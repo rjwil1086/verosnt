@@ -1,13 +1,13 @@
 /*
- * PROJECT:     VerOS NT
+ * PROJECT:     Tavera OS
  * LICENSE:     GNU General Public License, version 2 or later (GPL-2.0-or-later)
  * FILE:        base/setup/reactos/drivepage.c
  * PURPOSE:     Disk partitions/Volumes page
  * COPYRIGHT:   Copyright 2008-2010 Matthias Kupfer <mkupfer@reactos.org>
  *              Copyright 2008-2009 Dmitry Chapyshev <dmitry@reactos.org>
  *              Copyright 2018-2026 Hermès Bélusca-Maïto <hermes.belusca-maito@reactos.org>
- *              Copyright 2026 Ryan Wilson <ryan@verosnt.com>
- * PROGRAMMERS: Ryan Wilson <ryan@verosnt.com>
+ *              Copyright 2026 Ryan Wilson <ryan@taveraos.com>
+ * PROGRAMMERS: Ryan Wilson <ryan@taveraos.com>
  */
 
 #include "reactos.h"
@@ -1669,7 +1669,7 @@ SelectInstallPartition(
         nRet = DisplayMessage(hwndDlg,
                               MB_ICONWARNING | MB_OKCANCEL,
                               L"Warning",
-                              L"The disk you have selected for installing VerOS NT\n"
+                              L"The disk you have selected for installing Tavera OS\n"
                               L"is not visible by the firmware of your computer,\n"
                               L"and so may not be bootable.\n"
                               L"\nClick on OK to continue anyway."

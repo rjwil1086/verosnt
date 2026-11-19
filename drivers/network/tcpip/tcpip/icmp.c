@@ -3,9 +3,9 @@
  * LICENCE:     GPL-2.0-or-later (https://spdx.org/licenses/GPL-2.0-or-later)
  * PURPOSE:     ICMP functions implementation
  * COPYRIGHT:   2019 Victor Perevertkin (victor.perevertkin@reactos.org)
- *              Copyright 2026 Ryan Wilson <ryan@verosnt.com>
+ *              Copyright 2026 Ryan Wilson <ryan@taveraos.com>
  * PROGRAMMERS: Victor Perevertkin (victor.perevertkin@reactos.org)
- *              Ryan Wilson <ryan@verosnt.com>
+ *              Ryan Wilson <ryan@taveraos.com>
  *
  * ICMPv6 echo IOCTL path for Icmp6SendEcho2 (dll/win32/iphlpapi/icmp.c).
  * Echo types from RFC 4443 Sections 4.1-4.2

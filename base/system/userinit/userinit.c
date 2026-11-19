@@ -1,14 +1,14 @@
 /*
- * PROJECT:     VerOS NT
+ * PROJECT:     Tavera OS
  * LICENSE:     GNU General Public License, version 2 or later (GPL-2.0-or-later)
  * FILE:        base/system/userinit/userinit.c
  * PURPOSE:     ReactOS applications
  * COPYRIGHT:   Copyright (C) 2001, 2002 ReactOS Team
  *              See COPYING in the top level directory
- *              Copyright 2026 Ryan Wilson <ryan@verosnt.com>
+ *              Copyright 2026 Ryan Wilson <ryan@taveraos.com>
  * PROGRAMMERS: Thomas Weidenmueller (w3seek@users.sourceforge.net)
  *              Hervé Poussineau (hpoussin@reactos.org)
- *              Ryan Wilson <ryan@verosnt.com>
+ *              Ryan Wilson <ryan@taveraos.com>
  */
 
 #include "userinit.h"

@@ -1,5 +1,5 @@
 /*
- * PROJECT:     VerOS NT System Libraries
+ * PROJECT:     Tavera OS System Libraries
  * LICENSE:     GNU General Public License, version 2 or later (GPL-2.0-or-later)
  * FILE:        dll/win32/advapi32/service/sctrl.c
  * PURPOSE:     Service control manager functions
@@ -7,8 +7,8 @@
  *              Copyright 1999 Emanuele Aliberti
  *              Copyright 2007 Ged Murphy <gedmurphy@reactos.org>
  *              Gregor Brunmar <gregor.brunmar@home.se>
- *              Copyright 2026 Ryan Wilson <ryan@verosnt.com>
- * PROGRAMMERS: Ryan Wilson <ryan@verosnt.com>
+ *              Copyright 2026 Ryan Wilson <ryan@taveraos.com>
+ * PROGRAMMERS: Ryan Wilson <ryan@taveraos.com>
  */
 
 /* INCLUDES ******************************************************************/

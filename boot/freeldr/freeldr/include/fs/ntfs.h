@@ -1,12 +1,12 @@
 /*
- * PROJECT:     VerOS NT Kernel
+ * PROJECT:     Tavera OS Kernel
  * LICENSE:     GNU General Public License, version 2 or later (GPL-2.0-or-later)
  * FILE:        boot/freeldr/freeldr/include/fs/ntfs.h
  * PURPOSE:     FreeLoader NTFS support
  * COPYRIGHT:   Copyright (C) 2004 Filip Navara <xnavara@volny.cz>
  *              Copyright (C) 2011 Pierre Schweitzer <pierre.schweitzer@reactos.org>
- *              Copyright 2026 Ryan Wilson <ryan@verosnt.com>
- * PROGRAMMERS: Ryan Wilson <ryan@verosnt.com>
+ *              Copyright 2026 Ryan Wilson <ryan@taveraos.com>
+ * PROGRAMMERS: Ryan Wilson <ryan@taveraos.com>
  */
 
 #pragma once

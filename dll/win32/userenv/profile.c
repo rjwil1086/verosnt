@@ -1,12 +1,12 @@
 /*
- * PROJECT:     VerOS NT System Libraries
+ * PROJECT:     Tavera OS System Libraries
  * LICENSE:     GNU General Public License, version 2 or later (GPL-2.0-or-later)
  * FILE:        dll/win32/userenv/profile.c
  * PURPOSE:     User profile code
- * COPYRIGHT:   Copyright 2026 Ryan Wilson <ryan@verosnt.com>
+ * COPYRIGHT:   Copyright 2026 Ryan Wilson <ryan@taveraos.com>
  * PROGRAMMERS: Eric Kohl
  *              Hervé Poussineau
- *              Ryan Wilson <ryan@verosnt.com>
+ *              Ryan Wilson <ryan@taveraos.com>
  */
 
 #include "precomp.h"
@@ -2218,7 +2218,7 @@ cleanup:
     {
         // TODO: Use a localized *.mc resource message* error.
         ReportError(lpProfileInfo->dwFlags,
-                    L"VerOS NT could not load the locally stored user profile. "
+                    L"Tavera OS could not load the locally stored user profile. "
                     L"Possible causes of this error include insufficient security rights or a corrupt local profile.\n"
                     L"\nError: %lu\n",
                     dwError);

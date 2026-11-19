@@ -3,9 +3,9 @@
  * PROJECT:     ReactOS TCP/IP protocol driver
  * FILE:        include/address.h
  * PURPOSE:     Address manipulation prototypes
- * COPYRIGHT:   Copyright 2026 Ryan Wilson <ryan@verosnt.com>
+ * COPYRIGHT:   Copyright 2026 Ryan Wilson <ryan@taveraos.com>
  * PROGRAMMERS: Casper S. Hornstrup (chorns@users.sourceforge.net)
- *              Ryan Wilson <ryan@verosnt.com>
+ *              Ryan Wilson <ryan@taveraos.com>
  *
  * IPv6 link-local fe80::/64 and modified EUI-64 from RFC 4291 Sections
  * 2.5.6 and Appendix A (https://www.rfc-editor.org/rfc/rfc4291).

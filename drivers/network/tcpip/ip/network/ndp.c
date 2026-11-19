@@ -1,10 +1,10 @@
 /*
- * PROJECT:     VerOS NT Kernel
+ * PROJECT:     Tavera OS Kernel
  * LICENSE:     GNU General Public License, version 2 or later (GPL-2.0-or-later)
  * FILE:        drivers/network/tcpip/ip/network/ndp.c
  * PURPOSE:     Neighbor Discovery Solicitation and Advertisement
- * COPYRIGHT:   Copyright 2026 Ryan Wilson <ryan@verosnt.com>
- * PROGRAMMERS: Ryan Wilson <ryan@verosnt.com>
+ * COPYRIGHT:   Copyright 2026 Ryan Wilson <ryan@taveraos.com>
+ * PROGRAMMERS: Ryan Wilson <ryan@taveraos.com>
  *
  * Neighbor Solicitation and Advertisement from RFC 4861 Sections 4.3, 4.4,
  * 4.6, and 7.2 (https://www.rfc-editor.org/rfc/rfc4861). Link-local and

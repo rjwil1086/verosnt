@@ -1,11 +1,11 @@
 /*
- * PROJECT:     VerOS NT System Libraries
+ * PROJECT:     Tavera OS System Libraries
  * LICENSE:     GNU Lesser General Public License, version 2.1 or later (LGPL-2.1-or-later)
  * FILE:        dll/win32/iphlpapi/iphlpapi_main.c
  * PURPOSE:     iphlpapi dll implementation
  * COPYRIGHT:   Copyright (C) 2003 Juan Lang
- *              Copyright 2026 Ryan Wilson <ryan@verosnt.com>
- * PROGRAMMERS: Ryan Wilson <ryan@verosnt.com>
+ *              Copyright 2026 Ryan Wilson <ryan@taveraos.com>
+ * PROGRAMMERS: Ryan Wilson <ryan@taveraos.com>
  */
 /*
  * 2018 Pierre Schweitzer

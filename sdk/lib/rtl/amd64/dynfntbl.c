@@ -3,7 +3,7 @@
  * LICENSE:     MIT (https://spdx.org/licenses/MIT)
  * PURPOSE:     Dynamic function table support routines
  * COPYRIGHT:   Copyright 2022-2025 Timo Kreuzer (timo.kreuzer@reactos.org)
- *              Copyright 2026 Ryan Wilson <ryan@verosnt.com>
+ *              Copyright 2026 Ryan Wilson <ryan@taveraos.com>
  */
 
 #include <rtl.h>

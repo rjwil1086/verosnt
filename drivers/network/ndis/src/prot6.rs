@@ -1,10 +1,10 @@
 /*
- * PROJECT:     VerOS NT Kernel
+ * PROJECT:     Tavera OS Kernel
  * LICENSE:     GNU General Public License, version 2 or later (GPL-2.0-or-later)
  * FILE:        drivers/network/ndis/src/prot6.rs
  * PURPOSE:     NDIS 6.84 protocol bind for tcpip
- * COPYRIGHT:   Copyright 2026 Ryan Wilson <ryan@verosnt.com>
- * PROGRAMMERS: Ryan Wilson <ryan@verosnt.com>
+ * COPYRIGHT:   Copyright 2026 Ryan Wilson <ryan@taveraos.com>
+ * PROGRAMMERS: Ryan Wilson <ryan@taveraos.com>
  */
 
 /*
@@ -29,7 +29,7 @@
  * NDIS_BIND_PARAMETERS puts AdapterName after ProtocolSection
  * (https://learn.microsoft.com/en-us/windows-hardware/drivers/ddi/ndis/ns-ndis-_ndis_bind_parameters);
  * on x64 AdapterName is at offset 16. NdisMedium802_3 is 0 in
- * sdk/include/ddk/ndis.h. LanRegisterProtocol6 is the VerOS tcpip entry
+ * sdk/include/ddk/ndis.h. LanRegisterProtocol6 is the Tavera OS tcpip entry
  * that calls NdisRegisterProtocolDriver. Phase C removed the NDIS 5
  * tcpip bridge; output/ndis-disk-20261116T203348Z.log and
  * output/netkvm-20261116T203635Z.log carry PingCheck on NDIS 6.

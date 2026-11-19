@@ -3,10 +3,10 @@
  * PROJECT:     ReactOS TCP/IP protocol driver
  * FILE:        transport/tcp/tcp.c
  * PURPOSE:     Transmission Control Protocol
- * COPYRIGHT:   Copyright 2026 Ryan Wilson <ryan@verosnt.com>
+ * COPYRIGHT:   Copyright 2026 Ryan Wilson <ryan@taveraos.com>
  * PROGRAMMERS: Casper S. Hornstrup (chorns@users.sourceforge.net)
  *              Art Yerkes (arty@users.sf.net)
- *              Ryan Wilson <ryan@verosnt.com>
+ *              Ryan Wilson <ryan@taveraos.com>
  * REVISIONS:
  *   CSH 01/08-2000  Created
  *   arty 12/21/2004 Added accept

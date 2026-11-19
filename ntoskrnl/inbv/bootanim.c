@@ -870,7 +870,7 @@ GetFamousQuote(VOID)
         "I have come here to chew bubble gum and kick ass,\r\n"
             "and I'm all out of bubble gum!",
         "That's the way the cookie crumbles ;-)",
-        "VerOS NT is ready to be booted again ;-)",
+        "Tavera OS is ready to be booted again ;-)",
         "NOOOO!! DON'T HIT THE BUTTON! I wouldn't do it to you!",
         "Don't abandon your computer, he wouldn't do it to you.",
         "Oh, come on. I got a headache. Leave me alone, will ya?",
@@ -906,7 +906,7 @@ GetFamousQuote(VOID)
             "reaper! - Death in Bill and Ted's Bogus Journey",
         "Final Surrender",
         "If you see this screen...",
-        "From VerOS NT with Love",
+        "From Tavera OS with Love",
         // "<Place your Ad here>"
     };
 

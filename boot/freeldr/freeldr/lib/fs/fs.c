@@ -2,7 +2,7 @@
  *  FreeLoader
  *  Copyright (C) 1998-2003  Brian Palmer  <brianp@sginet.com>
  *  Copyright (C) 2008-2009  Hervé Poussineau  <hpoussin@reactos.org>
- *  Copyright 2026 Ryan Wilson <ryan@verosnt.com>
+ *  Copyright 2026 Ryan Wilson <ryan@taveraos.com>
  *
  *  This program is free software; you can redistribute it and/or modify
  *  it under the terms of the GNU General Public License as published by

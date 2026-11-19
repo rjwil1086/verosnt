@@ -3,9 +3,9 @@
  * LICENSE:         GNU General Public License, version 2 or later (GPL-2.0-or-later)
  * FILE:            hal/halx86/generic/halinit.c
  * PURPOSE:         HAL Entrypoint and Initialization
- * COPYRIGHT:       Copyright 2026 Ryan Wilson <ryan@verosnt.com>
+ * COPYRIGHT:       Copyright 2026 Ryan Wilson <ryan@taveraos.com>
  * PROGRAMMERS:     Alex Ionescu (alex.ionescu@reactos.org)
- *                  Ryan Wilson <ryan@verosnt.com>
+ *                  Ryan Wilson <ryan@taveraos.com>
  */
 
 /* INCLUDES ******************************************************************/

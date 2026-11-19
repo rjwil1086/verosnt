@@ -1,11 +1,11 @@
 /*
  * COPYRIGHT:       See COPYING in the top level directory
- *                  Copyright 2026 Ryan Wilson <ryan@verosnt.com>
+ *                  Copyright 2026 Ryan Wilson <ryan@taveraos.com>
  * PROJECT:         ReactOS system libraries
  * FILE:            dll/win32/kernel32/client/file/create.c
  * PURPOSE:         Directory functions
  * PROGRAMMER:      Ariadne ( ariadne@xs4all.nl)
- *                  Ryan Wilson <ryan@verosnt.com>
+ *                  Ryan Wilson <ryan@taveraos.com>
  * UPDATE HISTORY:
  *                  Created 01/11/98
  *                  Removed use of SearchPath (not used by Windows)

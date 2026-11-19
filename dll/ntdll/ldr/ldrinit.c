@@ -1,14 +1,14 @@
 /*
- * PROJECT:     VerOS NT System Libraries
+ * PROJECT:     Tavera OS System Libraries
  * LICENSE:     GNU General Public License, version 2 or later (GPL-2.0-or-later)
  * FILE:        dll/ntdll/ldr/ldrinit.c
  * PURPOSE:     User-Mode Process/Thread Startup
  * COPYRIGHT:   See COPYING in the top level directory
- *              Copyright 2026 Ryan Wilson <ryan@verosnt.com>
+ *              Copyright 2026 Ryan Wilson <ryan@taveraos.com>
  *              Copyright Wine authors (LGPL) for late-load TLS slot growth
  * PROGRAMMERS: Alex Ionescu (alex@relsoft.net)
  *              Aleksey Bragin (aleksey@reactos.org)
- *              Ryan Wilson <ryan@verosnt.com>
+ *              Ryan Wilson <ryan@taveraos.com>
  *
  * ReactOS_ShimData (compat GUID blob) is not a shim-engine DLL path.
  * Guest serial output/ntdll-apps/serial-App-20261116T065630Z.log maps

@@ -1,12 +1,12 @@
 /*
- * PROJECT:     VerOS NT System Libraries
+ * PROJECT:     Tavera OS System Libraries
  * LICENSE:     GNU Lesser General Public License, version 2.1 or later (LGPL-2.1-or-later)
  * FILE:        dll/win32/kernel32/wine/timezone.c
  * PURPOSE:     Time conversion functions
  * COPYRIGHT:   Copyright ReactOS / Wine contributors
- *              Copyright 2026 Ryan Wilson <ryan@verosnt.com>
+ *              Copyright 2026 Ryan Wilson <ryan@taveraos.com>
  * PROGRAMMERS: Ariadne
- *              Ryan Wilson <ryan@verosnt.com>
+ *              Ryan Wilson <ryan@taveraos.com>
  *
  * GetDynamicTimeZoneInformation: guest
  * output/ntdll-apps/serial-App-20261116T220556Z.log

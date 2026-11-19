@@ -1,12 +1,12 @@
 /*
- * PROJECT:     VerOS NT System Libraries
+ * PROJECT:     Tavera OS System Libraries
  * LICENSE:     GNU General Public License, version 2 or later (GPL-2.0-or-later)
  * FILE:        dll/win32/kernel32/client/proc.c
  * PURPOSE:     Process functions
  * COPYRIGHT:   See COPYING in the top level directory
- *              Copyright 2026 Ryan Wilson <ryan@verosnt.com>
+ *              Copyright 2026 Ryan Wilson <ryan@taveraos.com>
  * PROGRAMMERS: Ariadne (ariadne@xs4all.nl)
- *              Ryan Wilson <ryan@verosnt.com>
+ *              Ryan Wilson <ryan@taveraos.com>
  *
  * QueryProcessCycleTime: guest
  * output/ntdll-apps/serial-App-20261118T021702Z.log
@@ -141,7 +141,7 @@ BasepIsImageVersionOk(IN ULONG ImageMajorVersion,
         if (ImageMajorVersion > SharedUserData->NtMajorVersion ||
             (ImageMajorVersion == SharedUserData->NtMajorVersion && ImageMinorVersion > SharedUserData->NtMinorVersion))
         {
-            DPRINT1("Accepting image version %lu.%lu, although VerOS NT is an NT %hu.%hu OS!\n",
+            DPRINT1("Accepting image version %lu.%lu, although Tavera OS is an NT %hu.%hu OS!\n",
                 ImageMajorVersion,
                 ImageMinorVersion,
                 SharedUserData->NtMajorVersion,
@@ -168,15 +168,15 @@ BasepCheckWebBladeHashes(IN HANDLE FileHandle)
     /* Depending on which suite this is, run a bsearch and block the appropriate ones */
     if (SharedUserData->SuiteMask & VER_SUITE_COMPUTE_SERVER)
     {
-        DPRINT1("Egad! This is a VerOS NT Compute Server and we should prevent you from using certain APIs...but we won't.");
+        DPRINT1("Egad! This is a Tavera OS Compute Server and we should prevent you from using certain APIs...but we won't.");
     }
     else if (SharedUserData->SuiteMask & VER_SUITE_STORAGE_SERVER)
     {
-        DPRINT1("Gasp! This is a VerOS NT Storage Server and we should prevent you from using certain APIs...but we won't.");
+        DPRINT1("Gasp! This is a Tavera OS Storage Server and we should prevent you from using certain APIs...but we won't.");
     }
     else if (SharedUserData->SuiteMask & VER_SUITE_BLADE)
     {
-        DPRINT1("Golly! This is a VerOS NT Web Blade Server and we should prevent you from using certain APIs...but we won't.");
+        DPRINT1("Golly! This is a Tavera OS Web Blade Server and we should prevent you from using certain APIs...but we won't.");
     }
 
     /* Actually, fuck it, don't block anything, we're open source */

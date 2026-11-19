@@ -1,13 +1,13 @@
 /*
- * PROJECT:     VerOS NT System Libraries
+ * PROJECT:     Tavera OS System Libraries
  * LICENSE:     GNU General Public License, version 2 or later (GPL-2.0-or-later)
  * FILE:        dll/win32/syssetup/install.c
  * PURPOSE:     System setup
  * COPYRIGHT:   See COPYING in the top level directory
- *              Copyright 2026 Ryan Wilson <ryan@verosnt.com>
+ *              Copyright 2026 Ryan Wilson <ryan@taveraos.com>
  * PROGRAMMERS: Eric Kohl
  *              Whindmar Saksit <whindsaks@proton.me>
- *              Ryan Wilson <ryan@verosnt.com>
+ *              Ryan Wilson <ryan@taveraos.com>
  */
 
 /* INCLUDES *****************************************************************/
@@ -69,7 +69,7 @@ FatalError(char *pszFmt,...)
     strcat(szBuffer, "\nRebooting now!");
     MessageBoxA(NULL,
                 szBuffer,
-                "VerOS NT Setup",
+                "Tavera OS Setup",
                 MB_OK);
 }
 
@@ -1219,7 +1219,7 @@ InstallLiveCD(VOID)
 error:
     MessageBoxW(NULL,
                 L"Failed to load LiveCD! You can shutdown your computer, or press ENTER to reboot.",
-                L"VerOS NT LiveCD",
+                L"Tavera OS LiveCD",
                 MB_OK);
     // HACK: This shouldn't be done here, but by the caller of InstallWindowsNt()
     /* Enable the shutdown privilege and reboot the machine */
@@ -1614,7 +1614,7 @@ InstallReactOS(VOID)
     WCHAR szBuffer[MAX_PATH];
 
     InitializeSetupActionLog(FALSE);
-    LogItem(NULL, L"Installing VerOS NT");
+    LogItem(NULL, L"Installing Tavera OS");
 
     CreateTempDir(L"TEMP");
     CreateTempDir(L"TMP");
@@ -1708,7 +1708,7 @@ InstallReactOS(VOID)
     if (dwHotkeyThreadId)
         PostThreadMessage(dwHotkeyThreadId, WM_QUIT, 0, 0);
 
-    LogItem(NULL, L"Installing VerOS NT done");
+    LogItem(NULL, L"Installing Tavera OS done");
     TerminateSetupActionLog();
 
     if (AdminInfo.Name != NULL)

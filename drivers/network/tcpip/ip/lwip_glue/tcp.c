@@ -1,10 +1,10 @@
 /*
- * PROJECT:     VerOS NT Kernel
+ * PROJECT:     Tavera OS Kernel
  * LICENSE:     GNU General Public License, version 2 or later (GPL-2.0-or-later)
  * FILE:        drivers/network/tcpip/ip/lwip_glue/tcp.c
  * PURPOSE:     lwIP TCP glue for the TCP/IP driver
- * COPYRIGHT:   Copyright 2026 Ryan Wilson <ryan@verosnt.com>
- * PROGRAMMERS: Ryan Wilson <ryan@verosnt.com>
+ * COPYRIGHT:   Copyright 2026 Ryan Wilson <ryan@taveraos.com>
+ * PROGRAMMERS: Ryan Wilson <ryan@taveraos.com>
  *
  * tcp_new_ip_type(IPADDR_TYPE_ANY) is the dual-stack PCB in
  * lwip/src/include/lwip/tcp.h. An IPv4 connect still uses this PCB.

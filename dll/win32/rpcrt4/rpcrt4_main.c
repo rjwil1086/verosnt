@@ -1,11 +1,11 @@
 /*
- * PROJECT:     VerOS NT System Libraries
+ * PROJECT:     Tavera OS System Libraries
  * LICENSE:     GNU Lesser General Public License, version 2.1 or later (LGPL-2.1-or-later)
  * FILE:        dll/win32/rpcrt4/rpcrt4_main.c
  * PURPOSE:     RPCRT4
  * COPYRIGHT:   Copyright 2000 Huw D M Davies for CodeWeavers
- *              Copyright 2026 Ryan Wilson <ryan@verosnt.com>
- * PROGRAMMERS: Ryan Wilson <ryan@verosnt.com>
+ *              Copyright 2026 Ryan Wilson <ryan@taveraos.com>
+ * PROGRAMMERS: Ryan Wilson <ryan@taveraos.com>
  */
 /*
  * WINE RPC TODO's (and a few TODONT's)

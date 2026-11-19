@@ -25,9 +25,9 @@
  * FILE:        base/applications/network/ping/ping.c
  * PURPOSE:     Network test utility
  * COPYRIGHT:   Copyright 2015 Tim Crawford
- *              Copyright 2026 Ryan Wilson <ryan@verosnt.com>
+ *              Copyright 2026 Ryan Wilson <ryan@taveraos.com>
  * PROGRAMMERS: Tim Crawford <crawfxrd@gmail.com>
- *              Ryan Wilson <ryan@verosnt.com>
+ *              Ryan Wilson <ryan@taveraos.com>
  */
 
 /*

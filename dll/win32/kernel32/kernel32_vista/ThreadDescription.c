@@ -3,9 +3,9 @@
  * LICENSE:     GPL-2.0-or-later (https://spdx.org/licenses/GPL-2.0-or-later)
  * PURPOSE:     NT10+ Thread Description helpers
  * COPYRIGHT:   Copyright 2025-2026 Hermès Bélusca-Maïto <hermes.belusca-maito@reactos.org>
- *              Copyright 2026 Ryan Wilson <ryan@verosnt.com>
+ *              Copyright 2026 Ryan Wilson <ryan@taveraos.com>
  * PROGRAMMERS: Hermès Bélusca-Maïto <hermes.belusca-maito@reactos.org>
- *              Ryan Wilson <ryan@verosnt.com>
+ *              Ryan Wilson <ryan@taveraos.com>
  *
  * GetThreadDescription is already implemented here and exported from
  * kernel32_vista.spec; kernel32.spec only had SetThreadDescription.

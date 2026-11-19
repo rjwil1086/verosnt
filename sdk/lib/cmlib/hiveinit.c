@@ -1,5 +1,5 @@
 /*
- * PROJECT:     VerOS NT
+ * PROJECT:     Tavera OS
  * LICENSE:     GNU General Public License, version 2 or later (GPL-2.0-or-later)
  * FILE:        sdk/lib/cmlib/hiveinit.c
  * PURPOSE:     Configuration Manager Library - Registry Hive Loading & Initialization
@@ -7,12 +7,12 @@
  *              Copyright 2005 Filip Navara <navaraf@reactos.org>
  *              Copyright 2021 Max Korostil
  *              Copyright 2022 George Bișoc <george.bisoc@reactos.org>
- *              Copyright 2026 Ryan Wilson <ryan@verosnt.com>
+ *              Copyright 2026 Ryan Wilson <ryan@taveraos.com>
  * PROGRAMMERS: Eric Kohl
  *              Filip Navara
  *              Max Korostil
  *              George Bișoc
- *              Ryan Wilson <ryan@verosnt.com>
+ *              Ryan Wilson <ryan@taveraos.com>
  */
 
 #include "cmlib.h"

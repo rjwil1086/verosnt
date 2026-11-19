@@ -18,13 +18,13 @@
  */
 /*
  * COPYRIGHT:   See COPYING in the top level directory
- *              Copyright 2026 Ryan Wilson <ryan@verosnt.com>
+ *              Copyright 2026 Ryan Wilson <ryan@taveraos.com>
  * PROJECT:     ReactOS "Welcome"/AutoRun application
  * FILE:        base/setup/welcome/welcome.c
  * PROGRAMMERS: Eric Kohl
  *              Casper S. Hornstrup (chorns@users.sourceforge.net)
  *              Hermes Belusca-Maito
- *              Ryan Wilson <ryan@verosnt.com>
+ *              Ryan Wilson <ryan@taveraos.com>
  *
  * NOTE:
  *   This utility can be customized by using localized INI configuration files.
@@ -214,7 +214,7 @@ VOID TranslateEscapes(IN OUT LPTSTR lpString)
 
 /**
  * @brief
- * Expands the path for the ReactOS Installer "reactos.exe".
+ * Expands the path for the ReactOS Installer "Tavera OS.exe".
  * See also base/system/userinit/livecd.c!ExpandInstallerPath()
  **/
 static BOOL
@@ -398,7 +398,7 @@ AddNewTopicEx(
         pTopic->bIsCommand = TRUE;
 
         /* Check for special applications: ReactOS Installer */
-        if (_tcsicmp(szCommand, TEXT("reactos.exe")) == 0)
+        if (_tcsicmp(szCommand, TEXT("Tavera OS.exe")) == 0)
         {
             ExpandInstallerPath(szCommand, pTopic->szCommand, ARRAYSIZE(pTopic->szCommand));
         }
@@ -558,7 +558,7 @@ LoadLocalizedResourcesFromINI(LCID Locale, LPTSTR lpResPath)
     }
 
     /* Try to load the default localized strings */
-    GetPrivateProfileString(TEXT("Defaults"), TEXT("AppTitle"), TEXT("VerOS NT - Welcome") /* default */,
+    GetPrivateProfileString(TEXT("Defaults"), TEXT("AppTitle"), TEXT("Tavera OS - Welcome") /* default */,
                             szAppTitle, ARRAYSIZE(szAppTitle), szIniPath);
     GetPrivateProfileString(TEXT("Defaults"), TEXT("DefaultTopicTitle"), TEXT("") /* default */,
                             szDefaultTitle, ARRAYSIZE(szDefaultTitle), szIniPath);
@@ -653,7 +653,7 @@ LoadConfiguration(VOID)
      * They can be redefined by the localized INI files.
      */
     if (!LoadString(hInstance, IDS_APPTITLE, szAppTitle, ARRAYSIZE(szAppTitle)))
-        StringCchCopy(szAppTitle, ARRAYSIZE(szAppTitle), TEXT("VerOS NT - Welcome"));
+        StringCchCopy(szAppTitle, ARRAYSIZE(szAppTitle), TEXT("Tavera OS - Welcome"));
     if (!LoadString(hInstance, IDS_DEFAULT_TOPIC_TITLE, szDefaultTitle, ARRAYSIZE(szDefaultTitle)))
         *szDefaultTitle = 0;
     if (!LoadString(hInstance, IDS_DEFAULT_TOPIC_DESC, szDefaultDesc, ARRAYSIZE(szDefaultDesc)))
@@ -1005,7 +1005,7 @@ RunAction(INT nTopic)
 
         if (!_tcsnicmp(Command, TEXT("<msg>"), 5))
         {
-            MessageBox(hWndMain, Command + 5, TEXT("VerOS NT"), MB_OK | MB_TASKMODAL);
+            MessageBox(hWndMain, Command + 5, TEXT("Tavera OS"), MB_OK | MB_TASKMODAL);
             return TRUE;
         }
     }
@@ -1355,7 +1355,7 @@ OnPaint(HWND hWnd, WPARAM wParam, LPARAM lParam)
 
     /* Draw version information */
     StringCchCopy(szVersion, ARRAYSIZE(szVersion),
-                  TEXT("VerOS NT ") TEXT(KERNEL_VERSION_STR));
+                  TEXT("Tavera OS ") TEXT(KERNEL_VERSION_STR));
 
     /*
      * Compute the original rect (position & size) of the version info,

@@ -1,18 +1,16 @@
 /*
- * PROJECT:     VerOS NT Kernel
+ * PROJECT:     Tavera OS Kernel
  * LICENSE:     GNU General Public License, version 2 or later (GPL-2.0-or-later)
  * FILE:        drivers/filesystems/ntfs/attrib.c
  * PURPOSE:     NTFS filesystem driver
  * COPYRIGHT:   Copyright (C) 2002,2003 ReactOS Team
  *              See COPYING in the top level directory
- *              Copyright 2026 Ryan Wilson <ryan@verosnt.com>
  *              Copyright 2026 Ryan Wilson <ryan@taveraos.com>
  * PROGRAMMERS: Eric Kohl
  *              Valentin Verkhovsky
  *              Hervé Poussineau (hpoussin@reactos.org)
  *              Pierre Schweitzer (pierre@reactos.org)
- *              Ryan Wilson <ryan@verosnt.com>
- *              Ryan Wilson <ryan@taveraos.com>
+  *              Ryan Wilson <ryan@taveraos.com>
  *
  * Sources: AllocatedSize sync on in-place run growth (NTFS-MOUNT-001):
  *   tavera/specs/ntfs/ntfs-host-mount-corruption.md; probe-v8

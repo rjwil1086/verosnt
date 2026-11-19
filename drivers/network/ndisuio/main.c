@@ -4,7 +4,7 @@
  * FILE:        drivers/network/ndisuio/main.c
  * PURPOSE:     Driver entry point and NDIS 6 protocol registration
  * PROGRAMMERS: Cameron Gutman (cameron.gutman@reactos.org)
- *              Ryan Wilson <ryan@verosnt.com>
+ *              Ryan Wilson <ryan@taveraos.com>
  */
 
 /*

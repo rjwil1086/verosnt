@@ -1,6 +1,6 @@
 [Version]
 Signature = "$Windows NT$"
-;Signature = "$VerOS NT$"
+;Signature = "$Tavera$"
 
 ;
 ; The [SourceDisksNames] section lists all the available installation media
@@ -223,10 +223,10 @@ disk = disk.sys
 inport = inport.sys
 
 [Cabinets]
-Cabinet = reactos.cab
+Cabinet = taveraos.cab
 
 [SetupData]
-DefaultPath = \VerOS
+DefaultPath = \Tavera
 SetupDebugOptions = "/DEBUG /KDSERIAL /DEBUGPORT=COM1 /FIRSTCHANCE"
 ;SetupDebugOptions = "/DEBUG /SOS /DEBUGPORT=SCREEN"
 OsLoadOptions = "/FASTDETECT /NOGUIBOOT /NODEBUG"
@@ -685,7 +685,7 @@ DelReg = registry.inf,DelReg
 AddReg = registry.inf,AddReg
 
 [Strings]
-cdname      = "VerOS NT Installation Media"
-productname = "VerOS NT"
+cdname      = "Tavera OS Installation Media"
+productname = "Tavera OS"
 
 ; EOF

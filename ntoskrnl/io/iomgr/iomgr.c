@@ -1,12 +1,12 @@
 /*
  * COPYRIGHT:       See COPYING in the top level directory
- *                  Copyright 2026 Ryan Wilson <ryan@verosnt.com>
+ *                  Copyright 2026 Ryan Wilson <ryan@taveraos.com>
  * PROJECT:         ReactOS Kernel
  * FILE:            ntoskrnl/io/iomgr/iomgr.c
  * PURPOSE:         I/O Manager Initialization and Misc Utility Functions
  *
  * PROGRAMMERS:     David Welch (welch@mcmail.com)
- *                  Ryan Wilson <ryan@verosnt.com>
+ *                  Ryan Wilson <ryan@taveraos.com>
  */
 
 /* INCLUDES ****************************************************************/

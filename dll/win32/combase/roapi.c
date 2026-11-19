@@ -1,7 +1,7 @@
 /*
  * Copyright 2014 Martin Storsjo
  * Copyright 2016 Michael Müller
- * Copyright 2026 Ryan Wilson <ryan@verosnt.com>
+ * Copyright 2026 Ryan Wilson <ryan@taveraos.com>
  *
  * This library is free software; you can redistribute it and/or
  * modify it under the terms of the GNU Lesser General Public

@@ -1,5 +1,5 @@
 /*
- * PROJECT:     VerOS NT Kernel
+ * PROJECT:     Tavera OS Kernel
  * LICENSE:     GNU General Public License, version 2 or later (GPL-2.0-or-later)
  * FILE:        boot/freeldr/bootsect/isoboot.S
  * PURPOSE:     Booting ReactOS off a CD-ROM using the El Torito boot
@@ -10,8 +10,8 @@
  *              Copyright 2009 Intel Corporation *author: H. Peter Anvin
  *              Copyright 2011 Timo Kreuzer (timo.kreuzer@reactos.org)
  *              Copyright 2017 Colin Finck (colin@reactos.org)
- *              Copyright 2026 Ryan Wilson <ryan@verosnt.com>
- * PROGRAMMERS: Ryan Wilson <ryan@verosnt.com>
+ *              Copyright 2026 Ryan Wilson <ryan@taveraos.com>
+ * PROGRAMMERS: Ryan Wilson <ryan@taveraos.com>
  */
 
 /* INCLUDES ******************************************************************/

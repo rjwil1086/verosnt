@@ -1,11 +1,11 @@
 /*
- * PROJECT:     VerOS NT Kernel
+ * PROJECT:     Tavera OS Kernel
  * LICENSE:     BSD - See COPYING.ARM in the top level directory
  * FILE:        ntoskrnl/mm/ARM3/pagfault.c
  * PURPOSE:     ARM Memory Manager Page Fault Handling
- * COPYRIGHT:   Copyright 2026 Ryan Wilson <ryan@verosnt.com>
+ * COPYRIGHT:   Copyright 2026 Ryan Wilson <ryan@taveraos.com>
  * PROGRAMMERS: ReactOS Portable Systems Group
- *              Ryan Wilson <ryan@verosnt.com>
+ *              Ryan Wilson <ryan@taveraos.com>
  */
 
 /* INCLUDES *******************************************************************/

@@ -3,10 +3,10 @@
  * PROJECT:         ReactOS system libraries
  * FILE:            dll/win32/kernel32/client/file/iocompl.c
  * PURPOSE:         Io Completion functions
- *                  Copyright 2026 Ryan Wilson <ryan@verosnt.com>
+ *                  Copyright 2026 Ryan Wilson <ryan@taveraos.com>
  * PROGRAMMERS:     Ariadne (ariadne@xs4all.nl)
  *                  Oleg Dubinskiy (oleg.dubinskij30@gmail.com)
- *                  Ryan Wilson <ryan@verosnt.com>
+ *                  Ryan Wilson <ryan@taveraos.com>
  * UPDATE HISTORY:
  *                  Created 01/11/98
  */

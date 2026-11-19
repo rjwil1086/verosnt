@@ -1,12 +1,10 @@
 /*
- * PROJECT:     VerOS NT Kernel
+ * PROJECT:     Tavera OS Kernel
  * LICENSE:     GNU General Public License, version 2 or later (GPL-2.0-or-later)
  * FILE:        drivers/filesystems/ntfs/ntfs3x.c
  * PURPOSE:     NTFS 3.1 security, $Extend, USN, and compression
- * COPYRIGHT:   Copyright 2026 Ryan Wilson <ryan@verosnt.com>
- *              Copyright 2026 Ryan Wilson <ryan@taveraos.com>
- * PROGRAMMERS: Ryan Wilson <ryan@verosnt.com>
- *              Ryan Wilson <ryan@taveraos.com>
+ * COPYRIGHT:   Copyright 2026 Ryan Wilson <ryan@taveraos.com>
+ * PROGRAMMERS: Ryan Wilson <ryan@taveraos.com>
  */
 
 /*

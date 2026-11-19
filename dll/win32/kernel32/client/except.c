@@ -1,12 +1,12 @@
 /*
  * COPYRIGHT:       See COPYING in the top level directory
- *                  Copyright 2026 Ryan Wilson <ryan@verosnt.com>
+ *                  Copyright 2026 Ryan Wilson <ryan@taveraos.com>
  * PROJECT:         ReactOS system libraries
  * FILE:            dll/win32/kernel32/client/except.c
  * PURPOSE:         Exception functions
  * PROGRAMMER:      Ariadne (ariadne@xs4all.nl)
  *                  Modified from WINE [ Onno Hovers, (onno@stack.urc.tue.nl) ]
- *                  Ryan Wilson <ryan@verosnt.com>
+ *                  Ryan Wilson <ryan@taveraos.com>
  * UPDATE HISTORY:
  *                  Created 01/11/98
  */

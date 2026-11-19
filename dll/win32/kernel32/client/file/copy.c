@@ -1,11 +1,11 @@
 /*
  * COPYRIGHT:       See COPYING in the top level directory
- *                  Copyright 2026 Ryan Wilson <ryan@verosnt.com>
+ *                  Copyright 2026 Ryan Wilson <ryan@taveraos.com>
  * PROJECT:         ReactOS system libraries
  * FILE:            dll/win32/kernel32/client/file/copy.c
  * PURPOSE:         Copying files
  * PROGRAMMER:      Ariadne (ariadne@xs4all.nl)
- *                  Ryan Wilson <ryan@verosnt.com>
+ *                  Ryan Wilson <ryan@taveraos.com>
  * UPDATE HISTORY:
  *                  01/11/98 Created
  *                  07/02/99 Moved to separate file

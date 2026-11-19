@@ -6,9 +6,9 @@
  *
  * COPYRIGHT:   Copyright 1998-2003 Brian Palmer <brianp@sginet.com>
  *              Copyright 2006-2019 Aleksey Bragin <aleksey@reactos.org>
- *              Copyright 2026 Ryan Wilson <ryan@verosnt.com>
+ *              Copyright 2026 Ryan Wilson <ryan@taveraos.com>
  *
- * PROGRAMMERS: Ryan Wilson <ryan@verosnt.com>
+ * PROGRAMMERS: Ryan Wilson <ryan@taveraos.com>
  *
  * NOTES:       The source code in this file is based on the work of respective
  *              authors of PE loading code in ReactOS and Brian Palmer and

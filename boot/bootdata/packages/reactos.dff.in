@@ -1,8 +1,8 @@
 
 ; Main ReactOS package
 
-.Set DiskLabelTemplate="VerOS NT"                ; Label of disk
-.Set CabinetNameTemplate="reactos.cab"          ; reactos.cab
+.Set DiskLabelTemplate="Tavera OS"                ; Label of disk
+.Set CabinetNameTemplate="taveraos.cab"          ; taveraos.cab
 .Set InfFileName="reactos.inf"                  ; reactos.inf
 
 

@@ -3,13 +3,13 @@
  * PROJECT:     ReactOS TCP/IP protocol driver
  * FILE:        transport/tcp/if.c
  * PURPOSE:     lwIP netif glue for IPv4 and IPv6
- * COPYRIGHT:   Copyright 2026 Ryan Wilson <ryan@verosnt.com>
- * PROGRAMMERS: Ryan Wilson <ryan@verosnt.com>
+ * COPYRIGHT:   Copyright 2026 Ryan Wilson <ryan@taveraos.com>
+ * PROGRAMMERS: Ryan Wilson <ryan@taveraos.com>
  *
  * Dual-stack ip_addr_t accessors from lwIP ip_addr.h. IPv6 link-local on
- * the netif mirrors the VerOS LinkLocal formed per RFC 4291 Section 2.5.6
+ * the netif mirrors the Tavera OS LinkLocal formed per RFC 4291 Section 2.5.6
  * (https://www.rfc-editor.org/rfc/rfc4291). Neighbor resolution for this
- * output path uses the VerOS NCE (same pattern as IPv4 with LWIP_ARP=0).
+ * output path uses the Tavera OS NCE (same pattern as IPv4 with LWIP_ARP=0).
  */
 
 #include "precomp.h"

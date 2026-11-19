@@ -1,10 +1,10 @@
 /*
- * PROJECT:     VerOS NT
+ * PROJECT:     Tavera OS
  * LICENSE:     GNU General Public License, version 2 or later (GPL-2.0-or-later)
  * FILE:        sdk/lib/rtl/unbiasedtime.c
  * PURPOSE:     RtlQueryUnbiasedInterruptTime from shared interrupt time
- * COPYRIGHT:   Copyright 2026 Ryan Wilson <ryan@verosnt.com>
- * PROGRAMMERS: Ryan Wilson <ryan@verosnt.com>
+ * COPYRIGHT:   Copyright 2026 Ryan Wilson <ryan@taveraos.com>
+ * PROGRAMMERS: Ryan Wilson <ryan@taveraos.com>
  *
  * QueryUnbiasedInterruptTime (realtimeapiset.h) returns interrupt time that
  * excludes sleep/hibernation, in 100ns units, and fails on a null pointer:

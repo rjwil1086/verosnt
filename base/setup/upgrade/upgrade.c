@@ -1,10 +1,10 @@
 /*
- * PROJECT:     VerOS NT
+ * PROJECT:     Tavera OS
  * LICENSE:     GNU General Public License, version 2 or later (GPL-2.0-or-later)
  * FILE:        base/setup/upgrade/upgrade.c
  * PURPOSE:     Copy a staged upgrade into the installed system
- * COPYRIGHT:   Copyright 2026 Ryan Wilson <ryan@verosnt.com>
- * PROGRAMMERS: Ryan Wilson <ryan@verosnt.com>
+ * COPYRIGHT:   Copyright 2026 Ryan Wilson <ryan@taveraos.com>
+ * PROGRAMMERS: Ryan Wilson <ryan@taveraos.com>
  */
 
 /*
@@ -842,7 +842,7 @@ wWinMain(
     NoteFile = CreateFileW(NotePath, GENERIC_READ, FILE_SHARE_READ, NULL, OPEN_EXISTING, FILE_ATTRIBUTE_NORMAL, NULL);
     if (NoteFile == INVALID_HANDLE_VALUE)
     {
-        MessageBoxW(NULL, L"The upgrade did not record the previous boot entry.", L"VerOS NT", MB_ICONERROR);
+        MessageBoxW(NULL, L"The upgrade did not record the previous boot entry.", L"Tavera OS", MB_ICONERROR);
         return 1;
     }
     ZeroMemory(Note, sizeof(Note));
@@ -880,7 +880,7 @@ wWinMain(
     if (!CopyTree(WindowsDir, InstallDir, L"", &Progress))
     {
         UpgradeCloseProgress(&Progress);
-        MessageBoxW(NULL, L"The staged files could not be copied into place.", L"VerOS NT", MB_ICONERROR);
+        MessageBoxW(NULL, L"The staged files could not be copied into place.", L"Tavera OS", MB_ICONERROR);
         return 1;
     }
 
@@ -891,7 +891,7 @@ wWinMain(
     if (!RestoreLoader(IniPath, DefaultOs, Timeout))
     {
         UpgradeCloseProgress(&Progress);
-        MessageBoxW(NULL, L"The boot menu could not be restored.", L"VerOS NT", MB_ICONERROR);
+        MessageBoxW(NULL, L"The boot menu could not be restored.", L"Tavera OS", MB_ICONERROR);
         return 1;
     }
 

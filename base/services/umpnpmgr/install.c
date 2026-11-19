@@ -24,7 +24,7 @@
  * PROGRAMMER:       Eric Kohl (eric.kohl@reactos.org)
  *                   Hervé Poussineau (hpoussin@reactos.org)
  *                   Colin Finck (colin@reactos.org)
- *                   Ryan Wilson <ryan@verosnt.com>
+ *                   Ryan Wilson <ryan@taveraos.com>
  */
 
 /* INCLUDES *****************************************************************/

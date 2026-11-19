@@ -5,7 +5,7 @@
  * Copyright 1997 Marcus Meissner
  * Copyright 1998 Turchanov Sergey
  * Copyright 2019 Micah N Gorrell for CodeWeavers
- * Copyright 2026 Ryan Wilson <ryan@verosnt.com>
+ * Copyright 2026 Ryan Wilson <ryan@taveraos.com>
  *
  * This library is free software; you can redistribute it and/or
  * modify it under the terms of the GNU Lesser General Public

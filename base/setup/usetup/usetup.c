@@ -1,14 +1,14 @@
 /*
- * PROJECT:     VerOS NT
+ * PROJECT:     Tavera OS
  * LICENSE:     GNU General Public License, version 2 or later (GPL-2.0-or-later)
  * FILE:        base/setup/usetup/usetup.c
  * PURPOSE:     Text-mode setup
  * COPYRIGHT:   Copyright (C) 2002, 2003, 2004 ReactOS Team
  *              See COPYING in the top level directory
- *              Copyright 2026 Ryan Wilson <ryan@verosnt.com>
+ *              Copyright 2026 Ryan Wilson <ryan@taveraos.com>
  * PROGRAMMERS: Casper S. Hornstrup (chorns@users.sourceforge.net)
  *              Hervé Poussineau (hpoussin@reactos.org)
- *              Ryan Wilson <ryan@verosnt.com>
+ *              Ryan Wilson <ryan@taveraos.com>
  */
 
 #include <usetup.h>
@@ -1748,7 +1748,7 @@ SelectPartitionPage(PINPUT_RECORD Ir)
             if (CurrentPartition->DiskEntry->MediaType == FixedMedia &&
                 !CurrentPartition->DiskEntry->BiosFound)
             {
-                PopupError("The disk you have selected for installing VerOS NT\n"
+                PopupError("The disk you have selected for installing Tavera OS\n"
                            "is not visible by the firmware of your computer,\n"
                            "and so may not be bootable.\n"
                            "Press ENTER to continue anyway.",
@@ -2691,9 +2691,9 @@ FsVolCallback(
             // or use an external drive as the system drive/partition
             // (e.g. floppy, USB drive, etc...)
             //
-            PopupError("The VerOS NT Setup could not find a supported system partition\n"
+            PopupError("The Tavera OS Setup could not find a supported system partition\n"
                        "on your system or could not create a new one. Without such a partition\n"
-                       "the Setup program cannot install VerOS NT.\n"
+                       "the Setup program cannot install Tavera OS.\n"
                        "Press ENTER to return to the partition selection list.",
                        MUIGetString(STRING_CONTINUE),
                        Ir, POPUP_WAIT_ENTER);
@@ -2935,7 +2935,7 @@ InstallDirectoryPage(PINPUT_RECORD Ir)
     else if (USetupData.InstallationDirectory[0])
         wcscpy(InstallDir, USetupData.InstallationDirectory);
     else
-        wcscpy(InstallDir, L"\\VerOS");
+        wcscpy(InstallDir, L"\\Tavera OS");
 
     /*
      * Check the validity of the predefined 'InstallDir'. If we are either

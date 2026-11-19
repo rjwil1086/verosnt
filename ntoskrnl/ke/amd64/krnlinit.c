@@ -3,10 +3,10 @@
  * LICENSE:         GNU General Public License, version 2 or later (GPL-2.0-or-later)
  * FILE:            ntoskrnl/ke/amd64/krnlinit.c
  * PURPOSE:         Portable part of kernel initialization
- * COPYRIGHT:       Copyright 2026 Ryan Wilson <ryan@verosnt.com>
+ * COPYRIGHT:       Copyright 2026 Ryan Wilson <ryan@taveraos.com>
  * PROGRAMMERS:     Timo Kreuzer (timo.kreuzer@reactos.org)
  *                  Alex Ionescu (alex.ionescu@reactos.org)
- *                  Ryan Wilson <ryan@verosnt.com>
+ *                  Ryan Wilson <ryan@taveraos.com>
  */
 
 /* INCLUDES ******************************************************************/

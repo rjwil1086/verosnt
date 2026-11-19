@@ -1,9 +1,9 @@
-# PROJECT:     VerOS NT
+# PROJECT:     Tavera OS
 # LICENSE:     GNU General Public License, version 2 or later (GPL-2.0-or-later)
 # FILE:        tools/pipeline/Build-Bootcd.ps1
 # PURPOSE:     Build the amd64 bootcd
-# COPYRIGHT:   Copyright 2026 Ryan Wilson <ryan@verosnt.com>
-# PROGRAMMERS: Ryan Wilson <ryan@verosnt.com>
+# COPYRIGHT:   Copyright 2026 Ryan Wilson <ryan@taveraos.com>
+# PROGRAMMERS: Ryan Wilson <ryan@taveraos.com>
 
 param(
     [string]$SourceRoot = (Resolve-Path (Join-Path $PSScriptRoot "..\..")).Path,
@@ -186,7 +186,7 @@ function Sync-UpdaterClient {
     foreach ($name in @("verosupd-setup.exe", "uninstall.exe", "recover.exe", "verosupdsvc.exe", "verosperfsvc.exe", "verosupd.exe", "veroshook.dll")) {
         Copy-Item (Join-Path $built $name) (Join-Path $dist $name) -Force
     }
-    Copy-Item (Join-Path $built "verosupd_cpl.dll") (Join-Path $dist "VerOSUpdate.cpl") -Force
+    Copy-Item (Join-Path $built "verosupd_cpl.dll") (Join-Path $dist "TaveraUpdate.cpl") -Force
     foreach ($name in @("server.json", "server.json.sig", "ca.crt")) {
         $source = Join-Path $ClientRoot $name
         if (-not (Test-Path $source)) { Write-Error "The updater input $name is missing." }
@@ -293,11 +293,11 @@ function Repack-Bootcd {
     param([string]$BuildDir, [string]$Reactos)
     $list = Join-Path $BuildDir "boot\bootcd.Debug.lst"
     if (-not (Test-Path $list)) { Write-Error "The boot CD file list is missing at $list." }
-    $kept = Get-Content $list | Where-Object { $_ -notmatch 'VerOS Update|VerOSUpdate\.cpl|veros\.build' }
+    $kept = Get-Content $list | Where-Object { $_ -notmatch 'Tavera OS Update|TaveraUpdate\.cpl|veros\.build' }
     $added = @()
     $clientFiles = Get-ChildItem $Reactos -Recurse -File | Where-Object {
         $relative = $_.FullName.Substring($Reactos.Length).TrimStart('\')
-        $relative -like "Program Files\VerOS Update\*" -or $relative -eq "system32\VerOSUpdate.cpl" -or $relative -eq "veros.build"
+        $relative -like "Program Files\Tavera Update\*" -or $relative -eq "system32\TaveraUpdate.cpl" -or $relative -eq "veros.build"
     }
     foreach ($file in $clientFiles) {
         $graft = "Tavera/" + $file.FullName.Substring($Reactos.Length).TrimStart('\').Replace('\', '/')

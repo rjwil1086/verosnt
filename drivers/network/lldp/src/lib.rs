@@ -1,10 +1,10 @@
 /*
- * PROJECT:     VerOS NT Kernel
+ * PROJECT:     Tavera OS Kernel
  * LICENSE:     GNU General Public License, version 2 or later (GPL-2.0-or-later)
  * FILE:        drivers/network/lldp/src/lib.rs
  * PURPOSE:     IEEE 802.1AB LLDP as an NDIS 6.84 protocol
- * COPYRIGHT:   Copyright 2026 Ryan Wilson <ryan@verosnt.com>
- * PROGRAMMERS: Ryan Wilson <ryan@verosnt.com>
+ * COPYRIGHT:   Copyright 2026 Ryan Wilson <ryan@taveraos.com>
+ * PROGRAMMERS: Ryan Wilson <ryan@taveraos.com>
  */
 
 /*
@@ -358,7 +358,7 @@ unsafe fn build_lldpdu(frame: &mut [u8], src_mac: &[u8; 6]) -> usize {
     let mut at = ETH_HDR;
     let mut chassis = [0u8; 16];
     chassis[0] = CHASSIS_SUBTYPE_LOCAL;
-    let name = b"VerOS";
+    let name = b"Tavera OS";
     chassis[1..1 + name.len()].copy_from_slice(name);
     at = write_tlv(frame, at, TLV_CHASSIS, &chassis[..1 + name.len()]);
     let mut port = [0u8; 16];

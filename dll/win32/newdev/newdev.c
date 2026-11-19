@@ -4,7 +4,7 @@
  * Copyright 2005-2006 Hervé Poussineau (hpoussin@reactos.org)
  *           2005 Christoph von Wittich (Christoph@ActiveVB.de)
  *           2009 Colin Finck (colin@reactos.org)
- * Copyright 2026 Ryan Wilson <ryan@verosnt.com>
+ * Copyright 2026 Ryan Wilson <ryan@taveraos.com>
  *
  * This library is free software; you can redistribute it and/or
  * modify it under the terms of the GNU Lesser General Public

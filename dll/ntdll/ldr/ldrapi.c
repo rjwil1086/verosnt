@@ -1,12 +1,12 @@
 /*
  * COPYRIGHT:       See COPYING in the top level directory
- *                  Copyright 2026 Ryan Wilson <ryan@verosnt.com>
+ *                  Copyright 2026 Ryan Wilson <ryan@taveraos.com>
  * PROJECT:         ReactOS NT User Mode Library
  * FILE:            dll/ntdll/ldr/ldrapi.c
  * PURPOSE:         PE Loader Public APIs
  * PROGRAMMERS:     Alex Ionescu (alex@relsoft.net)
  *                  Aleksey Bragin (aleksey@reactos.org)
- *                  Ryan Wilson <ryan@verosnt.com>
+ *                  Ryan Wilson <ryan@taveraos.com>
  *
  * Empty LdrLoadDll names are rejected. Guest serial
  * output/ntdll-apps/serial-App-20261116T063648Z.log shows

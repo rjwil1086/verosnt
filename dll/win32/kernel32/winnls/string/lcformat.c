@@ -1,5 +1,5 @@
 /*
- * PROJECT:     VerOS NT System Libraries
+ * PROJECT:     Tavera OS System Libraries
  * LICENSE:     GNU Lesser General Public License, version 2.1 or later (LGPL-2.1-or-later)
  * FILE:        dll/win32/kernel32/winnls/string/lcformat.c
  * PURPOSE:     Locale-dependent format handling
@@ -8,8 +8,8 @@
  *              Copyright 2000 Julio César Gázquez
  *              Copyright 2003 Jon Griffiths
  *              Copyright 2005 Dmitry Timoshkov
- *              Copyright 2026 Ryan Wilson <ryan@verosnt.com>
- * PROGRAMMERS: Ryan Wilson <ryan@verosnt.com>
+ *              Copyright 2026 Ryan Wilson <ryan@taveraos.com>
+ * PROGRAMMERS: Ryan Wilson <ryan@taveraos.com>
  */
 
 #ifdef __REACTOS__

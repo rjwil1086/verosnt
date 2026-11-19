@@ -4,9 +4,9 @@
  * FILE:        tcpip/interface.c
  * PURPOSE:     Convenient abstraction for getting and setting information
  *              in IP_INTERFACE.
- * COPYRIGHT:   Copyright 2026 Ryan Wilson <ryan@verosnt.com>
+ * COPYRIGHT:   Copyright 2026 Ryan Wilson <ryan@taveraos.com>
  * PROGRAMMERS: Art Yerkes
- *              Ryan Wilson <ryan@verosnt.com>
+ *              Ryan Wilson <ryan@taveraos.com>
  * REVISIONS:
  *   CSH 01/08-2000 Created
  *

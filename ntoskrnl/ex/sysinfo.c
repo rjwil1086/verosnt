@@ -1,13 +1,13 @@
 /*
- * PROJECT:     VerOS NT Kernel
+ * PROJECT:     Tavera OS Kernel
  * LICENSE:     GNU General Public License, version 2 or later (GPL-2.0-or-later)
  * FILE:        ntoskrnl/ex/sysinfo.c
  * PURPOSE:     System information functions
  * COPYRIGHT:   See COPYING in the top level directory
- *              Copyright 2026 Ryan Wilson <ryan@verosnt.com>
+ *              Copyright 2026 Ryan Wilson <ryan@taveraos.com>
  * PROGRAMMERS: David Welch (welch@mcmail.com)
  *              Aleksey Bragin (aleksey@reactos.org)
- *              Ryan Wilson <ryan@verosnt.com>
+ *              Ryan Wilson <ryan@taveraos.com>
  *
  * SystemProcessInformation ImageName: use Process->ImageFileName only.
  * SeLocateProcessImageName per process dominated App TCG latency for

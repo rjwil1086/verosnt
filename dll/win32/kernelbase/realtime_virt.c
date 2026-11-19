@@ -1,9 +1,9 @@
 /*
- * PROJECT:     VerOS NT System Libraries
+ * PROJECT:     Tavera OS System Libraries
  * LICENSE:     GNU Lesser General Public License, version 2.1 or later (LGPL-2.1-or-later)
  * FILE:        dll/win32/kernelbase/realtime_virt.c
  * PURPOSE:     KernelBase QueryInterruptTime and VirtualAlloc2 for Firefox
- * COPYRIGHT:   Copyright 2026 Ryan Wilson <ryan@verosnt.com>
+ * COPYRIGHT:   Copyright 2026 Ryan Wilson <ryan@taveraos.com>
  * PROGRAMMERS: Ryan Wilson
  *
  * Guest serial output/ntdll-apps/serial-App-20261116T055814Z.log shows

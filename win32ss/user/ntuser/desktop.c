@@ -1,12 +1,12 @@
 /*
- * PROJECT:     VerOS NT Subsystem
+ * PROJECT:     Tavera OS Subsystem
  * LICENSE:     GNU General Public License, version 2 or later (GPL-2.0-or-later)
  * FILE:        win32ss/user/ntuser/desktop.c
  * PURPOSE:     Desktops
  * COPYRIGHT:   See COPYING in the top level directory
- *              Copyright 2026 Ryan Wilson <ryan@verosnt.com>
+ *              Copyright 2026 Ryan Wilson <ryan@taveraos.com>
  * PROGRAMMERS: Casper S. Hornstrup (chorns@users.sourceforge.net)
- *              Ryan Wilson <ryan@verosnt.com>
+ *              Ryan Wilson <ryan@taveraos.com>
  */
 
 /* INCLUDES ******************************************************************/
@@ -406,7 +406,7 @@ GetSystemVersionString(OUT PWSTR pwszzVersion,
         /* String for Safe Mode */
         Status = RtlStringCchPrintfW(pwszzVersion,
                                      cchDest,
-                                     L"VerOS NT Version %S %wZ (NT %u.%u Build %u%s)\n",
+                                     L"Tavera OS Version %S %wZ (NT %u.%u Build %u%s)\n",
                                      KERNEL_VERSION_STR,
                                      &BuildLabString,
                                      SharedUserData->NtMajorVersion,
@@ -446,7 +446,7 @@ GetSystemVersionString(OUT PWSTR pwszzVersion,
         /* Multi-string for Normal Mode */
         Status = RtlStringCchPrintfW(pwszzVersion,
                                      cchDest,
-                                     L"VerOS NT Version %S\n"
+                                     L"Tavera OS Version %S\n"
                                      L"Build %wZ\n"
                                      L"Reporting NT %u.%u (Build %u%s)\n",
                                      KERNEL_VERSION_STR,
@@ -479,7 +479,7 @@ GetSystemVersionString(OUT PWSTR pwszzVersion,
         /* Fall-back string */
         Status = RtlStringCchPrintfW(pwszzVersion,
                                      cchDest,
-                                     L"VerOS NT Version %S %wZ\n",
+                                     L"Tavera OS Version %S %wZ\n",
                                      KERNEL_VERSION_STR,
                                      &BuildLabString);
         if (!NT_SUCCESS(Status))
