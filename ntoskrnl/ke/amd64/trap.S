@@ -721,6 +721,8 @@ PUBLIC KiDpcInterrupt
 .ENDP
 
 
+EXTERN KiIpiServiceRoutine:PROC
+
 PUBLIC KiIpiInterrupt
 .PROC KiIpiInterrupt
    /* No error code */
@@ -733,7 +735,20 @@ PUBLIC KiIpiInterrupt
     /* End the interrupt */
     mov dword ptr [APIC_EOI], 0
 
-    int 3
+    /* TrapFrame in rcx, ExceptionFrame NULL in rdx (amd64 KeIpiGenericCall path) */
+    mov rcx, rbp
+    xor rdx, rdx
+    call KiIpiServiceRoutine
+
+    /*
+     * ExitTrap's DBG ASSERT_TRAP_FRAME_IRQL_VALID requires CR8 == PreviousIrql
+     * (sdk/include/asm/trapamd64.inc). We raised to IPI_LEVEL above; restore
+     * before ExitTrap or int 0x2c fires (debugging-2026-11-18.md E13–E15).
+     * Same restore order as KiInterruptDispatch in this file.
+     */
+    cli
+    movzx rax, byte ptr [rbp + KTRAP_FRAME_PreviousIrql]
+    mov cr8, rax
 
     /* Return */
     ExitTrap (TF_SAVE_ALL or TF_IRQL)

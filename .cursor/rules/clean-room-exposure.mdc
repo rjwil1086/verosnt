@@ -5,9 +5,11 @@ alwaysApply: true
 
 # Exposure
 
-Stop the moment a forbidden input under [clean-room.mdc](clean-room.mdc) or [clean-room-third-party-sources.mdc](clean-room-third-party-sources.mdc) appears: a search result, page, file, paste, or tool output that shows leaked source, the Windows Research Kernel, disassembly, decompiler output, symbol data, or WDK or SDK header text.
+Stop when this session **opens** a forbidden page or file, or **pastes or keeps** forbidden body from [clean-room.mdc](clean-room.mdc) or [clean-room-third-party-sources.mdc](clean-room-third-party-sources.mdc): leaked source, the Windows Research Kernel, disassembly, decompiler output, symbol data, or WDK or SDK header text.
 
-Do not read further. Do not summarize it, quote it, or keep any of it in a scratch file. Do not continue the component it touches in this session.
+A search hit that only shows a title, URL, or adjacent marketing blurb is not exposure. Do not open that result. Do not quote or keep any forbidden body that a tool inlined next to it. Prefer `site:learn.microsoft.com` paths under `/windows/` and `/windows-hardware/drivers/ddi/`. Skip code-hosting sites that are not Wine, ReactOS, or this fork. Skip Learn pages under `/windows-hardware/drivers/debuggercmds/` and other debugger, symbol, or dump pages.
+
+Opening the forbidden page, pasting its body, or keeping any of that body in a scratch file or the patch is exposure. Then stop. Do not read further. Do not summarize it, quote it, or continue the component it touches in this session.
 
 Tell Ryan in chat with:
 
@@ -18,12 +20,11 @@ Tell Ryan in chat with:
 
 Append the same lines to `contamination-log.md` at the project root, outside `source/`. Do not commit that file.
 
-A component named in the log is written again in a new session that has not seen the material and is not given the log entry's details beyond the component name. Discard any uncommitted hunk written after the exposure. Ryan decides what happens to a committed one.
-
-Searching for a Windows function name is where this most often happens. Prefer `site:learn.microsoft.com` and in-tree search first. Skip results on code-hosting sites that are not Wine, ReactOS, or this fork.
+A component named in the log is written again in a new session that has not seen the material and is not given the log entry's details beyond the component name. Discard any uncommitted hunk written after the exposure. Ryan decides what happens to a committed one. Ryan may clear a quarantine in the log when the hit was only an unopened search result under this rule.
 
 ```text
-Right: stop, report the URL and the component, log it, leave the hunk unwritten
-Wrong: "only skimmed it" and keep going
-Wrong: quoting the leaked function in chat to show what was seen
+Right: ignore a SERP title for a debugger page; open the DDI Learn page instead
+Right: stop after opening a forbidden page or pasting its body, report the URL, log it
+Wrong: open the debuggercmds hit "just to check"
+Wrong: quote symbol names from a search snippet in chat or in the patch
 ```

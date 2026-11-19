@@ -1,11 +1,18 @@
 /*
- * PROJECT:         ReactOS Kernel
- * LICENSE:         GPL - See COPYING in the top level directory
+ * PROJECT:         Tavera OS Kernel
+ * LICENSE:         GNU General Public License, version 2 or later (GPL-2.0-or-later)
  * FILE:            ntoskrnl/ke/dpc.c
  * PURPOSE:         Deferred Procedure Call (DPC) Support
+ * COPYRIGHT:       Copyright 2026 Ryan Wilson <ryan@taveraos.com>
  * PROGRAMMERS:     Alex Ionescu (alex.ionescu@reactos.org)
  *                  Philip Susi (phreak@iag.net)
  *                  Eric Kohl
+ *                  Ryan Wilson <ryan@taveraos.com>
+ *
+ * Sources: ntoskrnl/ke/amd64/stubs.c (Idle off ready lists); ntoskrnl/ke/time.c;
+ * tavera/specs/amd64-logical-processors/debugging-2026-11-18.md (H5: remove
+ * ROS Sanity ASSERT so KeSetTargetProcessorDpc can queue on another CPU;
+ * cross-CPU path already calls KiIpiSend(IPI_DPC) below).
  */
 
 /* INCLUDES ******************************************************************/
@@ -544,8 +551,19 @@ KiQuantumEnd(VOID)
     NextThread->State = Running;
     Thread->WaitReason = WrQuantumEnd;
 
-    /* Queue it on the ready lists */
-    KxQueueReadyThread(Thread, Prcb);
+    /*
+     * Idle stays off the ready lists (clock already skips QuantumEnd for
+     * Idle; keep the queue path consistent with KiIdleLoop).
+     * Sources: ntoskrnl/ke/time.c; ntoskrnl/ke/amd64/stubs.c.
+     */
+    if (Thread != Prcb->IdleThread)
+    {
+        KxQueueReadyThread(Thread, Prcb);
+    }
+    else
+    {
+        KiReleasePrcbLock(Prcb);
+    }
 
     /* Set wait IRQL to APC_LEVEL */
     Thread->WaitIrql = APC_LEVEL;
@@ -751,8 +769,12 @@ KeInsertQueueDpc(IN PKDPC Dpc,
         Cpu = Prcb->Number;
     }
 
-    /* ROS Sanity Check */
-    ASSERT(Prcb == CurrentPrcb);
+    /*
+     * Do not require Prcb == CurrentPrcb. Targeted DPCs (Number >=
+     * MAXIMUM_PROCESSORS) must queue on another CPU; the branch below sends
+     * IPI_DPC when Prcb != CurrentPrcb.
+     * Sources: debugging-2026-11-18.md H5; this file KiIpiSend(IPI_DPC) path.
+     */
 
     /* Check if this is a threaded DPC and threaded DPCs are enabled */
     if ((Dpc->Type == ThreadedDpcObject) && (Prcb->ThreadDpcEnable))

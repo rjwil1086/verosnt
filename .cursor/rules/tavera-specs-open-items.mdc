@@ -1,38 +1,115 @@
 ---
-description: Spec and implementer agents hand off only through open-items.md
+description: Spec writer and implementer plan their half; idle 10-min poll; Ryan message restarts poll until no open items
 alwaysApply: true
 ---
 
 # Specs open-items handoff
 
-Spec work and implementation work for a component talk **only** through:
+Blocking questions for a component go only through:
 
 ```text
 tavera/specs/<component>/open-items.md
 ```
 
-That file is the shared queue. Do not rely on chat history alone for blocking questions. `<component>` is the module folder (for example `ntfs`). Specs for the module live beside it under `tavera/specs/<component>/`.
+That file is the shared queue. Do not rely on chat history alone for blocking questions. `<component>` is the module folder (for example `ntfs`). Specs for the module live beside it under `tavera/specs/<component>/`. Revisions the spec agent writes live in those specs and in resolved items.
+
+## Item status
+
+```text
+- Status: open | deferred | resolved
+```
+
+- **open** — needs the spec agent. Not a revision for the implementer.
+- **deferred** — the spec agent cannot write an implementable spec answer from allowed sources or a feasible probe with the input data at hand. Not a revision. The implementer skips it and continues other unblocked work.
+- **resolved** — answered with a cited source or probe and a spec update. A revision for the implementer when the code does not yet follow that answer.
 
 ## Implementer
 
-- Work only from the module’s specs, cited probe results under `output/`, and existing Tavera code in this tree.
+- Before other work on the component, read `open-items.md` and the module specs.
+- A revision from the spec writer is a resolved item, or a spec change that item’s resolution points at, that the code does not yet follow. A spec edit the implementation does not yet match counts the same way, even when no item names it.
+- When any such revision exists, write a plan first. Name the items and spec sections, the files to change, and the check that shows the code matches. Then implement that plan. Do not start the code before the plan.
+- Work only from the module’s specs, cited probe/debug evidence under `tavera/specs/<component>/sources/` (after copy per [tavera-specs-sources.mdc](tavera-specs-sources.mdc); `output/` is ephemeral run output only), and existing Tavera code in this tree.
 - Do not run Windows probes or edit probe sources in an implementation session ([clean-room-probe-separation.mdc](clean-room-probe-separation.mdc)).
 - When a spec is missing or unclear, **do not** research Windows behavior yourself (no Learn hunt, no recall, no new probe of your own for that gap).
-- Append an item to `open-items.md` with: stable `ID`, date opened, the question, and why it blocks work.
+- Append an item to `open-items.md` with: stable `ID`, date opened, the question, and why it blocks work. Status is **open**.
+- An **open** or **deferred** item is not a revision. Leave open items for the spec agent. Do not implement from a deferred item.
 - Continue other unblocked work, or stop if nothing else can proceed.
+- After each revision is implemented (code matches that resolved item’s spec), note under `## Queue check` which item IDs were implemented. That handoff triggers the spec agent’s post-implementation recheck below. Do not resolve or defer open items yourself.
 
 ## Spec agent
 
-- Before starting, read `open-items.md` for unresolved items.
-- Answer each item from approved sources ([clean-room.mdc](clean-room.mdc)) or a new versioned probe ([tavera-probes.mdc](tavera-probes.mdc)).
-- Cite the source or probe, update the relevant spec file(s), and mark the item **resolved** with the resolution date and a link/path to the spec (or probe) change.
+- A task is one item or a group. It comes from an open milestone on `https://github.com/taveraos/taveraos` ([github-milestones.mdc](github-milestones.mdc)), from unresolved (**open**) items in `open-items.md`, or from a task Ryan assigns. Read `open-items.md` before starting.
+- Write a plan for the specs before writing them. Name the task, the spec sections to add or change, and whether a probe is required. Do not start the spec before the plan.
+- Then create or update the specs ([specs.mdc](specs.mdc)). Answer each item from approved sources ([clean-room.mdc](clean-room.mdc)) or a new versioned probe ([tavera-probes.mdc](tavera-probes.mdc)).
+- A probe, a capture, or a loop of probing and spec writing is part of this session when the spec needs it. Do not edit implementation code for that component ([clean-room-probe-separation.mdc](clean-room-probe-separation.mdc)).
+- Cite the source or probe, update the relevant spec file(s), and mark each answered item **resolved** with the resolution date and a link/path to the spec (or probe) change.
+- When allowed sources and a feasible probe still cannot produce an implementable spec answer, mark the item **deferred** (not resolved). Set `Deferred: YYYY-MM-DD` and `Deferral:` with what was tried, why a spec cannot be written yet, and what input would unblock it. Do not guess. Do not leave it **open** after that conclusion.
+- Stop when the spec is as complete as those sources allow. Tell Ryan it is ready to implement. Name any open or deferred question that remains.
+
+## After the implementer lands a revision
+
+Each time the implementer records under `## Queue check` that a resolved item’s revision is implemented (new in-tree code for that component), the **spec agent** immediately rechecks **every remaining open and deferred** item in that file—not only items related to that revision.
+
+- Treat the new in-tree paths as allowed sources ([clean-room.mdc](clean-room.mdc)). See whether they are enough to write or finish an implementable spec for any of those items.
+- Every claim drawn from that code **cites the path from the source root** in the spec Sources section, the open-item resolution, and any Spec Sources line. Phrase it as **code already in this tree**—not as Windows behavior, Windows internals, or “what Windows does.” Guest logs and Learn (or other allowed public docs) remain the only sources for Windows-observed facts.
+- For a **deferred** item that the new code unblocks: set it back to **open**, then plan and resolve it (or defer again with an updated `Deferral:` if it is still insufficient).
+- For an **open** item: plan and resolve it if the new code (plus other allowed sources) now answers it; otherwise leave it open or defer it under the usual rules.
+- Do this recheck in the same turn as noticing the implementer’s Queue-check note (or on the next idle wake if the spec session was mid-work). Do not skip deferred items on this pass.
+
+## Recheck
+
+While a spec or implementation session for a component is in progress, re-read that component’s `open-items.md` about every **10 minutes**, but **only while idle**. Idle means this session is not mid-plan, mid-spec edit, mid-probe, mid-capture, or otherwise actively working a turn for this component — it is waiting on the other role, on Ryan, or on a long guest boot with nothing else to do in-session.
+
+- Arm one idle wake (about 10 minutes) when the session becomes idle and any item is still **open**, or when waiting for the other role’s next handoff. Do not arm a second wake in the same session.
+- Do **not** fire or re-arm that 10-minute poll while actively working. Finish the active work first; arm the idle wake only when the turn goes idle again.
+- Do **not** poll when every item in that file is **deferred** or **resolved** (no **open** items left), except to notice an implementer Queue-check note that a revision was implemented (then run the post-implementation recheck above, including deferred items).
+- Resume idle polling if an item returns to **open**.
+- **Whenever Ryan sends a message** in a **Spec / Probe session or an Implementer session** (any content), after handling that turn: **restart the idle 10-minute poll** for that component’s `open-items.md`. Replace any prior idle wake (still only one armed at a time). Clear or supersede any `## Queue check` **stop** already written for that session so polling continues again under the normal rules below—**until every item is deferred or resolved** (no **open** items left), the same stop conditions as a fresh poll cycle. Ryan’s message is not permission to take the other role’s items or to skip plan-first.
+
+An **open** item is assigned to the spec agent. A **resolved** item, or a spec change that resolution points at, that the code does not yet follow is assigned to the implementer. A **deferred** item is assigned to neither until new input arrives (Ryan, a new allowed source, a newly feasible probe, or **new in-tree code from an implemented revision**); then set it back to **open** before working it.
+
+On each idle wake, proceed only on items assigned to this session’s role. Follow that role’s procedure, including the plan. Leave the other role’s items. If nothing new is assigned to this role, stay idle and re-arm one 10-minute idle wake (unless a stop below applies).
+
+Stop the wake, and do not arm another, when either of these is said:
+
+- The implementer says every revision assigned to them is implemented, **and** that component’s `open-items.md` has no **open** items left (only deferred/resolved).
+- The spec agent says every remaining item that blocked this pass is **deferred** (or there are no **open** items left), and names those deferred items.
+- A wake finds that every item is already **deferred** or **resolved** (no **open** items).
+
+Say that to Ryan. Write the same sentence under `## Queue check` in that component’s `open-items.md`. On a later wake, a stop already written there stops this session’s wake too—until Ryan’s next message **restarts** the poll cycle above. Clearing or replacing that stop when an item returns to **open** also restarts polling.
 
 ## Never delete items
 
-Do not remove entries from `open-items.md`. Resolved items stay as a permanent record. Unresolved items stay open until the spec agent resolves them.
+Do not remove entries from `open-items.md`. Resolved and deferred items stay as a permanent record. Open items stay open until the spec agent resolves or defers them.
 
 ```text
-Right: ID NTFS-014 opened by implementer; spec agent resolves with Learn URL + spec edit
+Right: ID NTFS-014 opened by implementer; spec agent plans the spec, resolves it with a Learn URL and a spec edit, then tells Ryan it is ready to implement
+Right: spec agent takes three unresolved open items as one task, probes, updates the spec, and reports the remaining open question
+Right: implementer reads that resolution, writes a plan, then changes the driver to match the spec
+Right: implementer notes under Queue check that ALP-006/007 are implemented; spec agent rechecks every remaining open and deferred item against the new code
+Right: post-impl resolution cites drivers/filesystems/ntfs/….c in this tree; does not say Windows does that
+Right: Ryan messages the Spec session; after the turn, 10-minute idle poll restarts and continues until no open items remain
+Right: Ryan messages the Implementer session; same restart—poll until deferred/resolved only (no open left)
+Right: a spec session wakes, finds a new unresolved item, plans that spec, and writes it
+Right: an implementer session wakes, finds a new resolution, plans the code, and implements it
+Right: spec agent marks ALP-0xx deferred with Deferral naming the missing capture or Learn gap; implementer skips it
+Wrong: spec agent writes the spec before the plan, or starts the driver in that same session
+Right: the implementer says the revisions are implemented, writes that under `## Queue check`, and stops the wake when no open items remain
+Right: the spec agent defers the items the input data cannot answer, writes that under `## Queue check`, and stops the wake
+Wrong: leave an item Status: open after concluding no implementable spec can be written
+Wrong: treat deferred as resolved or as a code revision
+Wrong: after an implementer lands a revision, skip rechecking deferred items
+Wrong: resolve from new Tavera code but phrase the claim as Windows behavior or “what Windows does”
+Wrong: cite post-impl in-tree code without the path from the source root
+Wrong: one session takes both roles because the wake fired, or arms a second 10-minute wake
+Wrong: a fixed 10-minute poll fires while the session is mid-spec, mid-probe, or mid-capture
+Wrong: ignore Ryan’s message and leave the poll stopped
+Wrong: Ryan’s message used as a waiver to take the other role or skip the plan
+Wrong: after Ryan restarts the poll, stop again before open items are all deferred or resolved without a new stop condition
+Wrong: apply Ryan restart only to Spec or only to Implementer
+Wrong: implementer starts coding without reading resolved items or spec revisions
+Wrong: implementer treats an unresolved or deferred item as a revision and fills it in
 Wrong: implementer fills a layout from memory because open-items is empty
-Wrong: deleting a resolved open-item to tidy the file
+Wrong: deleting a resolved or deferred open-item to tidy the file
 ```
+

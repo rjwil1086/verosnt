@@ -1,0 +1,46 @@
+---
+description: Narrow gate for Spec/Implementer rails; steer Ryan back when a skip is asked
+alwaysApply: true
+---
+
+# Workflow rails
+
+Before Windows-facing implementation under this tree, classify the task. Ryan asking to skip does **not** waive this rule. Handoff detail lives in [tavera-specs-open-items.mdc](tavera-specs-open-items.mdc); session split in [clean-room-probe-separation.mdc](clean-room-probe-separation.mdc).
+
+## Narrow gate
+
+**Full rails required** (Spec / Probe session, then a **new** Implementer session) when any of these is true:
+
+- A new Windows export, syscall, structure, or field name
+- A new or changed struct layout
+- A raw-format, on-disk, or other capture-backed Windows fact
+- The component already has `tavera/specs/<component>/`
+- The next fact would come from model recall or a Windows probe
+
+**Short path allowed** only when:
+
+- The work is docs, branding, GitHub workflows, or cursor rules only, **or**
+- It is a bugfix whose every Windows fact is already on a citable Learn URL, an in-tree path, or an existing guest log with its marker—and the fix needs **no** new Windows name, layout, or capture-backed fact
+
+Short-path work still follows [clean-room.mdc](clean-room.mdc), [clean-room-model-recall.mdc](clean-room-model-recall.mdc), and [transparency.mdc](transparency.mdc) when those apply. It must not same-session Windows-probe and implement.
+
+## Steer-back (do not proceed)
+
+If Ryan or an agent asks to implement while skipping Spec/Implementer, to probe Windows and edit implementation in the same session, to invent a missing Windows fact, or to code before that role’s plan: **stop**. Do not start the code or the probe.
+
+Reply in a few short sentences that name:
+
+1. Why the short path is closed (which gate bullet)
+2. Which session to open next (Spec / Probe chat, or a **new** Implementer chat)
+3. The next concrete steps, for example:
+   - Spec: read or create `tavera/specs/<component>/open-items.md`; plan first; probe if needed; resolve or defer; tell Ryan ready to implement
+   - Implementer: read open-items and specs; plan revisions; code; under `## Queue check` list implemented item IDs so the spec agent rechecks remaining open and deferred items
+   - Gap with no cite: append an **open** item; do not Learn-hunt in the implementer session
+
+```text
+Right: "This needs a layout. Short path is closed. Open a Spec/Probe session, plan, then probe-vN; do not implement in that chat."
+Right: short-path bugfix citing only Learn + existing DIFF END OK log, no new field
+Wrong: "just implement this NTFS layout in this chat"
+Wrong: Ryan says skip the spec; agent codes anyway
+Wrong: same session Windows probe and driver edit
+```

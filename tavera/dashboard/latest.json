@@ -9260,6 +9260,41 @@
   },
   "compatibilityTrend": [
     {
+      "at": "2026-11-07T17:34:14Z",
+      "kernelAbi": null,
+      "syscall": 78.2,
+      "graphics": null,
+      "sdkLevel": null
+    },
+    {
+      "at": "2026-11-08T22:33:05Z",
+      "kernelAbi": 24.2,
+      "syscall": 87.1,
+      "graphics": 25,
+      "sdkLevel": null
+    },
+    {
+      "at": "2026-11-09T02:07:21Z",
+      "kernelAbi": 95.2,
+      "syscall": 87.1,
+      "graphics": 25,
+      "sdkLevel": null
+    },
+    {
+      "at": "2026-11-11T14:16:26Z",
+      "kernelAbi": 95.2,
+      "syscall": 87.1,
+      "graphics": null,
+      "sdkLevel": 3.5
+    },
+    {
+      "at": "2026-11-15T00:09:59Z",
+      "kernelAbi": null,
+      "syscall": 87.1,
+      "graphics": null,
+      "sdkLevel": null
+    },
+    {
       "at": "2026-11-18T13:18:51Z",
       "kernelAbi": null,
       "syscall": 87.1,

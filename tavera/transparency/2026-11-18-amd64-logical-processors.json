@@ -1,0 +1,28 @@
+{
+  "spdx": "GPL-2.0-or-later",
+  "question": "How does the amd64 boot start application processors, broadcast IPI/TLB work, and report GetLogicalProcessorInformationEx topology for Milestone 32?",
+  "allowedInputs": [
+    "tavera/specs/amd64-logical-processors/amd64-logical-processors.md",
+    "tavera/specs/amd64-logical-processors/open-items.md",
+    "https://learn.microsoft.com/en-us/windows/win32/api/sysinfoapi/nf-sysinfoapi-getlogicalprocessorinformationex",
+    "https://learn.microsoft.com/en-us/windows/win32/api/winnt/ns-winnt-system_logical_processor_information_ex",
+    "https://learn.microsoft.com/en-us/windows/win32/api/winnt/ns-winnt-processor_group_info",
+    "https://learn.microsoft.com/en-us/windows/hardware/drivers/ddi/wdm/nf-wdm-keipigenericcall",
+    "ntoskrnl/ke/i386/mproc.c",
+    "hal/halx86/smp/i386/spinup.c",
+    "hal/halx86/smp/i386/apentry.S",
+    "boot/freeldr/freeldr/arch/realmode/amd64.S",
+    "ntoskrnl/include/internal/amd64/ke.h",
+    "sdk/include/reactos/x86x64/Intel/Cpuid.h",
+    "sdk/include/reactos/x86x64/Cpuid.h",
+    "sdk/include/xdk/ketypes.h",
+    "dll/win32/kernelbase/wine/memory.c",
+    "tavera/specs/amd64-logical-processors/sources/probes/probe-v1/windows-4c1t.log DIFF END OK",
+    "tavera/specs/amd64-logical-processors/sources/probes/probe-v1/windows-qemu64-2c2t.log DIFF END OK",
+    "tavera/specs/amd64-logical-processors/sources/probes/probe-v1/windows-epyc-2c2t.log DIFF END OK",
+    "tavera/specs/amd64-logical-processors/sources/probes/probe-v2/windows-4c1t.log DIFF END OK",
+    "tavera/specs/amd64-logical-processors/sources/probes/probe-v2/windows-qemu64-2c2t.log DIFF END OK",
+    "tavera/specs/amd64-logical-processors/sources/probes/probe-v2/windows-epyc-2c2t.log DIFF END OK",
+    "Reported: ALP-002 reuse i386 infinite AP wait; ALP-006 MultiThreadProcessorSet stays single-bit with Ex cores"
+  ]
+}

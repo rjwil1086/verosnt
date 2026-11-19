@@ -1,10 +1,12 @@
 /*
-* PROJECT:         ReactOS Kernel
-* LICENSE:         GPL - See COPYING in the top level directory
-* FILE:            ntoskrnl/include/internal/ke_x.h
-* PURPOSE:         Internal Inlined Functions for the Kernel
-* PROGRAMMERS:     Alex Ionescu (alex.ionescu@reactos.org)
-*/
+ * PROJECT:         Tavera OS Kernel
+ * LICENSE:         GNU General Public License, version 2 or later (GPL-2.0-or-later)
+ * FILE:            ntoskrnl/include/internal/ke_x.h
+ * PURPOSE:         Internal Inlined Functions for the Kernel
+ * COPYRIGHT:       Copyright 2026 Ryan Wilson <ryan@taveraos.com>
+ * PROGRAMMERS:     Alex Ionescu (alex.ionescu@reactos.org)
+ *                  Ryan Wilson <ryan@taveraos.com>
+ */
 
 #ifdef __cplusplus
 extern "C"

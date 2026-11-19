@@ -15,12 +15,14 @@ Handoff file for implementer ↔ spec agent. Do not delete entries. See `.cursor
 
 ```text
 ### ID
-- Status: open | resolved
+- Status: open | deferred | resolved
 - Opened: YYYY-MM-DD
 - Question: …
 - Blocks: …
 - Resolved: YYYY-MM-DD (when resolved)
 - Resolution: cite source or probe; link to spec change
+- Deferred: YYYY-MM-DD (when deferred)
+- Deferral: why no implementable spec yet; what input unblocks it
 ```
 
 ## Items
@@ -106,3 +108,20 @@ Handoff file for implementer ↔ spec agent. Do not delete entries. See `.cursor
 - E14: `KeIpiGenericCall` with Affinity forced to 0 (no IPI) → ObInit/win32k/winlogon OK (`…T170609Z-e14.log`).
 - E15 fix (in-tree): `KiIpiInterrupt` raised CR8 to IPI_LEVEL then `ExitTrap` ran `ASSERT_TRAP_FRAME_IRQL_VALID` (`sdk/include/asm/trapamd64.inc`) which requires CR8 == PreviousIrql → `int 0x2c`. Restore PreviousIrql before ExitTrap (same as `KiInterruptDispatch` in `trap.S`). See `debugging-2026-11-18.md`.
 - V2 ONECPU OK (`…T171847Z-onecpu.log`). V3 `-smp 4` joins 4 CPUs and passes ObInit/win32k; later DBG assert `Thread->State == Running` at `ke_x.h:1344` during winlogon TLS (`…T172209Z-smp4.log`) — follow-up, not the IPI ExitTrap bug. Live CD Options now select `ntkrnlmp`/`halmp`.
+
+### ALP-010
+- Status: resolved
+- Opened: 2026-11-19
+- Resolved: 2026-11-19
+- Question: `Test-WindowsProbe.ps1 -Name syscall-diff` reports `CAPTURE` / probe-changed (stamped probe=c34e417f... vs current differential-tests/syscall-diff/probe.c identity). Re-capture `output/syscall-diff/windows.log` with `DIFF END OK` on Windows 10 22H2 and refresh `windows.probe`.
+- Blocks: Milestone 8 paired compare that may reuse the Windows stamp; implementer continues Tavera-only capture without a Windows boot.
+- Resolution: Re-captured Windows 10 22H2 on QEMU TCG (`output/syscall-diff/windows.log`, `DIFF END OK`). Stamped `output/syscall-diff/windows.probe` (`probe=448b542b…`, `log=be557c44…`). `Test-WindowsProbe.ps1 -Name syscall-diff` now prints `REUSE syscall-diff`. Implementer can pair Tavera without another Windows boot until `probe.c` changes again.
+- Note (2026-11-19): Tavera `output/syscall-diff/reactos.log` already has `DIFF END OK` from a temporary Setup CmdLine of the syscall probe. A FAT `A:\probe.exe` RunOnce under `setup -mini` reached desktop then `kdb:>`; RunOnce was removed from `livecd.inf`.
+
+## Queue check
+
+2026-11-19 (implementer): Every revision assigned to the implementer is implemented. `open-items.md` has no **open** items left (ALP-001…010 resolved). Stopped the 10-minute wake.
+
+2026-11-19 (spec): After Ryan’s message restart rule: every item is already **resolved** (none **open** or **deferred**). No idle 10-minute poll armed.
+
+2026-11-19 (implementer, after Ryan message restart): Re-read `open-items.md`. Every item is still **resolved** (ALP-001…010); none **open**. No implementer revisions pending. No idle 10-minute poll armed. Continuing unblocked WHPX Gate A harness work.

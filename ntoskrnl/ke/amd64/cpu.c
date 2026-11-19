@@ -1,10 +1,18 @@
 /*
- * PROJECT:         ReactOS Kernel
+ * PROJECT:         Tavera OS Kernel
  * LICENSE:         GPL - See COPYING in the top level directory
  * FILE:            ntoskrnl/ke/amd64/cpu.c
  * PURPOSE:         Routines for CPU-level support
+ * COPYRIGHT:       Copyright 2026 Ryan Wilson <ryan@taveraos.com>
  * PROGRAMMERS:     Alex Ionescu (alex.ionescu@reactos.org)
  *                  Timo Kreuzer (timo.kreuzer@reactos.org)
+ *                  Ryan Wilson <ryan@taveraos.com>
+ *
+ * Sources: tavera/specs/amd64-logical-processors/amd64-logical-processors.md
+ * (KeFlushEntireTb all active processors);
+ * https://learn.microsoft.com/en-us/windows-hardware/drivers/ddi/wdm/nf-wdm-keipigenericcall
+ * (KeIpiGenericCall still in amd64/ipi.c); debugging-2026-11-18.md H5
+ * (DPC shootdown + IPI_DPC wake after IPI_LEVEL flush soft-hang).
  */
 
 /* INCLUDES *****************************************************************/
@@ -482,6 +490,59 @@ KiRestoreProcessorState(
     KiRestoreProcessorControlState(&Prcb->ProcessorState);
 }
 
+#ifdef CONFIG_SMP
+/*
+ * H5: TLB shootdown via targeted DPCs (DISPATCH_LEVEL) instead of running
+ * __writecr3 inside KiIpiServiceRoutine at IPI_LEVEL. Cross-CPU insert uses
+ * IPI_DPC only as a wake (KeInsertQueueDpc). H2–H4 IPI_LEVEL flush soft-hung
+ * under TCG after desktop/NDIS.
+ * Sources: debugging-2026-11-18.md H2–H5;
+ * output/boot-m32-20261119T043000Z-h4-nowait.log;
+ * ntoskrnl/ke/dpc.c KeInsertQueueDpc / KiIpiSend(IPI_DPC).
+ */
+static KDPC KiTbFlushDpc[MAXIMUM_PROCESSORS];
+static volatile LONG KiTbFlushDpcDone;
+static BOOLEAN KiTbFlushDpcReady;
+
+static
+VOID
+NTAPI
+KiTbFlushDpcRoutine(
+    _In_ PKDPC Dpc,
+    _In_opt_ PVOID DeferredContext,
+    _In_opt_ PVOID SystemArgument1,
+    _In_opt_ PVOID SystemArgument2)
+{
+    UNREFERENCED_PARAMETER(Dpc);
+    UNREFERENCED_PARAMETER(DeferredContext);
+    UNREFERENCED_PARAMETER(SystemArgument1);
+    UNREFERENCED_PARAMETER(SystemArgument2);
+    KeFlushCurrentTb();
+    InterlockedIncrement((PLONG)&KiTbFlushDpcDone);
+}
+
+static
+VOID
+KiEnsureTbFlushDpcs(VOID)
+{
+    ULONG i;
+
+    if (KiTbFlushDpcReady)
+    {
+        return;
+    }
+
+    for (i = 0; i < MAXIMUM_PROCESSORS; i++)
+    {
+        KeInitializeDpc(&KiTbFlushDpc[i], KiTbFlushDpcRoutine, NULL);
+        KeSetImportanceDpc(&KiTbFlushDpc[i], HighImportance);
+        KeSetTargetProcessorDpc(&KiTbFlushDpc[i], (CCHAR)i);
+    }
+    KiTbFlushDpcReady = TRUE;
+}
+
+#endif
+
 VOID
 NTAPI
 KeFlushEntireTb(IN BOOLEAN Invalid,
@@ -489,17 +550,70 @@ KeFlushEntireTb(IN BOOLEAN Invalid,
 {
     KIRQL OldIrql;
 
-    // FIXME: halfplemented
-    /* Raise the IRQL for the TB Flush */
+    UNREFERENCED_PARAMETER(Invalid);
+
+#ifdef CONFIG_SMP
+    if (AllProcessors && (KeNumberProcessors > 1))
+    {
+        KAFFINITY Affinity;
+        KAFFINITY Remaining;
+        ULONG Index;
+        ULONG Expected;
+        ULONG Stall;
+        PKPRCB Prcb;
+
+        KiEnsureTbFlushDpcs();
+        Prcb = KeGetCurrentPrcb();
+        Affinity = KeActiveProcessors & ~Prcb->SetMember;
+        Expected = 0;
+        Remaining = Affinity;
+        while (BitScanForwardAffinity(&Index, Remaining))
+        {
+            Remaining &= ~AFFINITY_MASK(Index);
+            Expected++;
+        }
+
+        KiTbFlushDpcDone = 0;
+        KeMemoryBarrier();
+
+        Remaining = Affinity;
+        while (BitScanForwardAffinity(&Index, Remaining))
+        {
+            Remaining &= ~AFFINITY_MASK(Index);
+            if (Index < MAXIMUM_PROCESSORS)
+            {
+                KeInsertQueueDpc(&KiTbFlushDpc[Index], NULL, NULL);
+            }
+        }
+
+        OldIrql = KeRaiseIrqlToSynchLevel();
+        KeFlushCurrentTb();
+        KeLowerIrql(OldIrql);
+
+        Stall = 0;
+        while (ReadNoFence((PLONG)&KiTbFlushDpcDone) < (LONG)Expected)
+        {
+            YieldProcessor();
+            Stall++;
+            if ((Stall & 0x3FFFFF) == 0x400000)
+            {
+                DPRINT1("KeFlushEntireTb: DPC stall Done=%ld want=%lu\n",
+                        ReadNoFence((PLONG)&KiTbFlushDpcDone),
+                        Expected);
+            }
+        }
+
+        InterlockedExchangeAdd(&KiTbFlushTimeStamp, 1);
+        return;
+    }
+#else
+    UNREFERENCED_PARAMETER(AllProcessors);
+#endif
+
     OldIrql = KeRaiseIrqlToSynchLevel();
-
-    /* Flush the TB for the Current CPU, and update the flush stamp */
     KeFlushCurrentTb();
-
-    /* Update the flush stamp and return to original IRQL */
     InterlockedExchangeAdd(&KiTbFlushTimeStamp, 1);
     KeLowerIrql(OldIrql);
-
 }
 
 NTSTATUS

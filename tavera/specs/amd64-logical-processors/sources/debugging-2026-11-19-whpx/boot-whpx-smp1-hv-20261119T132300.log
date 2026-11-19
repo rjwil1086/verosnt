@@ -1,0 +1,2738 @@
+(boot\freeldr\freeldr\lib\mm\heap.c:344) err: HEAP: Allocation of 0xfba8c bytes too large
+(boot\freeldr\freeldr\lib\mm\heap.c:344) err: HEAP: Allocation of 0x185f62f bytes too large
+(boot\freeldr\freeldr\lib\mm\heap.c:344) err: HEAP: Allocation of 0x2e4616 bytes too large
+(boot\freeldr\freeldr\lib\mm\heap.c:344) err: HEAP: Allocation of 0xb4520 bytes too large
+(boot\freeldr\freeldr\lib\mm\heap.c:344) err: HEAP: Allocation of 0xd1e498 bytes too large
+(boot\freeldr\freeldr\lib\mm\heap.c:344) err: HEAP: Allocation of 0x338294 bytes too large
+(boot\freeldr\freeldr\lib\mm\heap.c:344) err: HEAP: Allocation of 0x2a7681 bytes too large
+(boot\freeldr\freeldr\lib\mm\heap.c:344) err: HEAP: Allocation of 0x14097b bytes too large
+(boot\freeldr\freeldr\lib\mm\heap.c:344) err: HEAP: Allocation of 0xbdebc bytes too large
+(boot\freeldr\freeldr\lib\mm\heap.c:344) err: HEAP: Allocation of 0x1bb5d1 bytes too large
+(boot\freeldr\freeldr\lib\mm\heap.c:344) err: HEAP: Allocation of 0xc7528f bytes too large
+(boot\freeldr\freeldr\lib\mm\heap.c:344) err: HEAP: Allocation of 0x2a706b bytes too large
+(boot\freeldr\freeldr\lib\mm\heap.c:344) err: HEAP: Allocation of 0xbed06 bytes too large
+(boot\freeldr\freeldr\lib\mm\heap.c:344) err: HEAP: Allocation of 0xabbca bytes too large
+(boot\freeldr\freeldr\lib\mm\heap.c:344) err: HEAP: Allocation of 0x1d3480 bytes too large
+(boot\freeldr\freeldr\lib\mm\heap.c:344) err: HEAP: Allocation of 0xa599f bytes too large
+(boot\freeldr\freeldr\lib\mm\heap.c:344) err: HEAP: Allocation of 0xb5137 bytes too large
+(boot\freeldr\freeldr\lib\mm\heap.c:344) err: HEAP: Allocation of 0x2b1e8f bytes too large
+(boot\freeldr\freeldr\lib\mm\heap.c:344) err: HEAP: Allocation of 0x20ca52 bytes too large
+(boot\freeldr\freeldr\lib\mm\heap.c:344) err: HEAP: Allocation of 0x186f2d bytes too large
+(boot\freeldr\freeldr\lib\mm\heap.c:344) err: HEAP: Allocation of 0xf5ce0 bytes too large
+(boot\freeldr\freeldr\lib\mm\heap.c:344) err: HEAP: Allocation of 0x15664d bytes too large
+(ntoskrnl\kd64\kdinit.c:97) -----------------------------------------------------
+(ntoskrnl\kd64\kdinit.c:98) VerOS NT 0.1.1-amd64-dev (Build 20261119-84fa21f) (Commit 84fa21f7c273691f4f7c93e185e10420fb30c3db)
+(ntoskrnl\kd64\kdinit.c:99) 1 System Processor [8192 MB Memory]
+(ntoskrnl\kd64\kdinit.c:103) Command Line: DEBUG DEBUGPORT=COM1 BAUDRATE=115200 SOS FASTDETECT MININT KERNEL=NTKRNLMP.EXE HAL=HALMP.DLL
+(ntoskrnl\kd64\kdinit.c:106) ARC Paths: multi(0)disk(0)cdrom(96) \ multi(0)disk(0)cdrom(96) \VerOS\
+(ntoskrnl\ke\amd64\kiinit.c:579) Pcr = FFFFF8000324FD30, Gdt = FFFFF800073E4000, Idt = FFFFF80003242A10, Tss = FFFFF800073E3000
+(ntoskrnl\ke\amd64\cpu.c:281) Supported CPU features: KF_RDTSC KF_CR4 KF_CMOV KF_GLOBAL_PAGE KF_LARGE_PAGE KF_MTRR KF_CMPXCHG8B KF_MMX KF_PAT KF_FXSR KF_FAST_SYSCALL KF_XMMI KF_XMMI64 KF_BRANCH KF_SSE3 KF_CMPXCHG16B KF_AUTHENTICAMD KF_NX_BIT KF_NX_ENABLED X86_FEATURE_PAE
+(hal\halx86\acpi\halacpi.c:782) ACPI Timer at: 608h (EXT: 0)
+(hal\halx86\acpi\halacpi.c:928) ACPI v1.5-2.0_C detected. Tables: [RSDT] [APIC] [FACP]
+(hal\halx86\apic\rtctimer.c:147) Clock initialized
+(hal\halx86\apic\halinit.c:50) Using HAL: APIC SMP DBG
+(hal\halx86\acpi\madt.c:320) Physical processor count: 1
+(hal\halx86\acpi\madt.c:329)  Processor 0: ProcessorId 0, LapicId 0, ProcessorStarted 0, BSPCheck 1, ProcessorPrcb FFFFF8000324FEB0
+(hal\halx86\acpi\madt.c:339)  I/O APIC 0: Address 0xfec00000, GlobalIrqBase 0
+(ntoskrnl\mm\ARM3\mminit.c:1444) HAL I/O Mapping at FFFFFFFFFFFE0000 is unsafe
+(ntoskrnl\mm\ARM3\mminit.c:1444) HAL I/O Mapping at FFFFFFFFFFFE1000 is unsafe
+(ntoskrnl\mm\ARM3\largepag.c:37) MiInitializeLargePageSupport: PAE/x64 Not Implemented
+(hal\halx86\generic\x86bios.c:145) *x86BiosMemoryMapping: F000FF53F000FF53, F000FF53F000E2C3
+(ntoskrnl\ex\init.c:1537) VERPORT PsGetVersion 10.0.19045
+(ntoskrnl\ex\init.c:1541) VERPORT SharedUserData 10.0.19045
+(ntoskrnl\ke\amd64\mproc.c:138) KeStartAllProcessors: starting CPU 1
+(ntoskrnl\ke\amd64\mproc.c:145) KeStartAllProcessors: waiting for CPU 1
+(hal\halx86\smp\amd64\spinup.c:146) HalStartNextProcessor: all 1 processors started
+(ntoskrnl\ke\amd64\mproc.c:149) KeStartAllProcessors: HalStartNextProcessor failed for CPU 1
+(ntoskrnl\ke\amd64\mproc.c:183) KeStartAllProcessors: active processor count is 1
+(ntoskrnl\ex\init.c:1700) Phase1 pre-ObInit: Cpu=0 Irql=0 Affinity=0x1 Active=0x1
+(ntoskrnl\ex\init.c:1709) Phase1: affinity restored to 0x1 after ObInit
+(ntoskrnl\mm\mminit.c:138)           0xFFFFF80000000000 - 0xFFFFF80007400000	Boot Loaded Image
+(ntoskrnl\mm\mminit.c:149)           0xFFFFFA8000000000 - 0xFFFFFA800B401000	PFN Database
+(ntoskrnl\mm\mminit.c:153)           0xFFFFFA832A048000 - 0xFFFFFA833A060000	ARM3 Non Paged Pool
+(ntoskrnl\mm\mminit.c:157)           0xFFFFF97FBA000000 - 0xFFFFF97FDA000000	System View Space
+(ntoskrnl\mm\mminit.c:161)           0xFFFFF97FDA000000 - 0xFFFFF98000000000	Session Space
+(ntoskrnl\mm\mminit.c:164)           0xFFFFF68000000000 - 0xFFFFF6FFFFFFFFFF	Page Tables
+(ntoskrnl\mm\mminit.c:167)           0xFFFFF6FB40000000 - 0xFFFFF6FB7FFFFFFF	Page Directories
+(ntoskrnl\mm\mminit.c:170)           0xFFFFF70000000000 - 0xFFFFF77FFFFFFFFF	Hyperspace
+(ntoskrnl\mm\mminit.c:173)           0xFFFFF98000000000 - 0xFFFFFA7FFFFFFFFF	System Cache
+(ntoskrnl\mm\mminit.c:177)           0xFFFFF8A000000000 - 0xFFFFF8A002000000	ARM3 Paged Pool
+(ntoskrnl\mm\mminit.c:183)           0xFFFFF88000000000 - 0xFFFFF880762A1000	System PTE Space
+(ntoskrnl\mm\mminit.c:187)           0xFFFFFA833A060000 - 0xFFFFFA83F1F54000	Non Paged Pool Expansion PTE Space
+(ntoskrnl\ex\time.c:55) RtlQueryTimeZoneInformation failed (Status 0xc0000034)
+(ntoskrnl\ex\time.c:331) ExpGetTimeZoneId failed
+ACPI Compatible Eisa/Isa HAL detected
+(ntoskrnl\kse\ksedb.c:124) KSE: Loaded driver database version 2.1 (900 bytes)
+(ntoskrnl\kse\kse.c:547) KSE: Registered shim DriverScope
+(ntoskrnl\kse\driverscope.c:359) KSE: driver scope shim registered.
+(ntoskrnl\kse\kse.c:461) KseInitialize(BootPhase 0) => 00000000
+(ntoskrnl\ex\work.c:765) Requesting a new thread. CurrentCount: 0. MaxCount: 1
+(ntoskrnl\kse\kse.c:547) KSE: Registered shim IgnoreFreePoolTag
+(ntoskrnl\kse\kse.c:547) KSE: Registered shim KmWin2k3VersionLie
+(ntoskrnl\kse\kse.c:461) KseInitialize(BootPhase 1) => 00000000
+(ntoskrnl\io\iomgr\driver.c:659) '\Driver\sacdrv' DriverEntry returned 0xc0000037
+(ntoskrnl\io\iomgr\driver.c:86) Deleting driver object '\Driver\sacdrv'
+(ntoskrnl\io\iomgr\driver.c:929) Driver 'sacdrv.sys' load failed, status (c0000365)
+(ntoskrnl\io\iomgr\driver.c:659) '\Driver\Wdf01000' DriverEntry returned 0x00000000
+(ntoskrnl\io\iomgr\driver.c:659) '\Driver\acpi' DriverEntry returned 0x00000000
+(ntoskrnl\io\iomgr\driver.c:659) '\Driver\Pci' DriverEntry returned 0x00000000
+(ntoskrnl\io\iomgr\driver.c:659) '\Driver\isapnp' DriverEntry returned 0x00000000
+(ntoskrnl\io\iomgr\driver.c:659) '\Driver\partmgr' DriverEntry returned 0x00000000
+WDFTrace: new WDFKEY object open of \Registry\Machine\System\CurrentControlSet\Control\usbflags failed, 0xc0000034
+(ntoskrnl\io\iomgr\driver.c:659) '\Driver\ucx01000' DriverEntry returned 0x00000000
+(ntoskrnl\io\iomgr\driver.c:659) '\Driver\usbccgp' DriverEntry returned 0x00000000
+(ntoskrnl\io\iomgr\driver.c:659) '\Driver\usbehci' DriverEntry returned 0x00000000
+(ntoskrnl\io\iomgr\driver.c:659) '\Driver\usbhub' DriverEntry returned 0x00000000
+(ntoskrnl\io\iomgr\driver.c:659) '\Driver\usbohci' DriverEntry returned 0x00000000
+(ntoskrnl\io\iomgr\driver.c:659) '\Driver\usbuhci' DriverEntry returned 0x00000000
+(ntoskrnl\io\iomgr\driver.c:659) '\Driver\MountMgr' DriverEntry returned 0x00000000
+(ntoskrnl\io\pnpmgr\pnpres.c:648) Resource conflict: IRQ (0x9 0x9 vs. 0x9 0x9)
+(ntoskrnl\io\pnpmgr\pnpres.c:648) Resource conflict: IRQ (0x9 0x9 vs. 0x9 0x9)
+(drivers\bus\acpi\buspdo.c:846) Failed to find a bus number
+(ntoskrnl\io\pnpmgr\devaction.c:656) Failed to open class key "{4D36E96A-E325-11CE-BFC1-08002BE10318}" (status c0000034)
+(ntoskrnl\io\iomgr\driver.c:659) '\Driver\pciide' DriverEntry returned 0x00000000
+WDFTrace: new WDFKEY object open of \Registry\Machine\System\CurrentControlSet\Services\USBHUB\hubg failed, 0xc0000034
+WDFTrace: new WDFKEY object open of \Registry\Machine\System\CurrentControlSet\Control\usb\Usb20HardwareLpm failed, 0xc0000034
+WDFTrace: new WDFKEY object open of \Registry\Machine\System\CurrentControlSet\Control\usb\UsbLtm failed, 0xc0000034
+(ntoskrnl\io\iomgr\driver.c:659) '\Driver\usbhub3' DriverEntry returned 0x00000000
+(ntoskrnl\io\iomgr\driver.c:659) '\Driver\usbxhci' DriverEntry returned 0x00000000
+(drivers\storage\port\storport\storport.c:1416) StorPortInitialize(FFFFFA8339F672A0 FFFFF88072C838C8 FFFFF88072C83790 0000000000000000)
+(drivers\storage\port\storport\storport.c:1418) HwInitializationDataSize: 136
+(drivers\storage\port\storport\storport.c:1419) AdapterInterfaceType: 5
+(drivers\storage\port\storport\storport.c:1420) HwInitialize: FFFFF880738E2A40
+(drivers\storage\port\storport\storport.c:1421) HwStartIo: FFFFF880738E2F90
+(drivers\storage\port\storport\storport.c:1422) HwInterrupt: FFFFF880738E2E90
+(drivers\storage\port\storport\storport.c:1423) HwFindAdapter: FFFFF880738E4080
+(drivers\storage\port\storport\storport.c:1424) HwResetBus: FFFFF880738E3FD0
+(drivers\storage\port\storport\storport.c:1425) HwDmaStarted: 0000000000000000
+(drivers\storage\port\storport\storport.c:1426) HwAdapterState: 0000000000000000
+(drivers\storage\port\storport\storport.c:1427) DeviceExtensionSize: 146520
+(drivers\storage\port\storport\storport.c:1428) SpecificLuExtensionSize: 0
+(drivers\storage\port\storport\storport.c:1429) SrbExtensionSize: 1592
+(drivers\storage\port\storport\storport.c:1430) NumberOfAccessRanges: 6
+(drivers\storage\port\storport\storport.c:1456) No driver object extension!
+(drivers\storage\port\storport\storport.c:1468) Driver object extension created!
+(drivers\storage\port\storport\storport.c:38) PortAddDriverInitData()
+(drivers\storage\port\storport\storport.c:1504) StorPortInitialize() done (Status 0x00000000)
+(ntoskrnl\io\iomgr\driver.c:659) '\Driver\storahci' DriverEntry returned 0x00000000
+(ntoskrnl\io\iomgr\driver.c:659) '\Driver\BusLogic' DriverEntry returned 0xc00000c0
+(ntoskrnl\io\iomgr\driver.c:86) Deleting driver object '\Driver\BusLogic'
+(ntoskrnl\mm\ARM3\sysldr.c:591) multi(0)disk(0)cdrom(96)\VerOS\system32\drivers\scsiport.sys <scsiport.sys>
+(ntoskrnl\io\iomgr\driver.c:929) Driver 'buslogic.sys' load failed, status (c0000365)
+(ntoskrnl\io\iomgr\driver.c:659) '\Driver\atapi' DriverEntry returned 0x00000000
+(ntoskrnl\io\iomgr\driver.c:659) '\Driver\usbstor' DriverEntry returned 0x00000000
+(ntoskrnl\io\iomgr\driver.c:659) '\Driver\Disk' DriverEntry returned 0x00000000
+WDFTrace: new WDFKEY object open of \Registry\Machine\System\CurrentControlSet\Control\MiniNT failed, 0xc0000034
+(ntoskrnl\io\iomgr\driver.c:659) '\Driver\cdrom' DriverEntry returned 0x00000000
+(ntoskrnl\io\iomgr\driver.c:659) '\Driver\ksecdd' DriverEntry returned 0x00000000
+(ntoskrnl\io\pnpmgr\devaction.c:656) Failed to open class key "{4D36E96A-E325-11CE-BFC1-08002BE10318}" (status c0000034)
+(drivers\storage\port\storport\storport.c:213) PortAddDevice(FFFFFA8339F672A0 FFFFFA8339F6ADB0)
+(drivers\storage\port\storport\storport.c:226) Creating device: \Device\RaidPort0
+(drivers\storage\port\storport\storport.c:242) Created device: \Device\RaidPort0 (FFFFFA8339F652B0)
+(drivers\storage\port\storport\storport.c:317) PortAddDevice() done (Status 0x00000000)
+(drivers\storage\port\storport\storport.c:482) PortDispatchPnp(FFFFFA8339F652B0 FFFFFA833A047A80)
+(drivers\storage\port\storport\fdo.c:1529) PortFdoPnp(FFFFFA8339F652B0 FFFFFA833A047A80)
+(ntoskrnl\io\pnpmgr\pnpres.c:648) Resource conflict: IRQ (0xa 0xa vs. 0xa 0xa)
+(ntoskrnl\io\pnpmgr\pnpres.c:648) Resource conflict: IRQ (0xa 0xa vs. 0xa 0xa)
+(drivers\storage\port\storport\storport.c:482) PortDispatchPnp(FFFFFA8339F652B0 FFFFFA833A047A80)
+(drivers\storage\port\storport\fdo.c:1529) PortFdoPnp(FFFFFA8339F652B0 FFFFFA833A047A80)
+(drivers\storage\port\storport\fdo.c:528) PortFdoStartDevice(FFFFFA8339F65400 FFFFFA833A047A80)
+(drivers\storage\port\storport\misc.c:100) CopyResourceList(0 FFFFF8A000094AD0)
+(drivers\storage\port\storport\misc.c:67) GetResourceListSize(FFFFF8A000094AD0)
+(drivers\storage\port\storport\misc.c:76) ResourceList->Count: 1
+(drivers\storage\port\storport\misc.c:80) PartialResourceList->Count: 3
+(drivers\storage\port\storport\misc.c:86) Size: 0x50 (80)
+(drivers\storage\port\storport\misc.c:100) CopyResourceList(0 FFFFF8A000094C10)
+(drivers\storage\port\storport\misc.c:67) GetResourceListSize(FFFFF8A000094C10)
+(drivers\storage\port\storport\misc.c:76) ResourceList->Count: 1
+(drivers\storage\port\storport\misc.c:80) PartialResourceList->Count: 3
+(drivers\storage\port\storport\misc.c:86) Size: 0x50 (80)
+(drivers\storage\port\storport\fdo.c:579) Status: 0x00000000
+(drivers\storage\port\storport\fdo.c:582) Context: FFFFFA8339F6ADB0
+(drivers\storage\port\storport\fdo.c:420) PortFdoStartMiniport(FFFFFA8339F65400)
+(drivers\storage\port\storport\storport.c:97) PortGetDriverInitData()
+(drivers\storage\port\storport\miniport.c:274) MiniportInitialize(FFFFFA8339F65440 FFFFFA8339F65400 FFFFFA8339F66F30)
+(drivers\storage\port\storport\miniport.c:283) Miniport is physical
+(drivers\storage\port\storport\miniport.c:30) InitializeConfiguration(FFFFFA8339F65450 FFFFFA8339F66F30 0 95)
+(drivers\storage\port\storport\miniport.c:72) NumberOfAccessRanges: 6
+(drivers\storage\port\storport\miniport.c:105) SrbType: 0
+(drivers\storage\port\storport\miniport.c:126) AssignResourceToConfiguration(FFFFFA8339F65450 FFFFFA8339F651F0 6)
+(drivers\storage\port\storport\miniport.c:146) Port: 0xc080 (0x20)
+(drivers\storage\port\storport\miniport.c:160) Memory: 0xfc096000 (0x1000)
+(drivers\storage\port\storport\miniport.c:198) Interrupt: Level 10  Vector 10
+(drivers\storage\port\storport\miniport.c:333) MiniportFindAdapter(FFFFFA8339F65440)
+(drivers\storage\port\storahci\storahci.c:1013) AhciHwFindAdapter()
+(drivers\storage\port\storport\storport.c:1076) StorPortGetBusData(FFFFFA8339F40008 4 0 95 FFFFF88072C83210 256)
+(drivers\storage\port\storport\storport.c:1083) DeviceExtension FFFFFA8339F40008  MiniportExtension FFFFFA8339F40000
+(drivers\storage\port\storport\storport.c:1092) ReturnLength: 256
+(drivers\storage\port\storahci\storahci.c:1049) 	VendorID: 8086  DeviceID: 2922  RevisionID: 02
+(drivers\storage\port\storport\storport.c:1118) StorPortGetDeviceBase(FFFFFA8339F40008 5 0 0xfc096000 4096 0)
+(drivers\storage\port\storport\storport.c:1125) HwDeviceExtension FFFFFA8339F40008  MiniportExtension FFFFFA8339F40000
+(drivers\storage\port\storport\misc.c:186) TranslateResourceListAddress(FFFFFA8339F65400)
+(drivers\storage\port\storport\misc.c:202) Port: 0xc080 (0x20)
+(drivers\storage\port\storport\misc.c:216) Memory: 0xfc096000 (0x1000)
+(drivers\storage\port\storport\storport.c:1139) Translated Address: 0xfc096000
+(drivers\storage\port\storport\storport.c:1152) Mapped Address: FFFFF880738CC000
+(drivers\storage\port\storport\misc.c:300) AllocateAddressMapping()
+(drivers\storage\port\storport\storport.c:1165) Mapped Address: FFFFF880738CC000
+(drivers\storage\port\storahci\storahci.c:1091) 	AE Already set, Reset()
+(drivers\storage\port\storahci\storahci.c:2425) AhciAdapterReset()
+(drivers\storage\port\storahci\storahci.c:158) AhciAllocateResourceForAdapter()
+(drivers\storage\port\storahci\storahci.c:173) 	Port Count: 6
+(drivers\storage\port\storport\storport.c:1322) StorPortGetUncachedExtension(FFFFFA8339F40008 FFFFFA8339F65450 12288)
+(drivers\storage\port\storport\storport.c:1329) HwDeviceExtension FFFFFA8339F40008  MiniportExtension FFFFFA8339F40000
+(drivers\storage\port\storport\storport.c:482) PortDispatchPnp(FFFFFA8339F652B0 FFFFFA8339F64C80)
+(drivers\storage\port\storport\fdo.c:1529) PortFdoPnp(FFFFFA8339F652B0 FFFFFA8339F64C80)
+(drivers\storage\port\storport\fdo.c:1624) IRP_MJ_PNP / Unknown IOCTL 0x8
+(drivers\storage\port\storport\storport.c:97) PortGetDriverInitData()
+(drivers\storage\port\storahci\storahci.c:37) AhciPortInitialize()
+(drivers\storage\port\storahci\storahci.c:37) AhciPortInitialize()
+(drivers\storage\port\storahci\storahci.c:37) AhciPortInitialize()
+(drivers\storage\port\storahci\storahci.c:37) AhciPortInitialize()
+(drivers\storage\port\storahci\storahci.c:37) AhciPortInitialize()
+(drivers\storage\port\storahci\storahci.c:37) AhciPortInitialize()
+(drivers\storage\port\storport\miniport.c:363) HwFindAdapter() returned 1
+(drivers\storage\port\storport\miniport.c:374) SP_RETURN_FOUND
+(drivers\storage\port\storport\misc.c:255) GetResourceListInterrupt(FFFFFA8339F65400)
+(drivers\storage\port\storport\misc.c:269) Interrupt: Level 11  Vector 176
+(drivers\storage\port\storport\fdo.c:352) Vector: 176
+(drivers\storage\port\storport\fdo.c:353) Irql: 11
+(drivers\storage\port\storport\fdo.c:355) Affinity: 0x00000001
+(drivers\storage\port\storahci\storahci.c:533) AhciHwInitialize()
+(drivers\storage\port\storahci\storahci.c:548) 	Multiple MSI based message not supported
+(drivers\storage\port\storport\storport.c:1641) EnablePassiveInitialization
+(drivers\storage\port\storport\storport.c:1643) HwPassiveInitRoutine FFFFF880738E29A0
+(drivers\storage\port\storport\fdo.c:505) Calling HwPassiveInitRoutine()
+(drivers\storage\port\storahci\storahci.c:496) AhciHwPassiveInitialize()
+(drivers\storage\port\storahci\storahci.c:243) AhciStartPort()
+(drivers\storage\port\storahci\storahci.c:407) 	DET == 0 Unsupported
+(drivers\storage\port\storahci\storahci.c:243) AhciStartPort()
+(drivers\storage\port\storahci\storahci.c:407) 	DET == 0 Unsupported
+(drivers\storage\port\storahci\storahci.c:243) AhciStartPort()
+(drivers\storage\port\storahci\storahci.c:243) AhciStartPort()
+(drivers\storage\port\storahci\storahci.c:407) 	DET == 0 Unsupported
+(drivers\storage\port\storahci\storahci.c:243) AhciStartPort()
+(drivers\storage\port\storahci\storahci.c:407) 	DET == 0 Unsupported
+(drivers\storage\port\storahci\storahci.c:243) AhciStartPort()
+(drivers\storage\port\storahci\storahci.c:407) 	DET == 0 Unsupported
+(drivers\storage\port\storport\storport.c:482) PortDispatchPnp(FFFFFA8339F652B0 FFFFFA833A047A80)
+(drivers\storage\port\storport\fdo.c:1529) PortFdoPnp(FFFFFA8339F652B0 FFFFFA833A047A80)
+(drivers\storage\port\storport\fdo.c:1624) IRP_MJ_PNP / Unknown IOCTL 0x9
+(drivers\storage\port\storport\storport.c:482) PortDispatchPnp(FFFFFA8339F652B0 FFFFFA833A047A80)
+(drivers\storage\port\storport\fdo.c:1529) PortFdoPnp(FFFFFA8339F652B0 FFFFFA833A047A80)
+(drivers\storage\port\storport\fdo.c:1612) IRP_MJ_PNP / IRP_MN_QUERY_PNP_DEVICE_STATE
+(drivers\storage\port\storport\storport.c:482) PortDispatchPnp(FFFFFA8339F652B0 FFFFFA833A047A80)
+(drivers\storage\port\storport\fdo.c:1529) PortFdoPnp(FFFFFA8339F652B0 FFFFFA833A047A80)
+WARNING:  HalCalculateScatterGatherListSize at hal\halx86\generic\dma.c:1189 is UNIMPLEMENTED!
+(drivers\storage\port\storahci\storahci.c:799) AhciHwStartIo()
+(drivers\storage\port\storport\fdo.c:715) PortSendReportLuns(): Waiting for the driver to process request...
+(drivers\storage\port\storport\fdo.c:785) REPORT_LUNS SRB failed with SrbStatus 0x00000008 Status C0000001
+(drivers\storage\port\storport\fdo.c:890) PortSendReportLuns() done with Status 0xC0000185
+(drivers\storage\port\storahci\storahci.c:799) AhciHwStartIo()
+(drivers\storage\port\storport\fdo.c:992) PortSendInquiry(): Waiting for the driver to process request...
+(drivers\storage\port\storport\fdo.c:1001) PortSendInquiry(): Request processed by driver, status = 0xC0000001
+(drivers\storage\port\storport\fdo.c:1013) Inquiry SRB failed with SrbStatus 0x00000008
+(drivers\storage\port\storport\fdo.c:1093) PortSendInquiry() done with Status 0xC0000185
+(drivers\storage\port\storahci\storahci.c:799) AhciHwStartIo()
+(drivers\storage\port\storport\fdo.c:715) PortSendReportLuns(): Waiting for the driver to process request...
+(drivers\storage\port\storport\fdo.c:785) REPORT_LUNS SRB failed with SrbStatus 0x00000008 Status C0000001
+(drivers\storage\port\storport\fdo.c:890) PortSendReportLuns() done with Status 0xC0000185
+(drivers\storage\port\storahci\storahci.c:799) AhciHwStartIo()
+(drivers\storage\port\storport\fdo.c:992) PortSendInquiry(): Waiting for the driver to process request...
+(drivers\storage\port\storport\fdo.c:1001) PortSendInquiry(): Request processed by driver, status = 0xC0000001
+(drivers\storage\port\storport\fdo.c:1013) Inquiry SRB failed with SrbStatus 0x00000008
+(drivers\storage\port\storport\fdo.c:1093) PortSendInquiry() done with Status 0xC0000185
+(drivers\storage\port\storahci\storahci.c:799) AhciHwStartIo()
+(drivers\storage\port\storahci\storahci.c:2229) DeviceReportLuns()
+(drivers\storage\port\storport\fdo.c:715) PortSendReportLuns(): Waiting for the driver to process request...
+(drivers\storage\port\storport\fdo.c:890) PortSendReportLuns() done with Status 0x00000000
+(drivers\storage\port\storahci\storahci.c:799) AhciHwStartIo()
+(drivers\storage\port\storahci\storahci.c:2286) DeviceInquiryRequest()
+(drivers\storage\port\storahci\storahci.c:2307) 	EVPD Inquired
+(drivers\storage\port\storahci\storahci.c:1571) AhciProcessIO()
+(drivers\storage\port\storahci\storahci.c:1572) 	PathId: 2
+(drivers\storage\port\storahci\storahci.c:1381) AhciProcessSrb()
+(drivers\storage\port\storahci\storahci.c:1403) 	ATAPI Device Found!
+(drivers\storage\port\storahci\storahci.c:1233) AhciATA_CFIS()
+(drivers\storage\port\storahci\storahci.c:1329) AhciBuild_PRDT()
+(drivers\storage\port\storahci\storahci.c:1503) AhciActivatePort()
+(drivers\storage\port\storahci\storahci.c:635) AhciInterruptHandler()
+(drivers\storage\port\storahci\storahci.c:636) 	Port Number: 2
+(drivers\storage\port\storahci\storahci.c:576) AhciCompleteIssuedSrb()
+(drivers\storage\port\storahci\storahci.c:580) 	Completed Commands: 1
+(drivers\storage\port\storahci\storahci.c:442) AhciCommandCompletionDpcRoutine()
+(drivers\storage\port\storahci\storahci.c:1717) InquiryCompletion()
+(drivers\storage\port\storahci\storahci.c:1807) 	ATAPI Device
+(drivers\storage\port\storport\storport.c:1945) StorPortSetDeviceQueueDepth(FFFFFA8339F40008 2 0 0 15)
+(drivers\storage\port\storport\fdo.c:992) PortSendInquiry(): Waiting for the driver to process request...
+(drivers\storage\port\storport\fdo.c:1001) PortSendInquiry(): Request processed by driver, status = 0x00000000
+(drivers\storage\port\storport\fdo.c:1005) Found a device!
+(drivers\storage\port\storport\fdo.c:1093) PortSendInquiry() done with Status 0x00000000
+(drivers\storage\port\storahci\storahci.c:799) AhciHwStartIo()
+(drivers\storage\port\storport\fdo.c:715) PortSendReportLuns(): Waiting for the driver to process request...
+(drivers\storage\port\storport\fdo.c:785) REPORT_LUNS SRB failed with SrbStatus 0x00000008 Status C0000001
+(drivers\storage\port\storport\fdo.c:890) PortSendReportLuns() done with Status 0xC0000185
+(drivers\storage\port\storahci\storahci.c:799) AhciHwStartIo()
+(drivers\storage\port\storport\fdo.c:992) PortSendInquiry(): Waiting for the driver to process request...
+(drivers\storage\port\storport\fdo.c:1001) PortSendInquiry(): Request processed by driver, status = 0xC0000001
+(drivers\storage\port\storport\fdo.c:1013) Inquiry SRB failed with SrbStatus 0x00000008
+(drivers\storage\port\storport\fdo.c:1093) PortSendInquiry() done with Status 0xC0000185
+(drivers\storage\port\storahci\storahci.c:799) AhciHwStartIo()
+(drivers\storage\port\storport\fdo.c:715) PortSendReportLuns(): Waiting for the driver to process request...
+(drivers\storage\port\storport\fdo.c:785) REPORT_LUNS SRB failed with SrbStatus 0x00000008 Status C0000001
+(drivers\storage\port\storport\fdo.c:890) PortSendReportLuns() done with Status 0xC0000185
+(drivers\storage\port\storahci\storahci.c:799) AhciHwStartIo()
+(drivers\storage\port\storport\fdo.c:992) PortSendInquiry(): Waiting for the driver to process request...
+(drivers\storage\port\storport\fdo.c:1001) PortSendInquiry(): Request processed by driver, status = 0xC0000001
+(drivers\storage\port\storport\fdo.c:1013) Inquiry SRB failed with SrbStatus 0x00000008
+(drivers\storage\port\storport\fdo.c:1093) PortSendInquiry() done with Status 0xC0000185
+(drivers\storage\port\storahci\storahci.c:799) AhciHwStartIo()
+(drivers\storage\port\storport\fdo.c:715) PortSendReportLuns(): Waiting for the driver to process request...
+(drivers\storage\port\storport\fdo.c:785) REPORT_LUNS SRB failed with SrbStatus 0x00000008 Status C0000001
+(drivers\storage\port\storport\fdo.c:890) PortSendReportLuns() done with Status 0xC0000185
+(drivers\storage\port\storahci\storahci.c:799) AhciHwStartIo()
+(drivers\storage\port\storport\fdo.c:992) PortSendInquiry(): Waiting for the driver to process request...
+(drivers\storage\port\storport\fdo.c:1001) PortSendInquiry(): Request processed by driver, status = 0xC0000001
+(drivers\storage\port\storport\fdo.c:1013) Inquiry SRB failed with SrbStatus 0x00000008
+(drivers\storage\port\storport\fdo.c:1093) PortSendInquiry() done with Status 0xC0000185
+(drivers\storage\port\storahci\storahci.c:799) AhciHwStartIo()
+(drivers\storage\port\storport\fdo.c:715) PortSendReportLuns(): Waiting for the driver to process request...
+(drivers\storage\port\storport\fdo.c:785) REPORT_LUNS SRB failed with SrbStatus 0x00000008 Status C0000001
+(drivers\storage\port\storport\fdo.c:890) PortSendReportLuns() done with Status 0xC0000185
+(drivers\storage\port\storahci\storahci.c:799) AhciHwStartIo()
+(drivers\storage\port\storport\fdo.c:992) PortSendInquiry(): Waiting for the driver to process request...
+(drivers\storage\port\storport\fdo.c:1001) PortSendInquiry(): Request processed by driver, status = 0xC0000001
+(drivers\storage\port\storport\fdo.c:1013) Inquiry SRB failed with SrbStatus 0x00000008
+(drivers\storage\port\storport\fdo.c:1093) PortSendInquiry() done with Status 0xC0000185
+(drivers\storage\port\storahci\storahci.c:799) AhciHwStartIo()
+(drivers\storage\port\storport\fdo.c:715) PortSendReportLuns(): Waiting for the driver to process request...
+(drivers\storage\port\storport\fdo.c:785) REPORT_LUNS SRB failed with SrbStatus 0x00000008 Status C0000001
+(drivers\storage\port\storport\fdo.c:890) PortSendReportLuns() done with Status 0xC0000185
+(drivers\storage\port\storahci\storahci.c:799) AhciHwStartIo()
+(drivers\storage\port\storport\fdo.c:992) PortSendInquiry(): Waiting for the driver to process request...
+(drivers\storage\port\storport\fdo.c:1001) PortSendInquiry(): Request processed by driver, status = 0xC0000001
+(drivers\storage\port\storport\fdo.c:1013) Inquiry SRB failed with SrbStatus 0x00000008
+(drivers\storage\port\storport\fdo.c:1093) PortSendInquiry() done with Status 0xC0000185
+(drivers\storage\port\storahci\storahci.c:799) AhciHwStartIo()
+(drivers\storage\port\storport\fdo.c:715) PortSendReportLuns(): Waiting for the driver to process request...
+(drivers\storage\port\storport\fdo.c:785) REPORT_LUNS SRB failed with SrbStatus 0x00000008 Status C0000001
+(drivers\storage\port\storport\fdo.c:890) PortSendReportLuns() done with Status 0xC0000185
+(drivers\storage\port\storahci\storahci.c:799) AhciHwStartIo()
+(drivers\storage\port\storport\fdo.c:992) PortSendInquiry(): Waiting for the driver to process request...
+(drivers\storage\port\storport\fdo.c:1001) PortSendInquiry(): Request processed by driver, status = 0xC0000001
+(drivers\storage\port\storport\fdo.c:1013) Inquiry SRB failed with SrbStatus 0x00000008
+(drivers\storage\port\storport\fdo.c:1093) PortSendInquiry() done with Status 0xC0000185
+(drivers\storage\port\storahci\storahci.c:799) AhciHwStartIo()
+(drivers\storage\port\storport\fdo.c:715) PortSendReportLuns(): Waiting for the driver to process request...
+(drivers\storage\port\storport\fdo.c:785) REPORT_LUNS SRB failed with SrbStatus 0x00000008 Status C0000001
+(drivers\storage\port\storport\fdo.c:890) PortSendReportLuns() done with Status 0xC0000185
+(drivers\storage\port\storahci\storahci.c:799) AhciHwStartIo()
+(drivers\storage\port\storport\fdo.c:992) PortSendInquiry(): Waiting for the driver to process request...
+(drivers\storage\port\storport\fdo.c:1001) PortSendInquiry(): Request processed by driver, status = 0xC0000001
+(drivers\storage\port\storport\fdo.c:1013) Inquiry SRB failed with SrbStatus 0x00000008
+(drivers\storage\port\storport\fdo.c:1093) PortSendInquiry() done with Status 0xC0000185
+(drivers\storage\port\storahci\storahci.c:799) AhciHwStartIo()
+(drivers\storage\port\storport\fdo.c:715) PortSendReportLuns(): Waiting for the driver to process request...
+(drivers\storage\port\storport\fdo.c:785) REPORT_LUNS SRB failed with SrbStatus 0x00000008 Status C0000001
+(drivers\storage\port\storport\fdo.c:890) PortSendReportLuns() done with Status 0xC0000185
+(drivers\storage\port\storahci\storahci.c:799) AhciHwStartIo()
+(drivers\storage\port\storport\fdo.c:992) PortSendInquiry(): Waiting for the driver to process request...
+(drivers\storage\port\storport\fdo.c:1001) PortSendInquiry(): Request processed by driver, status = 0xC0000001
+(drivers\storage\port\storport\fdo.c:1013) Inquiry SRB failed with SrbStatus 0x00000008
+(drivers\storage\port\storport\fdo.c:1093) PortSendInquiry() done with Status 0xC0000185
+(drivers\storage\port\storahci\storahci.c:799) AhciHwStartIo()
+(drivers\storage\port\storport\fdo.c:715) PortSendReportLuns(): Waiting for the driver to process request...
+(drivers\storage\port\storport\fdo.c:785) REPORT_LUNS SRB failed with SrbStatus 0x00000008 Status C0000001
+(drivers\storage\port\storport\fdo.c:890) PortSendReportLuns() done with Status 0xC0000185
+(drivers\storage\port\storahci\storahci.c:799) AhciHwStartIo()
+(drivers\storage\port\storport\fdo.c:992) PortSendInquiry(): Waiting for the driver to process request...
+(drivers\storage\port\storport\fdo.c:1001) PortSendInquiry(): Request processed by driver, status = 0xC0000001
+(drivers\storage\port\storport\fdo.c:1013) Inquiry SRB failed with SrbStatus 0x00000008
+(drivers\storage\port\storport\fdo.c:1093) PortSendInquiry() done with Status 0xC0000185
+(drivers\storage\port\storahci\storahci.c:799) AhciHwStartIo()
+(drivers\storage\port\storport\fdo.c:715) PortSendReportLuns(): Waiting for the driver to process request...
+(drivers\storage\port\storport\fdo.c:785) REPORT_LUNS SRB failed with SrbStatus 0x00000008 Status C0000001
+(drivers\storage\port\storport\fdo.c:890) PortSendReportLuns() done with Status 0xC0000185
+(drivers\storage\port\storahci\storahci.c:799) AhciHwStartIo()
+(drivers\storage\port\storport\fdo.c:992) PortSendInquiry(): Waiting for the driver to process request...
+(drivers\storage\port\storport\fdo.c:1001) PortSendInquiry(): Request processed by driver, status = 0xC0000001
+(drivers\storage\port\storport\fdo.c:1013) Inquiry SRB failed with SrbStatus 0x00000008
+(drivers\storage\port\storport\fdo.c:1093) PortSendInquiry() done with Status 0xC0000185
+(drivers\storage\port\storahci\storahci.c:799) AhciHwStartIo()
+(drivers\storage\port\storport\fdo.c:715) PortSendReportLuns(): Waiting for the driver to process request...
+(drivers\storage\port\storport\fdo.c:785) REPORT_LUNS SRB failed with SrbStatus 0x00000008 Status C0000001
+(drivers\storage\port\storport\fdo.c:890) PortSendReportLuns() done with Status 0xC0000185
+(drivers\storage\port\storahci\storahci.c:799) AhciHwStartIo()
+(drivers\storage\port\storport\fdo.c:992) PortSendInquiry(): Waiting for the driver to process request...
+(drivers\storage\port\storport\fdo.c:1001) PortSendInquiry(): Request processed by driver, status = 0xC0000001
+(drivers\storage\port\storport\fdo.c:1013) Inquiry SRB failed with SrbStatus 0x00000008
+(drivers\storage\port\storport\fdo.c:1093) PortSendInquiry() done with Status 0xC0000185
+(drivers\storage\port\storahci\storahci.c:799) AhciHwStartIo()
+(drivers\storage\port\storport\fdo.c:715) PortSendReportLuns(): Waiting for the driver to process request...
+(drivers\storage\port\storport\fdo.c:785) REPORT_LUNS SRB failed with SrbStatus 0x00000008 Status C0000001
+(drivers\storage\port\storport\fdo.c:890) PortSendReportLuns() done with Status 0xC0000185
+(drivers\storage\port\storahci\storahci.c:799) AhciHwStartIo()
+(drivers\storage\port\storport\fdo.c:992) PortSendInquiry(): Waiting for the driver to process request...
+(drivers\storage\port\storport\fdo.c:1001) PortSendInquiry(): Request processed by driver, status = 0xC0000001
+(drivers\storage\port\storport\fdo.c:1013) Inquiry SRB failed with SrbStatus 0x00000008
+(drivers\storage\port\storport\fdo.c:1093) PortSendInquiry() done with Status 0xC0000185
+(drivers\storage\port\storahci\storahci.c:799) AhciHwStartIo()
+(drivers\storage\port\storport\fdo.c:715) PortSendReportLuns(): Waiting for the driver to process request...
+(drivers\storage\port\storport\fdo.c:785) REPORT_LUNS SRB failed with SrbStatus 0x00000008 Status C0000001
+(drivers\storage\port\storport\fdo.c:890) PortSendReportLuns() done with Status 0xC0000185
+(drivers\storage\port\storahci\storahci.c:799) AhciHwStartIo()
+(drivers\storage\port\storport\fdo.c:992) PortSendInquiry(): Waiting for the driver to process request...
+(drivers\storage\port\storport\fdo.c:1001) PortSendInquiry(): Request processed by driver, status = 0xC0000001
+(drivers\storage\port\storport\fdo.c:1013) Inquiry SRB failed with SrbStatus 0x00000008
+(drivers\storage\port\storport\fdo.c:1093) PortSendInquiry() done with Status 0xC0000185
+(drivers\storage\port\storahci\storahci.c:799) AhciHwStartIo()
+(drivers\storage\port\storport\fdo.c:715) PortSendReportLuns(): Waiting for the driver to process request...
+(drivers\storage\port\storport\fdo.c:785) REPORT_LUNS SRB failed with SrbStatus 0x00000008 Status C0000001
+(drivers\storage\port\storport\fdo.c:890) PortSendReportLuns() done with Status 0xC0000185
+(drivers\storage\port\storahci\storahci.c:799) AhciHwStartIo()
+(drivers\storage\port\storport\fdo.c:992) PortSendInquiry(): Waiting for the driver to process request...
+(drivers\storage\port\storport\fdo.c:1001) PortSendInquiry(): Request processed by driver, status = 0xC0000001
+(drivers\storage\port\storport\fdo.c:1013) Inquiry SRB failed with SrbStatus 0x00000008
+(drivers\storage\port\storport\fdo.c:1093) PortSendInquiry() done with Status 0xC0000185
+(drivers\storage\port\storahci\storahci.c:799) AhciHwStartIo()
+(drivers\storage\port\storport\fdo.c:715) PortSendReportLuns(): Waiting for the driver to process request...
+(drivers\storage\port\storport\fdo.c:785) REPORT_LUNS SRB failed with SrbStatus 0x00000008 Status C0000001
+(drivers\storage\port\storport\fdo.c:890) PortSendReportLuns() done with Status 0xC0000185
+(drivers\storage\port\storahci\storahci.c:799) AhciHwStartIo()
+(drivers\storage\port\storport\fdo.c:992) PortSendInquiry(): Waiting for the driver to process request...
+(drivers\storage\port\storport\fdo.c:1001) PortSendInquiry(): Request processed by driver, status = 0xC0000001
+(drivers\storage\port\storport\fdo.c:1013) Inquiry SRB failed with SrbStatus 0x00000008
+(drivers\storage\port\storport\fdo.c:1093) PortSendInquiry() done with Status 0xC0000185
+(drivers\storage\port\storahci\storahci.c:799) AhciHwStartIo()
+(drivers\storage\port\storport\fdo.c:715) PortSendReportLuns(): Waiting for the driver to process request...
+(drivers\storage\port\storport\fdo.c:785) REPORT_LUNS SRB failed with SrbStatus 0x00000008 Status C0000001
+(drivers\storage\port\storport\fdo.c:890) PortSendReportLuns() done with Status 0xC0000185
+(drivers\storage\port\storahci\storahci.c:799) AhciHwStartIo()
+(drivers\storage\port\storport\fdo.c:992) PortSendInquiry(): Waiting for the driver to process request...
+(drivers\storage\port\storport\fdo.c:1001) PortSendInquiry(): Request processed by driver, status = 0xC0000001
+(drivers\storage\port\storport\fdo.c:1013) Inquiry SRB failed with SrbStatus 0x00000008
+(drivers\storage\port\storport\fdo.c:1093) PortSendInquiry() done with Status 0xC0000185
+(drivers\storage\port\storahci\storahci.c:799) AhciHwStartIo()
+(drivers\storage\port\storport\fdo.c:715) PortSendReportLuns(): Waiting for the driver to process request...
+(drivers\storage\port\storport\fdo.c:785) REPORT_LUNS SRB failed with SrbStatus 0x00000008 Status C0000001
+(drivers\storage\port\storport\fdo.c:890) PortSendReportLuns() done with Status 0xC0000185
+(drivers\storage\port\storahci\storahci.c:799) AhciHwStartIo()
+(drivers\storage\port\storport\fdo.c:992) PortSendInquiry(): Waiting for the driver to process request...
+(drivers\storage\port\storport\fdo.c:1001) PortSendInquiry(): Request processed by driver, status = 0xC0000001
+(drivers\storage\port\storport\fdo.c:1013) Inquiry SRB failed with SrbStatus 0x00000008
+(drivers\storage\port\storport\fdo.c:1093) PortSendInquiry() done with Status 0xC0000185
+(drivers\storage\port\storahci\storahci.c:799) AhciHwStartIo()
+(drivers\storage\port\storport\fdo.c:715) PortSendReportLuns(): Waiting for the driver to process request...
+(drivers\storage\port\storport\fdo.c:785) REPORT_LUNS SRB failed with SrbStatus 0x00000008 Status C0000001
+(drivers\storage\port\storport\fdo.c:890) PortSendReportLuns() done with Status 0xC0000185
+(drivers\storage\port\storahci\storahci.c:799) AhciHwStartIo()
+(drivers\storage\port\storport\fdo.c:992) PortSendInquiry(): Waiting for the driver to process request...
+(drivers\storage\port\storport\fdo.c:1001) PortSendInquiry(): Request processed by driver, status = 0xC0000001
+(drivers\storage\port\storport\fdo.c:1013) Inquiry SRB failed with SrbStatus 0x00000008
+(drivers\storage\port\storport\fdo.c:1093) PortSendInquiry() done with Status 0xC0000185
+(drivers\storage\port\storahci\storahci.c:799) AhciHwStartIo()
+(drivers\storage\port\storport\fdo.c:715) PortSendReportLuns(): Waiting for the driver to process request...
+(drivers\storage\port\storport\fdo.c:785) REPORT_LUNS SRB failed with SrbStatus 0x00000008 Status C0000001
+(drivers\storage\port\storport\fdo.c:890) PortSendReportLuns() done with Status 0xC0000185
+(drivers\storage\port\storahci\storahci.c:799) AhciHwStartIo()
+(drivers\storage\port\storport\fdo.c:992) PortSendInquiry(): Waiting for the driver to process request...
+(drivers\storage\port\storport\fdo.c:1001) PortSendInquiry(): Request processed by driver, status = 0xC0000001
+(drivers\storage\port\storport\fdo.c:1013) Inquiry SRB failed with SrbStatus 0x00000008
+(drivers\storage\port\storport\fdo.c:1093) PortSendInquiry() done with Status 0xC0000185
+(drivers\storage\port\storahci\storahci.c:799) AhciHwStartIo()
+(drivers\storage\port\storport\fdo.c:715) PortSendReportLuns(): Waiting for the driver to process request...
+(drivers\storage\port\storport\fdo.c:785) REPORT_LUNS SRB failed with SrbStatus 0x00000008 Status C0000001
+(drivers\storage\port\storport\fdo.c:890) PortSendReportLuns() done with Status 0xC0000185
+(drivers\storage\port\storahci\storahci.c:799) AhciHwStartIo()
+(drivers\storage\port\storport\fdo.c:992) PortSendInquiry(): Waiting for the driver to process request...
+(drivers\storage\port\storport\fdo.c:1001) PortSendInquiry(): Request processed by driver, status = 0xC0000001
+(drivers\storage\port\storport\fdo.c:1013) Inquiry SRB failed with SrbStatus 0x00000008
+(drivers\storage\port\storport\fdo.c:1093) PortSendInquiry() done with Status 0xC0000185
+(drivers\storage\port\storahci\storahci.c:799) AhciHwStartIo()
+(drivers\storage\port\storport\fdo.c:715) PortSendReportLuns(): Waiting for the driver to process request...
+(drivers\storage\port\storport\fdo.c:785) REPORT_LUNS SRB failed with SrbStatus 0x00000008 Status C0000001
+(drivers\storage\port\storport\fdo.c:890) PortSendReportLuns() done with Status 0xC0000185
+(drivers\storage\port\storahci\storahci.c:799) AhciHwStartIo()
+(drivers\storage\port\storport\fdo.c:992) PortSendInquiry(): Waiting for the driver to process request...
+(drivers\storage\port\storport\fdo.c:1001) PortSendInquiry(): Request processed by driver, status = 0xC0000001
+(drivers\storage\port\storport\fdo.c:1013) Inquiry SRB failed with SrbStatus 0x00000008
+(drivers\storage\port\storport\fdo.c:1093) PortSendInquiry() done with Status 0xC0000185
+(drivers\storage\port\storahci\storahci.c:799) AhciHwStartIo()
+(drivers\storage\port\storport\fdo.c:715) PortSendReportLuns(): Waiting for the driver to process request...
+(drivers\storage\port\storport\fdo.c:785) REPORT_LUNS SRB failed with SrbStatus 0x00000008 Status C0000001
+(drivers\storage\port\storport\fdo.c:890) PortSendReportLuns() done with Status 0xC0000185
+(drivers\storage\port\storahci\storahci.c:799) AhciHwStartIo()
+(drivers\storage\port\storport\fdo.c:992) PortSendInquiry(): Waiting for the driver to process request...
+(drivers\storage\port\storport\fdo.c:1001) PortSendInquiry(): Request processed by driver, status = 0xC0000001
+(drivers\storage\port\storport\fdo.c:1013) Inquiry SRB failed with SrbStatus 0x00000008
+(drivers\storage\port\storport\fdo.c:1093) PortSendInquiry() done with Status 0xC0000185
+(drivers\storage\port\storahci\storahci.c:799) AhciHwStartIo()
+(drivers\storage\port\storport\fdo.c:715) PortSendReportLuns(): Waiting for the driver to process request...
+(drivers\storage\port\storport\fdo.c:785) REPORT_LUNS SRB failed with SrbStatus 0x00000008 Status C0000001
+(drivers\storage\port\storport\fdo.c:890) PortSendReportLuns() done with Status 0xC0000185
+(drivers\storage\port\storahci\storahci.c:799) AhciHwStartIo()
+(drivers\storage\port\storport\fdo.c:992) PortSendInquiry(): Waiting for the driver to process request...
+(drivers\storage\port\storport\fdo.c:1001) PortSendInquiry(): Request processed by driver, status = 0xC0000001
+(drivers\storage\port\storport\fdo.c:1013) Inquiry SRB failed with SrbStatus 0x00000008
+(drivers\storage\port\storport\fdo.c:1093) PortSendInquiry() done with Status 0xC0000185
+(drivers\storage\port\storahci\storahci.c:799) AhciHwStartIo()
+(drivers\storage\port\storport\fdo.c:715) PortSendReportLuns(): Waiting for the driver to process request...
+(drivers\storage\port\storport\fdo.c:785) REPORT_LUNS SRB failed with SrbStatus 0x00000008 Status C0000001
+(drivers\storage\port\storport\fdo.c:890) PortSendReportLuns() done with Status 0xC0000185
+(drivers\storage\port\storahci\storahci.c:799) AhciHwStartIo()
+(drivers\storage\port\storport\fdo.c:992) PortSendInquiry(): Waiting for the driver to process request...
+(drivers\storage\port\storport\fdo.c:1001) PortSendInquiry(): Request processed by driver, status = 0xC0000001
+(drivers\storage\port\storport\fdo.c:1013) Inquiry SRB failed with SrbStatus 0x00000008
+(drivers\storage\port\storport\fdo.c:1093) PortSendInquiry() done with Status 0xC0000185
+(drivers\storage\port\storahci\storahci.c:799) AhciHwStartIo()
+(drivers\storage\port\storport\fdo.c:715) PortSendReportLuns(): Waiting for the driver to process request...
+(drivers\storage\port\storport\fdo.c:785) REPORT_LUNS SRB failed with SrbStatus 0x00000008 Status C0000001
+(drivers\storage\port\storport\fdo.c:890) PortSendReportLuns() done with Status 0xC0000185
+(drivers\storage\port\storahci\storahci.c:799) AhciHwStartIo()
+(drivers\storage\port\storport\fdo.c:992) PortSendInquiry(): Waiting for the driver to process request...
+(drivers\storage\port\storport\fdo.c:1001) PortSendInquiry(): Request processed by driver, status = 0xC0000001
+(drivers\storage\port\storport\fdo.c:1013) Inquiry SRB failed with SrbStatus 0x00000008
+(drivers\storage\port\storport\fdo.c:1093) PortSendInquiry() done with Status 0xC0000185
+(drivers\storage\port\storahci\storahci.c:799) AhciHwStartIo()
+(drivers\storage\port\storport\fdo.c:715) PortSendReportLuns(): Waiting for the driver to process request...
+(drivers\storage\port\storport\fdo.c:785) REPORT_LUNS SRB failed with SrbStatus 0x00000008 Status C0000001
+(drivers\storage\port\storport\fdo.c:890) PortSendReportLuns() done with Status 0xC0000185
+(drivers\storage\port\storahci\storahci.c:799) AhciHwStartIo()
+(drivers\storage\port\storport\fdo.c:992) PortSendInquiry(): Waiting for the driver to process request...
+(drivers\storage\port\storport\fdo.c:1001) PortSendInquiry(): Request processed by driver, status = 0xC0000001
+(drivers\storage\port\storport\fdo.c:1013) Inquiry SRB failed with SrbStatus 0x00000008
+(drivers\storage\port\storport\fdo.c:1093) PortSendInquiry() done with Status 0xC0000185
+(drivers\storage\port\storahci\storahci.c:799) AhciHwStartIo()
+(drivers\storage\port\storport\fdo.c:715) PortSendReportLuns(): Waiting for the driver to process request...
+(drivers\storage\port\storport\fdo.c:785) REPORT_LUNS SRB failed with SrbStatus 0x00000008 Status C0000001
+(drivers\storage\port\storport\fdo.c:890) PortSendReportLuns() done with Status 0xC0000185
+(drivers\storage\port\storahci\storahci.c:799) AhciHwStartIo()
+(drivers\storage\port\storport\fdo.c:992) PortSendInquiry(): Waiting for the driver to process request...
+(drivers\storage\port\storport\fdo.c:1001) PortSendInquiry(): Request processed by driver, status = 0xC0000001
+(drivers\storage\port\storport\fdo.c:1013) Inquiry SRB failed with SrbStatus 0x00000008
+(drivers\storage\port\storport\fdo.c:1093) PortSendInquiry() done with Status 0xC0000185
+(drivers\storage\port\storahci\storahci.c:799) AhciHwStartIo()
+(drivers\storage\port\storport\fdo.c:715) PortSendReportLuns(): Waiting for the driver to process request...
+(drivers\storage\port\storport\fdo.c:785) REPORT_LUNS SRB failed with SrbStatus 0x00000008 Status C0000001
+(drivers\storage\port\storport\fdo.c:890) PortSendReportLuns() done with Status 0xC0000185
+(drivers\storage\port\storahci\storahci.c:799) AhciHwStartIo()
+(drivers\storage\port\storport\fdo.c:992) PortSendInquiry(): Waiting for the driver to process request...
+(drivers\storage\port\storport\fdo.c:1001) PortSendInquiry(): Request processed by driver, status = 0xC0000001
+(drivers\storage\port\storport\fdo.c:1013) Inquiry SRB failed with SrbStatus 0x00000008
+(drivers\storage\port\storport\fdo.c:1093) PortSendInquiry() done with Status 0xC0000185
+(drivers\storage\port\storahci\storahci.c:799) AhciHwStartIo()
+(drivers\storage\port\storport\fdo.c:715) PortSendReportLuns(): Waiting for the driver to process request...
+(drivers\storage\port\storport\fdo.c:785) REPORT_LUNS SRB failed with SrbStatus 0x00000008 Status C0000001
+(drivers\storage\port\storport\fdo.c:890) PortSendReportLuns() done with Status 0xC0000185
+(drivers\storage\port\storahci\storahci.c:799) AhciHwStartIo()
+(drivers\storage\port\storport\fdo.c:992) PortSendInquiry(): Waiting for the driver to process request...
+(drivers\storage\port\storport\fdo.c:1001) PortSendInquiry(): Request processed by driver, status = 0xC0000001
+(drivers\storage\port\storport\fdo.c:1013) Inquiry SRB failed with SrbStatus 0x00000008
+(drivers\storage\port\storport\fdo.c:1093) PortSendInquiry() done with Status 0xC0000185
+(drivers\storage\port\storport\fdo.c:1205) Units found: 1
+(drivers\storage\port\storport\storport.c:482) PortDispatchPnp(FFFFFA8339F3F070 FFFFFA8339F93710)
+(drivers\storage\port\storport\pdo.c:718) PortPdoPnp(FFFFFA8339F3F070 FFFFFA8339F93710)
+(drivers\storage\port\storport\storport.c:482) PortDispatchPnp(FFFFFA8339F3F070 FFFFFA8339F93710)
+(drivers\storage\port\storport\pdo.c:718) PortPdoPnp(FFFFFA8339F3F070 FFFFFA8339F93710)
+(drivers\storage\port\storport\storport.c:482) PortDispatchPnp(FFFFFA8339F3F070 FFFFFA8339F93710)
+(drivers\storage\port\storport\pdo.c:718) PortPdoPnp(FFFFFA8339F3F070 FFFFFA8339F93710)
+(drivers\storage\port\storport\storport.c:482) PortDispatchPnp(FFFFFA8339F3F070 FFFFFA8339F93710)
+(drivers\storage\port\storport\pdo.c:718) PortPdoPnp(FFFFFA8339F3F070 FFFFFA8339F93710)
+(drivers\storage\port\storport\storport.c:482) PortDispatchPnp(FFFFFA8339F3F070 FFFFFA8339F93710)
+(drivers\storage\port\storport\pdo.c:718) PortPdoPnp(FFFFFA8339F3F070 FFFFFA8339F93710)
+(drivers\storage\port\storport\storport.c:482) PortDispatchPnp(FFFFFA8339F3F070 FFFFFA8339F93710)
+(drivers\storage\port\storport\pdo.c:718) PortPdoPnp(FFFFFA8339F3F070 FFFFFA8339F93710)
+(drivers\storage\port\storport\storport.c:482) PortDispatchPnp(FFFFFA8339F3F070 FFFFFA8339F93710)
+(drivers\storage\port\storport\pdo.c:718) PortPdoPnp(FFFFFA8339F3F070 FFFFFA8339F93710)
+(drivers\storage\port\storport\storport.c:482) PortDispatchPnp(FFFFFA8339F3F070 FFFFFA8339F93710)
+(drivers\storage\port\storport\pdo.c:718) PortPdoPnp(FFFFFA8339F3F070 FFFFFA8339F93710)
+(drivers\storage\port\storport\storport.c:482) PortDispatchPnp(FFFFFA8339F3F070 FFFFFA8339F93710)
+(drivers\storage\port\storport\pdo.c:718) PortPdoPnp(FFFFFA8339F3F070 FFFFFA8339F93710)
+(drivers\storage\port\storport\storport.c:482) PortDispatchPnp(FFFFFA8339F3F070 FFFFFA8339F93710)
+(drivers\storage\port\storport\pdo.c:718) PortPdoPnp(FFFFFA8339F3F070 FFFFFA8339F93710)
+(drivers\storage\port\storport\storport.c:482) PortDispatchPnp(FFFFFA8339F3F070 FFFFFA833A047A80)
+(drivers\storage\port\storport\pdo.c:718) PortPdoPnp(FFFFFA8339F3F070 FFFFFA833A047A80)
+WDFTrace: WDFKEY 0000057CC60C30A8, QueryULong, 0xc0000034
+(drivers\storage\port\storport\storport.c:482) PortDispatchPnp(FFFFFA8339F3F070 FFFFFA833A047A80)
+(drivers\storage\port\storport\pdo.c:718) PortPdoPnp(FFFFFA8339F3F070 FFFFFA833A047A80)
+(drivers\storage\port\storport\storport.c:482) PortDispatchPnp(FFFFFA8339F3F070 FFFFFA833A047A80)
+(drivers\storage\port\storport\pdo.c:718) PortPdoPnp(FFFFFA8339F3F070 FFFFFA833A047A80)
+(drivers\storage\port\storport\storport.c:482) PortDispatchPnp(FFFFFA8339F3F070 FFFFFA8339F3BCC0)
+(drivers\storage\port\storport\pdo.c:718) PortPdoPnp(FFFFFA8339F3F070 FFFFFA8339F3BCC0)
+WDFTrace: new WDFKEY object open of Classpnp failed, 0xc0000034
+WDFTrace: new WDFKEY object open of Classpnp failed, 0xc0000034
+WDFTrace: new WDFKEY object open of Classpnp failed, 0xc0000034
+(drivers\storage\port\storahci\storahci.c:799) AhciHwStartIo()
+(drivers\storage\port\storahci\storahci.c:2286) DeviceInquiryRequest()
+(drivers\storage\port\storahci\storahci.c:1877) AhciATAPICommand()
+(drivers\storage\port\storahci\storahci.c:1571) AhciProcessIO()
+(drivers\storage\port\storahci\storahci.c:1572) 	PathId: 2
+(drivers\storage\port\storahci\storahci.c:1381) AhciProcessSrb()
+(drivers\storage\port\storahci\storahci.c:1279) AhciATAPI_CFIS()
+(drivers\storage\port\storahci\storahci.c:1329) AhciBuild_PRDT()
+(drivers\storage\port\storahci\storahci.c:1503) AhciActivatePort()
+(drivers\storage\port\storahci\storahci.c:635) AhciInterruptHandler()
+(drivers\storage\port\storahci\storahci.c:636) 	Port Number: 2
+(drivers\storage\port\storahci\storahci.c:576) AhciCompleteIssuedSrb()
+(drivers\storage\port\storahci\storahci.c:580) 	Completed Commands: 1
+(drivers\storage\port\storahci\storahci.c:442) AhciCommandCompletionDpcRoutine()
+(drivers\storage\port\storahci\storahci.c:1669) AtapiInquiryCompletion()
+(drivers\storage\port\storport\storport.c:1945) StorPortSetDeviceQueueDepth(FFFFFA8339F40008 2 0 0 15)
+(drivers\storage\port\storahci\storahci.c:799) AhciHwStartIo()
+(drivers\storage\port\storahci\storahci.c:2286) DeviceInquiryRequest()
+(drivers\storage\port\storahci\storahci.c:1877) AhciATAPICommand()
+(drivers\storage\port\storahci\storahci.c:1571) AhciProcessIO()
+(drivers\storage\port\storahci\storahci.c:1572) 	PathId: 2
+(drivers\storage\port\storahci\storahci.c:1381) AhciProcessSrb()
+(drivers\storage\port\storahci\storahci.c:1279) AhciATAPI_CFIS()
+(drivers\storage\port\storahci\storahci.c:1329) AhciBuild_PRDT()
+(drivers\storage\port\storahci\storahci.c:1503) AhciActivatePort()
+(drivers\storage\port\storahci\storahci.c:635) AhciInterruptHandler()
+(drivers\storage\port\storahci\storahci.c:636) 	Port Number: 2
+(drivers\storage\port\storahci\storahci.c:576) AhciCompleteIssuedSrb()
+(drivers\storage\port\storahci\storahci.c:580) 	Completed Commands: 1
+(drivers\storage\port\storahci\storahci.c:442) AhciCommandCompletionDpcRoutine()
+(drivers\storage\port\storahci\storahci.c:1669) AtapiInquiryCompletion()
+(drivers\storage\port\storport\storport.c:1945) StorPortSetDeviceQueueDepth(FFFFFA8339F40008 2 0 0 15)
+WDFTrace: new WDFKEY object open of Parameters failed, 0xc0000034
+WDFTrace: WDFKEY 0000057CC60C4EC8, QueryULong, 0xc0000034
+WDFTrace: new WDFKEY object open of MediaChangeNotification failed, 0xc0000034
+WDFTrace: new WDFKEY object open of Classpnp failed, 0xc0000034
+(drivers\storage\port\storahci\storahci.c:799) AhciHwStartIo()
+(drivers\storage\port\storahci\storahci.c:898) 	OperationCode: 74
+WDFTrace: new WDFKEY object open of Classpnp failed, 0xc0000034
+(ntoskrnl\po\power.c:1044) PowerInformationLevel 0x42 is UNIMPLEMENTED! Have a nice day.
+WDFTrace: new WDFKEY object open of CdRom failed, 0xc0000034
+WDFTrace: new WDFKEY object open of CdRom failed, 0xc0000034
+(drivers\storage\port\storahci\storahci.c:799) AhciHwStartIo()
+(drivers\storage\port\storahci\storahci.c:898) 	OperationCode: 70
+WDFTrace: new WDFKEY object open of CdRom failed, 0xc0000034
+WDFTrace: WDFKEY 0000057CC60C4EC8, QueryULong, 0xc0000034
+(drivers\storage\port\storahci\storahci.c:799) AhciHwStartIo()
+(drivers\storage\port\storahci\storahci.c:2132) DeviceRequestCapacity()
+(drivers\storage\port\storahci\storahci.c:1877) AhciATAPICommand()
+(drivers\storage\port\storahci\storahci.c:1571) AhciProcessIO()
+(drivers\storage\port\storahci\storahci.c:1572) 	PathId: 2
+(drivers\storage\port\storahci\storahci.c:1381) AhciProcessSrb()
+(drivers\storage\port\storahci\storahci.c:1279) AhciATAPI_CFIS()
+(drivers\storage\port\storahci\storahci.c:1329) AhciBuild_PRDT()
+(drivers\storage\port\storahci\storahci.c:1503) AhciActivatePort()
+(drivers\storage\port\storahci\storahci.c:635) AhciInterruptHandler()
+(drivers\storage\port\storahci\storahci.c:636) 	Port Number: 2
+(drivers\storage\port\storahci\storahci.c:576) AhciCompleteIssuedSrb()
+(drivers\storage\port\storahci\storahci.c:580) 	Completed Commands: 1
+(drivers\storage\port\storport\storport.c:482) PortDispatchPnp(FFFFFA8339F3F070 FFFFFA8339F29C10)
+(drivers\storage\port\storport\pdo.c:718) PortPdoPnp(FFFFFA8339F3F070 FFFFFA8339F29C10)
+(drivers\storage\port\storport\storport.c:482) PortDispatchPnp(FFFFFA8339F3F070 FFFFFA833A047A80)
+(drivers\storage\port\storport\pdo.c:718) PortPdoPnp(FFFFFA8339F3F070 FFFFFA833A047A80)
+(drivers\storage\port\storport\storport.c:482) PortDispatchPnp(FFFFFA8339F3F070 FFFFFA833A047A80)
+(drivers\storage\port\storport\pdo.c:718) PortPdoPnp(FFFFFA8339F3F070 FFFFFA833A047A80)
+(drivers\storage\port\storport\storport.c:482) PortDispatchPnp(FFFFFA8339F3F070 FFFFFA833A047A80)
+(drivers\storage\port\storport\pdo.c:718) PortPdoPnp(FFFFFA8339F3F070 FFFFFA833A047A80)
+(ntoskrnl\io\iomgr\driver.c:659) '\Driver\NMIDebug' DriverEntry returned 0x00000000
+(ntoskrnl\io\iomgr\driver.c:659) '\FileSystem\Cdfs' DriverEntry returned 0x00000000
+NDIS REG 8a 03 0120
+NDIS VER 06 54
+NDIS CHECK mp-register 00000000
+NDIS HDR 00 00 0000
+NDIS CHECK mp-attr-other c000000d
+NDIS HDR 9e 00 0004
+NDIS BODY 0000 9e 00 04 00
+NDIS CHECK mp-attr 00000000
+NDIS RECVIND FFFFFA8339F27010 1
+NDIS6 RECV drop
+NDIS CHECK mp-indicate ok
+NDIS POOL 80 01 0004
+NDIS NBLCOMBO pool FFFFFA833A043950 mdl FFFFF88072D287CC off 11112222 len 00003333
+NDIS NBLCOMBOOK FFFFFA8339F28370 nb FFFFFA8339F291F0
+NDIS RECVIND FFFFFA8339F27010 1
+NDIS6 RECV drop
+NDIS CHECK mp-list ok
+NDIS CHECK fi-register 00000000
+NDIS CHECK fi-indicate ok
+NDIS POOL 80 01 0004
+NDIS NBLCOMBO pool FFFFFA833A043950 mdl FFFFF88072D287CC off 11112222 len 00003333
+NDIS NBLCOMBOOK FFFFFA8339F27010 nb FFFFFA8339F28350
+NDIS CHECK fi-list ok
+NDIS CHECK fi-return-register 00000000
+NDIS CHECK fi-return ok
+NDIS POOL 80 01 0004
+NDIS NBLCOMBO pool FFFFFA833A043950 mdl FFFFF88072D287CC off 11112222 len 00003333
+NDIS NBLCOMBOOK FFFFFA8339F27010 nb FFFFFA8339F27F00
+NDIS CHECK fi-return-list ok
+NDIS PR 95 02 0080
+NDIS PVER 05 54
+NDIS CHECK pr-version c0010004
+NDIS PR 95 02 0080
+NDIS PVER 06 54
+NDIS CHECK pr-flags c000000d
+NDIS PR 95 02 0080
+NDIS PVER 06 54
+NDIS CHECK pr-register 00000000
+NDIS CHECK pr-calls 00000002
+NDIS POOL 80 01 0004
+NDIS POOL 80 01 0004
+NDIS NBLCOMBO pool FFFFFA833A043950 mdl FFFFF88072D287CC off 11112222 len 00003333
+NDIS NBLCOMBOOK FFFFFA8339F27CF0 nb FFFFFA8339F27010
+NDIS CHECK nb-fields ok
+NDIS CHECK OK
+(ntoskrnl\io\iomgr\driver.c:659) '\Driver\Ndis' DriverEntry returned 0x00000000
+(drivers\ksfilter\swenum\swenum.c:428) SWENUM loaded
+(ntoskrnl\io\iomgr\driver.c:659) '\Driver\swenum' DriverEntry returned 0x00000000
+(ntoskrnl\io\iomgr\driver.c:659) '\Driver\RamDisk' DriverEntry returned 0x00000000
+(ntoskrnl\io\iomgr\driver.c:659) '\FileSystem\Mup' DriverEntry returned 0x00000000
+BOOT DRIVERS LOADED
+(drivers\storage\port\storahci\storahci.c:799) AhciHwStartIo()
+(drivers\storage\port\storahci\storahci.c:2196) DeviceRequestComplete()
+(drivers\storage\port\storahci\storahci.c:799) AhciHwStartIo()
+(drivers\storage\port\storahci\storahci.c:2024) DeviceRequestReadWrite()
+(drivers\storage\port\storahci\storahci.c:1877) AhciATAPICommand()
+(drivers\storage\port\storahci\storahci.c:1571) AhciProcessIO()
+(drivers\storage\port\storahci\storahci.c:1572) 	PathId: 2
+(drivers\storage\port\storahci\storahci.c:1381) AhciProcessSrb()
+(drivers\storage\port\storahci\storahci.c:1279) AhciATAPI_CFIS()
+(drivers\storage\port\storahci\storahci.c:1329) AhciBuild_PRDT()
+(drivers\storage\port\storahci\storahci.c:1503) AhciActivatePort()
+(drivers\storage\port\storahci\storahci.c:635) AhciInterruptHandler()
+(drivers\storage\port\storahci\storahci.c:636) 	Port Number: 2
+(drivers\storage\port\storahci\storahci.c:576) AhciCompleteIssuedSrb()
+(drivers\storage\port\storahci\storahci.c:580) 	Completed Commands: 1
+(ntoskrnl\io\iomgr\iomgr.c:514) Polling up to 30000 ms for the boot device
+(drivers\storage\port\storahci\storahci.c:799) AhciHwStartIo()
+(drivers\storage\port\storahci\storahci.c:2024) DeviceRequestReadWrite()
+(drivers\storage\port\storahci\storahci.c:1877) AhciATAPICommand()
+(drivers\storage\port\storahci\storahci.c:1571) AhciProcessIO()
+(drivers\storage\port\storahci\storahci.c:1572) 	PathId: 2
+(drivers\storage\port\storahci\storahci.c:1381) AhciProcessSrb()
+(drivers\storage\port\storahci\storahci.c:1279) AhciATAPI_CFIS()
+(drivers\storage\port\storahci\storahci.c:1329) AhciBuild_PRDT()
+(drivers\storage\port\storahci\storahci.c:1503) AhciActivatePort()
+(drivers\storage\port\storahci\storahci.c:635) AhciInterruptHandler()
+(drivers\storage\port\storahci\storahci.c:636) 	Port Number: 2
+(drivers\storage\port\storahci\storahci.c:576) AhciCompleteIssuedSrb()
+(drivers\storage\port\storahci\storahci.c:580) 	Completed Commands: 1
+(drivers\storage\port\storahci\storahci.c:799) AhciHwStartIo()
+(drivers\storage\port\storahci\storahci.c:2196) DeviceRequestComplete()
+(drivers\storage\port\storahci\storahci.c:799) AhciHwStartIo()
+(drivers\storage\port\storahci\storahci.c:2024) DeviceRequestReadWrite()
+(drivers\storage\port\storahci\storahci.c:1877) AhciATAPICommand()
+(drivers\storage\port\storahci\storahci.c:1571) AhciProcessIO()
+(drivers\storage\port\storahci\storahci.c:1572) 	PathId: 2
+(drivers\storage\port\storahci\storahci.c:1381) AhciProcessSrb()
+(drivers\storage\port\storahci\storahci.c:1279) AhciATAPI_CFIS()
+(drivers\storage\port\storahci\storahci.c:1329) AhciBuild_PRDT()
+(drivers\storage\port\storahci\storahci.c:1503) AhciActivatePort()
+(drivers\storage\port\storahci\storahci.c:635) AhciInterruptHandler()
+(drivers\storage\port\storahci\storahci.c:636) 	Port Number: 2
+(drivers\storage\port\storahci\storahci.c:576) AhciCompleteIssuedSrb()
+(drivers\storage\port\storahci\storahci.c:580) 	Completed Commands: 1
+(drivers\storage\port\storahci\storahci.c:799) AhciHwStartIo()
+(drivers\storage\port\storahci\storahci.c:2024) DeviceRequestReadWrite()
+(drivers\storage\port\storahci\storahci.c:1877) AhciATAPICommand()
+(drivers\storage\port\storahci\storahci.c:1571) AhciProcessIO()
+(drivers\storage\port\storahci\storahci.c:1572) 	PathId: 2
+(drivers\storage\port\storahci\storahci.c:1381) AhciProcessSrb()
+(drivers\storage\port\storahci\storahci.c:1279) AhciATAPI_CFIS()
+(drivers\storage\port\storahci\storahci.c:1329) AhciBuild_PRDT()
+(drivers\storage\port\storahci\storahci.c:1503) AhciActivatePort()
+(drivers\storage\port\storahci\storahci.c:635) AhciInterruptHandler()
+(drivers\storage\port\storahci\storahci.c:636) 	Port Number: 2
+(drivers\storage\port\storahci\storahci.c:576) AhciCompleteIssuedSrb()
+(drivers\storage\port\storahci\storahci.c:580) 	Completed Commands: 1
+(drivers\storage\port\storahci\storahci.c:799) AhciHwStartIo()
+(drivers\storage\port\storahci\storahci.c:2024) DeviceRequestReadWrite()
+(drivers\storage\port\storahci\storahci.c:1877) AhciATAPICommand()
+(drivers\storage\port\storahci\storahci.c:1571) AhciProcessIO()
+(drivers\storage\port\storahci\storahci.c:1572) 	PathId: 2
+(drivers\storage\port\storahci\storahci.c:1381) AhciProcessSrb()
+(drivers\storage\port\storahci\storahci.c:1279) AhciATAPI_CFIS()
+(drivers\storage\port\storahci\storahci.c:1329) AhciBuild_PRDT()
+(drivers\storage\port\storahci\storahci.c:1503) AhciActivatePort()
+(drivers\storage\port\storahci\storahci.c:635) AhciInterruptHandler()
+(drivers\storage\port\storahci\storahci.c:636) 	Port Number: 2
+(drivers\storage\port\storahci\storahci.c:576) AhciCompleteIssuedSrb()
+(drivers\storage\port\storahci\storahci.c:580) 	Completed Commands: 1
+(drivers\storage\port\storahci\storahci.c:799) AhciHwStartIo()
+(drivers\storage\port\storahci\storahci.c:2024) DeviceRequestReadWrite()
+(drivers\storage\port\storahci\storahci.c:1877) AhciATAPICommand()
+(drivers\storage\port\storahci\storahci.c:1571) AhciProcessIO()
+(drivers\storage\port\storahci\storahci.c:1572) 	PathId: 2
+(drivers\storage\port\storahci\storahci.c:1381) AhciProcessSrb()
+(drivers\storage\port\storahci\storahci.c:1279) AhciATAPI_CFIS()
+(drivers\storage\port\storahci\storahci.c:1329) AhciBuild_PRDT()
+(drivers\storage\port\storahci\storahci.c:1503) AhciActivatePort()
+(drivers\storage\port\storahci\storahci.c:635) AhciInterruptHandler()
+(drivers\storage\port\storahci\storahci.c:636) 	Port Number: 2
+(drivers\storage\port\storahci\storahci.c:576) AhciCompleteIssuedSrb()
+(drivers\storage\port\storahci\storahci.c:580) 	Completed Commands: 1
+(drivers\storage\port\storahci\storahci.c:799) AhciHwStartIo()
+(drivers\storage\port\storahci\storahci.c:2024) DeviceRequestReadWrite()
+(drivers\storage\port\storahci\storahci.c:1877) AhciATAPICommand()
+(drivers\storage\port\storahci\storahci.c:1571) AhciProcessIO()
+(drivers\storage\port\storahci\storahci.c:1572) 	PathId: 2
+(drivers\storage\port\storahci\storahci.c:1381) AhciProcessSrb()
+(drivers\storage\port\storahci\storahci.c:1279) AhciATAPI_CFIS()
+(drivers\storage\port\storahci\storahci.c:1329) AhciBuild_PRDT()
+(drivers\storage\port\storahci\storahci.c:1503) AhciActivatePort()
+(drivers\storage\port\storahci\storahci.c:635) AhciInterruptHandler()
+(drivers\storage\port\storahci\storahci.c:636) 	Port Number: 2
+(drivers\storage\port\storahci\storahci.c:576) AhciCompleteIssuedSrb()
+(drivers\storage\port\storahci\storahci.c:580) 	Completed Commands: 1
+(drivers\storage\port\storahci\storahci.c:799) AhciHwStartIo()
+(drivers\storage\port\storahci\storahci.c:2196) DeviceRequestComplete()
+(drivers\storage\port\storahci\storahci.c:799) AhciHwStartIo()
+(drivers\storage\port\storahci\storahci.c:2024) DeviceRequestReadWrite()
+(drivers\storage\port\storahci\storahci.c:1877) AhciATAPICommand()
+(drivers\storage\port\storahci\storahci.c:1571) AhciProcessIO()
+(drivers\storage\port\storahci\storahci.c:1572) 	PathId: 2
+(drivers\storage\port\storahci\storahci.c:1381) AhciProcessSrb()
+(drivers\storage\port\storahci\storahci.c:1279) AhciATAPI_CFIS()
+(drivers\storage\port\storahci\storahci.c:1329) AhciBuild_PRDT()
+(drivers\storage\port\storahci\storahci.c:1503) AhciActivatePort()
+(drivers\storage\port\storahci\storahci.c:635) AhciInterruptHandler()
+(drivers\storage\port\storahci\storahci.c:636) 	Port Number: 2
+(drivers\storage\port\storahci\storahci.c:576) AhciCompleteIssuedSrb()
+(drivers\storage\port\storahci\storahci.c:580) 	Completed Commands: 1
+(drivers\storage\port\storahci\storahci.c:799) AhciHwStartIo()
+(drivers\storage\port\storahci\storahci.c:2024) DeviceRequestReadWrite()
+(drivers\storage\port\storahci\storahci.c:1877) AhciATAPICommand()
+(drivers\storage\port\storahci\storahci.c:1571) AhciProcessIO()
+(drivers\storage\port\storahci\storahci.c:1572) 	PathId: 2
+(drivers\storage\port\storahci\storahci.c:1381) AhciProcessSrb()
+(drivers\storage\port\storahci\storahci.c:1279) AhciATAPI_CFIS()
+(drivers\storage\port\storahci\storahci.c:1329) AhciBuild_PRDT()
+(drivers\storage\port\storahci\storahci.c:1503) AhciActivatePort()
+(drivers\storage\port\storahci\storahci.c:635) AhciInterruptHandler()
+(drivers\storage\port\storahci\storahci.c:636) 	Port Number: 2
+(drivers\storage\port\storahci\storahci.c:576) AhciCompleteIssuedSrb()
+(drivers\storage\port\storahci\storahci.c:580) 	Completed Commands: 1
+(drivers\storage\port\storahci\storahci.c:799) AhciHwStartIo()
+(drivers\storage\port\storahci\storahci.c:2024) DeviceRequestReadWrite()
+(drivers\storage\port\storahci\storahci.c:1877) AhciATAPICommand()
+(drivers\storage\port\storahci\storahci.c:1571) AhciProcessIO()
+(drivers\storage\port\storahci\storahci.c:1572) 	PathId: 2
+(drivers\storage\port\storahci\storahci.c:1381) AhciProcessSrb()
+(drivers\storage\port\storahci\storahci.c:1279) AhciATAPI_CFIS()
+(drivers\storage\port\storahci\storahci.c:1329) AhciBuild_PRDT()
+(drivers\storage\port\storahci\storahci.c:1503) AhciActivatePort()
+(drivers\storage\port\storahci\storahci.c:635) AhciInterruptHandler()
+(drivers\storage\port\storahci\storahci.c:636) 	Port Number: 2
+(drivers\storage\port\storahci\storahci.c:576) AhciCompleteIssuedSrb()
+(drivers\storage\port\storahci\storahci.c:580) 	Completed Commands: 1
+(drivers\storage\port\storahci\storahci.c:799) AhciHwStartIo()
+(drivers\storage\port\storahci\storahci.c:2024) DeviceRequestReadWrite()
+(drivers\storage\port\storahci\storahci.c:1877) AhciATAPICommand()
+(drivers\storage\port\storahci\storahci.c:1571) AhciProcessIO()
+(drivers\storage\port\storahci\storahci.c:1572) 	PathId: 2
+(drivers\storage\port\storahci\storahci.c:1381) AhciProcessSrb()
+(drivers\storage\port\storahci\storahci.c:1279) AhciATAPI_CFIS()
+(drivers\storage\port\storahci\storahci.c:1329) AhciBuild_PRDT()
+(drivers\storage\port\storahci\storahci.c:1503) AhciActivatePort()
+(drivers\storage\port\storahci\storahci.c:635) AhciInterruptHandler()
+(drivers\storage\port\storahci\storahci.c:636) 	Port Number: 2
+(drivers\storage\port\storahci\storahci.c:576) AhciCompleteIssuedSrb()
+(drivers\storage\port\storahci\storahci.c:580) 	Completed Commands: 1
+(drivers\storage\port\storahci\storahci.c:799) AhciHwStartIo()
+(drivers\storage\port\storahci\storahci.c:2196) DeviceRequestComplete()
+(drivers\storage\port\storahci\storahci.c:799) AhciHwStartIo()
+(drivers\storage\port\storahci\storahci.c:2024) DeviceRequestReadWrite()
+(drivers\storage\port\storahci\storahci.c:1877) AhciATAPICommand()
+(drivers\storage\port\storahci\storahci.c:1571) AhciProcessIO()
+(drivers\storage\port\storahci\storahci.c:1572) 	PathId: 2
+(drivers\storage\port\storahci\storahci.c:1381) AhciProcessSrb()
+(drivers\storage\port\storahci\storahci.c:1279) AhciATAPI_CFIS()
+(drivers\storage\port\storahci\storahci.c:1329) AhciBuild_PRDT()
+(drivers\storage\port\storahci\storahci.c:1503) AhciActivatePort()
+(drivers\storage\port\storahci\storahci.c:635) AhciInterruptHandler()
+(drivers\storage\port\storahci\storahci.c:636) 	Port Number: 2
+(drivers\storage\port\storahci\storahci.c:576) AhciCompleteIssuedSrb()
+(drivers\storage\port\storahci\storahci.c:580) 	Completed Commands: 1
+(drivers\storage\port\storahci\storahci.c:799) AhciHwStartIo()
+(drivers\storage\port\storahci\storahci.c:2024) DeviceRequestReadWrite()
+(drivers\storage\port\storahci\storahci.c:1877) AhciATAPICommand()
+(drivers\storage\port\storahci\storahci.c:1571) AhciProcessIO()
+(drivers\storage\port\storahci\storahci.c:1572) 	PathId: 2
+(drivers\storage\port\storahci\storahci.c:1381) AhciProcessSrb()
+(drivers\storage\port\storahci\storahci.c:1279) AhciATAPI_CFIS()
+(drivers\storage\port\storahci\storahci.c:1329) AhciBuild_PRDT()
+(drivers\storage\port\storahci\storahci.c:1503) AhciActivatePort()
+(drivers\storage\port\storahci\storahci.c:635) AhciInterruptHandler()
+(drivers\storage\port\storahci\storahci.c:636) 	Port Number: 2
+(drivers\storage\port\storahci\storahci.c:576) AhciCompleteIssuedSrb()
+(drivers\storage\port\storahci\storahci.c:580) 	Completed Commands: 1
+(drivers\storage\port\storahci\storahci.c:799) AhciHwStartIo()
+(drivers\storage\port\storahci\storahci.c:2024) DeviceRequestReadWrite()
+(drivers\storage\port\storahci\storahci.c:1877) AhciATAPICommand()
+(drivers\storage\port\storahci\storahci.c:1571) AhciProcessIO()
+(drivers\storage\port\storahci\storahci.c:1572) 	PathId: 2
+(drivers\storage\port\storahci\storahci.c:1381) AhciProcessSrb()
+(drivers\storage\port\storahci\storahci.c:1279) AhciATAPI_CFIS()
+(drivers\storage\port\storahci\storahci.c:1329) AhciBuild_PRDT()
+(drivers\storage\port\storahci\storahci.c:1503) AhciActivatePort()
+(drivers\storage\port\storahci\storahci.c:635) AhciInterruptHandler()
+(drivers\storage\port\storahci\storahci.c:636) 	Port Number: 2
+(drivers\storage\port\storahci\storahci.c:576) AhciCompleteIssuedSrb()
+(drivers\storage\port\storahci\storahci.c:580) 	Completed Commands: 1
+(drivers\storage\port\storahci\storahci.c:799) AhciHwStartIo()
+(drivers\storage\port\storahci\storahci.c:2024) DeviceRequestReadWrite()
+(drivers\storage\port\storahci\storahci.c:1877) AhciATAPICommand()
+(drivers\storage\port\storahci\storahci.c:1571) AhciProcessIO()
+(drivers\storage\port\storahci\storahci.c:1572) 	PathId: 2
+(drivers\storage\port\storahci\storahci.c:1381) AhciProcessSrb()
+(drivers\storage\port\storahci\storahci.c:1279) AhciATAPI_CFIS()
+(drivers\storage\port\storahci\storahci.c:1329) AhciBuild_PRDT()
+(drivers\storage\port\storahci\storahci.c:1503) AhciActivatePort()
+(drivers\storage\port\storahci\storahci.c:635) AhciInterruptHandler()
+(drivers\storage\port\storahci\storahci.c:636) 	Port Number: 2
+(drivers\storage\port\storahci\storahci.c:576) AhciCompleteIssuedSrb()
+(drivers\storage\port\storahci\storahci.c:580) 	Completed Commands: 1
+(drivers\storage\port\storahci\storahci.c:799) AhciHwStartIo()
+(drivers\storage\port\storahci\storahci.c:2024) DeviceRequestReadWrite()
+(drivers\storage\port\storahci\storahci.c:1877) AhciATAPICommand()
+(drivers\storage\port\storahci\storahci.c:1571) AhciProcessIO()
+(drivers\storage\port\storahci\storahci.c:1572) 	PathId: 2
+(drivers\storage\port\storahci\storahci.c:1381) AhciProcessSrb()
+(drivers\storage\port\storahci\storahci.c:1279) AhciATAPI_CFIS()
+(drivers\storage\port\storahci\storahci.c:1329) AhciBuild_PRDT()
+(drivers\storage\port\storahci\storahci.c:1503) AhciActivatePort()
+(drivers\storage\port\storahci\storahci.c:635) AhciInterruptHandler()
+(drivers\storage\port\storahci\storahci.c:636) 	Port Number: 2
+(drivers\storage\port\storahci\storahci.c:576) AhciCompleteIssuedSrb()
+(drivers\storage\port\storahci\storahci.c:580) 	Completed Commands: 1
+(drivers\storage\port\storahci\storahci.c:799) AhciHwStartIo()
+(drivers\storage\port\storahci\storahci.c:2196) DeviceRequestComplete()
+(drivers\storage\port\storahci\storahci.c:799) AhciHwStartIo()
+(drivers\storage\port\storahci\storahci.c:2024) DeviceRequestReadWrite()
+(drivers\storage\port\storahci\storahci.c:1877) AhciATAPICommand()
+(drivers\storage\port\storahci\storahci.c:1571) AhciProcessIO()
+(drivers\storage\port\storahci\storahci.c:1572) 	PathId: 2
+(drivers\storage\port\storahci\storahci.c:1381) AhciProcessSrb()
+(drivers\storage\port\storahci\storahci.c:1279) AhciATAPI_CFIS()
+(drivers\storage\port\storahci\storahci.c:1329) AhciBuild_PRDT()
+(drivers\storage\port\storahci\storahci.c:1503) AhciActivatePort()
+(drivers\storage\port\storahci\storahci.c:635) AhciInterruptHandler()
+(drivers\storage\port\storahci\storahci.c:636) 	Port Number: 2
+(drivers\storage\port\storahci\storahci.c:576) AhciCompleteIssuedSrb()
+(drivers\storage\port\storahci\storahci.c:580) 	Completed Commands: 1
+(drivers\storage\port\storahci\storahci.c:799) AhciHwStartIo()
+(drivers\storage\port\storahci\storahci.c:2024) DeviceRequestReadWrite()
+(drivers\storage\port\storahci\storahci.c:1877) AhciATAPICommand()
+(drivers\storage\port\storahci\storahci.c:1571) AhciProcessIO()
+(drivers\storage\port\storahci\storahci.c:1572) 	PathId: 2
+(drivers\storage\port\storahci\storahci.c:1381) AhciProcessSrb()
+(drivers\storage\port\storahci\storahci.c:1279) AhciATAPI_CFIS()
+(drivers\storage\port\storahci\storahci.c:1329) AhciBuild_PRDT()
+(drivers\storage\port\storahci\storahci.c:1503) AhciActivatePort()
+(drivers\storage\port\storahci\storahci.c:635) AhciInterruptHandler()
+(drivers\storage\port\storahci\storahci.c:636) 	Port Number: 2
+(drivers\storage\port\storahci\storahci.c:576) AhciCompleteIssuedSrb()
+(drivers\storage\port\storahci\storahci.c:580) 	Completed Commands: 1
+(drivers\storage\port\storahci\storahci.c:799) AhciHwStartIo()
+(drivers\storage\port\storahci\storahci.c:2024) DeviceRequestReadWrite()
+(drivers\storage\port\storahci\storahci.c:1877) AhciATAPICommand()
+(drivers\storage\port\storahci\storahci.c:1571) AhciProcessIO()
+(drivers\storage\port\storahci\storahci.c:1572) 	PathId: 2
+(drivers\storage\port\storahci\storahci.c:1381) AhciProcessSrb()
+(drivers\storage\port\storahci\storahci.c:1279) AhciATAPI_CFIS()
+(drivers\storage\port\storahci\storahci.c:1329) AhciBuild_PRDT()
+(drivers\storage\port\storahci\storahci.c:1503) AhciActivatePort()
+(drivers\storage\port\storahci\storahci.c:635) AhciInterruptHandler()
+(drivers\storage\port\storahci\storahci.c:636) 	Port Number: 2
+(drivers\storage\port\storahci\storahci.c:576) AhciCompleteIssuedSrb()
+(drivers\storage\port\storahci\storahci.c:580) 	Completed Commands: 1
+(drivers\storage\port\storahci\storahci.c:799) AhciHwStartIo()
+(drivers\storage\port\storahci\storahci.c:2024) DeviceRequestReadWrite()
+(drivers\storage\port\storahci\storahci.c:1877) AhciATAPICommand()
+(drivers\storage\port\storahci\storahci.c:1571) AhciProcessIO()
+(drivers\storage\port\storahci\storahci.c:1572) 	PathId: 2
+(drivers\storage\port\storahci\storahci.c:1381) AhciProcessSrb()
+(drivers\storage\port\storahci\storahci.c:1279) AhciATAPI_CFIS()
+(drivers\storage\port\storahci\storahci.c:1329) AhciBuild_PRDT()
+(drivers\storage\port\storahci\storahci.c:1503) AhciActivatePort()
+(drivers\storage\port\storahci\storahci.c:635) AhciInterruptHandler()
+(drivers\storage\port\storahci\storahci.c:636) 	Port Number: 2
+(drivers\storage\port\storahci\storahci.c:576) AhciCompleteIssuedSrb()
+(drivers\storage\port\storahci\storahci.c:580) 	Completed Commands: 1
+(drivers\storage\port\storahci\storahci.c:799) AhciHwStartIo()
+(drivers\storage\port\storahci\storahci.c:2024) DeviceRequestReadWrite()
+(drivers\storage\port\storahci\storahci.c:1877) AhciATAPICommand()
+(drivers\storage\port\storahci\storahci.c:1571) AhciProcessIO()
+(drivers\storage\port\storahci\storahci.c:1572) 	PathId: 2
+(drivers\storage\port\storahci\storahci.c:1381) AhciProcessSrb()
+(drivers\storage\port\storahci\storahci.c:1279) AhciATAPI_CFIS()
+(drivers\storage\port\storahci\storahci.c:1329) AhciBuild_PRDT()
+(drivers\storage\port\storahci\storahci.c:1503) AhciActivatePort()
+(drivers\storage\port\storahci\storahci.c:635) AhciInterruptHandler()
+(drivers\storage\port\storahci\storahci.c:636) 	Port Number: 2
+(drivers\storage\port\storahci\storahci.c:576) AhciCompleteIssuedSrb()
+(drivers\storage\port\storahci\storahci.c:580) 	Completed Commands: 1
+(drivers\storage\port\storahci\storahci.c:799) AhciHwStartIo()
+(drivers\storage\port\storahci\storahci.c:2196) DeviceRequestComplete()
+(drivers\storage\port\storahci\storahci.c:799) AhciHwStartIo()
+(drivers\storage\port\storahci\storahci.c:2024) DeviceRequestReadWrite()
+(drivers\storage\port\storahci\storahci.c:1877) AhciATAPICommand()
+(drivers\storage\port\storahci\storahci.c:1571) AhciProcessIO()
+(drivers\storage\port\storahci\storahci.c:1572) 	PathId: 2
+(drivers\storage\port\storahci\storahci.c:1381) AhciProcessSrb()
+(drivers\storage\port\storahci\storahci.c:1279) AhciATAPI_CFIS()
+(drivers\storage\port\storahci\storahci.c:1329) AhciBuild_PRDT()
+(drivers\storage\port\storahci\storahci.c:1503) AhciActivatePort()
+(drivers\storage\port\storahci\storahci.c:635) AhciInterruptHandler()
+(drivers\storage\port\storahci\storahci.c:636) 	Port Number: 2
+(drivers\storage\port\storahci\storahci.c:576) AhciCompleteIssuedSrb()
+(drivers\storage\port\storahci\storahci.c:580) 	Completed Commands: 1
+(drivers\storage\port\storahci\storahci.c:799) AhciHwStartIo()
+(drivers\storage\port\storahci\storahci.c:2024) DeviceRequestReadWrite()
+(drivers\storage\port\storahci\storahci.c:1877) AhciATAPICommand()
+(drivers\storage\port\storahci\storahci.c:1571) AhciProcessIO()
+(drivers\storage\port\storahci\storahci.c:1572) 	PathId: 2
+(drivers\storage\port\storahci\storahci.c:1381) AhciProcessSrb()
+(drivers\storage\port\storahci\storahci.c:1279) AhciATAPI_CFIS()
+(drivers\storage\port\storahci\storahci.c:1329) AhciBuild_PRDT()
+(drivers\storage\port\storahci\storahci.c:1503) AhciActivatePort()
+(drivers\storage\port\storahci\storahci.c:635) AhciInterruptHandler()
+(drivers\storage\port\storahci\storahci.c:636) 	Port Number: 2
+(drivers\storage\port\storahci\storahci.c:576) AhciCompleteIssuedSrb()
+(drivers\storage\port\storahci\storahci.c:580) 	Completed Commands: 1
+(drivers\storage\port\storahci\storahci.c:799) AhciHwStartIo()
+(drivers\storage\port\storahci\storahci.c:2024) DeviceRequestReadWrite()
+(drivers\storage\port\storahci\storahci.c:1877) AhciATAPICommand()
+(drivers\storage\port\storahci\storahci.c:1571) AhciProcessIO()
+(drivers\storage\port\storahci\storahci.c:1572) 	PathId: 2
+(drivers\storage\port\storahci\storahci.c:1381) AhciProcessSrb()
+(drivers\storage\port\storahci\storahci.c:1279) AhciATAPI_CFIS()
+(drivers\storage\port\storahci\storahci.c:1329) AhciBuild_PRDT()
+(drivers\storage\port\storahci\storahci.c:1503) AhciActivatePort()
+(drivers\storage\port\storahci\storahci.c:635) AhciInterruptHandler()
+(drivers\storage\port\storahci\storahci.c:636) 	Port Number: 2
+(drivers\storage\port\storahci\storahci.c:576) AhciCompleteIssuedSrb()
+(drivers\storage\port\storahci\storahci.c:580) 	Completed Commands: 1
+(drivers\storage\port\storahci\storahci.c:799) AhciHwStartIo()
+(drivers\storage\port\storahci\storahci.c:2024) DeviceRequestReadWrite()
+(drivers\storage\port\storahci\storahci.c:1877) AhciATAPICommand()
+(drivers\storage\port\storahci\storahci.c:1571) AhciProcessIO()
+(drivers\storage\port\storahci\storahci.c:1572) 	PathId: 2
+(drivers\storage\port\storahci\storahci.c:1381) AhciProcessSrb()
+(drivers\storage\port\storahci\storahci.c:1279) AhciATAPI_CFIS()
+(drivers\storage\port\storahci\storahci.c:1329) AhciBuild_PRDT()
+(drivers\storage\port\storahci\storahci.c:1503) AhciActivatePort()
+(drivers\storage\port\storahci\storahci.c:635) AhciInterruptHandler()
+(drivers\storage\port\storahci\storahci.c:636) 	Port Number: 2
+(drivers\storage\port\storahci\storahci.c:576) AhciCompleteIssuedSrb()
+(drivers\storage\port\storahci\storahci.c:580) 	Completed Commands: 1
+(drivers\storage\port\storahci\storahci.c:799) AhciHwStartIo()
+(drivers\storage\port\storahci\storahci.c:2196) DeviceRequestComplete()
+(drivers\storage\port\storahci\storahci.c:799) AhciHwStartIo()
+(drivers\storage\port\storahci\storahci.c:2024) DeviceRequestReadWrite()
+(drivers\storage\port\storahci\storahci.c:1877) AhciATAPICommand()
+(drivers\storage\port\storahci\storahci.c:1571) AhciProcessIO()
+(drivers\storage\port\storahci\storahci.c:1572) 	PathId: 2
+(drivers\storage\port\storahci\storahci.c:1381) AhciProcessSrb()
+(drivers\storage\port\storahci\storahci.c:1279) AhciATAPI_CFIS()
+(drivers\storage\port\storahci\storahci.c:1329) AhciBuild_PRDT()
+(drivers\storage\port\storahci\storahci.c:1503) AhciActivatePort()
+(drivers\storage\port\storahci\storahci.c:635) AhciInterruptHandler()
+(drivers\storage\port\storahci\storahci.c:636) 	Port Number: 2
+(drivers\storage\port\storahci\storahci.c:576) AhciCompleteIssuedSrb()
+(drivers\storage\port\storahci\storahci.c:580) 	Completed Commands: 1
+(drivers\storage\port\storahci\storahci.c:799) AhciHwStartIo()
+(drivers\storage\port\storahci\storahci.c:2024) DeviceRequestReadWrite()
+(drivers\storage\port\storahci\storahci.c:1877) AhciATAPICommand()
+(drivers\storage\port\storahci\storahci.c:1571) AhciProcessIO()
+(drivers\storage\port\storahci\storahci.c:1572) 	PathId: 2
+(drivers\storage\port\storahci\storahci.c:1381) AhciProcessSrb()
+(drivers\storage\port\storahci\storahci.c:1279) AhciATAPI_CFIS()
+(drivers\storage\port\storahci\storahci.c:1329) AhciBuild_PRDT()
+(drivers\storage\port\storahci\storahci.c:1503) AhciActivatePort()
+(drivers\storage\port\storahci\storahci.c:635) AhciInterruptHandler()
+(drivers\storage\port\storahci\storahci.c:636) 	Port Number: 2
+(drivers\storage\port\storahci\storahci.c:576) AhciCompleteIssuedSrb()
+(drivers\storage\port\storahci\storahci.c:580) 	Completed Commands: 1
+(drivers\storage\port\storahci\storahci.c:799) AhciHwStartIo()
+(drivers\storage\port\storahci\storahci.c:2024) DeviceRequestReadWrite()
+(drivers\storage\port\storahci\storahci.c:1877) AhciATAPICommand()
+(drivers\storage\port\storahci\storahci.c:1571) AhciProcessIO()
+(drivers\storage\port\storahci\storahci.c:1572) 	PathId: 2
+(drivers\storage\port\storahci\storahci.c:1381) AhciProcessSrb()
+(drivers\storage\port\storahci\storahci.c:1279) AhciATAPI_CFIS()
+(drivers\storage\port\storahci\storahci.c:1329) AhciBuild_PRDT()
+(drivers\storage\port\storahci\storahci.c:1503) AhciActivatePort()
+(drivers\storage\port\storahci\storahci.c:635) AhciInterruptHandler()
+(drivers\storage\port\storahci\storahci.c:636) 	Port Number: 2
+(drivers\storage\port\storahci\storahci.c:576) AhciCompleteIssuedSrb()
+(drivers\storage\port\storahci\storahci.c:580) 	Completed Commands: 1
+(drivers\storage\port\storahci\storahci.c:799) AhciHwStartIo()
+(drivers\storage\port\storahci\storahci.c:2024) DeviceRequestReadWrite()
+(drivers\storage\port\storahci\storahci.c:1877) AhciATAPICommand()
+(drivers\storage\port\storahci\storahci.c:1571) AhciProcessIO()
+(drivers\storage\port\storahci\storahci.c:1572) 	PathId: 2
+(drivers\storage\port\storahci\storahci.c:1381) AhciProcessSrb()
+(drivers\storage\port\storahci\storahci.c:1279) AhciATAPI_CFIS()
+(drivers\storage\port\storahci\storahci.c:1329) AhciBuild_PRDT()
+(drivers\storage\port\storahci\storahci.c:1503) AhciActivatePort()
+(drivers\storage\port\storahci\storahci.c:635) AhciInterruptHandler()
+(drivers\storage\port\storahci\storahci.c:636) 	Port Number: 2
+(drivers\storage\port\storahci\storahci.c:576) AhciCompleteIssuedSrb()
+(drivers\storage\port\storahci\storahci.c:580) 	Completed Commands: 1
+(drivers\storage\port\storahci\storahci.c:799) AhciHwStartIo()
+(drivers\storage\port\storahci\storahci.c:2196) DeviceRequestComplete()
+(drivers\storage\port\storahci\storahci.c:799) AhciHwStartIo()
+(drivers\storage\port\storahci\storahci.c:2024) DeviceRequestReadWrite()
+(drivers\storage\port\storahci\storahci.c:1877) AhciATAPICommand()
+(drivers\storage\port\storahci\storahci.c:1571) AhciProcessIO()
+(drivers\storage\port\storahci\storahci.c:1572) 	PathId: 2
+(drivers\storage\port\storahci\storahci.c:1381) AhciProcessSrb()
+(drivers\storage\port\storahci\storahci.c:1279) AhciATAPI_CFIS()
+(drivers\storage\port\storahci\storahci.c:1329) AhciBuild_PRDT()
+(drivers\storage\port\storahci\storahci.c:1503) AhciActivatePort()
+(drivers\storage\port\storahci\storahci.c:635) AhciInterruptHandler()
+(drivers\storage\port\storahci\storahci.c:636) 	Port Number: 2
+(drivers\storage\port\storahci\storahci.c:576) AhciCompleteIssuedSrb()
+(drivers\storage\port\storahci\storahci.c:580) 	Completed Commands: 1
+(drivers\storage\port\storahci\storahci.c:799) AhciHwStartIo()
+(drivers\storage\port\storahci\storahci.c:2024) DeviceRequestReadWrite()
+(drivers\storage\port\storahci\storahci.c:1877) AhciATAPICommand()
+(drivers\storage\port\storahci\storahci.c:1571) AhciProcessIO()
+(drivers\storage\port\storahci\storahci.c:1572) 	PathId: 2
+(drivers\storage\port\storahci\storahci.c:1381) AhciProcessSrb()
+(drivers\storage\port\storahci\storahci.c:1279) AhciATAPI_CFIS()
+(drivers\storage\port\storahci\storahci.c:1329) AhciBuild_PRDT()
+(drivers\storage\port\storahci\storahci.c:1503) AhciActivatePort()
+(drivers\storage\port\storahci\storahci.c:635) AhciInterruptHandler()
+(drivers\storage\port\storahci\storahci.c:636) 	Port Number: 2
+(drivers\storage\port\storahci\storahci.c:576) AhciCompleteIssuedSrb()
+(drivers\storage\port\storahci\storahci.c:580) 	Completed Commands: 1
+(drivers\storage\port\storahci\storahci.c:799) AhciHwStartIo()
+(drivers\storage\port\storahci\storahci.c:2024) DeviceRequestReadWrite()
+(drivers\storage\port\storahci\storahci.c:1877) AhciATAPICommand()
+(drivers\storage\port\storahci\storahci.c:1571) AhciProcessIO()
+(drivers\storage\port\storahci\storahci.c:1572) 	PathId: 2
+(drivers\storage\port\storahci\storahci.c:1381) AhciProcessSrb()
+(drivers\storage\port\storahci\storahci.c:1279) AhciATAPI_CFIS()
+(drivers\storage\port\storahci\storahci.c:1329) AhciBuild_PRDT()
+(drivers\storage\port\storahci\storahci.c:1503) AhciActivatePort()
+(drivers\storage\port\storahci\storahci.c:635) AhciInterruptHandler()
+(drivers\storage\port\storahci\storahci.c:636) 	Port Number: 2
+(drivers\storage\port\storahci\storahci.c:576) AhciCompleteIssuedSrb()
+(drivers\storage\port\storahci\storahci.c:580) 	Completed Commands: 1
+(drivers\storage\port\storahci\storahci.c:799) AhciHwStartIo()
+(drivers\storage\port\storahci\storahci.c:2024) DeviceRequestReadWrite()
+(drivers\storage\port\storahci\storahci.c:1877) AhciATAPICommand()
+(drivers\storage\port\storahci\storahci.c:1571) AhciProcessIO()
+(drivers\storage\port\storahci\storahci.c:1572) 	PathId: 2
+(drivers\storage\port\storahci\storahci.c:1381) AhciProcessSrb()
+(drivers\storage\port\storahci\storahci.c:1279) AhciATAPI_CFIS()
+(drivers\storage\port\storahci\storahci.c:1329) AhciBuild_PRDT()
+(drivers\storage\port\storahci\storahci.c:1503) AhciActivatePort()
+(drivers\storage\port\storahci\storahci.c:635) AhciInterruptHandler()
+(drivers\storage\port\storahci\storahci.c:636) 	Port Number: 2
+(drivers\storage\port\storahci\storahci.c:576) AhciCompleteIssuedSrb()
+(drivers\storage\port\storahci\storahci.c:580) 	Completed Commands: 1
+(drivers\storage\port\storahci\storahci.c:799) AhciHwStartIo()
+(drivers\storage\port\storahci\storahci.c:2024) DeviceRequestReadWrite()
+(drivers\storage\port\storahci\storahci.c:1877) AhciATAPICommand()
+(drivers\storage\port\storahci\storahci.c:1571) AhciProcessIO()
+(drivers\storage\port\storahci\storahci.c:1572) 	PathId: 2
+(drivers\storage\port\storahci\storahci.c:1381) AhciProcessSrb()
+(drivers\storage\port\storahci\storahci.c:1279) AhciATAPI_CFIS()
+(drivers\storage\port\storahci\storahci.c:1329) AhciBuild_PRDT()
+(drivers\storage\port\storahci\storahci.c:1503) AhciActivatePort()
+(drivers\storage\port\storahci\storahci.c:635) AhciInterruptHandler()
+(drivers\storage\port\storahci\storahci.c:636) 	Port Number: 2
+(drivers\storage\port\storahci\storahci.c:576) AhciCompleteIssuedSrb()
+(drivers\storage\port\storahci\storahci.c:580) 	Completed Commands: 1
+(drivers\storage\port\storahci\storahci.c:799) AhciHwStartIo()
+(drivers\storage\port\storahci\storahci.c:2196) DeviceRequestComplete()
+(drivers\storage\port\storahci\storahci.c:799) AhciHwStartIo()
+(drivers\storage\port\storahci\storahci.c:2024) DeviceRequestReadWrite()
+(drivers\storage\port\storahci\storahci.c:1877) AhciATAPICommand()
+(drivers\storage\port\storahci\storahci.c:1571) AhciProcessIO()
+(drivers\storage\port\storahci\storahci.c:1572) 	PathId: 2
+(drivers\storage\port\storahci\storahci.c:1381) AhciProcessSrb()
+(drivers\storage\port\storahci\storahci.c:1279) AhciATAPI_CFIS()
+(drivers\storage\port\storahci\storahci.c:1329) AhciBuild_PRDT()
+(drivers\storage\port\storahci\storahci.c:1503) AhciActivatePort()
+(drivers\storage\port\storahci\storahci.c:635) AhciInterruptHandler()
+(drivers\storage\port\storahci\storahci.c:636) 	Port Number: 2
+(drivers\storage\port\storahci\storahci.c:576) AhciCompleteIssuedSrb()
+(drivers\storage\port\storahci\storahci.c:580) 	Completed Commands: 1
+(drivers\storage\port\storahci\storahci.c:799) AhciHwStartIo()
+(drivers\storage\port\storahci\storahci.c:2024) DeviceRequestReadWrite()
+(drivers\storage\port\storahci\storahci.c:1877) AhciATAPICommand()
+(drivers\storage\port\storahci\storahci.c:1571) AhciProcessIO()
+(drivers\storage\port\storahci\storahci.c:1572) 	PathId: 2
+(drivers\storage\port\storahci\storahci.c:1381) AhciProcessSrb()
+(drivers\storage\port\storahci\storahci.c:1279) AhciATAPI_CFIS()
+(drivers\storage\port\storahci\storahci.c:1329) AhciBuild_PRDT()
+(drivers\storage\port\storahci\storahci.c:1503) AhciActivatePort()
+(drivers\storage\port\storahci\storahci.c:635) AhciInterruptHandler()
+(drivers\storage\port\storahci\storahci.c:636) 	Port Number: 2
+(drivers\storage\port\storahci\storahci.c:576) AhciCompleteIssuedSrb()
+(drivers\storage\port\storahci\storahci.c:580) 	Completed Commands: 1
+(drivers\storage\port\storahci\storahci.c:799) AhciHwStartIo()
+(drivers\storage\port\storahci\storahci.c:2024) DeviceRequestReadWrite()
+(drivers\storage\port\storahci\storahci.c:1877) AhciATAPICommand()
+(drivers\storage\port\storahci\storahci.c:1571) AhciProcessIO()
+(drivers\storage\port\storahci\storahci.c:1572) 	PathId: 2
+(drivers\storage\port\storahci\storahci.c:1381) AhciProcessSrb()
+(drivers\storage\port\storahci\storahci.c:1279) AhciATAPI_CFIS()
+(drivers\storage\port\storahci\storahci.c:1329) AhciBuild_PRDT()
+(drivers\storage\port\storahci\storahci.c:1503) AhciActivatePort()
+(drivers\storage\port\storahci\storahci.c:635) AhciInterruptHandler()
+(drivers\storage\port\storahci\storahci.c:636) 	Port Number: 2
+(drivers\storage\port\storahci\storahci.c:576) AhciCompleteIssuedSrb()
+(drivers\storage\port\storahci\storahci.c:580) 	Completed Commands: 1
+(drivers\storage\port\storahci\storahci.c:799) AhciHwStartIo()
+(drivers\storage\port\storahci\storahci.c:2024) DeviceRequestReadWrite()
+(drivers\storage\port\storahci\storahci.c:1877) AhciATAPICommand()
+(drivers\storage\port\storahci\storahci.c:1571) AhciProcessIO()
+(drivers\storage\port\storahci\storahci.c:1572) 	PathId: 2
+(drivers\storage\port\storahci\storahci.c:1381) AhciProcessSrb()
+(drivers\storage\port\storahci\storahci.c:1279) AhciATAPI_CFIS()
+(drivers\storage\port\storahci\storahci.c:1329) AhciBuild_PRDT()
+(drivers\storage\port\storahci\storahci.c:1503) AhciActivatePort()
+(drivers\storage\port\storahci\storahci.c:635) AhciInterruptHandler()
+(drivers\storage\port\storahci\storahci.c:636) 	Port Number: 2
+(drivers\storage\port\storahci\storahci.c:576) AhciCompleteIssuedSrb()
+(drivers\storage\port\storahci\storahci.c:580) 	Completed Commands: 1
+(drivers\storage\port\storahci\storahci.c:799) AhciHwStartIo()
+(drivers\storage\port\storahci\storahci.c:2024) DeviceRequestReadWrite()
+(drivers\storage\port\storahci\storahci.c:1877) AhciATAPICommand()
+(drivers\storage\port\storahci\storahci.c:1571) AhciProcessIO()
+(drivers\storage\port\storahci\storahci.c:1572) 	PathId: 2
+(drivers\storage\port\storahci\storahci.c:1381) AhciProcessSrb()
+(drivers\storage\port\storahci\storahci.c:1279) AhciATAPI_CFIS()
+(drivers\storage\port\storahci\storahci.c:1329) AhciBuild_PRDT()
+(drivers\storage\port\storahci\storahci.c:1503) AhciActivatePort()
+(drivers\storage\port\storahci\storahci.c:635) AhciInterruptHandler()
+(drivers\storage\port\storahci\storahci.c:636) 	Port Number: 2
+(drivers\storage\port\storahci\storahci.c:576) AhciCompleteIssuedSrb()
+(drivers\storage\port\storahci\storahci.c:580) 	Completed Commands: 1
+(drivers\storage\port\storahci\storahci.c:799) AhciHwStartIo()
+(drivers\storage\port\storahci\storahci.c:2196) DeviceRequestComplete()
+(drivers\storage\port\storahci\storahci.c:799) AhciHwStartIo()
+(drivers\storage\port\storahci\storahci.c:2024) DeviceRequestReadWrite()
+(drivers\storage\port\storahci\storahci.c:1877) AhciATAPICommand()
+(drivers\storage\port\storahci\storahci.c:1571) AhciProcessIO()
+(drivers\storage\port\storahci\storahci.c:1572) 	PathId: 2
+(drivers\storage\port\storahci\storahci.c:1381) AhciProcessSrb()
+(drivers\storage\port\storahci\storahci.c:1279) AhciATAPI_CFIS()
+(drivers\storage\port\storahci\storahci.c:1329) AhciBuild_PRDT()
+(drivers\storage\port\storahci\storahci.c:1503) AhciActivatePort()
+(drivers\storage\port\storahci\storahci.c:635) AhciInterruptHandler()
+(drivers\storage\port\storahci\storahci.c:636) 	Port Number: 2
+(drivers\storage\port\storahci\storahci.c:576) AhciCompleteIssuedSrb()
+(drivers\storage\port\storahci\storahci.c:580) 	Completed Commands: 1
+(drivers\storage\port\storahci\storahci.c:799) AhciHwStartIo()
+(drivers\storage\port\storahci\storahci.c:2024) DeviceRequestReadWrite()
+(drivers\storage\port\storahci\storahci.c:1877) AhciATAPICommand()
+(drivers\storage\port\storahci\storahci.c:1571) AhciProcessIO()
+(drivers\storage\port\storahci\storahci.c:1572) 	PathId: 2
+(drivers\storage\port\storahci\storahci.c:1381) AhciProcessSrb()
+(drivers\storage\port\storahci\storahci.c:1279) AhciATAPI_CFIS()
+(drivers\storage\port\storahci\storahci.c:1329) AhciBuild_PRDT()
+(drivers\storage\port\storahci\storahci.c:1503) AhciActivatePort()
+(drivers\storage\port\storahci\storahci.c:635) AhciInterruptHandler()
+(drivers\storage\port\storahci\storahci.c:636) 	Port Number: 2
+(drivers\storage\port\storahci\storahci.c:576) AhciCompleteIssuedSrb()
+(drivers\storage\port\storahci\storahci.c:580) 	Completed Commands: 1
+(drivers\storage\port\storahci\storahci.c:799) AhciHwStartIo()
+(drivers\storage\port\storahci\storahci.c:2024) DeviceRequestReadWrite()
+(drivers\storage\port\storahci\storahci.c:1877) AhciATAPICommand()
+(drivers\storage\port\storahci\storahci.c:1571) AhciProcessIO()
+(drivers\storage\port\storahci\storahci.c:1572) 	PathId: 2
+(drivers\storage\port\storahci\storahci.c:1381) AhciProcessSrb()
+(drivers\storage\port\storahci\storahci.c:1279) AhciATAPI_CFIS()
+(drivers\storage\port\storahci\storahci.c:1329) AhciBuild_PRDT()
+(drivers\storage\port\storahci\storahci.c:1503) AhciActivatePort()
+(drivers\storage\port\storahci\storahci.c:635) AhciInterruptHandler()
+(drivers\storage\port\storahci\storahci.c:636) 	Port Number: 2
+(drivers\storage\port\storahci\storahci.c:576) AhciCompleteIssuedSrb()
+(drivers\storage\port\storahci\storahci.c:580) 	Completed Commands: 1
+(drivers\storage\port\storahci\storahci.c:799) AhciHwStartIo()
+(drivers\storage\port\storahci\storahci.c:2024) DeviceRequestReadWrite()
+(drivers\storage\port\storahci\storahci.c:1877) AhciATAPICommand()
+(drivers\storage\port\storahci\storahci.c:1571) AhciProcessIO()
+(drivers\storage\port\storahci\storahci.c:1572) 	PathId: 2
+(drivers\storage\port\storahci\storahci.c:1381) AhciProcessSrb()
+(drivers\storage\port\storahci\storahci.c:1279) AhciATAPI_CFIS()
+(drivers\storage\port\storahci\storahci.c:1329) AhciBuild_PRDT()
+(drivers\storage\port\storahci\storahci.c:1503) AhciActivatePort()
+(drivers\storage\port\storahci\storahci.c:635) AhciInterruptHandler()
+(drivers\storage\port\storahci\storahci.c:636) 	Port Number: 2
+(drivers\storage\port\storahci\storahci.c:576) AhciCompleteIssuedSrb()
+(drivers\storage\port\storahci\storahci.c:580) 	Completed Commands: 1
+(drivers\storage\port\storahci\storahci.c:799) AhciHwStartIo()
+(drivers\storage\port\storahci\storahci.c:2196) DeviceRequestComplete()
+(drivers\storage\port\storahci\storahci.c:799) AhciHwStartIo()
+(drivers\storage\port\storahci\storahci.c:2024) DeviceRequestReadWrite()
+(drivers\storage\port\storahci\storahci.c:1877) AhciATAPICommand()
+(drivers\storage\port\storahci\storahci.c:1571) AhciProcessIO()
+(drivers\storage\port\storahci\storahci.c:1572) 	PathId: 2
+(drivers\storage\port\storahci\storahci.c:1381) AhciProcessSrb()
+(drivers\storage\port\storahci\storahci.c:1279) AhciATAPI_CFIS()
+(drivers\storage\port\storahci\storahci.c:1329) AhciBuild_PRDT()
+(drivers\storage\port\storahci\storahci.c:1503) AhciActivatePort()
+(drivers\storage\port\storahci\storahci.c:635) AhciInterruptHandler()
+(drivers\storage\port\storahci\storahci.c:636) 	Port Number: 2
+(drivers\storage\port\storahci\storahci.c:576) AhciCompleteIssuedSrb()
+(drivers\storage\port\storahci\storahci.c:580) 	Completed Commands: 1
+(drivers\storage\port\storahci\storahci.c:799) AhciHwStartIo()
+(drivers\storage\port\storahci\storahci.c:2024) DeviceRequestReadWrite()
+(drivers\storage\port\storahci\storahci.c:1877) AhciATAPICommand()
+(drivers\storage\port\storahci\storahci.c:1571) AhciProcessIO()
+(drivers\storage\port\storahci\storahci.c:1572) 	PathId: 2
+(drivers\storage\port\storahci\storahci.c:1381) AhciProcessSrb()
+(drivers\storage\port\storahci\storahci.c:1279) AhciATAPI_CFIS()
+(drivers\storage\port\storahci\storahci.c:1329) AhciBuild_PRDT()
+(drivers\storage\port\storahci\storahci.c:1503) AhciActivatePort()
+(drivers\storage\port\storahci\storahci.c:635) AhciInterruptHandler()
+(drivers\storage\port\storahci\storahci.c:636) 	Port Number: 2
+(drivers\storage\port\storahci\storahci.c:576) AhciCompleteIssuedSrb()
+(drivers\storage\port\storahci\storahci.c:580) 	Completed Commands: 1
+(drivers\storage\port\storahci\storahci.c:799) AhciHwStartIo()
+(drivers\storage\port\storahci\storahci.c:2024) DeviceRequestReadWrite()
+(drivers\storage\port\storahci\storahci.c:1877) AhciATAPICommand()
+(drivers\storage\port\storahci\storahci.c:1571) AhciProcessIO()
+(drivers\storage\port\storahci\storahci.c:1572) 	PathId: 2
+(drivers\storage\port\storahci\storahci.c:1381) AhciProcessSrb()
+(drivers\storage\port\storahci\storahci.c:1279) AhciATAPI_CFIS()
+(drivers\storage\port\storahci\storahci.c:1329) AhciBuild_PRDT()
+(drivers\storage\port\storahci\storahci.c:1503) AhciActivatePort()
+(drivers\storage\port\storahci\storahci.c:635) AhciInterruptHandler()
+(drivers\storage\port\storahci\storahci.c:636) 	Port Number: 2
+(drivers\storage\port\storahci\storahci.c:576) AhciCompleteIssuedSrb()
+(drivers\storage\port\storahci\storahci.c:580) 	Completed Commands: 1
+(drivers\storage\port\storahci\storahci.c:799) AhciHwStartIo()
+(drivers\storage\port\storahci\storahci.c:2024) DeviceRequestReadWrite()
+(drivers\storage\port\storahci\storahci.c:1877) AhciATAPICommand()
+(drivers\storage\port\storahci\storahci.c:1571) AhciProcessIO()
+(drivers\storage\port\storahci\storahci.c:1572) 	PathId: 2
+(drivers\storage\port\storahci\storahci.c:1381) AhciProcessSrb()
+(drivers\storage\port\storahci\storahci.c:1279) AhciATAPI_CFIS()
+(drivers\storage\port\storahci\storahci.c:1329) AhciBuild_PRDT()
+(drivers\storage\port\storahci\storahci.c:1503) AhciActivatePort()
+(drivers\storage\port\storahci\storahci.c:635) AhciInterruptHandler()
+(drivers\storage\port\storahci\storahci.c:636) 	Port Number: 2
+(drivers\storage\port\storahci\storahci.c:576) AhciCompleteIssuedSrb()
+(drivers\storage\port\storahci\storahci.c:580) 	Completed Commands: 1
+(drivers\storage\port\storahci\storahci.c:799) AhciHwStartIo()
+(drivers\storage\port\storahci\storahci.c:2024) DeviceRequestReadWrite()
+(drivers\storage\port\storahci\storahci.c:1877) AhciATAPICommand()
+(drivers\storage\port\storahci\storahci.c:1571) AhciProcessIO()
+(drivers\storage\port\storahci\storahci.c:1572) 	PathId: 2
+(drivers\storage\port\storahci\storahci.c:1381) AhciProcessSrb()
+(drivers\storage\port\storahci\storahci.c:1279) AhciATAPI_CFIS()
+(drivers\storage\port\storahci\storahci.c:1329) AhciBuild_PRDT()
+(drivers\storage\port\storahci\storahci.c:1503) AhciActivatePort()
+(drivers\storage\port\storahci\storahci.c:635) AhciInterruptHandler()
+(drivers\storage\port\storahci\storahci.c:636) 	Port Number: 2
+(drivers\storage\port\storahci\storahci.c:576) AhciCompleteIssuedSrb()
+(drivers\storage\port\storahci\storahci.c:580) 	Completed Commands: 1
+(drivers\storage\port\storahci\storahci.c:799) AhciHwStartIo()
+(drivers\storage\port\storahci\storahci.c:2196) DeviceRequestComplete()
+(drivers\storage\port\storahci\storahci.c:799) AhciHwStartIo()
+(drivers\storage\port\storahci\storahci.c:2024) DeviceRequestReadWrite()
+(drivers\storage\port\storahci\storahci.c:1877) AhciATAPICommand()
+(drivers\storage\port\storahci\storahci.c:1571) AhciProcessIO()
+(drivers\storage\port\storahci\storahci.c:1572) 	PathId: 2
+(drivers\storage\port\storahci\storahci.c:1381) AhciProcessSrb()
+(drivers\storage\port\storahci\storahci.c:1279) AhciATAPI_CFIS()
+(drivers\storage\port\storahci\storahci.c:1329) AhciBuild_PRDT()
+(drivers\storage\port\storahci\storahci.c:1503) AhciActivatePort()
+(drivers\storage\port\storahci\storahci.c:635) AhciInterruptHandler()
+(drivers\storage\port\storahci\storahci.c:636) 	Port Number: 2
+(drivers\storage\port\storahci\storahci.c:576) AhciCompleteIssuedSrb()
+(drivers\storage\port\storahci\storahci.c:580) 	Completed Commands: 1
+(drivers\storage\port\storahci\storahci.c:799) AhciHwStartIo()
+(drivers\storage\port\storahci\storahci.c:2024) DeviceRequestReadWrite()
+(drivers\storage\port\storahci\storahci.c:1877) AhciATAPICommand()
+(drivers\storage\port\storahci\storahci.c:1571) AhciProcessIO()
+(drivers\storage\port\storahci\storahci.c:1572) 	PathId: 2
+(drivers\storage\port\storahci\storahci.c:1381) AhciProcessSrb()
+(drivers\storage\port\storahci\storahci.c:1279) AhciATAPI_CFIS()
+(drivers\storage\port\storahci\storahci.c:1329) AhciBuild_PRDT()
+(drivers\storage\port\storahci\storahci.c:1503) AhciActivatePort()
+(drivers\storage\port\storahci\storahci.c:635) AhciInterruptHandler()
+(drivers\storage\port\storahci\storahci.c:636) 	Port Number: 2
+(drivers\storage\port\storahci\storahci.c:576) AhciCompleteIssuedSrb()
+(drivers\storage\port\storahci\storahci.c:580) 	Completed Commands: 1
+(drivers\storage\port\storahci\storahci.c:799) AhciHwStartIo()
+(drivers\storage\port\storahci\storahci.c:2024) DeviceRequestReadWrite()
+(drivers\storage\port\storahci\storahci.c:1877) AhciATAPICommand()
+(drivers\storage\port\storahci\storahci.c:1571) AhciProcessIO()
+(drivers\storage\port\storahci\storahci.c:1572) 	PathId: 2
+(drivers\storage\port\storahci\storahci.c:1381) AhciProcessSrb()
+(drivers\storage\port\storahci\storahci.c:1279) AhciATAPI_CFIS()
+(drivers\storage\port\storahci\storahci.c:1329) AhciBuild_PRDT()
+(drivers\storage\port\storahci\storahci.c:1503) AhciActivatePort()
+(drivers\storage\port\storahci\storahci.c:635) AhciInterruptHandler()
+(drivers\storage\port\storahci\storahci.c:636) 	Port Number: 2
+(drivers\storage\port\storahci\storahci.c:576) AhciCompleteIssuedSrb()
+(drivers\storage\port\storahci\storahci.c:580) 	Completed Commands: 1
+(drivers\storage\port\storahci\storahci.c:799) AhciHwStartIo()
+(drivers\storage\port\storahci\storahci.c:2024) DeviceRequestReadWrite()
+(drivers\storage\port\storahci\storahci.c:1877) AhciATAPICommand()
+(drivers\storage\port\storahci\storahci.c:1571) AhciProcessIO()
+(drivers\storage\port\storahci\storahci.c:1572) 	PathId: 2
+(drivers\storage\port\storahci\storahci.c:1381) AhciProcessSrb()
+(drivers\storage\port\storahci\storahci.c:1279) AhciATAPI_CFIS()
+(drivers\storage\port\storahci\storahci.c:1329) AhciBuild_PRDT()
+(drivers\storage\port\storahci\storahci.c:1503) AhciActivatePort()
+(drivers\storage\port\storahci\storahci.c:635) AhciInterruptHandler()
+(drivers\storage\port\storahci\storahci.c:636) 	Port Number: 2
+(drivers\storage\port\storahci\storahci.c:576) AhciCompleteIssuedSrb()
+(drivers\storage\port\storahci\storahci.c:580) 	Completed Commands: 1
+(drivers\storage\port\storahci\storahci.c:799) AhciHwStartIo()
+(drivers\storage\port\storahci\storahci.c:2196) DeviceRequestComplete()
+(drivers\storage\port\storahci\storahci.c:799) AhciHwStartIo()
+(drivers\storage\port\storahci\storahci.c:2024) DeviceRequestReadWrite()
+(drivers\storage\port\storahci\storahci.c:1877) AhciATAPICommand()
+(drivers\storage\port\storahci\storahci.c:1571) AhciProcessIO()
+(drivers\storage\port\storahci\storahci.c:1572) 	PathId: 2
+(drivers\storage\port\storahci\storahci.c:1381) AhciProcessSrb()
+(drivers\storage\port\storahci\storahci.c:1279) AhciATAPI_CFIS()
+(drivers\storage\port\storahci\storahci.c:1329) AhciBuild_PRDT()
+(drivers\storage\port\storahci\storahci.c:1503) AhciActivatePort()
+(drivers\storage\port\storahci\storahci.c:635) AhciInterruptHandler()
+(drivers\storage\port\storahci\storahci.c:636) 	Port Number: 2
+(drivers\storage\port\storahci\storahci.c:576) AhciCompleteIssuedSrb()
+(drivers\storage\port\storahci\storahci.c:580) 	Completed Commands: 1
+(drivers\storage\port\storahci\storahci.c:799) AhciHwStartIo()
+(drivers\storage\port\storahci\storahci.c:2024) DeviceRequestReadWrite()
+(drivers\storage\port\storahci\storahci.c:1877) AhciATAPICommand()
+(drivers\storage\port\storahci\storahci.c:1571) AhciProcessIO()
+(drivers\storage\port\storahci\storahci.c:1572) 	PathId: 2
+(drivers\storage\port\storahci\storahci.c:1381) AhciProcessSrb()
+(drivers\storage\port\storahci\storahci.c:1279) AhciATAPI_CFIS()
+(drivers\storage\port\storahci\storahci.c:1329) AhciBuild_PRDT()
+(drivers\storage\port\storahci\storahci.c:1503) AhciActivatePort()
+(drivers\storage\port\storahci\storahci.c:635) AhciInterruptHandler()
+(drivers\storage\port\storahci\storahci.c:636) 	Port Number: 2
+(drivers\storage\port\storahci\storahci.c:576) AhciCompleteIssuedSrb()
+(drivers\storage\port\storahci\storahci.c:580) 	Completed Commands: 1
+(drivers\storage\port\storahci\storahci.c:799) AhciHwStartIo()
+(drivers\storage\port\storahci\storahci.c:2024) DeviceRequestReadWrite()
+(drivers\storage\port\storahci\storahci.c:1877) AhciATAPICommand()
+(drivers\storage\port\storahci\storahci.c:1571) AhciProcessIO()
+(drivers\storage\port\storahci\storahci.c:1572) 	PathId: 2
+(drivers\storage\port\storahci\storahci.c:1381) AhciProcessSrb()
+(drivers\storage\port\storahci\storahci.c:1279) AhciATAPI_CFIS()
+(drivers\storage\port\storahci\storahci.c:1329) AhciBuild_PRDT()
+(drivers\storage\port\storahci\storahci.c:1503) AhciActivatePort()
+(drivers\storage\port\storahci\storahci.c:635) AhciInterruptHandler()
+(drivers\storage\port\storahci\storahci.c:636) 	Port Number: 2
+(drivers\storage\port\storahci\storahci.c:576) AhciCompleteIssuedSrb()
+(drivers\storage\port\storahci\storahci.c:580) 	Completed Commands: 1
+(drivers\storage\port\storahci\storahci.c:799) AhciHwStartIo()
+(drivers\storage\port\storahci\storahci.c:2024) DeviceRequestReadWrite()
+(drivers\storage\port\storahci\storahci.c:1877) AhciATAPICommand()
+(drivers\storage\port\storahci\storahci.c:1571) AhciProcessIO()
+(drivers\storage\port\storahci\storahci.c:1572) 	PathId: 2
+(drivers\storage\port\storahci\storahci.c:1381) AhciProcessSrb()
+(drivers\storage\port\storahci\storahci.c:1279) AhciATAPI_CFIS()
+(drivers\storage\port\storahci\storahci.c:1329) AhciBuild_PRDT()
+(drivers\storage\port\storahci\storahci.c:1503) AhciActivatePort()
+(drivers\storage\port\storahci\storahci.c:635) AhciInterruptHandler()
+(drivers\storage\port\storahci\storahci.c:636) 	Port Number: 2
+(drivers\storage\port\storahci\storahci.c:576) AhciCompleteIssuedSrb()
+(drivers\storage\port\storahci\storahci.c:580) 	Completed Commands: 1
+(drivers\storage\port\storahci\storahci.c:799) AhciHwStartIo()
+(drivers\storage\port\storahci\storahci.c:2196) DeviceRequestComplete()
+(drivers\storage\port\storahci\storahci.c:799) AhciHwStartIo()
+(drivers\storage\port\storahci\storahci.c:2024) DeviceRequestReadWrite()
+(drivers\storage\port\storahci\storahci.c:1877) AhciATAPICommand()
+(drivers\storage\port\storahci\storahci.c:1571) AhciProcessIO()
+(drivers\storage\port\storahci\storahci.c:1572) 	PathId: 2
+(drivers\storage\port\storahci\storahci.c:1381) AhciProcessSrb()
+(drivers\storage\port\storahci\storahci.c:1279) AhciATAPI_CFIS()
+(drivers\storage\port\storahci\storahci.c:1329) AhciBuild_PRDT()
+(drivers\storage\port\storahci\storahci.c:1503) AhciActivatePort()
+(drivers\storage\port\storahci\storahci.c:635) AhciInterruptHandler()
+(drivers\storage\port\storahci\storahci.c:636) 	Port Number: 2
+(drivers\storage\port\storahci\storahci.c:576) AhciCompleteIssuedSrb()
+(drivers\storage\port\storahci\storahci.c:580) 	Completed Commands: 1
+(drivers\storage\port\storahci\storahci.c:799) AhciHwStartIo()
+(drivers\storage\port\storahci\storahci.c:2024) DeviceRequestReadWrite()
+(drivers\storage\port\storahci\storahci.c:1877) AhciATAPICommand()
+(drivers\storage\port\storahci\storahci.c:1571) AhciProcessIO()
+(drivers\storage\port\storahci\storahci.c:1572) 	PathId: 2
+(drivers\storage\port\storahci\storahci.c:1381) AhciProcessSrb()
+(drivers\storage\port\storahci\storahci.c:1279) AhciATAPI_CFIS()
+(drivers\storage\port\storahci\storahci.c:1329) AhciBuild_PRDT()
+(drivers\storage\port\storahci\storahci.c:1503) AhciActivatePort()
+(drivers\storage\port\storahci\storahci.c:635) AhciInterruptHandler()
+(drivers\storage\port\storahci\storahci.c:636) 	Port Number: 2
+(drivers\storage\port\storahci\storahci.c:576) AhciCompleteIssuedSrb()
+(drivers\storage\port\storahci\storahci.c:580) 	Completed Commands: 1
+(drivers\storage\port\storahci\storahci.c:799) AhciHwStartIo()
+(drivers\storage\port\storahci\storahci.c:2024) DeviceRequestReadWrite()
+(drivers\storage\port\storahci\storahci.c:1877) AhciATAPICommand()
+(drivers\storage\port\storahci\storahci.c:1571) AhciProcessIO()
+(drivers\storage\port\storahci\storahci.c:1572) 	PathId: 2
+(drivers\storage\port\storahci\storahci.c:1381) AhciProcessSrb()
+(drivers\storage\port\storahci\storahci.c:1279) AhciATAPI_CFIS()
+(drivers\storage\port\storahci\storahci.c:1329) AhciBuild_PRDT()
+(drivers\storage\port\storahci\storahci.c:1503) AhciActivatePort()
+(drivers\storage\port\storahci\storahci.c:635) AhciInterruptHandler()
+(drivers\storage\port\storahci\storahci.c:636) 	Port Number: 2
+(drivers\storage\port\storahci\storahci.c:576) AhciCompleteIssuedSrb()
+(drivers\storage\port\storahci\storahci.c:580) 	Completed Commands: 1
+(drivers\storage\port\storahci\storahci.c:799) AhciHwStartIo()
+(drivers\storage\port\storahci\storahci.c:2024) DeviceRequestReadWrite()
+(drivers\storage\port\storahci\storahci.c:1877) AhciATAPICommand()
+(drivers\storage\port\storahci\storahci.c:1571) AhciProcessIO()
+(drivers\storage\port\storahci\storahci.c:1572) 	PathId: 2
+(drivers\storage\port\storahci\storahci.c:1381) AhciProcessSrb()
+(drivers\storage\port\storahci\storahci.c:1279) AhciATAPI_CFIS()
+(drivers\storage\port\storahci\storahci.c:1329) AhciBuild_PRDT()
+(drivers\storage\port\storahci\storahci.c:1503) AhciActivatePort()
+(drivers\storage\port\storahci\storahci.c:635) AhciInterruptHandler()
+(drivers\storage\port\storahci\storahci.c:636) 	Port Number: 2
+(drivers\storage\port\storahci\storahci.c:576) AhciCompleteIssuedSrb()
+(drivers\storage\port\storahci\storahci.c:580) 	Completed Commands: 1
+(drivers\storage\port\storahci\storahci.c:799) AhciHwStartIo()
+(drivers\storage\port\storahci\storahci.c:2024) DeviceRequestReadWrite()
+(drivers\storage\port\storahci\storahci.c:1877) AhciATAPICommand()
+(drivers\storage\port\storahci\storahci.c:1571) AhciProcessIO()
+(drivers\storage\port\storahci\storahci.c:1572) 	PathId: 2
+(drivers\storage\port\storahci\storahci.c:1381) AhciProcessSrb()
+(drivers\storage\port\storahci\storahci.c:1279) AhciATAPI_CFIS()
+(drivers\storage\port\storahci\storahci.c:1329) AhciBuild_PRDT()
+(drivers\storage\port\storahci\storahci.c:1503) AhciActivatePort()
+(drivers\storage\port\storahci\storahci.c:635) AhciInterruptHandler()
+(drivers\storage\port\storahci\storahci.c:636) 	Port Number: 2
+(drivers\storage\port\storahci\storahci.c:576) AhciCompleteIssuedSrb()
+(drivers\storage\port\storahci\storahci.c:580) 	Completed Commands: 1
+(drivers\storage\port\storahci\storahci.c:799) AhciHwStartIo()
+(drivers\storage\port\storahci\storahci.c:2196) DeviceRequestComplete()
+(drivers\storage\port\storahci\storahci.c:799) AhciHwStartIo()
+(drivers\storage\port\storahci\storahci.c:2024) DeviceRequestReadWrite()
+(drivers\storage\port\storahci\storahci.c:1877) AhciATAPICommand()
+(drivers\storage\port\storahci\storahci.c:1571) AhciProcessIO()
+(drivers\storage\port\storahci\storahci.c:1572) 	PathId: 2
+(drivers\storage\port\storahci\storahci.c:1381) AhciProcessSrb()
+(drivers\storage\port\storahci\storahci.c:1279) AhciATAPI_CFIS()
+(drivers\storage\port\storahci\storahci.c:1329) AhciBuild_PRDT()
+(drivers\storage\port\storahci\storahci.c:1503) AhciActivatePort()
+(drivers\storage\port\storahci\storahci.c:635) AhciInterruptHandler()
+(drivers\storage\port\storahci\storahci.c:636) 	Port Number: 2
+(drivers\storage\port\storahci\storahci.c:576) AhciCompleteIssuedSrb()
+(drivers\storage\port\storahci\storahci.c:580) 	Completed Commands: 1
+(drivers\storage\port\storahci\storahci.c:799) AhciHwStartIo()
+(drivers\storage\port\storahci\storahci.c:2024) DeviceRequestReadWrite()
+(drivers\storage\port\storahci\storahci.c:1877) AhciATAPICommand()
+(drivers\storage\port\storahci\storahci.c:1571) AhciProcessIO()
+(drivers\storage\port\storahci\storahci.c:1572) 	PathId: 2
+(drivers\storage\port\storahci\storahci.c:1381) AhciProcessSrb()
+(drivers\storage\port\storahci\storahci.c:1279) AhciATAPI_CFIS()
+(drivers\storage\port\storahci\storahci.c:1329) AhciBuild_PRDT()
+(drivers\storage\port\storahci\storahci.c:1503) AhciActivatePort()
+(drivers\storage\port\storahci\storahci.c:635) AhciInterruptHandler()
+(drivers\storage\port\storahci\storahci.c:636) 	Port Number: 2
+(drivers\storage\port\storahci\storahci.c:576) AhciCompleteIssuedSrb()
+(drivers\storage\port\storahci\storahci.c:580) 	Completed Commands: 1
+(drivers\storage\port\storahci\storahci.c:799) AhciHwStartIo()
+(drivers\storage\port\storahci\storahci.c:2024) DeviceRequestReadWrite()
+(drivers\storage\port\storahci\storahci.c:1877) AhciATAPICommand()
+(drivers\storage\port\storahci\storahci.c:1571) AhciProcessIO()
+(drivers\storage\port\storahci\storahci.c:1572) 	PathId: 2
+(drivers\storage\port\storahci\storahci.c:1381) AhciProcessSrb()
+(drivers\storage\port\storahci\storahci.c:1279) AhciATAPI_CFIS()
+(drivers\storage\port\storahci\storahci.c:1329) AhciBuild_PRDT()
+(drivers\storage\port\storahci\storahci.c:1503) AhciActivatePort()
+(drivers\storage\port\storahci\storahci.c:635) AhciInterruptHandler()
+(drivers\storage\port\storahci\storahci.c:636) 	Port Number: 2
+(drivers\storage\port\storahci\storahci.c:576) AhciCompleteIssuedSrb()
+(drivers\storage\port\storahci\storahci.c:580) 	Completed Commands: 1
+(drivers\storage\port\storahci\storahci.c:799) AhciHwStartIo()
+(drivers\storage\port\storahci\storahci.c:2024) DeviceRequestReadWrite()
+(drivers\storage\port\storahci\storahci.c:1877) AhciATAPICommand()
+(drivers\storage\port\storahci\storahci.c:1571) AhciProcessIO()
+(drivers\storage\port\storahci\storahci.c:1572) 	PathId: 2
+(drivers\storage\port\storahci\storahci.c:1381) AhciProcessSrb()
+(drivers\storage\port\storahci\storahci.c:1279) AhciATAPI_CFIS()
+(drivers\storage\port\storahci\storahci.c:1329) AhciBuild_PRDT()
+(drivers\storage\port\storahci\storahci.c:1503) AhciActivatePort()
+(drivers\storage\port\storahci\storahci.c:635) AhciInterruptHandler()
+(drivers\storage\port\storahci\storahci.c:636) 	Port Number: 2
+(drivers\storage\port\storahci\storahci.c:576) AhciCompleteIssuedSrb()
+(drivers\storage\port\storahci\storahci.c:580) 	Completed Commands: 1
+(drivers\storage\port\storahci\storahci.c:799) AhciHwStartIo()
+(drivers\storage\port\storahci\storahci.c:2024) DeviceRequestReadWrite()
+(drivers\storage\port\storahci\storahci.c:1877) AhciATAPICommand()
+(drivers\storage\port\storahci\storahci.c:1571) AhciProcessIO()
+(drivers\storage\port\storahci\storahci.c:1572) 	PathId: 2
+(drivers\storage\port\storahci\storahci.c:1381) AhciProcessSrb()
+(drivers\storage\port\storahci\storahci.c:1279) AhciATAPI_CFIS()
+(drivers\storage\port\storahci\storahci.c:1329) AhciBuild_PRDT()
+(drivers\storage\port\storahci\storahci.c:1503) AhciActivatePort()
+(drivers\storage\port\storahci\storahci.c:635) AhciInterruptHandler()
+(drivers\storage\port\storahci\storahci.c:636) 	Port Number: 2
+(drivers\storage\port\storahci\storahci.c:576) AhciCompleteIssuedSrb()
+(drivers\storage\port\storahci\storahci.c:580) 	Completed Commands: 1
+(drivers\storage\port\storahci\storahci.c:799) AhciHwStartIo()
+(drivers\storage\port\storahci\storahci.c:2196) DeviceRequestComplete()
+(drivers\storage\port\storahci\storahci.c:799) AhciHwStartIo()
+(drivers\storage\port\storahci\storahci.c:2024) DeviceRequestReadWrite()
+(drivers\storage\port\storahci\storahci.c:1877) AhciATAPICommand()
+(drivers\storage\port\storahci\storahci.c:1571) AhciProcessIO()
+(drivers\storage\port\storahci\storahci.c:1572) 	PathId: 2
+(drivers\storage\port\storahci\storahci.c:1381) AhciProcessSrb()
+(drivers\storage\port\storahci\storahci.c:1279) AhciATAPI_CFIS()
+(drivers\storage\port\storahci\storahci.c:1329) AhciBuild_PRDT()
+(drivers\storage\port\storahci\storahci.c:1503) AhciActivatePort()
+(drivers\storage\port\storahci\storahci.c:635) AhciInterruptHandler()
+(drivers\storage\port\storahci\storahci.c:636) 	Port Number: 2
+(drivers\storage\port\storahci\storahci.c:576) AhciCompleteIssuedSrb()
+(drivers\storage\port\storahci\storahci.c:580) 	Completed Commands: 1
+(drivers\storage\port\storahci\storahci.c:799) AhciHwStartIo()
+(drivers\storage\port\storahci\storahci.c:2024) DeviceRequestReadWrite()
+(drivers\storage\port\storahci\storahci.c:1877) AhciATAPICommand()
+(drivers\storage\port\storahci\storahci.c:1571) AhciProcessIO()
+(drivers\storage\port\storahci\storahci.c:1572) 	PathId: 2
+(drivers\storage\port\storahci\storahci.c:1381) AhciProcessSrb()
+(drivers\storage\port\storahci\storahci.c:1279) AhciATAPI_CFIS()
+(drivers\storage\port\storahci\storahci.c:1329) AhciBuild_PRDT()
+(drivers\storage\port\storahci\storahci.c:1503) AhciActivatePort()
+(drivers\storage\port\storahci\storahci.c:635) AhciInterruptHandler()
+(drivers\storage\port\storahci\storahci.c:636) 	Port Number: 2
+(drivers\storage\port\storahci\storahci.c:576) AhciCompleteIssuedSrb()
+(drivers\storage\port\storahci\storahci.c:580) 	Completed Commands: 1
+(drivers\storage\port\storahci\storahci.c:799) AhciHwStartIo()
+(drivers\storage\port\storahci\storahci.c:2024) DeviceRequestReadWrite()
+(drivers\storage\port\storahci\storahci.c:1877) AhciATAPICommand()
+(drivers\storage\port\storahci\storahci.c:1571) AhciProcessIO()
+(drivers\storage\port\storahci\storahci.c:1572) 	PathId: 2
+(drivers\storage\port\storahci\storahci.c:1381) AhciProcessSrb()
+(drivers\storage\port\storahci\storahci.c:1279) AhciATAPI_CFIS()
+(drivers\storage\port\storahci\storahci.c:1329) AhciBuild_PRDT()
+(drivers\storage\port\storahci\storahci.c:1503) AhciActivatePort()
+(drivers\storage\port\storahci\storahci.c:635) AhciInterruptHandler()
+(drivers\storage\port\storahci\storahci.c:636) 	Port Number: 2
+(drivers\storage\port\storahci\storahci.c:576) AhciCompleteIssuedSrb()
+(drivers\storage\port\storahci\storahci.c:580) 	Completed Commands: 1
+(drivers\storage\port\storahci\storahci.c:799) AhciHwStartIo()
+(drivers\storage\port\storahci\storahci.c:2024) DeviceRequestReadWrite()
+(drivers\storage\port\storahci\storahci.c:1877) AhciATAPICommand()
+(drivers\storage\port\storahci\storahci.c:1571) AhciProcessIO()
+(drivers\storage\port\storahci\storahci.c:1572) 	PathId: 2
+(drivers\storage\port\storahci\storahci.c:1381) AhciProcessSrb()
+(drivers\storage\port\storahci\storahci.c:1279) AhciATAPI_CFIS()
+(drivers\storage\port\storahci\storahci.c:1329) AhciBuild_PRDT()
+(drivers\storage\port\storahci\storahci.c:1503) AhciActivatePort()
+(drivers\storage\port\storahci\storahci.c:635) AhciInterruptHandler()
+(drivers\storage\port\storahci\storahci.c:636) 	Port Number: 2
+(drivers\storage\port\storahci\storahci.c:576) AhciCompleteIssuedSrb()
+(drivers\storage\port\storahci\storahci.c:580) 	Completed Commands: 1
+(drivers\storage\port\storahci\storahci.c:799) AhciHwStartIo()
+(drivers\storage\port\storahci\storahci.c:2196) DeviceRequestComplete()
+(drivers\storage\port\storahci\storahci.c:799) AhciHwStartIo()
+(drivers\storage\port\storahci\storahci.c:2024) DeviceRequestReadWrite()
+(drivers\storage\port\storahci\storahci.c:1877) AhciATAPICommand()
+(drivers\storage\port\storahci\storahci.c:1571) AhciProcessIO()
+(drivers\storage\port\storahci\storahci.c:1572) 	PathId: 2
+(drivers\storage\port\storahci\storahci.c:1381) AhciProcessSrb()
+(drivers\storage\port\storahci\storahci.c:1279) AhciATAPI_CFIS()
+(drivers\storage\port\storahci\storahci.c:1329) AhciBuild_PRDT()
+(drivers\storage\port\storahci\storahci.c:1503) AhciActivatePort()
+(drivers\storage\port\storahci\storahci.c:635) AhciInterruptHandler()
+(drivers\storage\port\storahci\storahci.c:636) 	Port Number: 2
+(drivers\storage\port\storahci\storahci.c:576) AhciCompleteIssuedSrb()
+(drivers\storage\port\storahci\storahci.c:580) 	Completed Commands: 1
+(drivers\storage\port\storahci\storahci.c:799) AhciHwStartIo()
+(drivers\storage\port\storahci\storahci.c:2024) DeviceRequestReadWrite()
+(drivers\storage\port\storahci\storahci.c:1877) AhciATAPICommand()
+(drivers\storage\port\storahci\storahci.c:1571) AhciProcessIO()
+(drivers\storage\port\storahci\storahci.c:1572) 	PathId: 2
+(drivers\storage\port\storahci\storahci.c:1381) AhciProcessSrb()
+(drivers\storage\port\storahci\storahci.c:1279) AhciATAPI_CFIS()
+(drivers\storage\port\storahci\storahci.c:1329) AhciBuild_PRDT()
+(drivers\storage\port\storahci\storahci.c:1503) AhciActivatePort()
+(drivers\storage\port\storahci\storahci.c:635) AhciInterruptHandler()
+(drivers\storage\port\storahci\storahci.c:636) 	Port Number: 2
+(drivers\storage\port\storahci\storahci.c:576) AhciCompleteIssuedSrb()
+(drivers\storage\port\storahci\storahci.c:580) 	Completed Commands: 1
+(drivers\storage\port\storahci\storahci.c:799) AhciHwStartIo()
+(drivers\storage\port\storahci\storahci.c:2024) DeviceRequestReadWrite()
+(drivers\storage\port\storahci\storahci.c:1877) AhciATAPICommand()
+(drivers\storage\port\storahci\storahci.c:1571) AhciProcessIO()
+(drivers\storage\port\storahci\storahci.c:1572) 	PathId: 2
+(drivers\storage\port\storahci\storahci.c:1381) AhciProcessSrb()
+(drivers\storage\port\storahci\storahci.c:1279) AhciATAPI_CFIS()
+(drivers\storage\port\storahci\storahci.c:1329) AhciBuild_PRDT()
+(drivers\storage\port\storahci\storahci.c:1503) AhciActivatePort()
+(drivers\storage\port\storahci\storahci.c:635) AhciInterruptHandler()
+(drivers\storage\port\storahci\storahci.c:636) 	Port Number: 2
+(drivers\storage\port\storahci\storahci.c:576) AhciCompleteIssuedSrb()
+(drivers\storage\port\storahci\storahci.c:580) 	Completed Commands: 1
+(drivers\storage\port\storahci\storahci.c:799) AhciHwStartIo()
+(drivers\storage\port\storahci\storahci.c:2024) DeviceRequestReadWrite()
+(drivers\storage\port\storahci\storahci.c:1877) AhciATAPICommand()
+(drivers\storage\port\storahci\storahci.c:1571) AhciProcessIO()
+(drivers\storage\port\storahci\storahci.c:1572) 	PathId: 2
+(drivers\storage\port\storahci\storahci.c:1381) AhciProcessSrb()
+(drivers\storage\port\storahci\storahci.c:1279) AhciATAPI_CFIS()
+(drivers\storage\port\storahci\storahci.c:1329) AhciBuild_PRDT()
+(drivers\storage\port\storahci\storahci.c:1503) AhciActivatePort()
+(drivers\storage\port\storahci\storahci.c:635) AhciInterruptHandler()
+(drivers\storage\port\storahci\storahci.c:636) 	Port Number: 2
+(drivers\storage\port\storahci\storahci.c:576) AhciCompleteIssuedSrb()
+(drivers\storage\port\storahci\storahci.c:580) 	Completed Commands: 1
+(drivers\storage\port\storahci\storahci.c:799) AhciHwStartIo()
+(drivers\storage\port\storahci\storahci.c:2024) DeviceRequestReadWrite()
+(drivers\storage\port\storahci\storahci.c:1877) AhciATAPICommand()
+(drivers\storage\port\storahci\storahci.c:1571) AhciProcessIO()
+(drivers\storage\port\storahci\storahci.c:1572) 	PathId: 2
+(drivers\storage\port\storahci\storahci.c:1381) AhciProcessSrb()
+(drivers\storage\port\storahci\storahci.c:1279) AhciATAPI_CFIS()
+(drivers\storage\port\storahci\storahci.c:1329) AhciBuild_PRDT()
+(drivers\storage\port\storahci\storahci.c:1503) AhciActivatePort()
+(drivers\storage\port\storahci\storahci.c:635) AhciInterruptHandler()
+(drivers\storage\port\storahci\storahci.c:636) 	Port Number: 2
+(drivers\storage\port\storahci\storahci.c:576) AhciCompleteIssuedSrb()
+(drivers\storage\port\storahci\storahci.c:580) 	Completed Commands: 1
+(drivers\storage\port\storahci\storahci.c:799) AhciHwStartIo()
+(drivers\storage\port\storahci\storahci.c:2196) DeviceRequestComplete()
+(drivers\storage\port\storahci\storahci.c:799) AhciHwStartIo()
+(drivers\storage\port\storahci\storahci.c:2024) DeviceRequestReadWrite()
+(drivers\storage\port\storahci\storahci.c:1877) AhciATAPICommand()
+(drivers\storage\port\storahci\storahci.c:1571) AhciProcessIO()
+(drivers\storage\port\storahci\storahci.c:1572) 	PathId: 2
+(drivers\storage\port\storahci\storahci.c:1381) AhciProcessSrb()
+(drivers\storage\port\storahci\storahci.c:1279) AhciATAPI_CFIS()
+(drivers\storage\port\storahci\storahci.c:1329) AhciBuild_PRDT()
+(drivers\storage\port\storahci\storahci.c:1503) AhciActivatePort()
+(drivers\storage\port\storahci\storahci.c:635) AhciInterruptHandler()
+(drivers\storage\port\storahci\storahci.c:636) 	Port Number: 2
+(drivers\storage\port\storahci\storahci.c:576) AhciCompleteIssuedSrb()
+(drivers\storage\port\storahci\storahci.c:580) 	Completed Commands: 1
+(drivers\storage\port\storahci\storahci.c:799) AhciHwStartIo()
+(drivers\storage\port\storahci\storahci.c:2024) DeviceRequestReadWrite()
+(drivers\storage\port\storahci\storahci.c:1877) AhciATAPICommand()
+(drivers\storage\port\storahci\storahci.c:1571) AhciProcessIO()
+(drivers\storage\port\storahci\storahci.c:1572) 	PathId: 2
+(drivers\storage\port\storahci\storahci.c:1381) AhciProcessSrb()
+(drivers\storage\port\storahci\storahci.c:1279) AhciATAPI_CFIS()
+(drivers\storage\port\storahci\storahci.c:1329) AhciBuild_PRDT()
+(drivers\storage\port\storahci\storahci.c:1503) AhciActivatePort()
+(drivers\storage\port\storahci\storahci.c:635) AhciInterruptHandler()
+(drivers\storage\port\storahci\storahci.c:636) 	Port Number: 2
+(drivers\storage\port\storahci\storahci.c:576) AhciCompleteIssuedSrb()
+(drivers\storage\port\storahci\storahci.c:580) 	Completed Commands: 1
+(drivers\storage\port\storahci\storahci.c:799) AhciHwStartIo()
+(drivers\storage\port\storahci\storahci.c:2024) DeviceRequestReadWrite()
+(drivers\storage\port\storahci\storahci.c:1877) AhciATAPICommand()
+(drivers\storage\port\storahci\storahci.c:1571) AhciProcessIO()
+(drivers\storage\port\storahci\storahci.c:1572) 	PathId: 2
+(drivers\storage\port\storahci\storahci.c:1381) AhciProcessSrb()
+(drivers\storage\port\storahci\storahci.c:1279) AhciATAPI_CFIS()
+(drivers\storage\port\storahci\storahci.c:1329) AhciBuild_PRDT()
+(drivers\storage\port\storahci\storahci.c:1503) AhciActivatePort()
+(drivers\storage\port\storahci\storahci.c:635) AhciInterruptHandler()
+(drivers\storage\port\storahci\storahci.c:636) 	Port Number: 2
+(drivers\storage\port\storahci\storahci.c:576) AhciCompleteIssuedSrb()
+(drivers\storage\port\storahci\storahci.c:580) 	Completed Commands: 1
+(drivers\storage\port\storahci\storahci.c:799) AhciHwStartIo()
+(drivers\storage\port\storahci\storahci.c:2024) DeviceRequestReadWrite()
+(drivers\storage\port\storahci\storahci.c:1877) AhciATAPICommand()
+(drivers\storage\port\storahci\storahci.c:1571) AhciProcessIO()
+(drivers\storage\port\storahci\storahci.c:1572) 	PathId: 2
+(drivers\storage\port\storahci\storahci.c:1381) AhciProcessSrb()
+(drivers\storage\port\storahci\storahci.c:1279) AhciATAPI_CFIS()
+(drivers\storage\port\storahci\storahci.c:1329) AhciBuild_PRDT()
+(drivers\storage\port\storahci\storahci.c:1503) AhciActivatePort()
+(drivers\storage\port\storahci\storahci.c:635) AhciInterruptHandler()
+(drivers\storage\port\storahci\storahci.c:636) 	Port Number: 2
+(drivers\storage\port\storahci\storahci.c:576) AhciCompleteIssuedSrb()
+(drivers\storage\port\storahci\storahci.c:580) 	Completed Commands: 1
+(drivers\storage\port\storahci\storahci.c:799) AhciHwStartIo()
+(drivers\storage\port\storahci\storahci.c:2196) DeviceRequestComplete()
+(drivers\storage\port\storahci\storahci.c:799) AhciHwStartIo()
+(drivers\storage\port\storahci\storahci.c:2024) DeviceRequestReadWrite()
+(drivers\storage\port\storahci\storahci.c:1877) AhciATAPICommand()
+(drivers\storage\port\storahci\storahci.c:1571) AhciProcessIO()
+(drivers\storage\port\storahci\storahci.c:1572) 	PathId: 2
+(drivers\storage\port\storahci\storahci.c:1381) AhciProcessSrb()
+(drivers\storage\port\storahci\storahci.c:1279) AhciATAPI_CFIS()
+(drivers\storage\port\storahci\storahci.c:1329) AhciBuild_PRDT()
+(drivers\storage\port\storahci\storahci.c:1503) AhciActivatePort()
+(drivers\storage\port\storahci\storahci.c:635) AhciInterruptHandler()
+(drivers\storage\port\storahci\storahci.c:636) 	Port Number: 2
+(drivers\storage\port\storahci\storahci.c:576) AhciCompleteIssuedSrb()
+(drivers\storage\port\storahci\storahci.c:580) 	Completed Commands: 1
+(drivers\storage\port\storahci\storahci.c:799) AhciHwStartIo()
+(drivers\storage\port\storahci\storahci.c:2024) DeviceRequestReadWrite()
+(drivers\storage\port\storahci\storahci.c:1877) AhciATAPICommand()
+(drivers\storage\port\storahci\storahci.c:1571) AhciProcessIO()
+(drivers\storage\port\storahci\storahci.c:1572) 	PathId: 2
+(drivers\storage\port\storahci\storahci.c:1381) AhciProcessSrb()
+(drivers\storage\port\storahci\storahci.c:1279) AhciATAPI_CFIS()
+(drivers\storage\port\storahci\storahci.c:1329) AhciBuild_PRDT()
+(drivers\storage\port\storahci\storahci.c:1503) AhciActivatePort()
+(drivers\storage\port\storahci\storahci.c:635) AhciInterruptHandler()
+(drivers\storage\port\storahci\storahci.c:636) 	Port Number: 2
+(drivers\storage\port\storahci\storahci.c:576) AhciCompleteIssuedSrb()
+(drivers\storage\port\storahci\storahci.c:580) 	Completed Commands: 1
+(drivers\storage\port\storahci\storahci.c:799) AhciHwStartIo()
+(drivers\storage\port\storahci\storahci.c:2024) DeviceRequestReadWrite()
+(drivers\storage\port\storahci\storahci.c:1877) AhciATAPICommand()
+(drivers\storage\port\storahci\storahci.c:1571) AhciProcessIO()
+(drivers\storage\port\storahci\storahci.c:1572) 	PathId: 2
+(drivers\storage\port\storahci\storahci.c:1381) AhciProcessSrb()
+(drivers\storage\port\storahci\storahci.c:1279) AhciATAPI_CFIS()
+(drivers\storage\port\storahci\storahci.c:1329) AhciBuild_PRDT()
+(drivers\storage\port\storahci\storahci.c:1503) AhciActivatePort()
+(drivers\storage\port\storahci\storahci.c:635) AhciInterruptHandler()
+(drivers\storage\port\storahci\storahci.c:636) 	Port Number: 2
+(drivers\storage\port\storahci\storahci.c:576) AhciCompleteIssuedSrb()
+(drivers\storage\port\storahci\storahci.c:580) 	Completed Commands: 1
+(drivers\storage\port\storahci\storahci.c:799) AhciHwStartIo()
+(drivers\storage\port\storahci\storahci.c:2024) DeviceRequestReadWrite()
+(drivers\storage\port\storahci\storahci.c:1877) AhciATAPICommand()
+(drivers\storage\port\storahci\storahci.c:1571) AhciProcessIO()
+(drivers\storage\port\storahci\storahci.c:1572) 	PathId: 2
+(drivers\storage\port\storahci\storahci.c:1381) AhciProcessSrb()
+(drivers\storage\port\storahci\storahci.c:1279) AhciATAPI_CFIS()
+(drivers\storage\port\storahci\storahci.c:1329) AhciBuild_PRDT()
+(drivers\storage\port\storahci\storahci.c:1503) AhciActivatePort()
+(drivers\storage\port\storahci\storahci.c:635) AhciInterruptHandler()
+(drivers\storage\port\storahci\storahci.c:636) 	Port Number: 2
+(drivers\storage\port\storahci\storahci.c:576) AhciCompleteIssuedSrb()
+(drivers\storage\port\storahci\storahci.c:580) 	Completed Commands: 1
+(drivers\storage\port\storahci\storahci.c:799) AhciHwStartIo()
+(drivers\storage\port\storahci\storahci.c:2024) DeviceRequestReadWrite()
+(drivers\storage\port\storahci\storahci.c:1877) AhciATAPICommand()
+(drivers\storage\port\storahci\storahci.c:1571) AhciProcessIO()
+(drivers\storage\port\storahci\storahci.c:1572) 	PathId: 2
+(drivers\storage\port\storahci\storahci.c:1381) AhciProcessSrb()
+(drivers\storage\port\storahci\storahci.c:1279) AhciATAPI_CFIS()
+(drivers\storage\port\storahci\storahci.c:1329) AhciBuild_PRDT()
+(drivers\storage\port\storahci\storahci.c:1503) AhciActivatePort()
+(drivers\storage\port\storahci\storahci.c:635) AhciInterruptHandler()
+(drivers\storage\port\storahci\storahci.c:636) 	Port Number: 2
+(drivers\storage\port\storahci\storahci.c:576) AhciCompleteIssuedSrb()
+(drivers\storage\port\storahci\storahci.c:580) 	Completed Commands: 1
+(drivers\storage\port\storahci\storahci.c:799) AhciHwStartIo()
+(drivers\storage\port\storahci\storahci.c:2196) DeviceRequestComplete()
+(drivers\storage\port\storahci\storahci.c:799) AhciHwStartIo()
+(drivers\storage\port\storahci\storahci.c:2024) DeviceRequestReadWrite()
+(drivers\storage\port\storahci\storahci.c:1877) AhciATAPICommand()
+(drivers\storage\port\storahci\storahci.c:1571) AhciProcessIO()
+(drivers\storage\port\storahci\storahci.c:1572) 	PathId: 2
+(drivers\storage\port\storahci\storahci.c:1381) AhciProcessSrb()
+(drivers\storage\port\storahci\storahci.c:1279) AhciATAPI_CFIS()
+(drivers\storage\port\storahci\storahci.c:1329) AhciBuild_PRDT()
+(drivers\storage\port\storahci\storahci.c:1503) AhciActivatePort()
+(drivers\storage\port\storahci\storahci.c:635) AhciInterruptHandler()
+(drivers\storage\port\storahci\storahci.c:636) 	Port Number: 2
+(drivers\storage\port\storahci\storahci.c:576) AhciCompleteIssuedSrb()
+(drivers\storage\port\storahci\storahci.c:580) 	Completed Commands: 1
+(drivers\storage\port\storahci\storahci.c:799) AhciHwStartIo()
+(drivers\storage\port\storahci\storahci.c:2024) DeviceRequestReadWrite()
+(drivers\storage\port\storahci\storahci.c:1877) AhciATAPICommand()
+(drivers\storage\port\storahci\storahci.c:1571) AhciProcessIO()
+(drivers\storage\port\storahci\storahci.c:1572) 	PathId: 2
+(drivers\storage\port\storahci\storahci.c:1381) AhciProcessSrb()
+(drivers\storage\port\storahci\storahci.c:1279) AhciATAPI_CFIS()
+(drivers\storage\port\storahci\storahci.c:1329) AhciBuild_PRDT()
+(drivers\storage\port\storahci\storahci.c:1503) AhciActivatePort()
+(drivers\storage\port\storahci\storahci.c:635) AhciInterruptHandler()
+(drivers\storage\port\storahci\storahci.c:636) 	Port Number: 2
+(drivers\storage\port\storahci\storahci.c:576) AhciCompleteIssuedSrb()
+(drivers\storage\port\storahci\storahci.c:580) 	Completed Commands: 1
+(drivers\storage\port\storahci\storahci.c:799) AhciHwStartIo()
+(drivers\storage\port\storahci\storahci.c:2024) DeviceRequestReadWrite()
+(drivers\storage\port\storahci\storahci.c:1877) AhciATAPICommand()
+(drivers\storage\port\storahci\storahci.c:1571) AhciProcessIO()
+(drivers\storage\port\storahci\storahci.c:1572) 	PathId: 2
+(drivers\storage\port\storahci\storahci.c:1381) AhciProcessSrb()
+(drivers\storage\port\storahci\storahci.c:1279) AhciATAPI_CFIS()
+(drivers\storage\port\storahci\storahci.c:1329) AhciBuild_PRDT()
+(drivers\storage\port\storahci\storahci.c:1503) AhciActivatePort()
+(drivers\storage\port\storahci\storahci.c:635) AhciInterruptHandler()
+(drivers\storage\port\storahci\storahci.c:636) 	Port Number: 2
+(drivers\storage\port\storahci\storahci.c:576) AhciCompleteIssuedSrb()
+(drivers\storage\port\storahci\storahci.c:580) 	Completed Commands: 1
+(drivers\storage\port\storahci\storahci.c:799) AhciHwStartIo()
+(drivers\storage\port\storahci\storahci.c:2024) DeviceRequestReadWrite()
+(drivers\storage\port\storahci\storahci.c:1877) AhciATAPICommand()
+(drivers\storage\port\storahci\storahci.c:1571) AhciProcessIO()
+(drivers\storage\port\storahci\storahci.c:1572) 	PathId: 2
+(drivers\storage\port\storahci\storahci.c:1381) AhciProcessSrb()
+(drivers\storage\port\storahci\storahci.c:1279) AhciATAPI_CFIS()
+(drivers\storage\port\storahci\storahci.c:1329) AhciBuild_PRDT()
+(drivers\storage\port\storahci\storahci.c:1503) AhciActivatePort()
+(drivers\storage\port\storahci\storahci.c:635) AhciInterruptHandler()
+(drivers\storage\port\storahci\storahci.c:636) 	Port Number: 2
+(drivers\storage\port\storahci\storahci.c:576) AhciCompleteIssuedSrb()
+(drivers\storage\port\storahci\storahci.c:580) 	Completed Commands: 1
+(drivers\storage\port\storahci\storahci.c:799) AhciHwStartIo()
+(drivers\storage\port\storahci\storahci.c:2196) DeviceRequestComplete()
+(drivers\storage\port\storahci\storahci.c:799) AhciHwStartIo()
+(drivers\storage\port\storahci\storahci.c:2024) DeviceRequestReadWrite()
+(drivers\storage\port\storahci\storahci.c:1877) AhciATAPICommand()
+(drivers\storage\port\storahci\storahci.c:1571) AhciProcessIO()
+(drivers\storage\port\storahci\storahci.c:1572) 	PathId: 2
+(drivers\storage\port\storahci\storahci.c:1381) AhciProcessSrb()
+(drivers\storage\port\storahci\storahci.c:1279) AhciATAPI_CFIS()
+(drivers\storage\port\storahci\storahci.c:1329) AhciBuild_PRDT()
+(drivers\storage\port\storahci\storahci.c:1503) AhciActivatePort()
+(drivers\storage\port\storahci\storahci.c:635) AhciInterruptHandler()
+(drivers\storage\port\storahci\storahci.c:636) 	Port Number: 2
+(drivers\storage\port\storahci\storahci.c:576) AhciCompleteIssuedSrb()
+(drivers\storage\port\storahci\storahci.c:580) 	Completed Commands: 1
+(drivers\storage\port\storahci\storahci.c:799) AhciHwStartIo()
+(drivers\storage\port\storahci\storahci.c:2024) DeviceRequestReadWrite()
+(drivers\storage\port\storahci\storahci.c:1877) AhciATAPICommand()
+(drivers\storage\port\storahci\storahci.c:1571) AhciProcessIO()
+(drivers\storage\port\storahci\storahci.c:1572) 	PathId: 2
+(drivers\storage\port\storahci\storahci.c:1381) AhciProcessSrb()
+(drivers\storage\port\storahci\storahci.c:1279) AhciATAPI_CFIS()
+(drivers\storage\port\storahci\storahci.c:1329) AhciBuild_PRDT()
+(drivers\storage\port\storahci\storahci.c:1503) AhciActivatePort()
+(drivers\storage\port\storahci\storahci.c:635) AhciInterruptHandler()
+(drivers\storage\port\storahci\storahci.c:636) 	Port Number: 2
+(drivers\storage\port\storahci\storahci.c:576) AhciCompleteIssuedSrb()
+(drivers\storage\port\storahci\storahci.c:580) 	Completed Commands: 1
+(drivers\storage\port\storahci\storahci.c:799) AhciHwStartIo()
+(drivers\storage\port\storahci\storahci.c:2024) DeviceRequestReadWrite()
+(drivers\storage\port\storahci\storahci.c:1877) AhciATAPICommand()
+(drivers\storage\port\storahci\storahci.c:1571) AhciProcessIO()
+(drivers\storage\port\storahci\storahci.c:1572) 	PathId: 2
+(drivers\storage\port\storahci\storahci.c:1381) AhciProcessSrb()
+(drivers\storage\port\storahci\storahci.c:1279) AhciATAPI_CFIS()
+(drivers\storage\port\storahci\storahci.c:1329) AhciBuild_PRDT()
+(drivers\storage\port\storahci\storahci.c:1503) AhciActivatePort()
+(drivers\storage\port\storahci\storahci.c:635) AhciInterruptHandler()
+(drivers\storage\port\storahci\storahci.c:636) 	Port Number: 2
+(drivers\storage\port\storahci\storahci.c:576) AhciCompleteIssuedSrb()
+(drivers\storage\port\storahci\storahci.c:580) 	Completed Commands: 1
+(drivers\storage\port\storahci\storahci.c:799) AhciHwStartIo()
+(drivers\storage\port\storahci\storahci.c:2024) DeviceRequestReadWrite()
+(drivers\storage\port\storahci\storahci.c:1877) AhciATAPICommand()
+(drivers\storage\port\storahci\storahci.c:1571) AhciProcessIO()
+(drivers\storage\port\storahci\storahci.c:1572) 	PathId: 2
+(drivers\storage\port\storahci\storahci.c:1381) AhciProcessSrb()
+(drivers\storage\port\storahci\storahci.c:1279) AhciATAPI_CFIS()
+(drivers\storage\port\storahci\storahci.c:1329) AhciBuild_PRDT()
+(drivers\storage\port\storahci\storahci.c:1503) AhciActivatePort()
+(drivers\storage\port\storahci\storahci.c:635) AhciInterruptHandler()
+(drivers\storage\port\storahci\storahci.c:636) 	Port Number: 2
+(drivers\storage\port\storahci\storahci.c:576) AhciCompleteIssuedSrb()
+(drivers\storage\port\storahci\storahci.c:580) 	Completed Commands: 1
+(drivers\storage\port\storahci\storahci.c:799) AhciHwStartIo()
+(drivers\storage\port\storahci\storahci.c:2024) DeviceRequestReadWrite()
+(drivers\storage\port\storahci\storahci.c:1877) AhciATAPICommand()
+(drivers\storage\port\storahci\storahci.c:1571) AhciProcessIO()
+(drivers\storage\port\storahci\storahci.c:1572) 	PathId: 2
+(drivers\storage\port\storahci\storahci.c:1381) AhciProcessSrb()
+(drivers\storage\port\storahci\storahci.c:1279) AhciATAPI_CFIS()
+(drivers\storage\port\storahci\storahci.c:1329) AhciBuild_PRDT()
+(drivers\storage\port\storahci\storahci.c:1503) AhciActivatePort()
+(drivers\storage\port\storahci\storahci.c:635) AhciInterruptHandler()
+(drivers\storage\port\storahci\storahci.c:636) 	Port Number: 2
+(drivers\storage\port\storahci\storahci.c:576) AhciCompleteIssuedSrb()
+(drivers\storage\port\storahci\storahci.c:580) 	Completed Commands: 1
+(drivers\storage\port\storahci\storahci.c:799) AhciHwStartIo()
+(drivers\storage\port\storahci\storahci.c:2196) DeviceRequestComplete()
+(drivers\storage\port\storahci\storahci.c:799) AhciHwStartIo()
+(drivers\storage\port\storahci\storahci.c:2024) DeviceRequestReadWrite()
+(drivers\storage\port\storahci\storahci.c:1877) AhciATAPICommand()
+(drivers\storage\port\storahci\storahci.c:1571) AhciProcessIO()
+(drivers\storage\port\storahci\storahci.c:1572) 	PathId: 2
+(drivers\storage\port\storahci\storahci.c:1381) AhciProcessSrb()
+(drivers\storage\port\storahci\storahci.c:1279) AhciATAPI_CFIS()
+(drivers\storage\port\storahci\storahci.c:1329) AhciBuild_PRDT()
+(drivers\storage\port\storahci\storahci.c:1503) AhciActivatePort()
+(drivers\storage\port\storahci\storahci.c:635) AhciInterruptHandler()
+(drivers\storage\port\storahci\storahci.c:636) 	Port Number: 2
+(drivers\storage\port\storahci\storahci.c:576) AhciCompleteIssuedSrb()
+(drivers\storage\port\storahci\storahci.c:580) 	Completed Commands: 1
+(drivers\storage\port\storahci\storahci.c:799) AhciHwStartIo()
+(drivers\storage\port\storahci\storahci.c:2024) DeviceRequestReadWrite()
+(drivers\storage\port\storahci\storahci.c:1877) AhciATAPICommand()
+(drivers\storage\port\storahci\storahci.c:1571) AhciProcessIO()
+(drivers\storage\port\storahci\storahci.c:1572) 	PathId: 2
+(drivers\storage\port\storahci\storahci.c:1381) AhciProcessSrb()
+(drivers\storage\port\storahci\storahci.c:1279) AhciATAPI_CFIS()
+(drivers\storage\port\storahci\storahci.c:1329) AhciBuild_PRDT()
+(drivers\storage\port\storahci\storahci.c:1503) AhciActivatePort()
+(drivers\storage\port\storahci\storahci.c:635) AhciInterruptHandler()
+(drivers\storage\port\storahci\storahci.c:636) 	Port Number: 2
+(drivers\storage\port\storahci\storahci.c:576) AhciCompleteIssuedSrb()
+(drivers\storage\port\storahci\storahci.c:580) 	Completed Commands: 1
+(drivers\storage\port\storahci\storahci.c:799) AhciHwStartIo()
+(drivers\storage\port\storahci\storahci.c:2024) DeviceRequestReadWrite()
+(drivers\storage\port\storahci\storahci.c:1877) AhciATAPICommand()
+(drivers\storage\port\storahci\storahci.c:1571) AhciProcessIO()
+(drivers\storage\port\storahci\storahci.c:1572) 	PathId: 2
+(drivers\storage\port\storahci\storahci.c:1381) AhciProcessSrb()
+(drivers\storage\port\storahci\storahci.c:1279) AhciATAPI_CFIS()
+(drivers\storage\port\storahci\storahci.c:1329) AhciBuild_PRDT()
+(drivers\storage\port\storahci\storahci.c:1503) AhciActivatePort()
+(drivers\storage\port\storahci\storahci.c:635) AhciInterruptHandler()
+(drivers\storage\port\storahci\storahci.c:636) 	Port Number: 2
+(drivers\storage\port\storahci\storahci.c:576) AhciCompleteIssuedSrb()
+(drivers\storage\port\storahci\storahci.c:580) 	Completed Commands: 1
+(drivers\storage\port\storahci\storahci.c:799) AhciHwStartIo()
+(drivers\storage\port\storahci\storahci.c:2024) DeviceRequestReadWrite()
+(drivers\storage\port\storahci\storahci.c:1877) AhciATAPICommand()
+(drivers\storage\port\storahci\storahci.c:1571) AhciProcessIO()
+(drivers\storage\port\storahci\storahci.c:1572) 	PathId: 2
+(drivers\storage\port\storahci\storahci.c:1381) AhciProcessSrb()
+(drivers\storage\port\storahci\storahci.c:1279) AhciATAPI_CFIS()
+(drivers\storage\port\storahci\storahci.c:1329) AhciBuild_PRDT()
+(drivers\storage\port\storahci\storahci.c:1503) AhciActivatePort()
+(drivers\storage\port\storahci\storahci.c:635) AhciInterruptHandler()
+(drivers\storage\port\storahci\storahci.c:636) 	Port Number: 2
+(drivers\storage\port\storahci\storahci.c:576) AhciCompleteIssuedSrb()
+(drivers\storage\port\storahci\storahci.c:580) 	Completed Commands: 1
+(drivers\storage\port\storahci\storahci.c:799) AhciHwStartIo()
+(drivers\storage\port\storahci\storahci.c:2196) DeviceRequestComplete()
+(drivers\storage\port\storahci\storahci.c:799) AhciHwStartIo()
+(drivers\storage\port\storahci\storahci.c:2024) DeviceRequestReadWrite()
+(drivers\storage\port\storahci\storahci.c:1877) AhciATAPICommand()
+(drivers\storage\port\storahci\storahci.c:1571) AhciProcessIO()
+(drivers\storage\port\storahci\storahci.c:1572) 	PathId: 2
+(drivers\storage\port\storahci\storahci.c:1381) AhciProcessSrb()
+(drivers\storage\port\storahci\storahci.c:1279) AhciATAPI_CFIS()
+(drivers\storage\port\storahci\storahci.c:1329) AhciBuild_PRDT()
+(drivers\storage\port\storahci\storahci.c:1503) AhciActivatePort()
+(drivers\storage\port\storahci\storahci.c:635) AhciInterruptHandler()
+(drivers\storage\port\storahci\storahci.c:636) 	Port Number: 2
+(drivers\storage\port\storahci\storahci.c:576) AhciCompleteIssuedSrb()
+(drivers\storage\port\storahci\storahci.c:580) 	Completed Commands: 1
+(drivers\storage\port\storahci\storahci.c:799) AhciHwStartIo()
+(drivers\storage\port\storahci\storahci.c:2024) DeviceRequestReadWrite()
+(drivers\storage\port\storahci\storahci.c:1877) AhciATAPICommand()
+(drivers\storage\port\storahci\storahci.c:1571) AhciProcessIO()
+(drivers\storage\port\storahci\storahci.c:1572) 	PathId: 2
+(drivers\storage\port\storahci\storahci.c:1381) AhciProcessSrb()
+(drivers\storage\port\storahci\storahci.c:1279) AhciATAPI_CFIS()
+(drivers\storage\port\storahci\storahci.c:1329) AhciBuild_PRDT()
+(drivers\storage\port\storahci\storahci.c:1503) AhciActivatePort()
+(drivers\storage\port\storahci\storahci.c:635) AhciInterruptHandler()
+(drivers\storage\port\storahci\storahci.c:636) 	Port Number: 2
+(drivers\storage\port\storahci\storahci.c:576) AhciCompleteIssuedSrb()
+(drivers\storage\port\storahci\storahci.c:580) 	Completed Commands: 1
+(drivers\storage\port\storahci\storahci.c:799) AhciHwStartIo()
+(drivers\storage\port\storahci\storahci.c:2024) DeviceRequestReadWrite()
+(drivers\storage\port\storahci\storahci.c:1877) AhciATAPICommand()
+(drivers\storage\port\storahci\storahci.c:1571) AhciProcessIO()
+(drivers\storage\port\storahci\storahci.c:1572) 	PathId: 2
+(drivers\storage\port\storahci\storahci.c:1381) AhciProcessSrb()
+(drivers\storage\port\storahci\storahci.c:1279) AhciATAPI_CFIS()
+(drivers\storage\port\storahci\storahci.c:1329) AhciBuild_PRDT()
+(drivers\storage\port\storahci\storahci.c:1503) AhciActivatePort()
+(drivers\storage\port\storahci\storahci.c:635) AhciInterruptHandler()
+(drivers\storage\port\storahci\storahci.c:636) 	Port Number: 2
+(drivers\storage\port\storahci\storahci.c:576) AhciCompleteIssuedSrb()
+(drivers\storage\port\storahci\storahci.c:580) 	Completed Commands: 1
+(drivers\storage\port\storahci\storahci.c:799) AhciHwStartIo()
+(drivers\storage\port\storahci\storahci.c:2024) DeviceRequestReadWrite()
+(drivers\storage\port\storahci\storahci.c:1877) AhciATAPICommand()
+(drivers\storage\port\storahci\storahci.c:1571) AhciProcessIO()
+(drivers\storage\port\storahci\storahci.c:1572) 	PathId: 2
+(drivers\storage\port\storahci\storahci.c:1381) AhciProcessSrb()
+(drivers\storage\port\storahci\storahci.c:1279) AhciATAPI_CFIS()
+(drivers\storage\port\storahci\storahci.c:1329) AhciBuild_PRDT()
+(drivers\storage\port\storahci\storahci.c:1503) AhciActivatePort()
+(drivers\storage\port\storahci\storahci.c:635) AhciInterruptHandler()
+(drivers\storage\port\storahci\storahci.c:636) 	Port Number: 2
+(drivers\storage\port\storahci\storahci.c:576) AhciCompleteIssuedSrb()
+(drivers\storage\port\storahci\storahci.c:580) 	Completed Commands: 1
+(drivers\storage\port\storahci\storahci.c:799) AhciHwStartIo()
+(drivers\storage\port\storahci\storahci.c:2024) DeviceRequestReadWrite()
+(drivers\storage\port\storahci\storahci.c:1877) AhciATAPICommand()
+(drivers\storage\port\storahci\storahci.c:1571) AhciProcessIO()
+(drivers\storage\port\storahci\storahci.c:1572) 	PathId: 2
+(drivers\storage\port\storahci\storahci.c:1381) AhciProcessSrb()
+(drivers\storage\port\storahci\storahci.c:1279) AhciATAPI_CFIS()
+(drivers\storage\port\storahci\storahci.c:1329) AhciBuild_PRDT()
+(drivers\storage\port\storahci\storahci.c:1503) AhciActivatePort()
+(drivers\storage\port\storahci\storahci.c:635) AhciInterruptHandler()
+(drivers\storage\port\storahci\storahci.c:636) 	Port Number: 2
+(drivers\storage\port\storahci\storahci.c:576) AhciCompleteIssuedSrb()
+(drivers\storage\port\storahci\storahci.c:580) 	Completed Commands: 1
+(drivers\storage\port\storahci\storahci.c:799) AhciHwStartIo()
+(drivers\storage\port\storahci\storahci.c:2196) DeviceRequestComplete()
+(drivers\storage\port\storahci\storahci.c:799) AhciHwStartIo()
+(drivers\storage\port\storahci\storahci.c:2024) DeviceRequestReadWrite()
+(drivers\storage\port\storahci\storahci.c:1877) AhciATAPICommand()
+(drivers\storage\port\storahci\storahci.c:1571) AhciProcessIO()
+(drivers\storage\port\storahci\storahci.c:1572) 	PathId: 2
+(drivers\storage\port\storahci\storahci.c:1381) AhciProcessSrb()
+(drivers\storage\port\storahci\storahci.c:1279) AhciATAPI_CFIS()
+(drivers\storage\port\storahci\storahci.c:1329) AhciBuild_PRDT()
+(drivers\storage\port\storahci\storahci.c:1503) AhciActivatePort()
+(drivers\storage\port\storahci\storahci.c:635) AhciInterruptHandler()
+(drivers\storage\port\storahci\storahci.c:636) 	Port Number: 2
+(drivers\storage\port\storahci\storahci.c:576) AhciCompleteIssuedSrb()
+(drivers\storage\port\storahci\storahci.c:580) 	Completed Commands: 1
+(drivers\storage\port\storahci\storahci.c:799) AhciHwStartIo()
+(drivers\storage\port\storahci\storahci.c:2024) DeviceRequestReadWrite()
+(drivers\storage\port\storahci\storahci.c:1877) AhciATAPICommand()
+(drivers\storage\port\storahci\storahci.c:1571) AhciProcessIO()
+(drivers\storage\port\storahci\storahci.c:1572) 	PathId: 2
+(drivers\storage\port\storahci\storahci.c:1381) AhciProcessSrb()
+(drivers\storage\port\storahci\storahci.c:1279) AhciATAPI_CFIS()
+(drivers\storage\port\storahci\storahci.c:1329) AhciBuild_PRDT()
+(drivers\storage\port\storahci\storahci.c:1503) AhciActivatePort()
+(drivers\storage\port\storahci\storahci.c:635) AhciInterruptHandler()
+(drivers\storage\port\storahci\storahci.c:636) 	Port Number: 2
+(drivers\storage\port\storahci\storahci.c:576) AhciCompleteIssuedSrb()
+(drivers\storage\port\storahci\storahci.c:580) 	Completed Commands: 1
+(drivers\storage\port\storahci\storahci.c:799) AhciHwStartIo()
+(drivers\storage\port\storahci\storahci.c:2024) DeviceRequestReadWrite()
+(drivers\storage\port\storahci\storahci.c:1877) AhciATAPICommand()
+(drivers\storage\port\storahci\storahci.c:1571) AhciProcessIO()
+(drivers\storage\port\storahci\storahci.c:1572) 	PathId: 2
+(drivers\storage\port\storahci\storahci.c:1381) AhciProcessSrb()
+(drivers\storage\port\storahci\storahci.c:1279) AhciATAPI_CFIS()
+(drivers\storage\port\storahci\storahci.c:1329) AhciBuild_PRDT()
+(drivers\storage\port\storahci\storahci.c:1503) AhciActivatePort()
+(drivers\storage\port\storahci\storahci.c:635) AhciInterruptHandler()
+(drivers\storage\port\storahci\storahci.c:636) 	Port Number: 2
+(drivers\storage\port\storahci\storahci.c:576) AhciCompleteIssuedSrb()
+(drivers\storage\port\storahci\storahci.c:580) 	Completed Commands: 1
+(drivers\storage\port\storahci\storahci.c:799) AhciHwStartIo()
+(drivers\storage\port\storahci\storahci.c:2024) DeviceRequestReadWrite()
+(drivers\storage\port\storahci\storahci.c:1877) AhciATAPICommand()
+(drivers\storage\port\storahci\storahci.c:1571) AhciProcessIO()
+(drivers\storage\port\storahci\storahci.c:1572) 	PathId: 2
+(drivers\storage\port\storahci\storahci.c:1381) AhciProcessSrb()
+(drivers\storage\port\storahci\storahci.c:1279) AhciATAPI_CFIS()
+(drivers\storage\port\storahci\storahci.c:1329) AhciBuild_PRDT()
+(drivers\storage\port\storahci\storahci.c:1503) AhciActivatePort()
+(drivers\storage\port\storahci\storahci.c:635) AhciInterruptHandler()
+(drivers\storage\port\storahci\storahci.c:636) 	Port Number: 2
+(drivers\storage\port\storahci\storahci.c:576) AhciCompleteIssuedSrb()
+(drivers\storage\port\storahci\storahci.c:580) 	Completed Commands: 1
+(drivers\storage\port\storahci\storahci.c:799) AhciHwStartIo()
+(drivers\storage\port\storahci\storahci.c:2196) DeviceRequestComplete()
+(drivers\storage\port\storahci\storahci.c:799) AhciHwStartIo()
+(drivers\storage\port\storahci\storahci.c:2024) DeviceRequestReadWrite()
+(drivers\storage\port\storahci\storahci.c:1877) AhciATAPICommand()
+(drivers\storage\port\storahci\storahci.c:1571) AhciProcessIO()
+(drivers\storage\port\storahci\storahci.c:1572) 	PathId: 2
+(drivers\storage\port\storahci\storahci.c:1381) AhciProcessSrb()
+(drivers\storage\port\storahci\storahci.c:1279) AhciATAPI_CFIS()
+(drivers\storage\port\storahci\storahci.c:1329) AhciBuild_PRDT()
+(drivers\storage\port\storahci\storahci.c:1503) AhciActivatePort()
+(drivers\storage\port\storahci\storahci.c:635) AhciInterruptHandler()
+(drivers\storage\port\storahci\storahci.c:636) 	Port Number: 2
+(drivers\storage\port\storahci\storahci.c:576) AhciCompleteIssuedSrb()
+(drivers\storage\port\storahci\storahci.c:580) 	Completed Commands: 1
+(drivers\storage\port\storahci\storahci.c:799) AhciHwStartIo()
+(drivers\storage\port\storahci\storahci.c:2024) DeviceRequestReadWrite()
+(drivers\storage\port\storahci\storahci.c:1877) AhciATAPICommand()
+(drivers\storage\port\storahci\storahci.c:1571) AhciProcessIO()
+(drivers\storage\port\storahci\storahci.c:1572) 	PathId: 2
+(drivers\storage\port\storahci\storahci.c:1381) AhciProcessSrb()
+(drivers\storage\port\storahci\storahci.c:1279) AhciATAPI_CFIS()
+(drivers\storage\port\storahci\storahci.c:1329) AhciBuild_PRDT()
+(drivers\storage\port\storahci\storahci.c:1503) AhciActivatePort()
+(drivers\storage\port\storahci\storahci.c:635) AhciInterruptHandler()
+(drivers\storage\port\storahci\storahci.c:636) 	Port Number: 2
+(drivers\storage\port\storahci\storahci.c:576) AhciCompleteIssuedSrb()
+(drivers\storage\port\storahci\storahci.c:580) 	Completed Commands: 1
+(drivers\storage\port\storahci\storahci.c:799) AhciHwStartIo()
+(drivers\storage\port\storahci\storahci.c:2024) DeviceRequestReadWrite()
+(drivers\storage\port\storahci\storahci.c:1877) AhciATAPICommand()
+(drivers\storage\port\storahci\storahci.c:1571) AhciProcessIO()
+(drivers\storage\port\storahci\storahci.c:1572) 	PathId: 2
+(drivers\storage\port\storahci\storahci.c:1381) AhciProcessSrb()
+(drivers\storage\port\storahci\storahci.c:1279) AhciATAPI_CFIS()
+(drivers\storage\port\storahci\storahci.c:1329) AhciBuild_PRDT()
+(drivers\storage\port\storahci\storahci.c:1503) AhciActivatePort()
+(drivers\storage\port\storahci\storahci.c:635) AhciInterruptHandler()
+(drivers\storage\port\storahci\storahci.c:636) 	Port Number: 2
+(drivers\storage\port\storahci\storahci.c:576) AhciCompleteIssuedSrb()
+(drivers\storage\port\storahci\storahci.c:580) 	Completed Commands: 1
+(drivers\storage\port\storahci\storahci.c:799) AhciHwStartIo()
+(drivers\storage\port\storahci\storahci.c:2024) DeviceRequestReadWrite()
+(drivers\storage\port\storahci\storahci.c:1877) AhciATAPICommand()
+(drivers\storage\port\storahci\storahci.c:1571) AhciProcessIO()
+(drivers\storage\port\storahci\storahci.c:1572) 	PathId: 2
+(drivers\storage\port\storahci\storahci.c:1381) AhciProcessSrb()
+(drivers\storage\port\storahci\storahci.c:1279) AhciATAPI_CFIS()
+(drivers\storage\port\storahci\storahci.c:1329) AhciBuild_PRDT()
+(drivers\storage\port\storahci\storahci.c:1503) AhciActivatePort()
+(drivers\storage\port\storahci\storahci.c:635) AhciInterruptHandler()
+(drivers\storage\port\storahci\storahci.c:636) 	Port Number: 2
+(drivers\storage\port\storahci\storahci.c:576) AhciCompleteIssuedSrb()
+(drivers\storage\port\storahci\storahci.c:580) 	Completed Commands: 1
+(drivers\storage\port\storahci\storahci.c:799) AhciHwStartIo()
+(drivers\storage\port\storahci\storahci.c:2024) DeviceRequestReadWrite()
+(drivers\storage\port\storahci\storahci.c:1877) AhciATAPICommand()
+(drivers\storage\port\storahci\storahci.c:1571) AhciProcessIO()
+(drivers\storage\port\storahci\storahci.c:1572) 	PathId: 2
+(drivers\storage\port\storahci\storahci.c:1381) AhciProcessSrb()
+(drivers\storage\port\storahci\storahci.c:1279) AhciATAPI_CFIS()
+(drivers\storage\port\storahci\storahci.c:1329) AhciBuild_PRDT()
+(drivers\storage\port\storahci\storahci.c:1503) AhciActivatePort()
+(drivers\storage\port\storahci\storahci.c:635) AhciInterruptHandler()
+(drivers\storage\port\storahci\storahci.c:636) 	Port Number: 2
+(drivers\storage\port\storahci\storahci.c:576) AhciCompleteIssuedSrb()
+(drivers\storage\port\storahci\storahci.c:580) 	Completed Commands: 1
+(drivers\storage\port\storahci\storahci.c:799) AhciHwStartIo()
+(drivers\storage\port\storahci\storahci.c:2196) DeviceRequestComplete()
+(drivers\storage\port\storahci\storahci.c:799) AhciHwStartIo()
+(drivers\storage\port\storahci\storahci.c:2024) DeviceRequestReadWrite()
+(drivers\storage\port\storahci\storahci.c:1877) AhciATAPICommand()
+(drivers\storage\port\storahci\storahci.c:1571) AhciProcessIO()
+(drivers\storage\port\storahci\storahci.c:1572) 	PathId: 2
+(drivers\storage\port\storahci\storahci.c:1381) AhciProcessSrb()
+(drivers\storage\port\storahci\storahci.c:1279) AhciATAPI_CFIS()
+(drivers\storage\port\storahci\storahci.c:1329) AhciBuild_PRDT()
+(drivers\storage\port\storahci\storahci.c:1503) AhciActivatePort()
+(drivers\storage\port\storahci\storahci.c:635) AhciInterruptHandler()
+(drivers\storage\port\storahci\storahci.c:636) 	Port Number: 2
+(drivers\storage\port\storahci\storahci.c:576) AhciCompleteIssuedSrb()
+(drivers\storage\port\storahci\storahci.c:580) 	Completed Commands: 1
+(drivers\storage\port\storahci\storahci.c:799) AhciHwStartIo()
+(drivers\storage\port\storahci\storahci.c:2024) DeviceRequestReadWrite()
+(drivers\storage\port\storahci\storahci.c:1877) AhciATAPICommand()
+(drivers\storage\port\storahci\storahci.c:1571) AhciProcessIO()
+(drivers\storage\port\storahci\storahci.c:1572) 	PathId: 2
+(drivers\storage\port\storahci\storahci.c:1381) AhciProcessSrb()
+(drivers\storage\port\storahci\storahci.c:1279) AhciATAPI_CFIS()
+(drivers\storage\port\storahci\storahci.c:1329) AhciBuild_PRDT()
+(drivers\storage\port\storahci\storahci.c:1503) AhciActivatePort()
+(drivers\storage\port\storahci\storahci.c:635) AhciInterruptHandler()
+(drivers\storage\port\storahci\storahci.c:636) 	Port Number: 2
+(drivers\storage\port\storahci\storahci.c:576) AhciCompleteIssuedSrb()
+(drivers\storage\port\storahci\storahci.c:580) 	Completed Commands: 1
+(drivers\storage\port\storahci\storahci.c:799) AhciHwStartIo()
+(drivers\storage\port\storahci\storahci.c:2024) DeviceRequestReadWrite()
+(drivers\storage\port\storahci\storahci.c:1877) AhciATAPICommand()
+(drivers\storage\port\storahci\storahci.c:1571) AhciProcessIO()
+(drivers\storage\port\storahci\storahci.c:1572) 	PathId: 2
+(drivers\storage\port\storahci\storahci.c:1381) AhciProcessSrb()
+(drivers\storage\port\storahci\storahci.c:1279) AhciATAPI_CFIS()
+(drivers\storage\port\storahci\storahci.c:1329) AhciBuild_PRDT()
+(drivers\storage\port\storahci\storahci.c:1503) AhciActivatePort()
+(drivers\storage\port\storahci\storahci.c:635) AhciInterruptHandler()
+(drivers\storage\port\storahci\storahci.c:636) 	Port Number: 2
+(drivers\storage\port\storahci\storahci.c:576) AhciCompleteIssuedSrb()
+(drivers\storage\port\storahci\storahci.c:580) 	Completed Commands: 1
+(drivers\storage\port\storahci\storahci.c:799) AhciHwStartIo()
+(drivers\storage\port\storahci\storahci.c:2024) DeviceRequestReadWrite()
+(drivers\storage\port\storahci\storahci.c:1877) AhciATAPICommand()
+(drivers\storage\port\storahci\storahci.c:1571) AhciProcessIO()
+(drivers\storage\port\storahci\storahci.c:1572) 	PathId: 2
+(drivers\storage\port\storahci\storahci.c:1381) AhciProcessSrb()
+(drivers\storage\port\storahci\storahci.c:1279) AhciATAPI_CFIS()
+(drivers\storage\port\storahci\storahci.c:1329) AhciBuild_PRDT()
+(drivers\storage\port\storahci\storahci.c:1503) AhciActivatePort()
+(drivers\storage\port\storahci\storahci.c:635) AhciInterruptHandler()
+(drivers\storage\port\storahci\storahci.c:636) 	Port Number: 2
+(drivers\storage\port\storahci\storahci.c:576) AhciCompleteIssuedSrb()
+(drivers\storage\port\storahci\storahci.c:580) 	Completed Commands: 1
+(drivers\storage\port\storahci\storahci.c:799) AhciHwStartIo()
+(drivers\storage\port\storahci\storahci.c:2196) DeviceRequestComplete()
+(drivers\storage\port\storahci\storahci.c:799) AhciHwStartIo()
+(drivers\storage\port\storahci\storahci.c:2024) DeviceRequestReadWrite()
+(drivers\storage\port\storahci\storahci.c:1877) AhciATAPICommand()
+(drivers\storage\port\storahci\storahci.c:1571) AhciProcessIO()
+(drivers\storage\port\storahci\storahci.c:1572) 	PathId: 2
+(drivers\storage\port\storahci\storahci.c:1381) AhciProcessSrb()
+(drivers\storage\port\storahci\storahci.c:1279) AhciATAPI_CFIS()
+(drivers\storage\port\storahci\storahci.c:1329) AhciBuild_PRDT()
+(drivers\storage\port\storahci\storahci.c:1503) AhciActivatePort()
+(drivers\storage\port\storahci\storahci.c:635) AhciInterruptHandler()
+(drivers\storage\port\storahci\storahci.c:636) 	Port Number: 2
+(drivers\storage\port\storahci\storahci.c:576) AhciCompleteIssuedSrb()
+(drivers\storage\port\storahci\storahci.c:580) 	Completed Commands: 1
+(drivers\storage\port\storahci\storahci.c:799) AhciHwStartIo()
+(drivers\storage\port\storahci\storahci.c:2024) DeviceRequestReadWrite()
+(drivers\storage\port\storahci\storahci.c:1877) AhciATAPICommand()
+(drivers\storage\port\storahci\storahci.c:1571) AhciProcessIO()
+(drivers\storage\port\storahci\storahci.c:1572) 	PathId: 2
+(drivers\storage\port\storahci\storahci.c:1381) AhciProcessSrb()
+(drivers\storage\port\storahci\storahci.c:1279) AhciATAPI_CFIS()
+(drivers\storage\port\storahci\storahci.c:1329) AhciBuild_PRDT()
+(drivers\storage\port\storahci\storahci.c:1503) AhciActivatePort()
+(drivers\storage\port\storahci\storahci.c:635) AhciInterruptHandler()
+(drivers\storage\port\storahci\storahci.c:636) 	Port Number: 2
+(drivers\storage\port\storahci\storahci.c:576) AhciCompleteIssuedSrb()
+(drivers\storage\port\storahci\storahci.c:580) 	Completed Commands: 1
+(drivers\storage\port\storahci\storahci.c:799) AhciHwStartIo()
+(drivers\storage\port\storahci\storahci.c:2024) DeviceRequestReadWrite()
+(drivers\storage\port\storahci\storahci.c:1877) AhciATAPICommand()
+(drivers\storage\port\storahci\storahci.c:1571) AhciProcessIO()
+(drivers\storage\port\storahci\storahci.c:1572) 	PathId: 2
+(drivers\storage\port\storahci\storahci.c:1381) AhciProcessSrb()
+(drivers\storage\port\storahci\storahci.c:1279) AhciATAPI_CFIS()
+(drivers\storage\port\storahci\storahci.c:1329) AhciBuild_PRDT()
+(drivers\storage\port\storahci\storahci.c:1503) AhciActivatePort()
+(drivers\storage\port\storahci\storahci.c:635) AhciInterruptHandler()
+(drivers\storage\port\storahci\storahci.c:636) 	Port Number: 2
+(drivers\storage\port\storahci\storahci.c:576) AhciCompleteIssuedSrb()
+(drivers\storage\port\storahci\storahci.c:580) 	Completed Commands: 1
+(drivers\storage\port\storahci\storahci.c:799) AhciHwStartIo()
+(drivers\storage\port\storahci\storahci.c:2024) DeviceRequestReadWrite()
+(drivers\storage\port\storahci\storahci.c:1877) AhciATAPICommand()
+(drivers\storage\port\storahci\storahci.c:1571) AhciProcessIO()
+(drivers\storage\port\storahci\storahci.c:1572) 	PathId: 2
+(drivers\storage\port\storahci\storahci.c:1381) AhciProcessSrb()
+(drivers\storage\port\storahci\storahci.c:1279) AhciATAPI_CFIS()
+(drivers\storage\port\storahci\storahci.c:1329) AhciBuild_PRDT()
+(drivers\storage\port\storahci\storahci.c:1503) AhciActivatePort()
+(drivers\storage\port\storahci\storahci.c:635) AhciInterruptHandler()
+(drivers\storage\port\storahci\storahci.c:636) 	Port Number: 2
+(drivers\storage\port\storahci\storahci.c:576) AhciCompleteIssuedSrb()
+(drivers\storage\port\storahci\storahci.c:580) 	Completed Commands: 1
+(drivers\storage\port\storahci\storahci.c:799) AhciHwStartIo()
+(drivers\storage\port\storahci\storahci.c:2024) DeviceRequestReadWrite()
+(drivers\storage\port\storahci\storahci.c:1877) AhciATAPICommand()
+(drivers\storage\port\storahci\storahci.c:1571) AhciProcessIO()
+(drivers\storage\port\storahci\storahci.c:1572) 	PathId: 2
+(drivers\storage\port\storahci\storahci.c:1381) AhciProcessSrb()
+(drivers\storage\port\storahci\storahci.c:1279) AhciATAPI_CFIS()
+(drivers\storage\port\storahci\storahci.c:1329) AhciBuild_PRDT()
+(drivers\storage\port\storahci\storahci.c:1503) AhciActivatePort()
+(drivers\storage\port\storahci\storahci.c:635) AhciInterruptHandler()
+(drivers\storage\port\storahci\storahci.c:636) 	Port Number: 2
+(drivers\storage\port\storahci\storahci.c:576) AhciCompleteIssuedSrb()
+(drivers\storage\port\storahci\storahci.c:580) 	Completed Commands: 1
+(drivers\storage\port\storahci\storahci.c:799) AhciHwStartIo()
+(drivers\storage\port\storahci\storahci.c:2196) DeviceRequestComplete()
+(drivers\storage\port\storahci\storahci.c:799) AhciHwStartIo()
+(drivers\storage\port\storahci\storahci.c:2024) DeviceRequestReadWrite()
+(drivers\storage\port\storahci\storahci.c:1877) AhciATAPICommand()
+(drivers\storage\port\storahci\storahci.c:1571) AhciProcessIO()
+(drivers\storage\port\storahci\storahci.c:1572) 	PathId: 2
+(drivers\storage\port\storahci\storahci.c:1381) AhciProcessSrb()
+(drivers\storage\port\storahci\storahci.c:1279) AhciATAPI_CFIS()
+(drivers\storage\port\storahci\storahci.c:1329) AhciBuild_PRDT()
+(drivers\storage\port\storahci\storahci.c:1503) AhciActivatePort()
+(drivers\storage\port\storahci\storahci.c:635) AhciInterruptHandler()
+(drivers\storage\port\storahci\storahci.c:636) 	Port Number: 2
+(drivers\storage\port\storahci\storahci.c:576) AhciCompleteIssuedSrb()
+(drivers\storage\port\storahci\storahci.c:580) 	Completed Commands: 1
+(drivers\storage\port\storahci\storahci.c:799) AhciHwStartIo()
+(drivers\storage\port\storahci\storahci.c:2024) DeviceRequestReadWrite()
+(drivers\storage\port\storahci\storahci.c:1877) AhciATAPICommand()
+(drivers\storage\port\storahci\storahci.c:1571) AhciProcessIO()
+(drivers\storage\port\storahci\storahci.c:1572) 	PathId: 2
+(drivers\storage\port\storahci\storahci.c:1381) AhciProcessSrb()
+(drivers\storage\port\storahci\storahci.c:1279) AhciATAPI_CFIS()
+(drivers\storage\port\storahci\storahci.c:1329) AhciBuild_PRDT()
+(drivers\storage\port\storahci\storahci.c:1503) AhciActivatePort()
+(drivers\storage\port\storahci\storahci.c:635) AhciInterruptHandler()
+(drivers\storage\port\storahci\storahci.c:636) 	Port Number: 2
+(drivers\storage\port\storahci\storahci.c:576) AhciCompleteIssuedSrb()
+(drivers\storage\port\storahci\storahci.c:580) 	Completed Commands: 1
+(drivers\storage\port\storahci\storahci.c:799) AhciHwStartIo()
+(drivers\storage\port\storahci\storahci.c:2024) DeviceRequestReadWrite()
+(drivers\storage\port\storahci\storahci.c:1877) AhciATAPICommand()
+(drivers\storage\port\storahci\storahci.c:1571) AhciProcessIO()
+(drivers\storage\port\storahci\storahci.c:1572) 	PathId: 2
+(drivers\storage\port\storahci\storahci.c:1381) AhciProcessSrb()
+(drivers\storage\port\storahci\storahci.c:1279) AhciATAPI_CFIS()
+(drivers\storage\port\storahci\storahci.c:1329) AhciBuild_PRDT()
+(drivers\storage\port\storahci\storahci.c:1503) AhciActivatePort()
+(drivers\storage\port\storahci\storahci.c:635) AhciInterruptHandler()
+(drivers\storage\port\storahci\storahci.c:636) 	Port Number: 2
+(drivers\storage\port\storahci\storahci.c:576) AhciCompleteIssuedSrb()
+(drivers\storage\port\storahci\storahci.c:580) 	Completed Commands: 1
+(drivers\storage\port\storahci\storahci.c:799) AhciHwStartIo()
+(drivers\storage\port\storahci\storahci.c:2024) DeviceRequestReadWrite()
+(drivers\storage\port\storahci\storahci.c:1877) AhciATAPICommand()
+(drivers\storage\port\storahci\storahci.c:1571) AhciProcessIO()
+(drivers\storage\port\storahci\storahci.c:1572) 	PathId: 2
+(drivers\storage\port\storahci\storahci.c:1381) AhciProcessSrb()
+(drivers\storage\port\storahci\storahci.c:1279) AhciATAPI_CFIS()
+(drivers\storage\port\storahci\storahci.c:1329) AhciBuild_PRDT()
+(drivers\storage\port\storahci\storahci.c:1503) AhciActivatePort()
+(drivers\storage\port\storahci\storahci.c:635) AhciInterruptHandler()
+(drivers\storage\port\storahci\storahci.c:636) 	Port Number: 2
+(drivers\storage\port\storahci\storahci.c:576) AhciCompleteIssuedSrb()
+(drivers\storage\port\storahci\storahci.c:580) 	Completed Commands: 1
+(drivers\storage\port\storahci\storahci.c:799) AhciHwStartIo()
+(drivers\storage\port\storahci\storahci.c:2196) DeviceRequestComplete()
+(drivers\storage\port\storahci\storahci.c:799) AhciHwStartIo()
+(drivers\storage\port\storahci\storahci.c:2024) DeviceRequestReadWrite()
+(drivers\storage\port\storahci\storahci.c:1877) AhciATAPICommand()
+(drivers\storage\port\storahci\storahci.c:1571) AhciProcessIO()
+(drivers\storage\port\storahci\storahci.c:1572) 	PathId: 2
+(drivers\storage\port\storahci\storahci.c:1381) AhciProcessSrb()
+(drivers\storage\port\storahci\storahci.c:1279) AhciATAPI_CFIS()
+(drivers\storage\port\storahci\storahci.c:1329) AhciBuild_PRDT()
+(drivers\storage\port\storahci\storahci.c:1503) AhciActivatePort()
+(drivers\storage\port\storahci\storahci.c:635) AhciInterruptHandler()
+(drivers\storage\port\storahci\storahci.c:636) 	Port Number: 2
+(drivers\storage\port\storahci\storahci.c:576) AhciCompleteIssuedSrb()
+(drivers\storage\port\storahci\storahci.c:580) 	Completed Commands: 1
+(drivers\storage\port\storahci\storahci.c:799) AhciHwStartIo()
+(drivers\storage\port\storahci\storahci.c:2024) DeviceRequestReadWrite()
+(drivers\storage\port\storahci\storahci.c:1877) AhciATAPICommand()
+(drivers\storage\port\storahci\storahci.c:1571) AhciProcessIO()
+(drivers\storage\port\storahci\storahci.c:1572) 	PathId: 2
+(drivers\storage\port\storahci\storahci.c:1381) AhciProcessSrb()
+(drivers\storage\port\storahci\storahci.c:1279) AhciATAPI_CFIS()
+(drivers\storage\port\storahci\storahci.c:1329) AhciBuild_PRDT()
+(drivers\storage\port\storahci\storahci.c:1503) AhciActivatePort()
+(drivers\storage\port\storahci\storahci.c:635) AhciInterruptHandler()
+(drivers\storage\port\storahci\storahci.c:636) 	Port Number: 2
+(drivers\storage\port\storahci\storahci.c:576) AhciCompleteIssuedSrb()
+(drivers\storage\port\storahci\storahci.c:580) 	Completed Commands: 1
+(drivers\storage\port\storahci\storahci.c:799) AhciHwStartIo()
+(drivers\storage\port\storahci\storahci.c:2024) DeviceRequestReadWrite()
+(drivers\storage\port\storahci\storahci.c:1877) AhciATAPICommand()
+(drivers\storage\port\storahci\storahci.c:1571) AhciProcessIO()
+(drivers\storage\port\storahci\storahci.c:1572) 	PathId: 2
+(drivers\storage\port\storahci\storahci.c:1381) AhciProcessSrb()
+(drivers\storage\port\storahci\storahci.c:1279) AhciATAPI_CFIS()
+(drivers\storage\port\storahci\storahci.c:1329) AhciBuild_PRDT()
+(drivers\storage\port\storahci\storahci.c:1503) AhciActivatePort()
+(drivers\storage\port\storahci\storahci.c:635) AhciInterruptHandler()
+(drivers\storage\port\storahci\storahci.c:636) 	Port Number: 2
+(drivers\storage\port\storahci\storahci.c:576) AhciCompleteIssuedSrb()
+(drivers\storage\port\storahci\storahci.c:580) 	Completed Commands: 1
+(drivers\storage\port\storahci\storahci.c:799) AhciHwStartIo()
+(drivers\storage\port\storahci\storahci.c:2024) DeviceRequestReadWrite()
+(drivers\storage\port\storahci\storahci.c:1877) AhciATAPICommand()
+(drivers\storage\port\storahci\storahci.c:1571) AhciProcessIO()
+(drivers\storage\port\storahci\storahci.c:1572) 	PathId: 2
+(drivers\storage\port\storahci\storahci.c:1381) AhciProcessSrb()
+(drivers\storage\port\storahci\storahci.c:1279) AhciATAPI_CFIS()
+(drivers\storage\port\storahci\storahci.c:1329) AhciBuild_PRDT()
+(drivers\storage\port\storahci\storahci.c:1503) AhciActivatePort()
+(drivers\storage\port\storahci\storahci.c:635) AhciInterruptHandler()
+(drivers\storage\port\storahci\storahci.c:636) 	Port Number: 2
+(drivers\storage\port\storahci\storahci.c:576) AhciCompleteIssuedSrb()
+(drivers\storage\port\storahci\storahci.c:580) 	Completed Commands: 1
+(drivers\storage\port\storahci\storahci.c:799) AhciHwStartIo()
+(drivers\storage\port\storahci\storahci.c:2024) DeviceRequestReadWrite()
+(drivers\storage\port\storahci\storahci.c:1877) AhciATAPICommand()
+(drivers\storage\port\storahci\storahci.c:1571) AhciProcessIO()
+(drivers\storage\port\storahci\storahci.c:1572) 	PathId: 2
+(drivers\storage\port\storahci\storahci.c:1381) AhciProcessSrb()
+(drivers\storage\port\storahci\storahci.c:1279) AhciATAPI_CFIS()
+(drivers\storage\port\storahci\storahci.c:1329) AhciBuild_PRDT()
+(drivers\storage\port\storahci\storahci.c:1503) AhciActivatePort()
+(drivers\storage\port\storahci\storahci.c:635) AhciInterruptHandler()
+(drivers\storage\port\storahci\storahci.c:636) 	Port Number: 2
+(drivers\storage\port\storahci\storahci.c:576) AhciCompleteIssuedSrb()
+(drivers\storage\port\storahci\storahci.c:580) 	Completed Commands: 1
+(drivers\storage\port\storahci\storahci.c:799) AhciHwStartIo()
+(drivers\storage\port\storahci\storahci.c:2196) DeviceRequestComplete()
+(drivers\storage\port\storahci\storahci.c:799) AhciHwStartIo()
+(drivers\storage\port\storahci\storahci.c:2024) DeviceRequestReadWrite()
+(drivers\storage\port\storahci\storahci.c:1877) AhciATAPICommand()
+(drivers\storage\port\storahci\storahci.c:1571) AhciProcessIO()
+(drivers\storage\port\storahci\storahci.c:1572) 	PathId: 2
+(drivers\storage\port\storahci\storahci.c:1381) AhciProcessSrb()
+(drivers\storage\port\storahci\storahci.c:1279) AhciATAPI_CFIS()
+(drivers\storage\port\storahci\storahci.c:1329) AhciBuild_PRDT()
+(drivers\storage\port\storahci\storahci.c:1503) AhciActivatePort()
+(drivers\storage\port\storahci\storahci.c:635) AhciInterruptHandler()
+(drivers\storage\port\storahci\storahci.c:636) 	Port Number: 2
+(drivers\storage\port\storahci\storahci.c:576) AhciCompleteIssuedSrb()
+(drivers\storage\port\storahci\storahci.c:580) 	Completed Commands: 1
+(drivers\storage\port\storahci\storahci.c:799) AhciHwStartIo()
+(drivers\storage\port\storahci\storahci.c:2024) DeviceRequestReadWrite()
+(drivers\storage\port\storahci\storahci.c:1877) AhciATAPICommand()
+(drivers\storage\port\storahci\storahci.c:1571) AhciProcessIO()
+(drivers\storage\port\storahci\storahci.c:1572) 	PathId: 2
+(drivers\storage\port\storahci\storahci.c:1381) AhciProcessSrb()
+(drivers\storage\port\storahci\storahci.c:1279) AhciATAPI_CFIS()
+(drivers\storage\port\storahci\storahci.c:1329) AhciBuild_PRDT()
+(drivers\storage\port\storahci\storahci.c:1503) AhciActivatePort()
+(drivers\storage\port\storahci\storahci.c:635) AhciInterruptHandler()
+(drivers\storage\port\storahci\storahci.c:636) 	Port Number: 2
+(drivers\storage\port\storahci\storahci.c:576) AhciCompleteIssuedSrb()
+(drivers\storage\port\storahci\storahci.c:580) 	Completed Commands: 1
+(drivers\storage\port\storahci\storahci.c:799) AhciHwStartIo()
+(drivers\storage\port\storahci\storahci.c:2024) DeviceRequestReadWrite()
+(drivers\storage\port\storahci\storahci.c:1877) AhciATAPICommand()
+(drivers\storage\port\storahci\storahci.c:1571) AhciProcessIO()
+(drivers\storage\port\storahci\storahci.c:1572) 	PathId: 2
+(drivers\storage\port\storahci\storahci.c:1381) AhciProcessSrb()
+(drivers\storage\port\storahci\storahci.c:1279) AhciATAPI_CFIS()
+(drivers\storage\port\storahci\storahci.c:1329) AhciBuild_PRDT()
+(drivers\storage\port\storahci\storahci.c:1503) AhciActivatePort()
+(drivers\storage\port\storahci\storahci.c:635) AhciInterruptHandler()
+(drivers\storage\port\storahci\storahci.c:636) 	Port Number: 2
+(drivers\storage\port\storahci\storahci.c:576) AhciCompleteIssuedSrb()
+(drivers\storage\port\storahci\storahci.c:580) 	Completed Commands: 1
+(drivers\storage\port\storahci\storahci.c:799) AhciHwStartIo()
+(drivers\storage\port\storahci\storahci.c:2024) DeviceRequestReadWrite()
+(drivers\storage\port\storahci\storahci.c:1877) AhciATAPICommand()
+(drivers\storage\port\storahci\storahci.c:1571) AhciProcessIO()
+(drivers\storage\port\storahci\storahci.c:1572) 	PathId: 2
+(drivers\storage\port\storahci\storahci.c:1381) AhciProcessSrb()
+(drivers\storage\port\storahci\storahci.c:1279) AhciATAPI_CFIS()
+(drivers\storage\port\storahci\storahci.c:1329) AhciBuild_PRDT()
+(drivers\storage\port\storahci\storahci.c:1503) AhciActivatePort()
+(drivers\storage\port\storahci\storahci.c:635) AhciInterruptHandler()
+(drivers\storage\port\storahci\storahci.c:636) 	Port Number: 2
+(drivers\storage\port\storahci\storahci.c:576) AhciCompleteIssuedSrb()
+(drivers\storage\port\storahci\storahci.c:580) 	Completed Commands: 1
+(drivers\storage\port\storahci\storahci.c:799) AhciHwStartIo()
+(drivers\storage\port\storahci\storahci.c:2196) DeviceRequestComplete()
+(drivers\storage\port\storahci\storahci.c:799) AhciHwStartIo()
+(drivers\storage\port\storahci\storahci.c:2024) DeviceRequestReadWrite()
+(drivers\storage\port\storahci\storahci.c:1877) AhciATAPICommand()
+(drivers\storage\port\storahci\storahci.c:1571) AhciProcessIO()
+(drivers\storage\port\storahci\storahci.c:1572) 	PathId: 2
+(drivers\storage\port\storahci\storahci.c:1381) AhciProcessSrb()
+(drivers\storage\port\storahci\storahci.c:1279) AhciATAPI_CFIS()
+(drivers\storage\port\storahci\storahci.c:1329) AhciBuild_PRDT()
+(drivers\storage\port\storahci\storahci.c:1503) AhciActivatePort()
+(drivers\storage\port\storahci\storahci.c:635) AhciInterruptHandler()
+(drivers\storage\port\storahci\storahci.c:636) 	Port Number: 2
+(drivers\storage\port\storahci\storahci.c:576) AhciCompleteIssuedSrb()
+(drivers\storage\port\storahci\storahci.c:580) 	Completed Commands: 1
+(drivers\storage\port\storahci\storahci.c:799) AhciHwStartIo()
+(drivers\storage\port\storahci\storahci.c:2024) DeviceRequestReadWrite()
+(drivers\storage\port\storahci\storahci.c:1877) AhciATAPICommand()
+(drivers\storage\port\storahci\storahci.c:1571) AhciProcessIO()
+(drivers\storage\port\storahci\storahci.c:1572) 	PathId: 2
+(drivers\storage\port\storahci\storahci.c:1381) AhciProcessSrb()
+(drivers\storage\port\storahci\storahci.c:1279) AhciATAPI_CFIS()
+(drivers\storage\port\storahci\storahci.c:1329) AhciBuild_PRDT()
+(drivers\storage\port\storahci\storahci.c:1503) AhciActivatePort()
+(drivers\storage\port\storahci\storahci.c:635) AhciInterruptHandler()
+(drivers\storage\port\storahci\storahci.c:636) 	Port Number: 2
+(drivers\storage\port\storahci\storahci.c:576) AhciCompleteIssuedSrb()
+(drivers\storage\port\storahci\storahci.c:580) 	Completed Commands: 1
+(drivers\storage\port\storahci\storahci.c:799) AhciHwStartIo()
+(drivers\storage\port\storahci\storahci.c:2024) DeviceRequestReadWrite()
+(drivers\storage\port\storahci\storahci.c:1877) AhciATAPICommand()
+(drivers\storage\port\storahci\storahci.c:1571) AhciProcessIO()
+(drivers\storage\port\storahci\storahci.c:1572) 	PathId: 2
+(drivers\storage\port\storahci\storahci.c:1381) AhciProcessSrb()
+(drivers\storage\port\storahci\storahci.c:1279) AhciATAPI_CFIS()
+(drivers\storage\port\storahci\storahci.c:1329) AhciBuild_PRDT()
+(drivers\storage\port\storahci\storahci.c:1503) AhciActivatePort()
+(drivers\storage\port\storahci\storahci.c:635) AhciInterruptHandler()
+(drivers\storage\port\storahci\storahci.c:636) 	Port Number: 2
+(drivers\storage\port\storahci\storahci.c:576) AhciCompleteIssuedSrb()
+(drivers\storage\port\storahci\storahci.c:580) 	Completed Commands: 1
+(drivers\storage\port\storahci\storahci.c:799) AhciHwStartIo()
+(drivers\storage\port\storahci\storahci.c:2024) DeviceRequestReadWrite()
+(drivers\storage\port\storahci\storahci.c:1877) AhciATAPICommand()
+(drivers\storage\port\storahci\storahci.c:1571) AhciProcessIO()
+(drivers\storage\port\storahci\storahci.c:1572) 	PathId: 2
+(drivers\storage\port\storahci\storahci.c:1381) AhciProcessSrb()
+(drivers\storage\port\storahci\storahci.c:1279) AhciATAPI_CFIS()
+(drivers\storage\port\storahci\storahci.c:1329) AhciBuild_PRDT()
+(drivers\storage\port\storahci\storahci.c:1503) AhciActivatePort()
+(drivers\storage\port\storahci\storahci.c:635) AhciInterruptHandler()
+(drivers\storage\port\storahci\storahci.c:636) 	Port Number: 2
+(drivers\storage\port\storahci\storahci.c:576) AhciCompleteIssuedSrb()
+(drivers\storage\port\storahci\storahci.c:580) 	Completed Commands: 1
+(drivers\storage\port\storahci\storahci.c:799) AhciHwStartIo()
+(drivers\storage\port\storahci\storahci.c:2024) DeviceRequestReadWrite()
+(drivers\storage\port\storahci\storahci.c:1877) AhciATAPICommand()
+(drivers\storage\port\storahci\storahci.c:1571) AhciProcessIO()
+(drivers\storage\port\storahci\storahci.c:1572) 	PathId: 2
+(drivers\storage\port\storahci\storahci.c:1381) AhciProcessSrb()
+(drivers\storage\port\storahci\storahci.c:1279) AhciATAPI_CFIS()
+(drivers\storage\port\storahci\storahci.c:1329) AhciBuild_PRDT()
+(drivers\storage\port\storahci\storahci.c:1503) AhciActivatePort()
+(drivers\storage\port\storahci\storahci.c:635) AhciInterruptHandler()
+(drivers\storage\port\storahci\storahci.c:636) 	Port Number: 2
+(drivers\storage\port\storahci\storahci.c:576) AhciCompleteIssuedSrb()
+(drivers\storage\port\storahci\storahci.c:580) 	Completed Commands: 1
+(drivers\storage\port\storahci\storahci.c:799) AhciHwStartIo()
+(drivers\storage\port\storahci\storahci.c:2196) DeviceRequestComplete()
+(drivers\storage\port\storahci\storahci.c:799) AhciHwStartIo()
+(drivers\storage\port\storahci\storahci.c:2024) DeviceRequestReadWrite()
+(drivers\storage\port\storahci\storahci.c:1877) AhciATAPICommand()
+(drivers\storage\port\storahci\storahci.c:1571) AhciProcessIO()
+(drivers\storage\port\storahci\storahci.c:1572) 	PathId: 2
+(drivers\storage\port\storahci\storahci.c:1381) AhciProcessSrb()
+(drivers\storage\port\storahci\storahci.c:1279) AhciATAPI_CFIS()
+(drivers\storage\port\storahci\storahci.c:1329) AhciBuild_PRDT()
+(drivers\storage\port\storahci\storahci.c:1503) AhciActivatePort()
+(drivers\storage\port\storahci\storahci.c:635) AhciInterruptHandler()
+(drivers\storage\port\storahci\storahci.c:636) 	Port Number: 2
+(drivers\storage\port\storahci\storahci.c:576) AhciCompleteIssuedSrb()
+(drivers\storage\port\storahci\storahci.c:580) 	Completed Commands: 1
+(drivers\storage\port\storahci\storahci.c:799) AhciHwStartIo()
+(drivers\storage\port\storahci\storahci.c:2024) DeviceRequestReadWrite()
+(drivers\storage\port\storahci\storahci.c:1877) AhciATAPICommand()
+(drivers\storage\port\storahci\storahci.c:1571) AhciProcessIO()
+(drivers\storage\port\storahci\storahci.c:1572) 	PathId: 2
+(drivers\storage\port\storahci\storahci.c:1381) AhciProcessSrb()
+(drivers\storage\port\storahci\storahci.c:1279) AhciATAPI_CFIS()
+(drivers\storage\port\storahci\storahci.c:1329) AhciBuild_PRDT()
+(drivers\storage\port\storahci\storahci.c:1503) AhciActivatePort()
+(drivers\storage\port\storahci\storahci.c:635) AhciInterruptHandler()
+(drivers\storage\port\storahci\storahci.c:636) 	Port Number: 2
+(drivers\storage\port\storahci\storahci.c:576) AhciCompleteIssuedSrb()
+(drivers\storage\port\storahci\storahci.c:580) 	Completed Commands: 1
+(drivers\storage\port\storahci\storahci.c:799) AhciHwStartIo()
+(drivers\storage\port\storahci\storahci.c:2024) DeviceRequestReadWrite()
+(drivers\storage\port\storahci\storahci.c:1877) AhciATAPICommand()
+(drivers\storage\port\storahci\storahci.c:1571) AhciProcessIO()
+(drivers\storage\port\storahci\storahci.c:1572) 	PathId: 2
+(drivers\storage\port\storahci\storahci.c:1381) AhciProcessSrb()
+(drivers\storage\port\storahci\storahci.c:1279) AhciATAPI_CFIS()
+(drivers\storage\port\storahci\storahci.c:1329) AhciBuild_PRDT()
+(drivers\storage\port\storahci\storahci.c:1503) AhciActivatePort()
+(drivers\storage\port\storahci\storahci.c:635) AhciInterruptHandler()
+(drivers\storage\port\storahci\storahci.c:636) 	Port Number: 2
+(drivers\storage\port\storahci\storahci.c:576) AhciCompleteIssuedSrb()
+(drivers\storage\port\storahci\storahci.c:580) 	Completed Commands: 1
+(drivers\storage\port\storahci\storahci.c:799) AhciHwStartIo()
+(drivers\storage\port\storahci\storahci.c:2024) DeviceRequestReadWrite()
+(drivers\storage\port\storahci\storahci.c:1877) AhciATAPICommand()
+(drivers\storage\port\storahci\storahci.c:1571) AhciProcessIO()
+(drivers\storage\port\storahci\storahci.c:1572) 	PathId: 2
+(drivers\storage\port\storahci\storahci.c:1381) AhciProcessSrb()
+(drivers\storage\port\storahci\storahci.c:1279) AhciATAPI_CFIS()
+(drivers\storage\port\storahci\storahci.c:1329) AhciBuild_PRDT()
+(drivers\storage\port\storahci\storahci.c:1503) AhciActivatePort()
+(drivers\storage\port\storahci\storahci.c:635) AhciInterruptHandler()
+(drivers\storage\port\storahci\storahci.c:636) 	Port Number: 2
+(drivers\storage\port\storahci\storahci.c:576) AhciCompleteIssuedSrb()
+(drivers\storage\port\storahci\storahci.c:580) 	Completed Commands: 1
+(drivers\storage\port\storahci\storahci.c:799) AhciHwStartIo()
+(drivers\storage\port\storahci\storahci.c:2196) DeviceRequestComplete()
+(drivers\storage\port\storahci\storahci.c:799) AhciHwStartIo()
+(drivers\storage\port\storahci\storahci.c:2024) DeviceRequestReadWrite()
+(drivers\storage\port\storahci\storahci.c:1877) AhciATAPICommand()
+(drivers\storage\port\storahci\storahci.c:1571) AhciProcessIO()
+(drivers\storage\port\storahci\storahci.c:1572) 	PathId: 2
+(drivers\storage\port\storahci\storahci.c:1381) AhciProcessSrb()
+(drivers\storage\port\storahci\storahci.c:1279) AhciATAPI_CFIS()
+(drivers\storage\port\storahci\storahci.c:1329) AhciBuild_PRDT()
+(drivers\storage\port\storahci\storahci.c:1503) AhciActivatePort()
+(drivers\storage\port\storahci\storahci.c:635) AhciInterruptHandler()
+(drivers\storage\port\storahci\storahci.c:636) 	Port Number: 2
+(drivers\storage\port\storahci\storahci.c:576) AhciCompleteIssuedSrb()
+(drivers\storage\port\storahci\storahci.c:580) 	Completed Commands: 1
+(drivers\storage\port\storahci\storahci.c:799) AhciHwStartIo()
+(drivers\storage\port\storahci\storahci.c:2024) DeviceRequestReadWrite()
+(drivers\storage\port\storahci\storahci.c:1877) AhciATAPICommand()
+(drivers\storage\port\storahci\storahci.c:1571) AhciProcessIO()
+(drivers\storage\port\storahci\storahci.c:1572) 	PathId: 2
+(drivers\storage\port\storahci\storahci.c:1381) AhciProcessSrb()
+(drivers\storage\port\storahci\storahci.c:1279) AhciATAPI_CFIS()
+(drivers\storage\port\storahci\storahci.c:1329) AhciBuild_PRDT()
+(drivers\storage\port\storahci\storahci.c:1503) AhciActivatePort()
+(drivers\storage\port\storahci\storahci.c:635) AhciInterruptHandler()
+(drivers\storage\port\storahci\storahci.c:636) 	Port Number: 2
+(drivers\storage\port\storahci\storahci.c:576) AhciCompleteIssuedSrb()
+(drivers\storage\port\storahci\storahci.c:580) 	Completed Commands: 1
+(drivers\storage\port\storahci\storahci.c:799) AhciHwStartIo()
+(drivers\storage\port\storahci\storahci.c:2024) DeviceRequestReadWrite()
+(drivers\storage\port\storahci\storahci.c:1877) AhciATAPICommand()
+(drivers\storage\port\storahci\storahci.c:1571) AhciProcessIO()
+(drivers\storage\port\storahci\storahci.c:1572) 	PathId: 2
+(drivers\storage\port\storahci\storahci.c:1381) AhciProcessSrb()
+(drivers\storage\port\storahci\storahci.c:1279) AhciATAPI_CFIS()
+(drivers\storage\port\storahci\storahci.c:1329) AhciBuild_PRDT()
+(drivers\storage\port\storahci\storahci.c:1503) AhciActivatePort()
+(drivers\storage\port\storahci\storahci.c:635) AhciInterruptHandler()
+(drivers\storage\port\storahci\storahci.c:636) 	Port Number: 2
+(drivers\storage\port\storahci\storahci.c:576) AhciCompleteIssuedSrb()
+(drivers\storage\port\storahci\storahci.c:580) 	Completed Commands: 1
+(drivers\storage\port\storahci\storahci.c:799) AhciHwStartIo()
+(drivers\storage\port\storahci\storahci.c:2024) DeviceRequestReadWrite()
+(drivers\storage\port\storahci\storahci.c:1877) AhciATAPICommand()
+(drivers\storage\port\storahci\storahci.c:1571) AhciProcessIO()
+(drivers\storage\port\storahci\storahci.c:1572) 	PathId: 2
+(drivers\storage\port\storahci\storahci.c:1381) AhciProcessSrb()
+(drivers\storage\port\storahci\storahci.c:1279) AhciATAPI_CFIS()
+(drivers\storage\port\storahci\storahci.c:1329) AhciBuild_PRDT()
+(drivers\storage\port\storahci\storahci.c:1503) AhciActivatePort()
+(drivers\storage\port\storahci\storahci.c:635) AhciInterruptHandler()
+(drivers\storage\port\storahci\storahci.c:636) 	Port Number: 2
+(drivers\storage\port\storahci\storahci.c:576) AhciCompleteIssuedSrb()
+(drivers\storage\port\storahci\storahci.c:580) 	Completed Commands: 1
+(drivers\storage\port\storahci\storahci.c:799) AhciHwStartIo()
+(drivers\storage\port\storahci\storahci.c:2024) DeviceRequestReadWrite()
+(drivers\storage\port\storahci\storahci.c:1877) AhciATAPICommand()
+(drivers\storage\port\storahci\storahci.c:1571) AhciProcessIO()
+(drivers\storage\port\storahci\storahci.c:1572) 	PathId: 2
+(drivers\storage\port\storahci\storahci.c:1381) AhciProcessSrb()
+(drivers\storage\port\storahci\storahci.c:1279) AhciATAPI_CFIS()
+(drivers\storage\port\storahci\storahci.c:1329) AhciBuild_PRDT()
+(drivers\storage\port\storahci\storahci.c:1503) AhciActivatePort()
+(drivers\storage\port\storahci\storahci.c:635) AhciInterruptHandler()
+(drivers\storage\port\storahci\storahci.c:636) 	Port Number: 2
+(drivers\storage\port\storahci\storahci.c:576) AhciCompleteIssuedSrb()
+(drivers\storage\port\storahci\storahci.c:580) 	Completed Commands: 1
+(drivers\storage\port\storahci\storahci.c:799) AhciHwStartIo()
+(drivers\storage\port\storahci\storahci.c:2196) DeviceRequestComplete()
+(drivers\storage\port\storahci\storahci.c:799) AhciHwStartIo()
+(drivers\storage\port\storahci\storahci.c:2024) DeviceRequestReadWrite()
+(drivers\storage\port\storahci\storahci.c:1877) AhciATAPICommand()
+(drivers\storage\port\storahci\storahci.c:1571) AhciProcessIO()
+(drivers\storage\port\storahci\storahci.c:1572) 	PathId: 2
+(drivers\storage\port\storahci\storahci.c:1381) AhciProcessSrb()
+(drivers\storage\port\storahci\storahci.c:1279) AhciATAPI_CFIS()
+(drivers\storage\port\storahci\storahci.c:1329) AhciBuild_PRDT()
+(drivers\storage\port\storahci\storahci.c:1503) AhciActivatePort()
+(drivers\storage\port\storahci\storahci.c:635) AhciInterruptHandler()
+(drivers\storage\port\storahci\storahci.c:636) 	Port Number: 2
+(drivers\storage\port\storahci\storahci.c:576) AhciCompleteIssuedSrb()
+(drivers\storage\port\storahci\storahci.c:580) 	Completed Commands: 1
+(drivers\storage\port\storahci\storahci.c:799) AhciHwStartIo()
+(drivers\storage\port\storahci\storahci.c:2024) DeviceRequestReadWrite()
+(drivers\storage\port\storahci\storahci.c:1877) AhciATAPICommand()
+(drivers\storage\port\storahci\storahci.c:1571) AhciProcessIO()
+(drivers\storage\port\storahci\storahci.c:1572) 	PathId: 2
+(drivers\storage\port\storahci\storahci.c:1381) AhciProcessSrb()
+(drivers\storage\port\storahci\storahci.c:1279) AhciATAPI_CFIS()
+(drivers\storage\port\storahci\storahci.c:1329) AhciBuild_PRDT()
+(drivers\storage\port\storahci\storahci.c:1503) AhciActivatePort()
+(drivers\storage\port\storahci\storahci.c:635) AhciInterruptHandler()
+(drivers\storage\port\storahci\storahci.c:636) 	Port Number: 2
+(drivers\storage\port\storahci\storahci.c:576) AhciCompleteIssuedSrb()
+(drivers\storage\port\storahci\storahci.c:580) 	Completed Commands: 1
+(drivers\storage\port\storahci\storahci.c:799) AhciHwStartIo()
+(drivers\storage\port\storahci\storahci.c:2024) DeviceRequestReadWrite()
+(drivers\storage\port\storahci\storahci.c:1877) AhciATAPICommand()
+(drivers\storage\port\storahci\storahci.c:1571) AhciProcessIO()
+(drivers\storage\port\storahci\storahci.c:1572) 	PathId: 2
+(drivers\storage\port\storahci\storahci.c:1381) AhciProcessSrb()
+(drivers\storage\port\storahci\storahci.c:1279) AhciATAPI_CFIS()
+(drivers\storage\port\storahci\storahci.c:1329) AhciBuild_PRDT()
+(drivers\storage\port\storahci\storahci.c:1503) AhciActivatePort()
+(drivers\storage\port\storahci\storahci.c:635) AhciInterruptHandler()
+(drivers\storage\port\storahci\storahci.c:636) 	Port Number: 2
+(drivers\storage\port\storahci\storahci.c:576) AhciCompleteIssuedSrb()
+(drivers\storage\port\storahci\storahci.c:580) 	Completed Commands: 1
+(drivers\storage\port\storahci\storahci.c:799) AhciHwStartIo()
+(drivers\storage\port\storahci\storahci.c:2024) DeviceRequestReadWrite()
+(drivers\storage\port\storahci\storahci.c:1877) AhciATAPICommand()
+(drivers\storage\port\storahci\storahci.c:1571) AhciProcessIO()
+(drivers\storage\port\storahci\storahci.c:1572) 	PathId: 2
+(drivers\storage\port\storahci\storahci.c:1381) AhciProcessSrb()
+(drivers\storage\port\storahci\storahci.c:1279) AhciATAPI_CFIS()
+(drivers\storage\port\storahci\storahci.c:1329) AhciBuild_PRDT()
+(drivers\storage\port\storahci\storahci.c:1503) AhciActivatePort()
+(drivers\storage\port\storahci\storahci.c:635) AhciInterruptHandler()
+(drivers\storage\port\storahci\storahci.c:636) 	Port Number: 2
+(drivers\storage\port\storahci\storahci.c:576) AhciCompleteIssuedSrb()
+(drivers\storage\port\storahci\storahci.c:580) 	Completed Commands: 1
+
+*** Fatal System Error: 0x0000007b
+                       (0xFFFFF88072C83920,0xFFFFFFFFC0000034,0x0000000000000000,0x0000000000000000)
+
+
+Entered debugger on embedded INT3 at 0x0010:0xFFFFF80003189EE2.
+[?7h[cFrames:
+[FFFFF88072C832B8] <ntoskrnl.exe:189ee2>
+[FFFFF88072C832C0] <ntoskrnl.exe:8fca4>
+[FFFFF88072C838B0] <ntoskrnl.exe:902ac>
+[FFFFF88072C838F0] <ntoskrnl.exe:278247>
+[FFFFF88072C83A90] <ntoskrnl.exe:278625>
+[FFFFF88072C83BF0] <ntoskrnl.exe:273b5f>
+[FFFFF88072C83D70] <ntoskrnl.exe:30579>
+[FFFFF88072C83DA0] <ntoskrnl.exe:1273a5>
+[FFFFF88072C83DD0] <ntoskrnl.exe:26cb>
+[FFFFF88072C83E00] <ntoskrnl.exe:26d0>
+[FFFFF88072C83E08] <000000000000027F>
+
+Type "help" for a list of commands.
+
+kdb:> 

@@ -1,0 +1,376 @@
+(boot\freeldr\freeldr\lib\mm\heap.c:344) err: HEAP: Allocation of 0xfba8c bytes too large
+(boot\freeldr\freeldr\lib\mm\heap.c:344) err: HEAP: Allocation of 0x185f62f bytes too large
+(boot\freeldr\freeldr\lib\mm\heap.c:344) err: HEAP: Allocation of 0x2e4616 bytes too large
+(boot\freeldr\freeldr\lib\mm\heap.c:344) err: HEAP: Allocation of 0xb4520 bytes too large
+(boot\freeldr\freeldr\lib\mm\heap.c:344) err: HEAP: Allocation of 0xd1e498 bytes too large
+(boot\freeldr\freeldr\lib\mm\heap.c:344) err: HEAP: Allocation of 0x338294 bytes too large
+(boot\freeldr\freeldr\lib\mm\heap.c:344) err: HEAP: Allocation of 0x2a7681 bytes too large
+(boot\freeldr\freeldr\lib\mm\heap.c:344) err: HEAP: Allocation of 0x14097b bytes too large
+(boot\freeldr\freeldr\lib\mm\heap.c:344) err: HEAP: Allocation of 0xbdebc bytes too large
+(boot\freeldr\freeldr\lib\mm\heap.c:344) err: HEAP: Allocation of 0x1bb5d1 bytes too large
+(boot\freeldr\freeldr\lib\mm\heap.c:344) err: HEAP: Allocation of 0xc7528f bytes too large
+(boot\freeldr\freeldr\lib\mm\heap.c:344) err: HEAP: Allocation of 0x2a706b bytes too large
+(boot\freeldr\freeldr\lib\mm\heap.c:344) err: HEAP: Allocation of 0xbed06 bytes too large
+(boot\freeldr\freeldr\lib\mm\heap.c:344) err: HEAP: Allocation of 0xabbca bytes too large
+(boot\freeldr\freeldr\lib\mm\heap.c:344) err: HEAP: Allocation of 0x1d3480 bytes too large
+(boot\freeldr\freeldr\lib\mm\heap.c:344) err: HEAP: Allocation of 0xa599f bytes too large
+(boot\freeldr\freeldr\lib\mm\heap.c:344) err: HEAP: Allocation of 0xb5137 bytes too large
+(boot\freeldr\freeldr\lib\mm\heap.c:344) err: HEAP: Allocation of 0x2b1e8f bytes too large
+(boot\freeldr\freeldr\lib\mm\heap.c:344) err: HEAP: Allocation of 0x20ca52 bytes too large
+(boot\freeldr\freeldr\lib\mm\heap.c:344) err: HEAP: Allocation of 0x186f2d bytes too large
+(boot\freeldr\freeldr\lib\mm\heap.c:344) err: HEAP: Allocation of 0xf5ce0 bytes too large
+(boot\freeldr\freeldr\lib\mm\heap.c:344) err: HEAP: Allocation of 0x15664d bytes too large
+(ntoskrnl\kd64\kdinit.c:97) -----------------------------------------------------
+(ntoskrnl\kd64\kdinit.c:98) VerOS NT 0.1.1-amd64-dev (Build 20261119-84fa21f) (Commit 84fa21f7c273691f4f7c93e185e10420fb30c3db)
+(ntoskrnl\kd64\kdinit.c:99) 1 System Processor [8192 MB Memory]
+(ntoskrnl\kd64\kdinit.c:103) Command Line: DEBUG DEBUGPORT=COM1 BAUDRATE=115200 SOS FASTDETECT MININT KERNEL=NTKRNLMP.EXE HAL=HALMP.DLL
+(ntoskrnl\kd64\kdinit.c:106) ARC Paths: multi(0)disk(0)cdrom(96) \ multi(0)disk(0)cdrom(96) \VerOS\
+(ntoskrnl\ke\amd64\kiinit.c:579) Pcr = FFFFF8000324FD30, Gdt = FFFFF800073E4000, Idt = FFFFF80003242A10, Tss = FFFFF800073E3000
+(ntoskrnl\ke\amd64\cpu.c:281) Supported CPU features: KF_RDTSC KF_CR4 KF_CMOV KF_GLOBAL_PAGE KF_LARGE_PAGE KF_MTRR KF_CMPXCHG8B KF_MMX KF_PAT KF_FXSR KF_FAST_SYSCALL KF_XMMI KF_XMMI64 KF_BRANCH KF_SSE3 KF_CMPXCHG16B KF_AUTHENTICAMD KF_NX_BIT KF_NX_ENABLED X86_FEATURE_PAE X86_FEATURE_HT
+(hal\halx86\acpi\halacpi.c:782) ACPI Timer at: 608h (EXT: 0)
+(hal\halx86\acpi\halacpi.c:928) ACPI v1.0-1.0b detected. Tables: [RSDT] [APIC] [FACP]
+(hal\halx86\apic\rtctimer.c:147) Clock initialized
+(hal\halx86\apic\halinit.c:50) Using HAL: APIC SMP DBG
+(hal\halx86\acpi\madt.c:320) Physical processor count: 2
+(hal\halx86\acpi\madt.c:329)  Processor 0: ProcessorId 0, LapicId 0, ProcessorStarted 0, BSPCheck 1, ProcessorPrcb FFFFF8000324FEB0
+(hal\halx86\acpi\madt.c:329)  Processor 1: ProcessorId 1, LapicId 1, ProcessorStarted 0, BSPCheck 0, ProcessorPrcb 0000000000000000
+(hal\halx86\acpi\madt.c:339)  I/O APIC 0: Address 0xfec00000, GlobalIrqBase 0
+(ntoskrnl\mm\ARM3\mminit.c:1444) HAL I/O Mapping at FFFFFFFFFFFE0000 is unsafe
+(ntoskrnl\mm\ARM3\mminit.c:1444) HAL I/O Mapping at FFFFFFFFFFFE1000 is unsafe
+(ntoskrnl\mm\ARM3\largepag.c:37) MiInitializeLargePageSupport: PAE/x64 Not Implemented
+(hal\halx86\generic\x86bios.c:145) *x86BiosMemoryMapping: F000FF53F000FF53, F000FF53F000E2C3
+(ntoskrnl\ex\init.c:1537) VERPORT PsGetVersion 10.0.19045
+(ntoskrnl\ex\init.c:1541) VERPORT SharedUserData 10.0.19045
+(ntoskrnl\ke\amd64\mproc.c:138) KeStartAllProcessors: starting CPU 1
+(ntoskrnl\ke\amd64\mproc.c:145) KeStartAllProcessors: waiting for CPU 1
+(hal\halx86\smp\amd64\spinup.c:194) HalStartNextProcessor: SIPI CPU 1 stubPA=5b000 entry64=5b0ba cr3=5c000
+(ntoskrnl\ke\amd64\kiinit.c:579) Pcr = FFFFFA82E8FB8000, Gdt = FFFFFA82E8FAF000, Idt = FFFFFA82E8FAE000, Tss = FFFFFA82E8FBB270
+(ntoskrnl\ke\amd64\mproc.c:167) KeStartAllProcessors: CPU 1 joined
+(ntoskrnl\ke\amd64\mproc.c:138) KeStartAllProcessors: starting CPU 2
+(ntoskrnl\ke\amd64\mproc.c:145) KeStartAllProcessors: waiting for CPU 2
+(hal\halx86\smp\amd64\spinup.c:146) HalStartNextProcessor: all 2 processors started
+(ntoskrnl\ke\amd64\mproc.c:149) KeStartAllProcessors: HalStartNextProcessor failed for CPU 2
+(ntoskrnl\ke\amd64\mproc.c:183) KeStartAllProcessors: active processor count is 2
+(ntoskrnl\ex\init.c:1700) Phase1 pre-ObInit: Cpu=0 Irql=0 Affinity=0x1 Active=0x3
+(ntoskrnl\ex\init.c:1709) Phase1: affinity restored to 0x3 after ObInit
+(ntoskrnl\mm\mminit.c:138)           0xFFFFF80000000000 - 0xFFFFF80007400000	Boot Loaded Image
+(ntoskrnl\mm\mminit.c:149)           0xFFFFFA8000000000 - 0xFFFFFA800A201000	PFN Database
+(ntoskrnl\mm\mminit.c:153)           0xFFFFFA82D9048000 - 0xFFFFFA82E9060000	ARM3 Non Paged Pool
+(ntoskrnl\mm\mminit.c:157)           0xFFFFF97FBA000000 - 0xFFFFF97FDA000000	System View Space
+(ntoskrnl\mm\mminit.c:161)           0xFFFFF97FDA000000 - 0xFFFFF98000000000	Session Space
+(ntoskrnl\mm\mminit.c:164)           0xFFFFF68000000000 - 0xFFFFF6FFFFFFFFFF	Page Tables
+(ntoskrnl\mm\mminit.c:167)           0xFFFFF6FB40000000 - 0xFFFFF6FB7FFFFFFF	Page Directories
+(ntoskrnl\mm\mminit.c:170)           0xFFFFF70000000000 - 0xFFFFF77FFFFFFFFF	Hyperspace
+(ntoskrnl\mm\mminit.c:173)           0xFFFFF98000000000 - 0xFFFFFA7FFFFFFFFF	System Cache
+(ntoskrnl\mm\mminit.c:177)           0xFFFFF8A000000000 - 0xFFFFF8A002000000	ARM3 Paged Pool
+(ntoskrnl\mm\mminit.c:183)           0xFFFFF88000000000 - 0xFFFFF880762A1000	System PTE Space
+(ntoskrnl\mm\mminit.c:187)           0xFFFFFA82E9060000 - 0xFFFFFA83A0F54000	Non Paged Pool Expansion PTE Space
+(ntoskrnl\ex\time.c:55) RtlQueryTimeZoneInformation failed (Status 0xc0000034)
+(ntoskrnl\ex\time.c:331) ExpGetTimeZoneId failed
+ACPI Compatible Eisa/Isa HAL detected
+(ntoskrnl\kse\ksedb.c:124) KSE: Loaded driver database version 2.1 (900 bytes)
+(ntoskrnl\kse\kse.c:547) KSE: Registered shim DriverScope
+(ntoskrnl\kse\driverscope.c:359) KSE: driver scope shim registered.
+(ntoskrnl\kse\kse.c:461) KseInitialize(BootPhase 0) => 00000000
+(ntoskrnl\kse\kse.c:547) KSE: Registered shim IgnoreFreePoolTag
+(ntoskrnl\kse\kse.c:547) KSE: Registered shim KmWin2k3VersionLie
+(ntoskrnl\kse\kse.c:461) KseInitialize(BootPhase 1) => 00000000
+(ntoskrnl\io\iomgr\driver.c:659) '\Driver\sacdrv' DriverEntry returned 0xc0000037
+(ntoskrnl\io\iomgr\driver.c:86) Deleting driver object '\Driver\sacdrv'
+(ntoskrnl\io\iomgr\driver.c:929) Driver 'sacdrv.sys' load failed, status (c0000365)
+(ntoskrnl\io\iomgr\driver.c:659) '\Driver\Wdf01000' DriverEntry returned 0x00000000
+(ntoskrnl\io\iomgr\driver.c:659) '\Driver\acpi' DriverEntry returned 0x00000000
+(ntoskrnl\io\iomgr\driver.c:659) '\Driver\Pci' DriverEntry returned 0x00000000
+(ntoskrnl\io\iomgr\driver.c:659) '\Driver\isapnp' DriverEntry returned 0x00000000
+(ntoskrnl\io\iomgr\driver.c:659) '\Driver\partmgr' DriverEntry returned 0x00000000
+WDFTrace: new WDFKEY object open of \Registry\Machine\System\CurrentControlSet\Control\usbflags failed, 0xc0000034
+(ntoskrnl\io\iomgr\driver.c:659) '\Driver\ucx01000' DriverEntry returned 0x00000000
+(ntoskrnl\io\iomgr\driver.c:659) '\Driver\usbccgp' DriverEntry returned 0x00000000
+(ntoskrnl\io\iomgr\driver.c:659) '\Driver\usbehci' DriverEntry returned 0x00000000
+(ntoskrnl\io\iomgr\driver.c:659) '\Driver\usbhub' DriverEntry returned 0x00000000
+(ntoskrnl\io\iomgr\driver.c:659) '\Driver\usbohci' DriverEntry returned 0x00000000
+(ntoskrnl\io\iomgr\driver.c:659) '\Driver\usbuhci' DriverEntry returned 0x00000000
+(ntoskrnl\io\iomgr\driver.c:659) '\Driver\MountMgr' DriverEntry returned 0x00000000
+(ntoskrnl\io\pnpmgr\pnpres.c:648) Resource conflict: IRQ (0x9 0x9 vs. 0x9 0x9)
+(ntoskrnl\io\pnpmgr\pnpres.c:648) Resource conflict: IRQ (0x9 0x9 vs. 0x9 0x9)
+(drivers\bus\acpi\buspdo.c:846) Failed to find a bus number
+(ntoskrnl\io\pnpmgr\devaction.c:656) Failed to open class key "{4D36E96A-E325-11CE-BFC1-08002BE10318}" (status c0000034)
+(ntoskrnl\io\iomgr\driver.c:659) '\Driver\pciide' DriverEntry returned 0x00000000
+WDFTrace: new WDFKEY object open of \Registry\Machine\System\CurrentControlSet\Services\USBHUB\hubg failed, 0xc0000034
+WDFTrace: new WDFKEY object open of \Registry\Machine\System\CurrentControlSet\Control\usb\Usb20HardwareLpm failed, 0xc0000034
+WDFTrace: new WDFKEY object open of \Registry\Machine\System\CurrentControlSet\Control\usb\UsbLtm failed, 0xc0000034
+(ntoskrnl\io\iomgr\driver.c:659) '\Driver\usbhub3' DriverEntry returned 0x00000000
+(ntoskrnl\io\iomgr\driver.c:659) '\Driver\usbxhci' DriverEntry returned 0x00000000
+(drivers\storage\port\storport\storport.c:1416) StorPortInitialize(FFFFFA82E8F7B8C0 FFFFF88072C838C8 FFFFF88072C83790 0000000000000000)
+(drivers\storage\port\storport\storport.c:1418) HwInitializationDataSize: 136
+(drivers\storage\port\storport\storport.c:1419) AdapterInterfaceType: 5
+(drivers\storage\port\storport\storport.c:1420) HwInitialize: FFFFF880738E2A40
+(drivers\storage\port\storport\storport.c:1421) HwStartIo: FFFFF880738E2F90
+(drivers\storage\port\storport\storport.c:1422) HwInterrupt: FFFFF880738E2E90
+(drivers\storage\port\storport\storport.c:1423) HwFindAdapter: FFFFF880738E4080
+(drivers\storage\port\storport\storport.c:1424) HwResetBus: FFFFF880738E3FD0
+(drivers\storage\port\storport\storport.c:1425) HwDmaStarted: 0000000000000000
+(drivers\storage\port\storport\storport.c:1426) HwAdapterState: 0000000000000000
+(drivers\storage\port\storport\storport.c:1427) DeviceExtensionSize: 146520
+(drivers\storage\port\storport\storport.c:1428) SpecificLuExtensionSize: 0
+(drivers\storage\port\storport\storport.c:1429) SrbExtensionSize: 1592
+(drivers\storage\port\storport\storport.c:1430) NumberOfAccessRanges: 6
+(drivers\storage\port\storport\storport.c:1456) No driver object extension!
+(drivers\storage\port\storport\storport.c:1468) Driver object extension created!
+(drivers\storage\port\storport\storport.c:38) PortAddDriverInitData()
+(drivers\storage\port\storport\storport.c:1504) StorPortInitialize() done (Status 0x00000000)
+(ntoskrnl\io\iomgr\driver.c:659) '\Driver\storahci' DriverEntry returned 0x00000000
+(ntoskrnl\io\iomgr\driver.c:659) '\Driver\BusLogic' DriverEntry returned 0xc00000c0
+(ntoskrnl\io\iomgr\driver.c:86) Deleting driver object '\Driver\BusLogic'
+(ntoskrnl\mm\ARM3\sysldr.c:591) multi(0)disk(0)cdrom(96)\VerOS\system32\drivers\scsiport.sys <scsiport.sys>
+(ntoskrnl\io\iomgr\driver.c:929) Driver 'buslogic.sys' load failed, status (c0000365)
+(ntoskrnl\io\iomgr\driver.c:659) '\Driver\atapi' DriverEntry returned 0x00000000
+(ntoskrnl\io\iomgr\driver.c:659) '\Driver\usbstor' DriverEntry returned 0x00000000
+(ntoskrnl\io\iomgr\driver.c:659) '\Driver\Disk' DriverEntry returned 0x00000000
+WDFTrace: new WDFKEY object open of \Registry\Machine\System\CurrentControlSet\Control\MiniNT failed, 0xc0000034
+(ntoskrnl\io\iomgr\driver.c:659) '\Driver\cdrom' DriverEntry returned 0x00000000
+(ntoskrnl\io\iomgr\driver.c:659) '\Driver\ksecdd' DriverEntry returned 0x00000000
+(ntoskrnl\io\pnpmgr\devaction.c:656) Failed to open class key "{4D36E96A-E325-11CE-BFC1-08002BE10318}" (status c0000034)
+(ntoskrnl\io\pnpmgr\devaction.c:656) Failed to open class key "{4D36E96A-E325-11CE-BFC1-08002BE10318}" (status c0000034)
+(ntoskrnl\io\pnpmgr\pnpres.c:648) Resource conflict: IRQ (0xe 0xe vs. 0xe 0xe)
+(ntoskrnl\io\pnpmgr\pnpres.c:648) Resource conflict: IRQ (0xe 0xe vs. 0xe 0xe)
+(ntoskrnl\io\pnpmgr\devaction.c:656) Failed to open class key "{4D36E96A-E325-11CE-BFC1-08002BE10318}" (status c0000034)
+(ntoskrnl\io\pnpmgr\pnpres.c:648) Resource conflict: IRQ (0xf 0xf vs. 0xf 0xf)
+(ntoskrnl\io\pnpmgr\pnpres.c:648) Resource conflict: IRQ (0xf 0xf vs. 0xf 0xf)
+WDFTrace: WDFKEY 0000057D17068E68, QueryULong, 0xc0000034
+WARNING:  PoRegisterDeviceForIdleDetection at ntoskrnl\po\power.c:646 is UNIMPLEMENTED!
+WDFTrace: new WDFKEY object open of Classpnp failed, 0xc0000034
+WDFTrace: new WDFKEY object open of Classpnp failed, 0xc0000034
+WDFTrace: new WDFKEY object open of Classpnp failed, 0xc0000034
+WDFTrace: new WDFKEY object open of Parameters failed, 0xc0000034
+WDFTrace: WDFKEY 0000057D1709C0A8, QueryULong, 0xc0000034
+WDFTrace: new WDFKEY object open of MediaChangeNotification failed, 0xc0000034
+WDFTrace: new WDFKEY object open of Classpnp failed, 0xc0000034
+WDFTrace: new WDFKEY object open of Classpnp failed, 0xc0000034
+(ntoskrnl\po\power.c:1044) PowerInformationLevel 0x42 is UNIMPLEMENTED! Have a nice day.
+WDFTrace: new WDFKEY object open of CdRom failed, 0xc0000034
+WDFTrace: new WDFKEY object open of CdRom failed, 0xc0000034
+WDFTrace: new WDFKEY object open of CdRom failed, 0xc0000034
+WDFTrace: WDFKEY 0000057D1709C0A8, QueryULong, 0xc0000034
+(ntoskrnl\io\iomgr\driver.c:659) '\Driver\NMIDebug' DriverEntry returned 0x00000000
+(ntoskrnl\io\iomgr\driver.c:659) '\FileSystem\Cdfs' DriverEntry returned 0x00000000
+NDIS REG 8a 03 0120
+NDIS VER 06 54
+NDIS CHECK mp-register 00000000
+NDIS HDR 00 00 0000
+NDIS CHECK mp-attr-other c000000d
+NDIS HDR 9e 00 0004
+NDIS BODY 0000 9e 00 04 00
+NDIS CHECK mp-attr 00000000
+NDIS RECVIND FFFFFA82E8F60940 1
+NDIS6 RECV drop
+NDIS CHECK mp-indicate ok
+NDIS POOL 80 01 0004
+NDIS NBLCOMBO pool FFFFFA82E8F62270 mdl FFFFF88072D287CC off 11112222 len 00003333
+NDIS NBLCOMBOOK FFFFFA82E8F60730 nb FFFFFA82E8F60620
+NDIS RECVIND FFFFFA82E8F60940 1
+NDIS6 RECV drop
+NDIS CHECK mp-list ok
+NDIS CHECK fi-register 00000000
+NDIS CHECK fi-indicate ok
+NDIS POOL 80 01 0004
+NDIS NBLCOMBO pool FFFFFA82E8F62270 mdl FFFFF88072D287CC off 11112222 len 00003333
+NDIS NBLCOMBOOK FFFFFA82E8F60410 nb FFFFFA82E8F60300
+NDIS CHECK fi-list ok
+NDIS CHECK fi-return-register 00000000
+NDIS CHECK fi-return ok
+NDIS POOL 80 01 0004
+NDIS NBLCOMBO pool FFFFFA82E8F62270 mdl FFFFF88072D287CC off 11112222 len 00003333
+NDIS NBLCOMBOOK FFFFFA82E8F60BF0 nb FFFFFA82E8F60510
+NDIS CHECK fi-return-list ok
+NDIS PR 95 02 0080
+NDIS PVER 05 54
+NDIS CHECK pr-version c0010004
+NDIS PR 95 02 0080
+NDIS PVER 06 54
+NDIS CHECK pr-flags c000000d
+NDIS PR 95 02 0080
+NDIS PVER 06 54
+NDIS CHECK pr-register 00000000
+NDIS CHECK pr-calls 00000002
+NDIS POOL 80 01 0004
+NDIS POOL 80 01 0004
+NDIS NBLCOMBO pool FFFFFA82E8F62270 mdl FFFFF88072D287CC off 11112222 len 00003333
+NDIS NBLCOMBOOK FFFFFA82E8F60AE0 nb FFFFFA82E8F60CF0
+NDIS CHECK nb-fields ok
+NDIS CHECK OK
+(ntoskrnl\io\iomgr\driver.c:659) '\Driver\Ndis' DriverEntry returned 0x00000000
+(drivers\ksfilter\swenum\swenum.c:428) SWENUM loaded
+(ntoskrnl\io\iomgr\driver.c:659) '\Driver\swenum' DriverEntry returned 0x00000000
+(ntoskrnl\io\iomgr\driver.c:659) '\Driver\RamDisk' DriverEntry returned 0x00000000
+(ntoskrnl\io\iomgr\driver.c:659) '\FileSystem\Mup' DriverEntry returned 0x00000000
+BOOT DRIVERS LOADED
+(ntoskrnl\io\iomgr\iomgr.c:514) Polling up to 30000 ms for the boot device
+WARNING:  HalCalculateScatterGatherListSize at hal\halx86\generic\dma.c:1189 is UNIMPLEMENTED!
+(ntoskrnl\mm\ARM3\sysldr.c:170) Loading: \SystemRoot\system32\drivers\vgapnp.sys at FFFFF880761F7000 with 18 pages
+(ntoskrnl\mm\ARM3\sysldr.c:170) Loading: \SystemRoot\system32\drivers\videoprt.sys at FFFFF880729B3000 with cf pages
+(ntoskrnl\io\iomgr\driver.c:659) '\Driver\vga' DriverEntry returned 0x00000000
+(win32ss\drivers\videoprt\registry.c:316) Failed to open device software key, status 0xc0000034
+(ntoskrnl\io\pnpmgr\pnpres.c:648) Resource conflict: IRQ (0xa 0xa vs. 0xa 0xa)
+(ntoskrnl\io\pnpmgr\pnpres.c:112) Satisfying memory requirement with 0xa0000 (length: 0x20000)
+(ntoskrnl\io\pnpmgr\pnpres.c:648) Resource conflict: IRQ (0xa 0xa vs. 0xa 0xa)
+(ntoskrnl\mm\ARM3\sysldr.c:170) Loading: \SystemRoot\system32\drivers\i8042prt.sys at FFFFF8807617D000 with 7a pages
+(drivers\input\i8042prt\hwhacks.c:278) SMBiosTables HACK, see CORE-14867
+(ntoskrnl\io\iomgr\driver.c:659) '\Driver\i8042prt' DriverEntry returned 0x00000000
+(ntoskrnl\mm\ARM3\sysldr.c:170) Loading: \SystemRoot\system32\drivers\kbdclass.sys at FFFFF88072984000 with 2f pages
+(ntoskrnl\io\iomgr\driver.c:659) '\Driver\kbdclass' DriverEntry returned 0x00000000
+(ntoskrnl\io\pnpmgr\pnpres.c:648) Resource conflict: IRQ (0x1 0x1 vs. 0x1 0x1)
+(ntoskrnl\io\pnpmgr\pnpres.c:648) Resource conflict: IRQ (0x1 0x1 vs. 0x1 0x1)
+(ntoskrnl\mm\ARM3\sysldr.c:170) Loading: \SystemRoot\system32\drivers\mouclass.sys at FFFFF8807295C000 with 28 pages
+(ntoskrnl\io\iomgr\driver.c:659) '\Driver\mouclass' DriverEntry returned 0x00000000
+(ntoskrnl\io\pnpmgr\pnpres.c:648) Resource conflict: IRQ (0xc 0xc vs. 0xc 0xc)
+(ntoskrnl\io\pnpmgr\pnpres.c:648) Resource conflict: IRQ (0xc 0xc vs. 0xc 0xc)
+(ntoskrnl\mm\ARM3\sysldr.c:170) Loading: \SystemRoot\system32\drivers\floppy.sys at FFFFF88072905000 with 57 pages
+(ntoskrnl\io\iomgr\driver.c:659) '\Driver\Floppy' DriverEntry returned 0x00000000
+(ntoskrnl\mm\ARM3\sysldr.c:170) Loading: \SystemRoot\system32\drivers\fs_rec.sys at FFFFF8807289B000 with 6a pages
+(ntoskrnl\io\iomgr\driver.c:659) '\FileSystem\Fs_Rec' DriverEntry returned 0x00000000
+(ntoskrnl\mm\ARM3\sysldr.c:170) Loading: \SystemRoot\system32\drivers\null.sys at FFFFF88072885000 with 16 pages
+(ntoskrnl\io\iomgr\driver.c:659) '\Driver\Null' DriverEntry returned 0x00000000
+(ntoskrnl\mm\ARM3\sysldr.c:170) Loading: \SystemRoot\system32\drivers\beep.sys at FFFFF88072870000 with 15 pages
+(ntoskrnl\io\iomgr\driver.c:659) '\Driver\Beep' DriverEntry returned 0x00000000
+(ntoskrnl\mm\ARM3\sysldr.c:170) Loading: \SystemRoot\system32\drivers\blue.sys at FFFFF88072852000 with 1e pages
+(ntoskrnl\io\iomgr\driver.c:659) '\Driver\Blue' DriverEntry returned 0x00000000
+(ntoskrnl\mm\ARM3\sysldr.c:170) Loading: \SystemRoot\system32\drivers\vga.sys at FFFFF88072840000 with 12 pages
+(ntoskrnl\io\iomgr\iorsrce.c:1055) IoReportResourceUsage is halfplemented!
+(ntoskrnl\io\pnpmgr\pnpres.c:631) Resource conflict: Port (0x3b0 to 0x3bc vs. 0x3b0 to 0x3bc)
+(ntoskrnl\io\pnpmgr\pnpres.c:631) Resource conflict: Port (0x3c0 to 0x3e0 vs. 0x3c0 to 0x3e0)
+(ntoskrnl\io\pnpmgr\pnpres.c:607) Resource conflict: Memory (0xa0000 to 0xc0000 vs. 0xa0000 to 0xc0000)
+(ntoskrnl\io\iomgr\iorsrce.c:1055) IoReportResourceUsage is halfplemented!
+(ntoskrnl\io\pnpmgr\pnpres.c:631) Resource conflict: Port (0x3b0 to 0x3bc vs. 0x3b0 to 0x3bc)
+(ntoskrnl\io\pnpmgr\pnpres.c:631) Resource conflict: Port (0x3c0 to 0x3e0 vs. 0x3c0 to 0x3e0)
+(ntoskrnl\io\pnpmgr\pnpres.c:607) Resource conflict: Memory (0xa0000 to 0xc0000 vs. 0xa0000 to 0xc0000)
+(ntoskrnl\io\iomgr\driver.c:659) '\Driver\VgaSave' DriverEntry returned 0x00000000
+(ntoskrnl\mm\ARM3\sysldr.c:170) Loading: \SystemRoot\system32\drivers\msfs.sys at FFFFF880727FE000 with 42 pages
+(ntoskrnl\io\iomgr\driver.c:659) '\FileSystem\Msfs' DriverEntry returned 0x00000000
+(ntoskrnl\mm\ARM3\sysldr.c:170) Loading: \SystemRoot\system32\drivers\npfs.sys at FFFFF88072693000 with 16b pages
+(ntoskrnl\io\iomgr\driver.c:659) '\FileSystem\Npfs' DriverEntry returned 0x00000000
+(ntoskrnl\mm\ARM3\sysldr.c:170) Loading: \SystemRoot\system32\drivers\lldp.sys at FFFFF8807616D000 with 9 pages
+LLDP LOAD
+NDIS PR 95 02 0080
+NDIS PVER 06 54
+LLDP REG 00000000
+NDIS BINDREADY
+(ntoskrnl\io\iomgr\driver.c:659) '\Driver\Lldp' DriverEntry returned 0x00000000
+(ntoskrnl\mm\ARM3\sysldr.c:170) Loading: \SystemRoot\system32\drivers\ndisuio.sys at FFFFF8807264D000 with 46 pages
+NDIS PR 95 02 0080
+NDIS PVER 06 54
+NDIS BINDREADY skip
+NDIS BINDREADY
+NDISUIO REG6 00000000
+(ntoskrnl\io\iomgr\driver.c:659) '\Driver\Ndisuio' DriverEntry returned 0x00000000
+(ntoskrnl\mm\ARM3\sysldr.c:170) Loading: \SystemRoot\system32\drivers\rtl8139.sys at FFFFF88072643000 with a pages
+NDIS REG 8a 03 0120
+NDIS VER 06 54
+NDIS INIT res 0000000000000000 add 0000000000000000
+RTL8139 INIT
+RTL8139 CHECK pci none
+NDIS INIT c0000001
+RTL8139 CHECK register 00000000
+RTL8139 CHECK OK
+(ntoskrnl\io\iomgr\driver.c:659) '\Driver\Rtl8139' DriverEntry returned 0x00000000
+(ntoskrnl\mm\ARM3\sysldr.c:170) Loading: \SystemRoot\system32\drivers\afd.sys at FFFFF88072580000 with c3 pages
+(ntoskrnl\io\iomgr\driver.c:659) '\Driver\Afd' DriverEntry returned 0x00000000
+(ntoskrnl\mm\ARM3\sysldr.c:170) Loading: \SystemRoot\system32\drivers\netio.sys at FFFFF88072548000 with 38 pages
+(ntoskrnl\io\iomgr\driver.c:659) '\Driver\Netio' DriverEntry returned 0x00000000
+KDB: Executing KDBinit file...
+KDB: KDBinit executed
+(ntoskrnl\io\iomgr\driver.c:86) Deleting driver object '\Driver\KdDriver'
+WARNING:  RtlCreateTagHeap at sdk\lib\rtl\heap.c:4043 is UNIMPLEMENTED!
+Boot took 91893831048 cycles!
+Interrupts: 2583 System Calls: 560 Context Switches: 0
+(ntoskrnl\config\cmsysini.c:1212) CmpGetRegistryPath: ConfigPath = '\SystemRoot\System32\Config\'
+(ntoskrnl\config\cmsysini.c:1212) CmpGetRegistryPath: ConfigPath = '\SystemRoot\System32\Config\'
+(ntoskrnl\config\cmsysini.c:1212) CmpGetRegistryPath: ConfigPath = '\SystemRoot\System32\Config\'
+(ntoskrnl\config\cmsysini.c:1212) CmpGetRegistryPath: ConfigPath = '\SystemRoot\System32\Config\'
+(ntoskrnl\config\cmsysini.c:1212) CmpGetRegistryPath: ConfigPath = '\SystemRoot\System32\Config\'
+(ntoskrnl\config\cmsysini.c:1212) CmpGetRegistryPath: ConfigPath = '\SystemRoot\System32\Config\'
+(ntoskrnl\config\cmsysini.c:1212) CmpGetRegistryPath: ConfigPath = '\SystemRoot\System32\Config\'
+(ntoskrnl\config\cmsysini.c:2349) VERPORT currentversion 6.3
+(ntoskrnl\config\cmsysini.c:2350) VERPORT build 19045
+(ntoskrnl\config\cmsysini.c:2351) VERPORT major 10
+(base\system\smss\sminit.c:873) SMSS: Cannot query SystemPartition value (Type 0, Status 0xc0000034)
+(ntoskrnl\mm\ARM3\session.c:795) Session 0 is ready to go: 0xFFFFF97FFF010000 0xFFFFF880738AD000, 1be4 0x0000000000000000
+(ntoskrnl\mm\ARM3\sysldr.c:170) Loading: \SystemRoot\System32\win32k.sys at FFFFF880713B0000 with 114b pages
+(ntoskrnl\mm\ARM3\sysldr.c:170) Loading: \SystemRoot\System32\ftfd.dll at FFFFF88071076000 with 33a pages
+(win32ss\gdi\ntgdi\d3dkmt.c:27) DxStartupDxgkInt: Entry
+(win32ss\reactx\ntddraw\ddraw.c:57) Warning: trying loading xp/2003/windows7/reactos dxg.sys
+(ntoskrnl\mm\ARM3\sysldr.c:170) Loading: \SystemRoot\System32\drivers\dxg.sys at FFFFF88070FAD000 with b6 pages
+(ntoskrnl\mm\ARM3\sysldr.c:170) Loading: \SystemRoot\System32\drivers\dxgthk.sys at FFFFF88070FA4000 with 9 pages
+(win32ss\reactx\ntddraw\ddraw.c:112) DirectX interface is activated
+(win32ss\gdi\ntgdi\freetype.c:970) Fonts registry is empty.
+(win32ss\gdi\eng\device.c:581) err: EngpPnPTargetRelationRequest() failed with status 0xc0000010
+(win32ss\user\ntuser\winsta.c:255) err: Invalid window station handle
+(win32ss\user\ntuser\clipboard.c:31) err: Cannot open winsta
+(win32ss\drivers\videoprt\videoprt.c:1502) FIXME: Support calling VideoPortEnumerateChildren again!
+err:(base\system\winlogon\winlogon.c:168) WL: RegOpenKeyExW("HKLM\System\CurrentControlSet\Services\Tcpip\Parameters") failed (error 2)
+(win32ss\user\ntuser\winsta.c:741) err: Initializing input window station
+(win32ss\user\ntuser\winsta.c:785) err: Initializing input window station
+(win32ss\user\ntuser\class.c:2396) err: SYSTEMCUR(ARROW) == NULL, should not happen!!
+(win32ss\user\ntuser\class.c:2396) err: SYSTEMCUR(ARROW) == NULL, should not happen!!
+(win32ss\user\ntuser\class.c:2396) err: SYSTEMCUR(ARROW) == NULL, should not happen!!
+(win32ss\user\ntuser\class.c:2396) err: SYSTEMCUR(ARROW) == NULL, should not happen!!
+(win32ss\user\ntuser\class.c:2396) err: SYSTEMCUR(ARROW) == NULL, should not happen!!
+(win32ss\user\ntuser\class.c:2396) err: SYSTEMCUR(ARROW) == NULL, should not happen!!
+(win32ss\user\ntuser\desktop.c:3512) err: The process 0xFFFFFA82E8D7CC20 'winlogon.exe' didn't have an assigned startup desktop before, assigning it now!
+(win32ss\user\ntuser\desktop.c:3450) err: Attempted to change thread desktop although the thread has windows!
+(win32ss\user\winsrv\usersrv\init.c:170) We are logged off
+(ntoskrnl\mm\ARM3\sysldr.c:170) Loading: \SystemRoot\System32\kbdus.dll at FFFFF88076168000 with 5 pages
+(ntoskrnl\mm\ARM3\sysldr.c:2559) Skipping NT 4 driver @ FFFFF88076168000
+(dll\ntdll\ldr\ldrinit.c:1620) LDR: late TLS version.dll index 5 oldLen 5 size 8+0 threads 2
+(base\system\services\services.c:64) CheckSetup()
+(base\system\services\services.c:108) Running on LiveCD
+(base\system\services\services.c:130) VerOS NT Setup currently in progress!
+(dll\ntdll\ldr\ldrinit.c:1620) LDR: late TLS sfc.dll index 6 oldLen 6 size 8+0 threads 2
+WARNING:  HvHiveWillShrink at sdk\lib\cmlib\hivewrt.c:576 is UNIMPLEMENTED!
+(dll\ntdll\ldr\ldrinit.c:1620) LDR: late TLS sfc_os.DLL index 7 oldLen 7 size 8+0 threads 2
+(dll\ntdll\ldr\ldrinit.c:1620) LDR: late TLS version.dll index 4 oldLen 4 size 8+0 threads 2
+(dll\ntdll\ldr\ldrinit.c:1620) LDR: late TLS msgina.dll index 8 oldLen 8 size 8+0 threads 2
+fixme:(dll\win32\rpcrt4\rpc_server.c:1736) (0x1000): stub
+(base\system\services\services.c:185) ScmLogEvent: RegisterEventSourceW failed 1722
+(dll\ntdll\ldr\ldrinit.c:1620) LDR: late TLS shsvcs.dll index 9 oldLen 9 size 8+0 threads 2
+(dll\ntdll\ldr\ldrinit.c:1620) LDR: late TLS dcomlaunch.dll index 2 oldLen 2 size 8+0 threads 2
+LDR: missing export SvchostPushServiceGlobals
+LDR: missing export dcomlaunch.dll!SvchostPushServiceGlobals
+WARNING:  getMacAddress at base\services\dcomlaunch\network.c:32 is UNIMPLEMENTED!
+(base\services\dcomlaunch\network.c:136) Failed finding a proper MAC address, will generate seed
+(base\system\services\services.c:185) ScmLogEvent: RegisterEventSourceW failed 1722
+(base\services\eventlog\file.c:350) Cannot create file `\??\X:\VerOS\system32\config\AppEvent.Evt' (Status 0xc0000022)
+(base\services\eventlog\eventlog.c:420) Failed to create X:\VerOS\system32\config\AppEvent.Evt! (Status c0000022)
+(base\services\eventlog\eventlog.c:483) Failed to load Application
+(ntoskrnl\mm\ARM3\sysldr.c:170) Loading: \SystemRoot\System32\framebuf.dll at FFFFF88070E75000 with 19 pages
+(base\services\eventlog\file.c:350) Cannot create file `\??\X:\VerOS\system32\config\SecEvent.Evt' (Status 0xc0000022)
+(base\services\eventlog\eventlog.c:420) Failed to create X:\VerOS\system32\config\SecEvent.Evt! (Status c0000022)
+(base\services\eventlog\eventlog.c:483) Failed to load Security
+(base\services\eventlog\file.c:350) Cannot create file `\??\X:\VerOS\system32\config\SysEvent.Evt' (Status 0xc0000022)
+(base\services\eventlog\eventlog.c:420) Failed to create X:\VerOS\system32\config\SysEvent.Evt! (Status c0000022)
+(base\services\eventlog\eventlog.c:483) Failed to load System
+(base\services\eventlog\eventlog.c:534) The 'EventLog' source is unavailable. The EventLog service will not be able to log its own events.
+(base\system\services\services.c:185) ScmLogEvent: RegisterEventSourceW failed 1722
+(base\system\services\services.c:185) ScmLogEvent: RegisterEventSourceW failed 1722
+WARNING:  LDEVOBJ_bUnloadImage at win32ss\gdi\eng\ldevobj.c:290 is UNIMPLEMENTED!
+(win32ss\reactx\ntddraw\dxeng.c:286) ReactX Calling : DxEngGetHdevData, Type: 12
+(win32ss\reactx\ntddraw\dxeng.c:289) hDev: FFFFF8A00031D950
+(win32ss\reactx\ntddraw\dxeng.c:343) requested DxEGShDevData_display
+(win32ss\reactx\ntddraw\dxeng.c:376) retVal: 00000001
+(win32ss\reactx\ntddraw\dxeng.c:286) ReactX Calling : DxEngGetHdevData, Type: 7
+(win32ss\reactx\ntddraw\dxeng.c:289) hDev: FFFFF8A00031D950
+(win32ss\reactx\ntddraw\dxeng.c:323) requested DxEGShDevData_eddg
+(win32ss\reactx\ntddraw\dxeng.c:376) retVal: fffff8a00031e010
+(win32ss\reactx\ntddraw\dxeng.c:286) ReactX Calling : DxEngGetHdevData, Type: 6
+(win32ss\reactx\ntddraw\dxeng.c:289) hDev: FFFFF8A00031D950
+(win32ss\reactx\ntddraw\dxeng.c:319) requested DxEGShDevData_dhpdev
+(win32ss\reactx\ntddraw\dxeng.c:376) retVal: fffff8a000315f60
+(win32ss\reactx\ntddraw\dxeng.c:534) ReactX Calling : DxEngLockHdev
+(win32ss\reactx\ntddraw\dxeng.c:536) hDev: FFFFF8A00031D950
+(win32ss\reactx\ntddraw\dxeng.c:286) ReactX Calling : DxEngGetHdevData, Type: 5
+(win32ss\reactx\ntddraw\dxeng.c:289) hDev: FFFFF8A00031D950
+(win32ss\reactx\ntddraw\dxeng.c:315) requested DxEGShDevData_DrvFuncs
+(win32ss\reactx\ntddraw\dxeng.c:376) retVal: fffff8a00031dcb8
+(win32ss\reactx\ntddraw\dxeng.c:571) ReactX Calling : DxEngUnlockHdev
+err:(win32ss\user\user32\windows\cursoricon.c:277) Loading System Cursors
+(dll\ntdll\ldr\ldrinit.c:1620) LDR: late TLS WINSPOOL.DRV index 10 oldLen 10 size 8+0 threads 4

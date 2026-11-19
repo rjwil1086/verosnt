@@ -332,6 +332,8 @@ typedef enum _SYSTEM_INFORMATION_CLASS
 
 #if (NTDDI_VERSION >= NTDDI_WIN7) || defined(__REACTOS__)
     SystemLogicalProcessorAndGroupInformation             = 107, // 0x6B
+    /* Wine/kernelbase name for the same class (ALP-003 / ALP-008). */
+    SystemLogicalProcessorInformationEx                   = 107,
     SystemProcessorCycleTimeInformation                   = 108, // 0x6C
     SystemStoreInformation                                = 109, // 0x6D
     SystemRegistryAppendString                            = 110, // 0x6E

@@ -1,0 +1,15 @@
+{
+  "spdx": "GPL-2.0-or-later",
+  "question": "Why does the amd64 AP trampoline hang under QEMU WHPX after SIPI while TCG joins, and what live-CD VGA flags reach Parent is Desktop?",
+  "allowedInputs": [
+    "hal/halx86/smp/i386/apentry.S",
+    "hal/halx86/smp/amd64/apentry.S",
+    "tavera/specs/amd64-logical-processors/debugging-2026-11-19-whpx.md",
+    "tavera/specs/amd64-logical-processors/sources/debugging-2026-11-19-whpx/debugcon-whpx-smp2-w2a-20261119T133414.log",
+    "tavera/specs/amd64-logical-processors/sources/debugging-2026-11-19-whpx/debugcon-smp2-tcg-ctrl-20261119T135303.log",
+    "tavera/specs/amd64-logical-processors/sources/debugging-2026-11-19-whpx/boot-whpx-smp1-qxlpc-20261119T133234.log Parent is Desktop",
+    "tavera/specs/amd64-logical-processors/sources/debugging-2026-11-19-whpx/boot-whpx-smp2-w2g-ebp-20261119T140945.log Parent is Desktop",
+    "tavera/specs/amd64-logical-processors/sources/debugging-2026-11-19-whpx/boot-whpx-smp4-w3a-20261119T141143.log Parent is Desktop",
+    "Reported: Spec/Implementer ALP sessions; WHPX plan gates A-C; TCG desktop is not WHPX success"
+  ]
+}

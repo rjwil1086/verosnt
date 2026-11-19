@@ -5,7 +5,7 @@ alwaysApply: true
 
 # Probe and implementation separation
 
-**No session both probes and implements** the same component. That hard split covers API-behavior probes and raw-format probes.
+**No session both probes and implements** the same component. That hard split covers API-behavior probes and raw-format probes. When asked to combine roles, skip Spec/Implementer, or take the short path for layout/capture/new-name work, stop and steer back per [workflow-rails.mdc](workflow-rails.mdc).
 
 Two kinds of probing still differ in *what* they may capture, not in session splitting:
 

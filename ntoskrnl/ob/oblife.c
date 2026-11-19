@@ -6,9 +6,11 @@
  *                  and deletion, as well as setting or querying any of its
  *                  information while it is active. Since Object Types are also
  *                  Objects, those are also managed here.
+ * COPYRIGHT:       Copyright 2026 Ryan Wilson <ryan@taveraos.com>
  * PROGRAMMERS:     Alex Ionescu (alex.ionescu@reactos.org)
  *                  Eric Kohl
  *                  Thomas Weidenmueller (w3seek@reactos.org)
+ *                  Ryan Wilson <ryan@taveraos.com>
  */
 
 /* INCLUDES ******************************************************************/

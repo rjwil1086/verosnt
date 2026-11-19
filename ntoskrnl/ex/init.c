@@ -1620,6 +1620,19 @@ Phase1InitializationDiscard(IN PVOID Context)
             KeMaximumProcessors = MAXIMUM_PROCESSORS;
     }
 
+    /*
+     * Pin Phase1 to the BSP while APs join. Otherwise the scheduler can
+     * migrate this thread onto an AP that entered KiIdleLoop at SYNCH_LEVEL,
+     * and PAGED_CODE() in ObInit asserts (CR8 != PASSIVE).
+     * Sources: ntoskrnl/ke/amd64/stubs.c KiIdleLoop; ntoskrnl/ke/amd64/thrdini.c.
+     */
+    {
+        PKTHREAD Phase1Thread = KeGetCurrentThread();
+        Phase1Thread->Affinity = (KAFFINITY)1;
+        Phase1Thread->IdealProcessor = 0;
+        Phase1Thread->NextProcessor = 0;
+    }
+
     /* Start Application Processors */
     KeStartAllProcessors();
 #endif
@@ -1680,7 +1693,22 @@ Phase1InitializationDiscard(IN PVOID Context)
     InbvUpdateProgressBar(5);
 
     /* Call OB initialization again */
+    DPRINT1("Phase1 pre-ObInit: Cpu=%lu Irql=%u Affinity=0x%Ix Active=0x%Ix\n",
+            (ULONG)KeGetCurrentProcessorNumber(),
+            (ULONG)KeGetCurrentIrql(),
+            (ULONG_PTR)KeGetCurrentThread()->Affinity,
+            (ULONG_PTR)KeActiveProcessors);
     if (!ObInitSystem()) KeBugCheck(OBJECT1_INITIALIZATION_FAILED);
+
+#ifdef CONFIG_SMP
+    /* Restore Phase1 affinity now that ObInit is past the PAGED_CODE window */
+    {
+        PKTHREAD Phase1Thread = KeGetCurrentThread();
+        Phase1Thread->Affinity = KeActiveProcessors;
+        DPRINT1("Phase1: affinity restored to 0x%Ix after ObInit\n",
+                (ULONG_PTR)Phase1Thread->Affinity);
+    }
+#endif
 
     /* Initialize Basic System Objects and Worker Threads */
     if (!ExInitSystem()) KeBugCheckEx(PHASE1_INITIALIZATION_FAILED, 0, 0, 1, 0);
