@@ -56,6 +56,7 @@ Every claim below names one of these entries (Learn URL, in-tree path, or guest 
 27. Guest serial logs from `tavera/probes/amd64-logical-processors/probe-v1`, stored under `tavera/specs/amd64-logical-processors/sources/probes/probe-v1/`, each containing `DIFF END OK`: `windows-4c1t.log`, `windows-qemu64-2c2t.log`, `windows-epyc-2c2t.log`. Windows 10 22H2 on QEMU TCG, `-m 8192`, `-snapshot`. Date captured: 2026-11-18.
 28. `sdk/include/ndk/extypes.h` in this tree. Class `107` is named both `SystemLogicalProcessorAndGroupInformation` and `SystemLogicalProcessorInformationEx` (same value).
 29. Tavera OS guest serial logs from the same probe under `tavera/specs/amd64-logical-processors/sources/probes/probe-v1/`, each containing `DIFF END OK`: `tavera-4c1t.log`, `tavera-qemu64-2c2t.log`, `tavera-epyc-2c2t.log`. Date captured: 2026-11-19.
+   **(Rev.2)** Those public files were refreshed 2026-11-19 from `output/amd64-logical-processors/probe-v1/` after the Ex group-`max` and cache fill. Each log now has `DIFF REL groupinfo i=0 max=4 active=4 mask=0xf`, Ex `DIFF REL cache` lines matching the Windows shape in source 27, and `DIFF END OK`. Earlier prose that cited source 29 for `max=64` or missing caches described the pre-refresh files.
 30. Tavera OS boot log `tavera/specs/amd64-logical-processors/sources/probes/boot-m32-20261118T175600Z-smp9.log` (`-smp 9`): CPUs 1–8 joined, Phase1 affinity `0x1ff`, no TLB/IPI hang. Tavera-only evidence; not Windows APIC delivery.
 31. [PROCESSOR_GROUP_INFO (winnt.h)](https://learn.microsoft.com/en-us/windows/win32/api/winnt/ns-winnt-processor_group_info). `MaximumProcessorCount` and `ActiveProcessorCount`.
 32. `sdk/include/reactos/x86x64/Cpuid.h` in this tree. `CPUID_CACHE_PARAMS_AMD` (`0x8000001D`) for AMD deterministic cache parameters.
@@ -111,6 +112,7 @@ Names and types already in this tree. Required behavior is stated here; calling 
   - One `RelationProcessorCore` record per core. Mask and `Flags` match source 27 for the three QEMU shapes (`flags=0`, single-bit masks). Learn still documents `LTP_PC_SMT` when a core has more than one logical processor (source 4); do not invent that flag when the log shows `0`. `EfficiencyClass` is 0 in those captures.
   - Package, cache, and exactly one NUMA node records for this single-group machine. Exact Windows cache lines are in section 6. Emit those Ex cache records even when leaf `0x4` is null and leaf `0x8000001D` is absent (source 33). Tavera source 29 currently emits no cache records.
   - One group 0 record. For the three source-27 shapes, `MaximumProcessorCount` equals `ActiveProcessorCount` (both 4) (sources 27, 31). Reporting `max=64` with `active=4` fails the differential (source 29).
+  - **(Rev.2)** Refreshed source 29 emits the section 6 Ex cache lines and `groupinfo max=4 active=4` on all three shapes. The fill that sets `MaximumProcessorCount` equal to `ActiveProcessorCount` is already in `ntoskrnl/ex/sysinfo.c` in this tree (source 20).
   - `RelationProcessorDie` and `RelationProcessorModule` only when CPUID reports those levels (source 9 module/die level types). Source 27 measured none.
 - **Live CD images** (sources 22, 23, 26). After a 2-CPU boot reaches the desktop, the live entries point at `ntkrnlmp.exe` and `halmp.dll`. Uniprocessor `ntoskrnl.exe` / `hal.dll` (and related) stay on the CD. `ONECPU` remains the escape.
 
@@ -252,6 +254,8 @@ Each of `tavera-4c1t.log`, `tavera-qemu64-2c2t.log`, and `tavera-epyc-2c2t.log` 
 - **No** `DIFF REL cache` lines (Windows section 6 / source 33 require them)
 - `DIFF REL groupinfo i=0 max=64 active=4 mask=0xf` — Windows source 27 has `max=4 active=4` (sources 27, 31)
 
+**(Rev.2)** After the 2026-11-19 refresh of the same three filenames (source 29 Rev.2 note), each log still has `DIFF END OK`, `DIFF LOGICAL 4`, `DIFF CORE_COUNT 4`, and four single-bit `flags=0` cores. They now also have Ex `DIFF REL cache` lines matching the corresponding Windows shape in source 27 / section 6, and `DIFF REL groupinfo i=0 max=4 active=4 mask=0xf` (matches Windows). The `max=64` / no-cache bullets above describe the pre-refresh captures only.
+
 ## 7. Compatibility notes
 
 Source 1 documents WOW64 affinity folding above 64 processors. This milestone stays in one group of at most 64, so that folding is out of scope.
@@ -266,11 +270,14 @@ QEMU `threads=2` still exposes CPUID SMT level_type on leaf `0xb` in source 27 w
 
 For the three QEMU shapes, `PROCESSOR_GROUP_INFO.MaximumProcessorCount` equals `ActiveProcessorCount` (both 4) on Windows (sources 27, 31). Source 29’s `max=64` is a Tavera mismatch.
 
+**(Rev.2)** Refreshed source 29 reports `max=4 active=4` on all three shapes, matching Windows. The earlier `max=64` mismatch sentence applies only to the pre-refresh captures. The equality fill lives in `ntoskrnl/ex/sysinfo.c` in this tree (source 20).
+
 ## 8. Test plan
 
 These checks confirm behavior. They do not prescribe coding steps beyond sections 4 and 5.
 
 1. **Topology probe.** `tavera/probes/amd64-logical-processors/probe-v1` already produced Windows (source 27) and Tavera (source 29) logs. Probe-v2 (source 33) added Windows leaf `0x4` / `0x8000001D` dumps. After cache and group-`max` fixes, re-run Tavera; require `DIFF END OK` and match source 27 including cache lines and `groupinfo max=4`.
+   **(Rev.2)** Refreshed source 29 already meets that Tavera requirement (`max=4`, Ex caches, `DIFF END OK`). Re-run only when probe or Ex fill changes again.
 2. **Placement.** Source 27 already recorded `DIFF PLACE … shared_core=0` on Windows for each shape. Source 29 also recorded `shared_core=0`. Re-run after changes if needed.
 3. **`ONECPU`.** Boot with `ONECPU` and confirm only the boot processor is active and the desktop still appears.
 4. **2-CPU gate then MP images.** Boot with two CPUs to the desktop on `ntkrnlmp`/`halmp` (or the interim images used to prove the gate). Then point the live CD at `ntkrnlmp.exe` and `halmp.dll`, rebuild, and boot `-smp 4`.
@@ -288,3 +295,5 @@ These checks confirm behavior. They do not prescribe coding steps beyond section
 Written 2026-11-18. Section 6 filled from probe-v1 Windows captures the same day. 2026-11-18 later: ALP-002/006/007/008 resolved (i386 wait, Ex-matching `MultiThreadProcessorSet`, exact cache DIFF lines, class 107 dual names). 2026-11-19: cited Tavera probe-v1 (source 29), smp9 (source 30), group `MaximumProcessorCount` (source 31), opened ALP-009 for cache leaves; softened x2APIC / stub source blurbs. 2026-11-19 later: probe-v2 source 33; ALP-009 resolved (Ex caches required when leaf `0x4` null / `0x8000001D` absent; EPYC `0x8000001D` sizes match Ex). A reviewer still has to confirm this file has no implementation detail from a forbidden source.
 
 **(Rev.1)** 2026-11-19: Sources 34–36; test plan item 7; open-questions note that WHPX MP desktop is an M32 gate and is met. ALP-011/012 resolved from `debugging-2026-11-19-whpx.md` W1f/W2a–W2g/W3a, `apentry.S`, and `tavera-test-guest.mdc`.
+
+**(Rev.2)** 2026-11-19: ALP-013. Source 29 note plus §4 / §6 / §7 / §8 corrections so the refreshed `tavera-*.log` files (`groupinfo max=4`, Ex caches) are what the spec describes; prior `max=64` / no-cache wording kept as pre-refresh history.
