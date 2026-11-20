@@ -22,11 +22,20 @@ A commit that changes boot, the kernel, the HAL, a driver, NTFS, or a Windows-fa
 - Do not record `forbiddenInputsNotUsed`, `humanReview`, or the prompt.
 - Do not paste a trace body, a header, a disassembly, or a Windows ordinal into the record.
 
+A short-path or other non-spec change that this rule already covers uses that same note as its durable record. Do not add `tavera/fixes/` or another parallel tree. Specs stay on the Spec / Implementer rails.
+
+- `question` states the symptom or the gap and the success check. A slug restated as a sentence is not enough.
+- `allowedInputs` lists every source the change used. Those string cites match the cites in the code and under the file header.
+- When the change followed a spec, an entry may name `tavera/specs/…` from the source root. The note is still required when this rule already requires one.
+
 `tools/transparency/check_records.py` rejects a commit that touches those paths unless a dated note that commit added is still in the tree, or the tree has `tavera/transparency/<full sha>.json` for it. A commit that already added more than one dated note still counts. It rejects every note in the checkout that uses a banned field, and a commit that adds or edits a note whose name is not a date slug or an earlier commit SHA. On the checkout, a cited `output/` path that ends in `.log`, `.json`, `.txt`, `.probe`, `.err`, or `.ok` must exist under `output/`. It does not parse note blobs from older revisions. `harness.logSha256` is optional. When it is present it must be 64 lowercase hex characters. The Transparency workflow runs the script on the checkout and on the commits in a push or a pull request.
 
 ```text
 Right: tavera/transparency/2026-11-08-runtime-nt-version.json citing https://learn.microsoft.com/en-us/windows/release-health/release-information and output/syscall-diff/windows.log DIFF END OK.
+Right: "question": "The reported runtime version disagreed with the probe; success is DIFF END OK on that read."
 Right: differential-tests/ndis-discovery/probe.c, the report_u32 read length, probe method, not a Windows field.
 Wrong: an entry that names "the public spec" or "Linux" and gives no URL or path.
+Wrong: "question": "runtime-nt-version" with no symptom and no success check.
 Wrong: a file for a docs-only commit, a boolean attestation, or another notice-only commit after the catch-up.
+Wrong: a short-path kernel fix recorded only under tavera/fixes/.
 ```
