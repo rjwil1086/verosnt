@@ -5,7 +5,24 @@ alwaysApply: true
 
 # Workflow rails
 
-Before Windows-facing implementation under this tree, classify the task. Ryan asking to skip does **not** waive this rule. Handoff detail lives in [tavera-specs-open-items.mdc](tavera-specs-open-items.mdc); session split in [clean-room-probe-separation.mdc](clean-room-probe-separation.mdc).
+Before Windows-facing work under this tree, classify the task. Ryan asking to skip does **not** waive this rule. Handoff detail lives in [tavera-specs-open-items.mdc](tavera-specs-open-items.mdc); session split in [clean-room-probe-separation.mdc](clean-room-probe-separation.mdc).
+
+## On session start
+
+On every new chat for a Windows-facing task, before a probe or any code:
+
+1. Apply the narrow gate. Tell Ryan **Short path** or **Full Spec/Implementer rails**, and which gate bullet. If the class is unclear, ask Ryan once. Do not default to short path when a new Windows name, layout, or capture might be involved.
+2. This chat becomes **one role** and stays there:
+   - **Short path** → short-path implementer. No Spec session for that fix. **Plan first**: symptom or gap, success check, files to change, and the cites to use. Then code. The durable record is the transparency note ([transparency.mdc](transparency.mdc)): `question` plus `allowedInputs`. Docs, branding, GitHub workflows, and cursor rules still classify here and still get that plan; they do not get a transparency file.
+   - **Full rails** → Spec / Probe writer only. **Plan first**, then probe if needed, then specs and open-items. Do not implement in this chat. When the spec is ready, tell Ryan. Ryan opens a **new** Implementer chat. That chat plans revisions before code.
+3. **Plan before write** applies to the Spec writer, the Implementer, and the short-path implementer.
+
+```text
+Wrong: code or probe first, then classify
+Wrong: short-path, Spec, or Implementer writes before its plan
+Wrong: a Spec session also lands the implementation
+Wrong: an Implementer chat on full rails before Spec says ready
+```
 
 ## Narrow gate
 
@@ -24,23 +41,42 @@ Before Windows-facing implementation under this tree, classify the task. Ryan as
 
 Short-path work still follows [clean-room.mdc](clean-room.mdc), [clean-room-model-recall.mdc](clean-room-model-recall.mdc), and [transparency.mdc](transparency.mdc) when those apply. It must not same-session Windows-probe and implement.
 
+## Same session only
+
+Do work here only when it stays in the **same role** and the **same component or classified task**.
+
+- Spec: open-items, probe, and spec for that component
+- Implementer: revisions, Queue-check, and verify for that component
+- Short path: the classified fix
+
+Tiny hygiene that does not change Windows behavior or the role may stay: a typo in a comment already open for this task, or a Progress line for the same milestone bullet.
+
+Anything else stops. That includes another module, another milestone slice, a new gate decision, short-path work inside a Spec chat, or implementation inside a Spec chat. Tell Ryan to start a **new** session. That session classifies first. Do not re-classify in this chat and switch roles.
+
+```text
+Wrong: while this chat is Spec, also short-path a different bug
+Wrong: mid-chat role switch without a new session
+```
+
 ## Steer-back (do not proceed)
 
-If Ryan or an agent asks to implement while skipping Spec/Implementer, to probe Windows and edit implementation in the same session, to invent a missing Windows fact, or to code before that role’s plan: **stop**. Do not start the code or the probe.
+If Ryan or an agent asks to implement while skipping Spec/Implementer, to probe Windows and edit implementation in the same session, to invent a missing Windows fact, to code before that role’s plan, or to take unrelated work in this chat: **stop**. Do not start the code or the probe.
 
 Reply in a few short sentences that name:
 
-1. Why the short path is closed (which gate bullet)
-2. Which session to open next (Spec / Probe chat, or a **new** Implementer chat)
+1. Why the short path is closed (which gate bullet), or why this chat cannot take the new ask
+2. Which session to open next (Spec / Probe chat, a **new** Implementer chat, or a **new** session that classifies first)
 3. The next concrete steps, for example:
    - Spec: read or create `tavera/specs/<component>/open-items.md`; plan first; probe if needed; resolve or defer; tell Ryan ready to implement
    - Implementer: read open-items and specs; plan revisions; code; under `## Queue check` list implemented item IDs so the spec agent rechecks remaining open and deferred items
+   - Short path: plan the symptom, the check, the files, and the cites; then code; write the transparency note
    - Gap with no cite: append an **open** item; do not Learn-hunt in the implementer session
 
 ```text
 Right: "This needs a layout. Short path is closed. Open a Spec/Probe session, plan, then probe-vN; do not implement in that chat."
-Right: short-path bugfix citing only Learn + existing DIFF END OK log, no new field
+Right: short-path bugfix citing only Learn + existing DIFF END OK log, no new field, after a plan
 Wrong: "just implement this NTFS layout in this chat"
 Wrong: Ryan says skip the spec; agent codes anyway
 Wrong: same session Windows probe and driver edit
+Wrong: short-path codes before the plan
 ```

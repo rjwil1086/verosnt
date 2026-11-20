@@ -118,6 +118,22 @@ Handoff file for implementer ↔ spec agent. Do not delete entries. See `.cursor
 - Resolution: Re-captured Windows 10 22H2 on QEMU TCG (`output/syscall-diff/windows.log`, `DIFF END OK`). Stamped `output/syscall-diff/windows.probe` (`probe=448b542b…`, `log=be557c44…`). `Test-WindowsProbe.ps1 -Name syscall-diff` now prints `REUSE syscall-diff`. Implementer can pair Tavera without another Windows boot until `probe.c` changes again.
 - Note (2026-11-19): Tavera `output/syscall-diff/reactos.log` already has `DIFF END OK` from a temporary Setup CmdLine of the syscall probe. A FAT `A:\probe.exe` RunOnce under `setup -mini` reached desktop then `kdb:>`; RunOnce was removed from `livecd.inf`.
 
+### ALP-011
+- Status: resolved
+- Opened: 2026-11-19
+- Resolved: 2026-11-19
+- Question: What made WHPX `-smp ≥ 2` hang after SIPI on the live CD, and what in-tree change restores AP join and desktop?
+- Blocks: Citing WHPX MP desktop as an M32 success gate without inventing the trampoline fix.
+- Resolution: `tavera/specs/amd64-logical-processors/debugging-2026-11-19-whpx.md` cycles W2a–W2g and W3a. W2a–W2d hung after SIPI (`still waiting CPU 1`; debugcon `IA`). W2e TCG control on the same ISO joined (`boot-smp2-tcg-ctrl-20261119T135303.log`). W2f `DS==CS` alone reached debugcon `IA1234BC` then hung (`WHPX: Unexpected VP exit code 4`). W2g keep `ebp=CS<<4` with `DS==CS` → `CPU 1 joined` + `Parent is Desktop` (`sources/debugging-2026-11-19-whpx/boot-whpx-smp2-w2g-ebp-20261119T140945.log`). W3a `-smp 4` → CPUs 1–3 joined + desktop (`…/boot-whpx-smp4-w3a-20261119T141143.log`). In-tree change: `hal/halx86/smp/amd64/apentry.S` (real-mode `DS==CS` stub-relative loads; keep `ebp=CS<<4` for identity long-mode pointer loads). Spec sources 34–35, test plan item 7, §9 Rev.1.
+
+### ALP-012
+- Status: resolved
+- Opened: 2026-11-19
+- Resolved: 2026-11-19
+- Question: When may a Tavera OS guest use WHPX under the test-guest rule?
+- Blocks: Documenting the accelerator policy so WHPX desktop success is not confused with TCG or paired-capture boots.
+- Resolution: Buildenv `tavera-test-guest.mdc`: live CD may use `-accel whpx` with `-cpu qemu64`, default `pc`, `-vga qxl` (not `std` / not `q35`). Proven 2026-11-19 at `-smp 1`, `2`, and `4` to serial `Parent is Desktop` (and AP joins at 2/4): `sources/debugging-2026-11-19-whpx/boot-whpx-smp1-qxlpc-20261119T133234.log`, `…/boot-whpx-smp2-w2g-ebp-20261119T140945.log`, `…/boot-whpx-smp4-w3a-20261119T141143.log`. In-place upgrade, NTFS suite, and paired captures stay TCG. Spec source 36; §9 Rev.1.
+
 ## Queue check
 
 2026-11-19 (implementer): Every revision assigned to the implementer is implemented. `open-items.md` has no **open** items left (ALP-001…010 resolved). Stopped the 10-minute wake.
@@ -125,3 +141,15 @@ Handoff file for implementer ↔ spec agent. Do not delete entries. See `.cursor
 2026-11-19 (spec): After Ryan’s message restart rule: every item is already **resolved** (none **open** or **deferred**). No idle 10-minute poll armed.
 
 2026-11-19 (implementer, after Ryan message restart): Re-read `open-items.md`. Every item is still **resolved** (ALP-001…010); none **open**. No implementer revisions pending. No idle 10-minute poll armed. Continuing unblocked WHPX Gate A harness work.
+
+2026-11-19 (spec, Finish M32): Opened and resolved ALP-011/012 from existing WHPX debugging sources (no new SIPI triage). Spec Rev.1 sources 34–36 + test plan item 7 + §9. No **open** or **deferred** items remain (ALP-001…012 resolved).
+
+2026-11-19 (implementer, Finish M32 Queue-check): TCG ONECPU desktop: `tavera/specs/amd64-logical-processors/sources/debugging-2026-11-18/boot-m32-20261118T171847Z-onecpu.log` (`HalStartNextProcessor: ONECPU`, `Parent is Desktop`). TCG `-smp 4` desktop: `…/boot-m32-20261118T210750Z-desktop2.log` (CPUs 1–3 joined, `Parent is Desktop`). Milestone 8: `Test-WindowsProbe.ps1 -Name syscall-diff` → `REUSE syscall-diff`; `output/syscall-diff/windows.log` and `output/syscall-diff/reactos.log` each `DIFF END OK`. WHPX gates already in `debugging-2026-11-19-whpx.md` / sources (W1f/W2g/W3a). No Windows probe this session. No **open** items.
+
+### ALP-013
+- Status: open
+- Opened: 2026-11-19
+- Question: Public source-29 files under `tavera/specs/amd64-logical-processors/sources/probes/probe-v1/tavera-*.log` were refreshed from `output/amd64-logical-processors/probe-v1/` and now show `DIFF REL groupinfo i=0 max=4 active=4` (plus Ex caches and `DIFF END OK`) on all three shapes. Spec §7 / source-29 wording still describe the old `max=64` Tavera mismatch. Please append-only **Rev.2** so source 29 and §6/§7 match the refreshed logs (and the in-tree `MaximumProcessorCount = ActiveProcessorCount` fill).
+- Blocks: Spec text and cited source-29 content disagree; Milestone Progress already claims `max=4`.
+
+2026-11-19 (implementer, M32 review hygiene): Refreshed public `sources/probes/probe-v1/tavera-{4c1t,qemu64-2c2t,epyc-2c2t}.log` (and private mirror) from output logs with `max=4` / `DIFF END OK`. Opened ALP-013 for Spec Rev.2. ALP-011/012 need no code change. Idle 10-minute poll for Spec on ALP-013 only.
